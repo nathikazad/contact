@@ -1,0 +1,23 @@
+{
+  "name": "nextjs",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "post-update": "yarn upgrade --latest",
+    "generate-gql-client": "zeus https://start-red.hasura.app/v1/graphql ./src/generated --node --typescript --header='x-hasura-admin-secret:5fPrB3tAn1fIcPM2t2c6Ygb3Rfsy6JjXZvnKsuAYqipQd0rP20laVZGTnFZh6mK2' --graphql=./src/generated"
+  },
+  "dependencies": {
+    "graphql-zeus": "^2.8.6",
+    "node-fetch": "^2.6.7"
+  },
+  "license": "MIT",
+  "keywords": [
+    "next"
+  ],
+  "description": "A \"Hello World\" application with multiple pages that shows how Next.js routing works.",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "autoprefixer": "^10.3.1",
+    "typescript": "^4.8.3"
+  }
+}

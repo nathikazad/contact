@@ -1,0 +1,3 @@
+table:
+  name: reminders
+  schema: public

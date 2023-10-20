@@ -1,0 +1,45 @@
+# build.yaml
+
+targets:
+  $default:
+    builders:
+      graphql_codegen:
+        options:
+          outputDirectory: __generated
+          assetsPath: lib/db/graphql/**
+          clients:
+            - graphql
+          scalars:
+            timestamptz:
+              type: String
+            timestamp:
+              type: String
+            date:
+              type: String
+            json:
+              type: dynamic
+              fromJsonFunctionName: mapFromJson
+              toJsonFunctionName: mapToJson
+              import: package:start/db/hasuraTypes.dart
+            jsonb:
+              type: dynamic
+              fromJsonFunctionName: mapFromJson
+              toJsonFunctionName: mapToJson
+              import: package:start/db/hasuraTypes.dart
+            geography:
+              type: Geography
+              fromJsonFunctionName: geographyFromJson
+              toJsonFunctionName: geographyToJson
+              import: package:start/db/hasuraTypes.dart
+            geometry:
+              type: Geography
+              fromJsonFunctionName: geographyFromJson
+              toJsonFunctionName: geographyToJson
+              import: package:start/db/hasuraTypes.dart
+            float8:
+              type: double    
+            money:
+              type: double
+              fromJsonFunctionName: moneyFromJson
+              toJsonFunctionName: moneyToJson
+              import: package:start/db/hasuraTypes.dart

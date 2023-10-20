@@ -1,0 +1,7 @@
+version: 3
+endpoint: https://start-red.hasura.app
+admin_secret: 5fPrB3tAn1fIcPM2t2c6Ygb3Rfsy6JjXZvnKsuAYqipQd0rP20laVZGTnFZh6mK2 
+metadata_directory: metadata
+actions:
+  kind: synchronous
+  handler_webhook_baseurl: http://localhost:3000
