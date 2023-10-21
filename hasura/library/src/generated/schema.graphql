@@ -29,9 +29,393 @@ input Boolean_comparison_exp {
 }
 
 """
+columns and relationships of "contact_group"
+"""
+type contact_group {
+  """An object relationship"""
+  contact: contacts!
+  contact_id: Int!
+
+  """An object relationship"""
+  group: groups!
+  group_id: Int!
+}
+
+"""
+aggregated selection of "contact_group"
+"""
+type contact_group_aggregate {
+  aggregate: contact_group_aggregate_fields
+  nodes: [contact_group!]!
+}
+
+input contact_group_aggregate_bool_exp {
+  count: contact_group_aggregate_bool_exp_count
+}
+
+input contact_group_aggregate_bool_exp_count {
+  arguments: [contact_group_select_column!]
+  distinct: Boolean
+  filter: contact_group_bool_exp
+  predicate: Int_comparison_exp!
+}
+
+"""
+aggregate fields of "contact_group"
+"""
+type contact_group_aggregate_fields {
+  avg: contact_group_avg_fields
+  count(columns: [contact_group_select_column!], distinct: Boolean): Int!
+  max: contact_group_max_fields
+  min: contact_group_min_fields
+  stddev: contact_group_stddev_fields
+  stddev_pop: contact_group_stddev_pop_fields
+  stddev_samp: contact_group_stddev_samp_fields
+  sum: contact_group_sum_fields
+  var_pop: contact_group_var_pop_fields
+  var_samp: contact_group_var_samp_fields
+  variance: contact_group_variance_fields
+}
+
+"""
+order by aggregate values of table "contact_group"
+"""
+input contact_group_aggregate_order_by {
+  avg: contact_group_avg_order_by
+  count: order_by
+  max: contact_group_max_order_by
+  min: contact_group_min_order_by
+  stddev: contact_group_stddev_order_by
+  stddev_pop: contact_group_stddev_pop_order_by
+  stddev_samp: contact_group_stddev_samp_order_by
+  sum: contact_group_sum_order_by
+  var_pop: contact_group_var_pop_order_by
+  var_samp: contact_group_var_samp_order_by
+  variance: contact_group_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "contact_group"
+"""
+input contact_group_arr_rel_insert_input {
+  data: [contact_group_insert_input!]!
+
+  """upsert condition"""
+  on_conflict: contact_group_on_conflict
+}
+
+"""aggregate avg on columns"""
+type contact_group_avg_fields {
+  contact_id: Float
+  group_id: Float
+}
+
+"""
+order by avg() on columns of table "contact_group"
+"""
+input contact_group_avg_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""
+Boolean expression to filter rows from the table "contact_group". All fields are combined with a logical 'AND'.
+"""
+input contact_group_bool_exp {
+  _and: [contact_group_bool_exp!]
+  _not: contact_group_bool_exp
+  _or: [contact_group_bool_exp!]
+  contact: contacts_bool_exp
+  contact_id: Int_comparison_exp
+  group: groups_bool_exp
+  group_id: Int_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "contact_group"
+"""
+enum contact_group_constraint {
+  """
+  unique or primary key constraint on columns "contact_id", "group_id"
+  """
+  contact_group_pkey
+}
+
+"""
+input type for incrementing numeric columns in table "contact_group"
+"""
+input contact_group_inc_input {
+  contact_id: Int
+  group_id: Int
+}
+
+"""
+input type for inserting data into table "contact_group"
+"""
+input contact_group_insert_input {
+  contact: contacts_obj_rel_insert_input
+  contact_id: Int
+  group: groups_obj_rel_insert_input
+  group_id: Int
+}
+
+"""aggregate max on columns"""
+type contact_group_max_fields {
+  contact_id: Int
+  group_id: Int
+}
+
+"""
+order by max() on columns of table "contact_group"
+"""
+input contact_group_max_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""aggregate min on columns"""
+type contact_group_min_fields {
+  contact_id: Int
+  group_id: Int
+}
+
+"""
+order by min() on columns of table "contact_group"
+"""
+input contact_group_min_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""
+response of any mutation on the table "contact_group"
+"""
+type contact_group_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [contact_group!]!
+}
+
+"""
+on_conflict condition type for table "contact_group"
+"""
+input contact_group_on_conflict {
+  constraint: contact_group_constraint!
+  update_columns: [contact_group_update_column!]! = []
+  where: contact_group_bool_exp
+}
+
+"""Ordering options when selecting data from "contact_group"."""
+input contact_group_order_by {
+  contact: contacts_order_by
+  contact_id: order_by
+  group: groups_order_by
+  group_id: order_by
+}
+
+"""primary key columns input for table: contact_group"""
+input contact_group_pk_columns_input {
+  contact_id: Int!
+  group_id: Int!
+}
+
+"""
+select columns of table "contact_group"
+"""
+enum contact_group_select_column {
+  """column name"""
+  contact_id
+
+  """column name"""
+  group_id
+}
+
+"""
+input type for updating data in table "contact_group"
+"""
+input contact_group_set_input {
+  contact_id: Int
+  group_id: Int
+}
+
+"""aggregate stddev on columns"""
+type contact_group_stddev_fields {
+  contact_id: Float
+  group_id: Float
+}
+
+"""
+order by stddev() on columns of table "contact_group"
+"""
+input contact_group_stddev_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""aggregate stddev_pop on columns"""
+type contact_group_stddev_pop_fields {
+  contact_id: Float
+  group_id: Float
+}
+
+"""
+order by stddev_pop() on columns of table "contact_group"
+"""
+input contact_group_stddev_pop_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""aggregate stddev_samp on columns"""
+type contact_group_stddev_samp_fields {
+  contact_id: Float
+  group_id: Float
+}
+
+"""
+order by stddev_samp() on columns of table "contact_group"
+"""
+input contact_group_stddev_samp_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""
+Streaming cursor of the table "contact_group"
+"""
+input contact_group_stream_cursor_input {
+  """Stream column input with initial value"""
+  initial_value: contact_group_stream_cursor_value_input!
+
+  """cursor ordering"""
+  ordering: cursor_ordering
+}
+
+"""Initial value of the column from where the streaming should start"""
+input contact_group_stream_cursor_value_input {
+  contact_id: Int
+  group_id: Int
+}
+
+"""aggregate sum on columns"""
+type contact_group_sum_fields {
+  contact_id: Int
+  group_id: Int
+}
+
+"""
+order by sum() on columns of table "contact_group"
+"""
+input contact_group_sum_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""
+update columns of table "contact_group"
+"""
+enum contact_group_update_column {
+  """column name"""
+  contact_id
+
+  """column name"""
+  group_id
+}
+
+input contact_group_updates {
+  """increments the numeric columns with given value of the filtered values"""
+  _inc: contact_group_inc_input
+
+  """sets the columns of the filtered rows to the given values"""
+  _set: contact_group_set_input
+
+  """filter the rows which have to be updated"""
+  where: contact_group_bool_exp!
+}
+
+"""aggregate var_pop on columns"""
+type contact_group_var_pop_fields {
+  contact_id: Float
+  group_id: Float
+}
+
+"""
+order by var_pop() on columns of table "contact_group"
+"""
+input contact_group_var_pop_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""aggregate var_samp on columns"""
+type contact_group_var_samp_fields {
+  contact_id: Float
+  group_id: Float
+}
+
+"""
+order by var_samp() on columns of table "contact_group"
+"""
+input contact_group_var_samp_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""aggregate variance on columns"""
+type contact_group_variance_fields {
+  contact_id: Float
+  group_id: Float
+}
+
+"""
+order by variance() on columns of table "contact_group"
+"""
+input contact_group_variance_order_by {
+  contact_id: order_by
+  group_id: order_by
+}
+
+"""
 columns and relationships of "contacts"
 """
 type contacts {
+  """An array relationship"""
+  contact_groups(
+    """distinct select on columns"""
+    distinct_on: [contact_group_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contact_group_order_by!]
+
+    """filter the rows returned"""
+    where: contact_group_bool_exp
+  ): [contact_group!]!
+
+  """An aggregate relationship"""
+  contact_groups_aggregate(
+    """distinct select on columns"""
+    distinct_on: [contact_group_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contact_group_order_by!]
+
+    """filter the rows returned"""
+    where: contact_group_bool_exp
+  ): contact_group_aggregate!
   date_added: timestamptz!
   desires: [jsonb!]
   email: String
@@ -41,10 +425,82 @@ type contacts {
   ): jsonb
   id: Int!
   images: [jsonb!]
+
+  """An array relationship"""
+  logs(
+    """distinct select on columns"""
+    distinct_on: [logs_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [logs_order_by!]
+
+    """filter the rows returned"""
+    where: logs_bool_exp
+  ): [logs!]!
+
+  """An aggregate relationship"""
+  logs_aggregate(
+    """distinct select on columns"""
+    distinct_on: [logs_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [logs_order_by!]
+
+    """filter the rows returned"""
+    where: logs_bool_exp
+  ): logs_aggregate!
   name: String!
   need_to_call: Boolean
   notes: String
   phone_number: String
+
+  """An array relationship"""
+  reminders(
+    """distinct select on columns"""
+    distinct_on: [reminders_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [reminders_order_by!]
+
+    """filter the rows returned"""
+    where: reminders_bool_exp
+  ): [reminders!]!
+
+  """An aggregate relationship"""
+  reminders_aggregate(
+    """distinct select on columns"""
+    distinct_on: [reminders_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [reminders_order_by!]
+
+    """filter the rows returned"""
+    where: reminders_bool_exp
+  ): reminders_aggregate!
 }
 
 """
@@ -89,16 +545,22 @@ input contacts_bool_exp {
   _and: [contacts_bool_exp!]
   _not: contacts_bool_exp
   _or: [contacts_bool_exp!]
+  contact_groups: contact_group_bool_exp
+  contact_groups_aggregate: contact_group_aggregate_bool_exp
   date_added: timestamptz_comparison_exp
   desires: jsonb_array_comparison_exp
   email: String_comparison_exp
   frequency: jsonb_comparison_exp
   id: Int_comparison_exp
   images: jsonb_array_comparison_exp
+  logs: logs_bool_exp
+  logs_aggregate: logs_aggregate_bool_exp
   name: String_comparison_exp
   need_to_call: Boolean_comparison_exp
   notes: String_comparison_exp
   phone_number: String_comparison_exp
+  reminders: reminders_bool_exp
+  reminders_aggregate: reminders_aggregate_bool_exp
 }
 
 """
@@ -144,16 +606,19 @@ input contacts_inc_input {
 input type for inserting data into table "contacts"
 """
 input contacts_insert_input {
+  contact_groups: contact_group_arr_rel_insert_input
   date_added: timestamptz
   desires: [jsonb!]
   email: String
   frequency: jsonb
   id: Int
   images: [jsonb!]
+  logs: logs_arr_rel_insert_input
   name: String
   need_to_call: Boolean
   notes: String
   phone_number: String
+  reminders: reminders_arr_rel_insert_input
 }
 
 """aggregate max on columns"""
@@ -192,6 +657,16 @@ type contacts_mutation_response {
 }
 
 """
+input type for inserting object relation for remote table "contacts"
+"""
+input contacts_obj_rel_insert_input {
+  data: contacts_insert_input!
+
+  """upsert condition"""
+  on_conflict: contacts_on_conflict
+}
+
+"""
 on_conflict condition type for table "contacts"
 """
 input contacts_on_conflict {
@@ -202,16 +677,19 @@ input contacts_on_conflict {
 
 """Ordering options when selecting data from "contacts"."""
 input contacts_order_by {
+  contact_groups_aggregate: contact_group_aggregate_order_by
   date_added: order_by
   desires: order_by
   email: order_by
   frequency: order_by
   id: order_by
   images: order_by
+  logs_aggregate: logs_aggregate_order_by
   name: order_by
   need_to_call: order_by
   notes: order_by
   phone_number: order_by
+  reminders_aggregate: reminders_aggregate_order_by
 }
 
 """primary key columns input for table: contacts"""
@@ -416,10 +894,46 @@ enum cursor_ordering {
 columns and relationships of "groups"
 """
 type groups {
+  """An array relationship"""
+  contact_groups(
+    """distinct select on columns"""
+    distinct_on: [contact_group_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contact_group_order_by!]
+
+    """filter the rows returned"""
+    where: contact_group_bool_exp
+  ): [contact_group!]!
+
+  """An aggregate relationship"""
+  contact_groups_aggregate(
+    """distinct select on columns"""
+    distinct_on: [contact_group_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contact_group_order_by!]
+
+    """filter the rows returned"""
+    where: contact_group_bool_exp
+  ): contact_group_aggregate!
   frequency(
     """JSON select path"""
     path: String
   ): jsonb!
+  id: Int!
   name: String!
 }
 
@@ -435,14 +949,27 @@ type groups_aggregate {
 aggregate fields of "groups"
 """
 type groups_aggregate_fields {
+  avg: groups_avg_fields
   count(columns: [groups_select_column!], distinct: Boolean): Int!
   max: groups_max_fields
   min: groups_min_fields
+  stddev: groups_stddev_fields
+  stddev_pop: groups_stddev_pop_fields
+  stddev_samp: groups_stddev_samp_fields
+  sum: groups_sum_fields
+  var_pop: groups_var_pop_fields
+  var_samp: groups_var_samp_fields
+  variance: groups_variance_fields
 }
 
 """append existing jsonb value of filtered columns with new jsonb value"""
 input groups_append_input {
   frequency: jsonb
+}
+
+"""aggregate avg on columns"""
+type groups_avg_fields {
+  id: Float
 }
 
 """
@@ -452,7 +979,10 @@ input groups_bool_exp {
   _and: [groups_bool_exp!]
   _not: groups_bool_exp
   _or: [groups_bool_exp!]
+  contact_groups: contact_group_bool_exp
+  contact_groups_aggregate: contact_group_aggregate_bool_exp
   frequency: jsonb_comparison_exp
+  id: Int_comparison_exp
   name: String_comparison_exp
 }
 
@@ -461,7 +991,7 @@ unique or primary key constraints on table "groups"
 """
 enum groups_constraint {
   """
-  unique or primary key constraint on columns "name"
+  unique or primary key constraint on columns "id"
   """
   groups_pkey
 }
@@ -489,20 +1019,31 @@ input groups_delete_key_input {
 }
 
 """
+input type for incrementing numeric columns in table "groups"
+"""
+input groups_inc_input {
+  id: Int
+}
+
+"""
 input type for inserting data into table "groups"
 """
 input groups_insert_input {
+  contact_groups: contact_group_arr_rel_insert_input
   frequency: jsonb
+  id: Int
   name: String
 }
 
 """aggregate max on columns"""
 type groups_max_fields {
+  id: Int
   name: String
 }
 
 """aggregate min on columns"""
 type groups_min_fields {
+  id: Int
   name: String
 }
 
@@ -518,6 +1059,16 @@ type groups_mutation_response {
 }
 
 """
+input type for inserting object relation for remote table "groups"
+"""
+input groups_obj_rel_insert_input {
+  data: groups_insert_input!
+
+  """upsert condition"""
+  on_conflict: groups_on_conflict
+}
+
+"""
 on_conflict condition type for table "groups"
 """
 input groups_on_conflict {
@@ -528,13 +1079,15 @@ input groups_on_conflict {
 
 """Ordering options when selecting data from "groups"."""
 input groups_order_by {
+  contact_groups_aggregate: contact_group_aggregate_order_by
   frequency: order_by
+  id: order_by
   name: order_by
 }
 
 """primary key columns input for table: groups"""
 input groups_pk_columns_input {
-  name: String!
+  id: Int!
 }
 
 """prepend existing jsonb value of filtered columns with new jsonb value"""
@@ -550,6 +1103,9 @@ enum groups_select_column {
   frequency
 
   """column name"""
+  id
+
+  """column name"""
   name
 }
 
@@ -558,7 +1114,23 @@ input type for updating data in table "groups"
 """
 input groups_set_input {
   frequency: jsonb
+  id: Int
   name: String
+}
+
+"""aggregate stddev on columns"""
+type groups_stddev_fields {
+  id: Float
+}
+
+"""aggregate stddev_pop on columns"""
+type groups_stddev_pop_fields {
+  id: Float
+}
+
+"""aggregate stddev_samp on columns"""
+type groups_stddev_samp_fields {
+  id: Float
 }
 
 """
@@ -575,7 +1147,13 @@ input groups_stream_cursor_input {
 """Initial value of the column from where the streaming should start"""
 input groups_stream_cursor_value_input {
   frequency: jsonb
+  id: Int
   name: String
+}
+
+"""aggregate sum on columns"""
+type groups_sum_fields {
+  id: Int
 }
 
 """
@@ -584,6 +1162,9 @@ update columns of table "groups"
 enum groups_update_column {
   """column name"""
   frequency
+
+  """column name"""
+  id
 
   """column name"""
   name
@@ -609,6 +1190,9 @@ input groups_updates {
   """
   _delete_key: groups_delete_key_input
 
+  """increments the numeric columns with given value of the filtered values"""
+  _inc: groups_inc_input
+
   """prepend existing jsonb value of filtered columns with new jsonb value"""
   _prepend: groups_prepend_input
 
@@ -617,6 +1201,21 @@ input groups_updates {
 
   """filter the rows which have to be updated"""
   where: groups_bool_exp!
+}
+
+"""aggregate var_pop on columns"""
+type groups_var_pop_fields {
+  id: Float
+}
+
+"""aggregate var_samp on columns"""
+type groups_var_samp_fields {
+  id: Float
+}
+
+"""aggregate variance on columns"""
+type groups_variance_fields {
+  id: Float
 }
 
 """
@@ -691,11 +1290,18 @@ input jsonb_comparison_exp {
   _nin: [jsonb!]
 }
 
-"""call/message/meeting/skip"""
+"""
+columns and relationships of "logs"
+"""
 type logs {
+  """An object relationship"""
+  contact: contacts!
+  contact_id: Int!
   id: Int!
   notes: String!
   time: timestamptz!
+
+  """call/message/meeting/skip"""
   type: String!
 }
 
@@ -705,6 +1311,17 @@ aggregated selection of "logs"
 type logs_aggregate {
   aggregate: logs_aggregate_fields
   nodes: [logs!]!
+}
+
+input logs_aggregate_bool_exp {
+  count: logs_aggregate_bool_exp_count
+}
+
+input logs_aggregate_bool_exp_count {
+  arguments: [logs_select_column!]
+  distinct: Boolean
+  filter: logs_bool_exp
+  predicate: Int_comparison_exp!
 }
 
 """
@@ -724,9 +1341,45 @@ type logs_aggregate_fields {
   variance: logs_variance_fields
 }
 
+"""
+order by aggregate values of table "logs"
+"""
+input logs_aggregate_order_by {
+  avg: logs_avg_order_by
+  count: order_by
+  max: logs_max_order_by
+  min: logs_min_order_by
+  stddev: logs_stddev_order_by
+  stddev_pop: logs_stddev_pop_order_by
+  stddev_samp: logs_stddev_samp_order_by
+  sum: logs_sum_order_by
+  var_pop: logs_var_pop_order_by
+  var_samp: logs_var_samp_order_by
+  variance: logs_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "logs"
+"""
+input logs_arr_rel_insert_input {
+  data: [logs_insert_input!]!
+
+  """upsert condition"""
+  on_conflict: logs_on_conflict
+}
+
 """aggregate avg on columns"""
 type logs_avg_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by avg() on columns of table "logs"
+"""
+input logs_avg_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """
@@ -736,6 +1389,8 @@ input logs_bool_exp {
   _and: [logs_bool_exp!]
   _not: logs_bool_exp
   _or: [logs_bool_exp!]
+  contact: contacts_bool_exp
+  contact_id: Int_comparison_exp
   id: Int_comparison_exp
   notes: String_comparison_exp
   time: timestamptz_comparison_exp
@@ -756,6 +1411,7 @@ enum logs_constraint {
 input type for incrementing numeric columns in table "logs"
 """
 input logs_inc_input {
+  contact_id: Int
   id: Int
 }
 
@@ -763,26 +1419,62 @@ input logs_inc_input {
 input type for inserting data into table "logs"
 """
 input logs_insert_input {
+  contact: contacts_obj_rel_insert_input
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
+
+  """call/message/meeting/skip"""
   type: String
 }
 
 """aggregate max on columns"""
 type logs_max_fields {
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
+
+  """call/message/meeting/skip"""
   type: String
+}
+
+"""
+order by max() on columns of table "logs"
+"""
+input logs_max_order_by {
+  contact_id: order_by
+  id: order_by
+  notes: order_by
+  time: order_by
+
+  """call/message/meeting/skip"""
+  type: order_by
 }
 
 """aggregate min on columns"""
 type logs_min_fields {
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
+
+  """call/message/meeting/skip"""
   type: String
+}
+
+"""
+order by min() on columns of table "logs"
+"""
+input logs_min_order_by {
+  contact_id: order_by
+  id: order_by
+  notes: order_by
+  time: order_by
+
+  """call/message/meeting/skip"""
+  type: order_by
 }
 
 """
@@ -807,6 +1499,8 @@ input logs_on_conflict {
 
 """Ordering options when selecting data from "logs"."""
 input logs_order_by {
+  contact: contacts_order_by
+  contact_id: order_by
   id: order_by
   notes: order_by
   time: order_by
@@ -822,6 +1516,9 @@ input logs_pk_columns_input {
 select columns of table "logs"
 """
 enum logs_select_column {
+  """column name"""
+  contact_id
+
   """column name"""
   id
 
@@ -839,25 +1536,55 @@ enum logs_select_column {
 input type for updating data in table "logs"
 """
 input logs_set_input {
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
+
+  """call/message/meeting/skip"""
   type: String
 }
 
 """aggregate stddev on columns"""
 type logs_stddev_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by stddev() on columns of table "logs"
+"""
+input logs_stddev_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """aggregate stddev_pop on columns"""
 type logs_stddev_pop_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by stddev_pop() on columns of table "logs"
+"""
+input logs_stddev_pop_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """aggregate stddev_samp on columns"""
 type logs_stddev_samp_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by stddev_samp() on columns of table "logs"
+"""
+input logs_stddev_samp_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """
@@ -873,21 +1600,36 @@ input logs_stream_cursor_input {
 
 """Initial value of the column from where the streaming should start"""
 input logs_stream_cursor_value_input {
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
+
+  """call/message/meeting/skip"""
   type: String
 }
 
 """aggregate sum on columns"""
 type logs_sum_fields {
+  contact_id: Int
   id: Int
+}
+
+"""
+order by sum() on columns of table "logs"
+"""
+input logs_sum_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """
 update columns of table "logs"
 """
 enum logs_update_column {
+  """column name"""
+  contact_id
+
   """column name"""
   id
 
@@ -914,21 +1656,61 @@ input logs_updates {
 
 """aggregate var_pop on columns"""
 type logs_var_pop_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by var_pop() on columns of table "logs"
+"""
+input logs_var_pop_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """aggregate var_samp on columns"""
 type logs_var_samp_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by var_samp() on columns of table "logs"
+"""
+input logs_var_samp_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """aggregate variance on columns"""
 type logs_variance_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by variance() on columns of table "logs"
+"""
+input logs_variance_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """mutation root"""
 type mutation_root {
+  """
+  delete data from the table: "contact_group"
+  """
+  delete_contact_group(
+    """filter the rows which have to be deleted"""
+    where: contact_group_bool_exp!
+  ): contact_group_mutation_response
+
+  """
+  delete single row from the table: "contact_group"
+  """
+  delete_contact_group_by_pk(contact_id: Int!, group_id: Int!): contact_group
+
   """
   delete data from the table: "contacts"
   """
@@ -953,7 +1735,7 @@ type mutation_root {
   """
   delete single row from the table: "groups"
   """
-  delete_groups_by_pk(name: String!): groups
+  delete_groups_by_pk(id: Int!): groups
 
   """
   delete data from the table: "logs"
@@ -980,6 +1762,28 @@ type mutation_root {
   delete single row from the table: "reminders"
   """
   delete_reminders_by_pk(id: Int!): reminders
+
+  """
+  insert data into the table: "contact_group"
+  """
+  insert_contact_group(
+    """the rows to be inserted"""
+    objects: [contact_group_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: contact_group_on_conflict
+  ): contact_group_mutation_response
+
+  """
+  insert a single row into the table: "contact_group"
+  """
+  insert_contact_group_one(
+    """the row to be inserted"""
+    object: contact_group_insert_input!
+
+    """upsert condition"""
+    on_conflict: contact_group_on_conflict
+  ): contact_group
 
   """
   insert data into the table: "contacts"
@@ -1068,6 +1872,40 @@ type mutation_root {
     """upsert condition"""
     on_conflict: reminders_on_conflict
   ): reminders
+
+  """
+  update data of the table: "contact_group"
+  """
+  update_contact_group(
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: contact_group_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: contact_group_set_input
+
+    """filter the rows which have to be updated"""
+    where: contact_group_bool_exp!
+  ): contact_group_mutation_response
+
+  """
+  update single row of the table: "contact_group"
+  """
+  update_contact_group_by_pk(
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: contact_group_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: contact_group_set_input
+    pk_columns: contact_group_pk_columns_input!
+  ): contact_group
+
+  """
+  update multiples rows of table: "contact_group"
+  """
+  update_contact_group_many(
+    """updates to execute, in order"""
+    updates: [contact_group_updates!]!
+  ): [contact_group_mutation_response]
 
   """
   update data of the table: "contacts"
@@ -1170,6 +2008,9 @@ type mutation_root {
     """
     _delete_key: groups_delete_key_input
 
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: groups_inc_input
+
     """prepend existing jsonb value of filtered columns with new jsonb value"""
     _prepend: groups_prepend_input
 
@@ -1202,6 +2043,9 @@ type mutation_root {
     delete key/value pair or string element. key/value pairs are matched based on their key value
     """
     _delete_key: groups_delete_key_input
+
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: groups_inc_input
 
     """prepend existing jsonb value of filtered columns with new jsonb value"""
     _prepend: groups_prepend_input
@@ -1311,6 +2155,49 @@ enum order_by {
 
 type query_root {
   """
+  fetch data from the table: "contact_group"
+  """
+  contact_group(
+    """distinct select on columns"""
+    distinct_on: [contact_group_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contact_group_order_by!]
+
+    """filter the rows returned"""
+    where: contact_group_bool_exp
+  ): [contact_group!]!
+
+  """
+  fetch aggregated fields from the table: "contact_group"
+  """
+  contact_group_aggregate(
+    """distinct select on columns"""
+    distinct_on: [contact_group_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contact_group_order_by!]
+
+    """filter the rows returned"""
+    where: contact_group_bool_exp
+  ): contact_group_aggregate!
+
+  """fetch data from the table: "contact_group" using primary key columns"""
+  contact_group_by_pk(contact_id: Int!, group_id: Int!): contact_group
+
+  """
   fetch data from the table: "contacts"
   """
   contacts(
@@ -1394,11 +2281,9 @@ type query_root {
   ): groups_aggregate!
 
   """fetch data from the table: "groups" using primary key columns"""
-  groups_by_pk(name: String!): groups
+  groups_by_pk(id: Int!): groups
 
-  """
-  fetch data from the table: "logs"
-  """
+  """An array relationship"""
   logs(
     """distinct select on columns"""
     distinct_on: [logs_select_column!]
@@ -1416,9 +2301,7 @@ type query_root {
     where: logs_bool_exp
   ): [logs!]!
 
-  """
-  fetch aggregated fields from the table: "logs"
-  """
+  """An aggregate relationship"""
   logs_aggregate(
     """distinct select on columns"""
     distinct_on: [logs_select_column!]
@@ -1439,9 +2322,7 @@ type query_root {
   """fetch data from the table: "logs" using primary key columns"""
   logs_by_pk(id: Int!): logs
 
-  """
-  fetch data from the table: "reminders"
-  """
+  """An array relationship"""
   reminders(
     """distinct select on columns"""
     distinct_on: [reminders_select_column!]
@@ -1459,9 +2340,7 @@ type query_root {
     where: reminders_bool_exp
   ): [reminders!]!
 
-  """
-  fetch aggregated fields from the table: "reminders"
-  """
+  """An aggregate relationship"""
   reminders_aggregate(
     """distinct select on columns"""
     distinct_on: [reminders_select_column!]
@@ -1487,6 +2366,9 @@ type query_root {
 columns and relationships of "reminders"
 """
 type reminders {
+  """An object relationship"""
+  contact: contacts!
+  contact_id: Int!
   id: Int!
   notes: String!
   time: timestamptz!
@@ -1498,6 +2380,17 @@ aggregated selection of "reminders"
 type reminders_aggregate {
   aggregate: reminders_aggregate_fields
   nodes: [reminders!]!
+}
+
+input reminders_aggregate_bool_exp {
+  count: reminders_aggregate_bool_exp_count
+}
+
+input reminders_aggregate_bool_exp_count {
+  arguments: [reminders_select_column!]
+  distinct: Boolean
+  filter: reminders_bool_exp
+  predicate: Int_comparison_exp!
 }
 
 """
@@ -1517,9 +2410,45 @@ type reminders_aggregate_fields {
   variance: reminders_variance_fields
 }
 
+"""
+order by aggregate values of table "reminders"
+"""
+input reminders_aggregate_order_by {
+  avg: reminders_avg_order_by
+  count: order_by
+  max: reminders_max_order_by
+  min: reminders_min_order_by
+  stddev: reminders_stddev_order_by
+  stddev_pop: reminders_stddev_pop_order_by
+  stddev_samp: reminders_stddev_samp_order_by
+  sum: reminders_sum_order_by
+  var_pop: reminders_var_pop_order_by
+  var_samp: reminders_var_samp_order_by
+  variance: reminders_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "reminders"
+"""
+input reminders_arr_rel_insert_input {
+  data: [reminders_insert_input!]!
+
+  """upsert condition"""
+  on_conflict: reminders_on_conflict
+}
+
 """aggregate avg on columns"""
 type reminders_avg_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by avg() on columns of table "reminders"
+"""
+input reminders_avg_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """
@@ -1529,6 +2458,8 @@ input reminders_bool_exp {
   _and: [reminders_bool_exp!]
   _not: reminders_bool_exp
   _or: [reminders_bool_exp!]
+  contact: contacts_bool_exp
+  contact_id: Int_comparison_exp
   id: Int_comparison_exp
   notes: String_comparison_exp
   time: timestamptz_comparison_exp
@@ -1548,6 +2479,7 @@ enum reminders_constraint {
 input type for incrementing numeric columns in table "reminders"
 """
 input reminders_inc_input {
+  contact_id: Int
   id: Int
 }
 
@@ -1555,6 +2487,8 @@ input reminders_inc_input {
 input type for inserting data into table "reminders"
 """
 input reminders_insert_input {
+  contact: contacts_obj_rel_insert_input
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
@@ -1562,16 +2496,38 @@ input reminders_insert_input {
 
 """aggregate max on columns"""
 type reminders_max_fields {
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
 }
 
+"""
+order by max() on columns of table "reminders"
+"""
+input reminders_max_order_by {
+  contact_id: order_by
+  id: order_by
+  notes: order_by
+  time: order_by
+}
+
 """aggregate min on columns"""
 type reminders_min_fields {
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
+}
+
+"""
+order by min() on columns of table "reminders"
+"""
+input reminders_min_order_by {
+  contact_id: order_by
+  id: order_by
+  notes: order_by
+  time: order_by
 }
 
 """
@@ -1596,6 +2552,8 @@ input reminders_on_conflict {
 
 """Ordering options when selecting data from "reminders"."""
 input reminders_order_by {
+  contact: contacts_order_by
+  contact_id: order_by
   id: order_by
   notes: order_by
   time: order_by
@@ -1611,6 +2569,9 @@ select columns of table "reminders"
 """
 enum reminders_select_column {
   """column name"""
+  contact_id
+
+  """column name"""
   id
 
   """column name"""
@@ -1624,6 +2585,7 @@ enum reminders_select_column {
 input type for updating data in table "reminders"
 """
 input reminders_set_input {
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
@@ -1631,17 +2593,44 @@ input reminders_set_input {
 
 """aggregate stddev on columns"""
 type reminders_stddev_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by stddev() on columns of table "reminders"
+"""
+input reminders_stddev_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """aggregate stddev_pop on columns"""
 type reminders_stddev_pop_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by stddev_pop() on columns of table "reminders"
+"""
+input reminders_stddev_pop_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """aggregate stddev_samp on columns"""
 type reminders_stddev_samp_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by stddev_samp() on columns of table "reminders"
+"""
+input reminders_stddev_samp_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """
@@ -1657,6 +2646,7 @@ input reminders_stream_cursor_input {
 
 """Initial value of the column from where the streaming should start"""
 input reminders_stream_cursor_value_input {
+  contact_id: Int
   id: Int
   notes: String
   time: timestamptz
@@ -1664,13 +2654,25 @@ input reminders_stream_cursor_value_input {
 
 """aggregate sum on columns"""
 type reminders_sum_fields {
+  contact_id: Int
   id: Int
+}
+
+"""
+order by sum() on columns of table "reminders"
+"""
+input reminders_sum_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """
 update columns of table "reminders"
 """
 enum reminders_update_column {
+  """column name"""
+  contact_id
+
   """column name"""
   id
 
@@ -1694,17 +2696,44 @@ input reminders_updates {
 
 """aggregate var_pop on columns"""
 type reminders_var_pop_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by var_pop() on columns of table "reminders"
+"""
+input reminders_var_pop_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """aggregate var_samp on columns"""
 type reminders_var_samp_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by var_samp() on columns of table "reminders"
+"""
+input reminders_var_samp_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """aggregate variance on columns"""
 type reminders_variance_fields {
+  contact_id: Float
   id: Float
+}
+
+"""
+order by variance() on columns of table "reminders"
+"""
+input reminders_variance_order_by {
+  contact_id: order_by
+  id: order_by
 }
 
 """
@@ -1761,6 +2790,63 @@ input String_comparison_exp {
 }
 
 type subscription_root {
+  """
+  fetch data from the table: "contact_group"
+  """
+  contact_group(
+    """distinct select on columns"""
+    distinct_on: [contact_group_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contact_group_order_by!]
+
+    """filter the rows returned"""
+    where: contact_group_bool_exp
+  ): [contact_group!]!
+
+  """
+  fetch aggregated fields from the table: "contact_group"
+  """
+  contact_group_aggregate(
+    """distinct select on columns"""
+    distinct_on: [contact_group_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contact_group_order_by!]
+
+    """filter the rows returned"""
+    where: contact_group_bool_exp
+  ): contact_group_aggregate!
+
+  """fetch data from the table: "contact_group" using primary key columns"""
+  contact_group_by_pk(contact_id: Int!, group_id: Int!): contact_group
+
+  """
+  fetch data from the table in a streaming manner: "contact_group"
+  """
+  contact_group_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [contact_group_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: contact_group_bool_exp
+  ): [contact_group!]!
+
   """
   fetch data from the table: "contacts"
   """
@@ -1859,7 +2945,7 @@ type subscription_root {
   ): groups_aggregate!
 
   """fetch data from the table: "groups" using primary key columns"""
-  groups_by_pk(name: String!): groups
+  groups_by_pk(id: Int!): groups
 
   """
   fetch data from the table in a streaming manner: "groups"
@@ -1875,9 +2961,7 @@ type subscription_root {
     where: groups_bool_exp
   ): [groups!]!
 
-  """
-  fetch data from the table: "logs"
-  """
+  """An array relationship"""
   logs(
     """distinct select on columns"""
     distinct_on: [logs_select_column!]
@@ -1895,9 +2979,7 @@ type subscription_root {
     where: logs_bool_exp
   ): [logs!]!
 
-  """
-  fetch aggregated fields from the table: "logs"
-  """
+  """An aggregate relationship"""
   logs_aggregate(
     """distinct select on columns"""
     distinct_on: [logs_select_column!]
@@ -1932,9 +3014,7 @@ type subscription_root {
     where: logs_bool_exp
   ): [logs!]!
 
-  """
-  fetch data from the table: "reminders"
-  """
+  """An array relationship"""
   reminders(
     """distinct select on columns"""
     distinct_on: [reminders_select_column!]
@@ -1952,9 +3032,7 @@ type subscription_root {
     where: reminders_bool_exp
   ): [reminders!]!
 
-  """
-  fetch aggregated fields from the table: "reminders"
-  """
+  """An aggregate relationship"""
   reminders_aggregate(
     """distinct select on columns"""
     distinct_on: [reminders_select_column!]

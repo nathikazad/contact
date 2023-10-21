@@ -1,3 +1,4 @@
+- "!include public_contact_group.yaml"
 - "!include public_contacts.yaml"
 - "!include public_groups.yaml"
 - "!include public_logs.yaml"

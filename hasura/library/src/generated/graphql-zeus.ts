@@ -14,8 +14,269 @@ export type ValueTypes = {
 	_neq?:boolean,
 	_nin?:boolean[]
 };
+	/** columns and relationships of "contact_group" */
+["contact_group"]: AliasType<{
+	/** An object relationship */
+	contact?:ValueTypes["contacts"],
+	contact_id?:true,
+	/** An object relationship */
+	group?:ValueTypes["groups"],
+	group_id?:true,
+		__typename?: true
+}>;
+	/** aggregated selection of "contact_group" */
+["contact_group_aggregate"]: AliasType<{
+	aggregate?:ValueTypes["contact_group_aggregate_fields"],
+	nodes?:ValueTypes["contact_group"],
+		__typename?: true
+}>;
+	["contact_group_aggregate_bool_exp"]: {
+	count?:ValueTypes["contact_group_aggregate_bool_exp_count"]
+};
+	["contact_group_aggregate_bool_exp_count"]: {
+	arguments?:ValueTypes["contact_group_select_column"][],
+	distinct?:boolean,
+	filter?:ValueTypes["contact_group_bool_exp"],
+	predicate:ValueTypes["Int_comparison_exp"]
+};
+	/** aggregate fields of "contact_group" */
+["contact_group_aggregate_fields"]: AliasType<{
+	avg?:ValueTypes["contact_group_avg_fields"],
+count?: [{	columns?:ValueTypes["contact_group_select_column"][],	distinct?:boolean},true],
+	max?:ValueTypes["contact_group_max_fields"],
+	min?:ValueTypes["contact_group_min_fields"],
+	stddev?:ValueTypes["contact_group_stddev_fields"],
+	stddev_pop?:ValueTypes["contact_group_stddev_pop_fields"],
+	stddev_samp?:ValueTypes["contact_group_stddev_samp_fields"],
+	sum?:ValueTypes["contact_group_sum_fields"],
+	var_pop?:ValueTypes["contact_group_var_pop_fields"],
+	var_samp?:ValueTypes["contact_group_var_samp_fields"],
+	variance?:ValueTypes["contact_group_variance_fields"],
+		__typename?: true
+}>;
+	/** order by aggregate values of table "contact_group" */
+["contact_group_aggregate_order_by"]: {
+	avg?:ValueTypes["contact_group_avg_order_by"],
+	count?:ValueTypes["order_by"],
+	max?:ValueTypes["contact_group_max_order_by"],
+	min?:ValueTypes["contact_group_min_order_by"],
+	stddev?:ValueTypes["contact_group_stddev_order_by"],
+	stddev_pop?:ValueTypes["contact_group_stddev_pop_order_by"],
+	stddev_samp?:ValueTypes["contact_group_stddev_samp_order_by"],
+	sum?:ValueTypes["contact_group_sum_order_by"],
+	var_pop?:ValueTypes["contact_group_var_pop_order_by"],
+	var_samp?:ValueTypes["contact_group_var_samp_order_by"],
+	variance?:ValueTypes["contact_group_variance_order_by"]
+};
+	/** input type for inserting array relation for remote table "contact_group" */
+["contact_group_arr_rel_insert_input"]: {
+	data:ValueTypes["contact_group_insert_input"][],
+	/** upsert condition */
+	on_conflict?:ValueTypes["contact_group_on_conflict"]
+};
+	/** aggregate avg on columns */
+["contact_group_avg_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by avg() on columns of table "contact_group" */
+["contact_group_avg_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** Boolean expression to filter rows from the table "contact_group". All fields are combined with a logical 'AND'. */
+["contact_group_bool_exp"]: {
+	_and?:ValueTypes["contact_group_bool_exp"][],
+	_not?:ValueTypes["contact_group_bool_exp"],
+	_or?:ValueTypes["contact_group_bool_exp"][],
+	contact?:ValueTypes["contacts_bool_exp"],
+	contact_id?:ValueTypes["Int_comparison_exp"],
+	group?:ValueTypes["groups_bool_exp"],
+	group_id?:ValueTypes["Int_comparison_exp"]
+};
+	/** unique or primary key constraints on table "contact_group" */
+["contact_group_constraint"]:contact_group_constraint;
+	/** input type for incrementing numeric columns in table "contact_group" */
+["contact_group_inc_input"]: {
+	contact_id?:number,
+	group_id?:number
+};
+	/** input type for inserting data into table "contact_group" */
+["contact_group_insert_input"]: {
+	contact?:ValueTypes["contacts_obj_rel_insert_input"],
+	contact_id?:number,
+	group?:ValueTypes["groups_obj_rel_insert_input"],
+	group_id?:number
+};
+	/** aggregate max on columns */
+["contact_group_max_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by max() on columns of table "contact_group" */
+["contact_group_max_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** aggregate min on columns */
+["contact_group_min_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by min() on columns of table "contact_group" */
+["contact_group_min_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** response of any mutation on the table "contact_group" */
+["contact_group_mutation_response"]: AliasType<{
+	/** number of rows affected by the mutation */
+	affected_rows?:true,
+	/** data from the rows affected by the mutation */
+	returning?:ValueTypes["contact_group"],
+		__typename?: true
+}>;
+	/** on_conflict condition type for table "contact_group" */
+["contact_group_on_conflict"]: {
+	constraint:ValueTypes["contact_group_constraint"],
+	update_columns:ValueTypes["contact_group_update_column"][],
+	where?:ValueTypes["contact_group_bool_exp"]
+};
+	/** Ordering options when selecting data from "contact_group". */
+["contact_group_order_by"]: {
+	contact?:ValueTypes["contacts_order_by"],
+	contact_id?:ValueTypes["order_by"],
+	group?:ValueTypes["groups_order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** primary key columns input for table: contact_group */
+["contact_group_pk_columns_input"]: {
+	contact_id:number,
+	group_id:number
+};
+	/** select columns of table "contact_group" */
+["contact_group_select_column"]:contact_group_select_column;
+	/** input type for updating data in table "contact_group" */
+["contact_group_set_input"]: {
+	contact_id?:number,
+	group_id?:number
+};
+	/** aggregate stddev on columns */
+["contact_group_stddev_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by stddev() on columns of table "contact_group" */
+["contact_group_stddev_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** aggregate stddev_pop on columns */
+["contact_group_stddev_pop_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by stddev_pop() on columns of table "contact_group" */
+["contact_group_stddev_pop_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** aggregate stddev_samp on columns */
+["contact_group_stddev_samp_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by stddev_samp() on columns of table "contact_group" */
+["contact_group_stddev_samp_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** Streaming cursor of the table "contact_group" */
+["contact_group_stream_cursor_input"]: {
+	/** Stream column input with initial value */
+	initial_value:ValueTypes["contact_group_stream_cursor_value_input"],
+	/** cursor ordering */
+	ordering?:ValueTypes["cursor_ordering"]
+};
+	/** Initial value of the column from where the streaming should start */
+["contact_group_stream_cursor_value_input"]: {
+	contact_id?:number,
+	group_id?:number
+};
+	/** aggregate sum on columns */
+["contact_group_sum_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by sum() on columns of table "contact_group" */
+["contact_group_sum_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** update columns of table "contact_group" */
+["contact_group_update_column"]:contact_group_update_column;
+	["contact_group_updates"]: {
+	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["contact_group_inc_input"],
+	/** sets the columns of the filtered rows to the given values */
+	_set?:ValueTypes["contact_group_set_input"],
+	/** filter the rows which have to be updated */
+	where:ValueTypes["contact_group_bool_exp"]
+};
+	/** aggregate var_pop on columns */
+["contact_group_var_pop_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by var_pop() on columns of table "contact_group" */
+["contact_group_var_pop_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** aggregate var_samp on columns */
+["contact_group_var_samp_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by var_samp() on columns of table "contact_group" */
+["contact_group_var_samp_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
+	/** aggregate variance on columns */
+["contact_group_variance_fields"]: AliasType<{
+	contact_id?:true,
+	group_id?:true,
+		__typename?: true
+}>;
+	/** order by variance() on columns of table "contact_group" */
+["contact_group_variance_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	group_id?:ValueTypes["order_by"]
+};
 	/** columns and relationships of "contacts" */
 ["contacts"]: AliasType<{
+contact_groups?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contact_group_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contact_group_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group"]],
+contact_groups_aggregate?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contact_group_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contact_group_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group_aggregate"]],
 	date_added?:true,
 	desires?:true,
 	email?:true,
@@ -23,10 +284,34 @@ frequency?: [{	/** JSON select path */
 	path?:string},true],
 	id?:true,
 	images?:true,
+logs?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["logs_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["logs_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["logs_bool_exp"]},ValueTypes["logs"]],
+logs_aggregate?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["logs_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["logs_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["logs_bool_exp"]},ValueTypes["logs_aggregate"]],
 	name?:true,
 	need_to_call?:true,
 	notes?:true,
 	phone_number?:true,
+reminders?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["reminders_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["reminders_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["reminders_bool_exp"]},ValueTypes["reminders"]],
+reminders_aggregate?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["reminders_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["reminders_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["reminders_bool_exp"]},ValueTypes["reminders_aggregate"]],
 		__typename?: true
 }>;
 	/** aggregated selection of "contacts" */
@@ -64,16 +349,22 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 	_and?:ValueTypes["contacts_bool_exp"][],
 	_not?:ValueTypes["contacts_bool_exp"],
 	_or?:ValueTypes["contacts_bool_exp"][],
+	contact_groups?:ValueTypes["contact_group_bool_exp"],
+	contact_groups_aggregate?:ValueTypes["contact_group_aggregate_bool_exp"],
 	date_added?:ValueTypes["timestamptz_comparison_exp"],
 	desires?:ValueTypes["jsonb_array_comparison_exp"],
 	email?:ValueTypes["String_comparison_exp"],
 	frequency?:ValueTypes["jsonb_comparison_exp"],
 	id?:ValueTypes["Int_comparison_exp"],
 	images?:ValueTypes["jsonb_array_comparison_exp"],
+	logs?:ValueTypes["logs_bool_exp"],
+	logs_aggregate?:ValueTypes["logs_aggregate_bool_exp"],
 	name?:ValueTypes["String_comparison_exp"],
 	need_to_call?:ValueTypes["Boolean_comparison_exp"],
 	notes?:ValueTypes["String_comparison_exp"],
-	phone_number?:ValueTypes["String_comparison_exp"]
+	phone_number?:ValueTypes["String_comparison_exp"],
+	reminders?:ValueTypes["reminders_bool_exp"],
+	reminders_aggregate?:ValueTypes["reminders_aggregate_bool_exp"]
 };
 	/** unique or primary key constraints on table "contacts" */
 ["contacts_constraint"]:contacts_constraint;
@@ -96,16 +387,19 @@ end). throws an error if top level container is not an array */
 };
 	/** input type for inserting data into table "contacts" */
 ["contacts_insert_input"]: {
+	contact_groups?:ValueTypes["contact_group_arr_rel_insert_input"],
 	date_added?:ValueTypes["timestamptz"],
 	desires?:ValueTypes["jsonb"][],
 	email?:string,
 	frequency?:ValueTypes["jsonb"],
 	id?:number,
 	images?:ValueTypes["jsonb"][],
+	logs?:ValueTypes["logs_arr_rel_insert_input"],
 	name?:string,
 	need_to_call?:boolean,
 	notes?:string,
-	phone_number?:string
+	phone_number?:string,
+	reminders?:ValueTypes["reminders_arr_rel_insert_input"]
 };
 	/** aggregate max on columns */
 ["contacts_max_fields"]: AliasType<{
@@ -139,6 +433,12 @@ end). throws an error if top level container is not an array */
 	returning?:ValueTypes["contacts"],
 		__typename?: true
 }>;
+	/** input type for inserting object relation for remote table "contacts" */
+["contacts_obj_rel_insert_input"]: {
+	data:ValueTypes["contacts_insert_input"],
+	/** upsert condition */
+	on_conflict?:ValueTypes["contacts_on_conflict"]
+};
 	/** on_conflict condition type for table "contacts" */
 ["contacts_on_conflict"]: {
 	constraint:ValueTypes["contacts_constraint"],
@@ -147,16 +447,19 @@ end). throws an error if top level container is not an array */
 };
 	/** Ordering options when selecting data from "contacts". */
 ["contacts_order_by"]: {
+	contact_groups_aggregate?:ValueTypes["contact_group_aggregate_order_by"],
 	date_added?:ValueTypes["order_by"],
 	desires?:ValueTypes["order_by"],
 	email?:ValueTypes["order_by"],
 	frequency?:ValueTypes["order_by"],
 	id?:ValueTypes["order_by"],
 	images?:ValueTypes["order_by"],
+	logs_aggregate?:ValueTypes["logs_aggregate_order_by"],
 	name?:ValueTypes["order_by"],
 	need_to_call?:ValueTypes["order_by"],
 	notes?:ValueTypes["order_by"],
-	phone_number?:ValueTypes["order_by"]
+	phone_number?:ValueTypes["order_by"],
+	reminders_aggregate?:ValueTypes["reminders_aggregate_order_by"]
 };
 	/** primary key columns input for table: contacts */
 ["contacts_pk_columns_input"]: {
@@ -261,8 +564,21 @@ the end). throws an error if top level container is not an array */
 ["cursor_ordering"]:cursor_ordering;
 	/** columns and relationships of "groups" */
 ["groups"]: AliasType<{
+contact_groups?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contact_group_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contact_group_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group"]],
+contact_groups_aggregate?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contact_group_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contact_group_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group_aggregate"]],
 frequency?: [{	/** JSON select path */
 	path?:string},true],
+	id?:true,
 	name?:true,
 		__typename?: true
 }>;
@@ -274,21 +590,37 @@ frequency?: [{	/** JSON select path */
 }>;
 	/** aggregate fields of "groups" */
 ["groups_aggregate_fields"]: AliasType<{
+	avg?:ValueTypes["groups_avg_fields"],
 count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},true],
 	max?:ValueTypes["groups_max_fields"],
 	min?:ValueTypes["groups_min_fields"],
+	stddev?:ValueTypes["groups_stddev_fields"],
+	stddev_pop?:ValueTypes["groups_stddev_pop_fields"],
+	stddev_samp?:ValueTypes["groups_stddev_samp_fields"],
+	sum?:ValueTypes["groups_sum_fields"],
+	var_pop?:ValueTypes["groups_var_pop_fields"],
+	var_samp?:ValueTypes["groups_var_samp_fields"],
+	variance?:ValueTypes["groups_variance_fields"],
 		__typename?: true
 }>;
 	/** append existing jsonb value of filtered columns with new jsonb value */
 ["groups_append_input"]: {
 	frequency?:ValueTypes["jsonb"]
 };
+	/** aggregate avg on columns */
+["groups_avg_fields"]: AliasType<{
+	id?:true,
+		__typename?: true
+}>;
 	/** Boolean expression to filter rows from the table "groups". All fields are combined with a logical 'AND'. */
 ["groups_bool_exp"]: {
 	_and?:ValueTypes["groups_bool_exp"][],
 	_not?:ValueTypes["groups_bool_exp"],
 	_or?:ValueTypes["groups_bool_exp"][],
+	contact_groups?:ValueTypes["contact_group_bool_exp"],
+	contact_groups_aggregate?:ValueTypes["contact_group_aggregate_bool_exp"],
 	frequency?:ValueTypes["jsonb_comparison_exp"],
+	id?:ValueTypes["Int_comparison_exp"],
 	name?:ValueTypes["String_comparison_exp"]
 };
 	/** unique or primary key constraints on table "groups" */
@@ -306,18 +638,26 @@ end). throws an error if top level container is not an array */
 ["groups_delete_key_input"]: {
 	frequency?:string
 };
+	/** input type for incrementing numeric columns in table "groups" */
+["groups_inc_input"]: {
+	id?:number
+};
 	/** input type for inserting data into table "groups" */
 ["groups_insert_input"]: {
+	contact_groups?:ValueTypes["contact_group_arr_rel_insert_input"],
 	frequency?:ValueTypes["jsonb"],
+	id?:number,
 	name?:string
 };
 	/** aggregate max on columns */
 ["groups_max_fields"]: AliasType<{
+	id?:true,
 	name?:true,
 		__typename?: true
 }>;
 	/** aggregate min on columns */
 ["groups_min_fields"]: AliasType<{
+	id?:true,
 	name?:true,
 		__typename?: true
 }>;
@@ -329,6 +669,12 @@ end). throws an error if top level container is not an array */
 	returning?:ValueTypes["groups"],
 		__typename?: true
 }>;
+	/** input type for inserting object relation for remote table "groups" */
+["groups_obj_rel_insert_input"]: {
+	data:ValueTypes["groups_insert_input"],
+	/** upsert condition */
+	on_conflict?:ValueTypes["groups_on_conflict"]
+};
 	/** on_conflict condition type for table "groups" */
 ["groups_on_conflict"]: {
 	constraint:ValueTypes["groups_constraint"],
@@ -337,12 +683,14 @@ end). throws an error if top level container is not an array */
 };
 	/** Ordering options when selecting data from "groups". */
 ["groups_order_by"]: {
+	contact_groups_aggregate?:ValueTypes["contact_group_aggregate_order_by"],
 	frequency?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"],
 	name?:ValueTypes["order_by"]
 };
 	/** primary key columns input for table: groups */
 ["groups_pk_columns_input"]: {
-	name:string
+	id:number
 };
 	/** prepend existing jsonb value of filtered columns with new jsonb value */
 ["groups_prepend_input"]: {
@@ -353,8 +701,24 @@ end). throws an error if top level container is not an array */
 	/** input type for updating data in table "groups" */
 ["groups_set_input"]: {
 	frequency?:ValueTypes["jsonb"],
+	id?:number,
 	name?:string
 };
+	/** aggregate stddev on columns */
+["groups_stddev_fields"]: AliasType<{
+	id?:true,
+		__typename?: true
+}>;
+	/** aggregate stddev_pop on columns */
+["groups_stddev_pop_fields"]: AliasType<{
+	id?:true,
+		__typename?: true
+}>;
+	/** aggregate stddev_samp on columns */
+["groups_stddev_samp_fields"]: AliasType<{
+	id?:true,
+		__typename?: true
+}>;
 	/** Streaming cursor of the table "groups" */
 ["groups_stream_cursor_input"]: {
 	/** Stream column input with initial value */
@@ -365,8 +729,14 @@ end). throws an error if top level container is not an array */
 	/** Initial value of the column from where the streaming should start */
 ["groups_stream_cursor_value_input"]: {
 	frequency?:ValueTypes["jsonb"],
+	id?:number,
 	name?:string
 };
+	/** aggregate sum on columns */
+["groups_sum_fields"]: AliasType<{
+	id?:true,
+		__typename?: true
+}>;
 	/** update columns of table "groups" */
 ["groups_update_column"]:groups_update_column;
 	["groups_updates"]: {
@@ -379,6 +749,8 @@ the end). throws an error if top level container is not an array */
 	_delete_elem?:ValueTypes["groups_delete_elem_input"],
 	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
 	_delete_key?:ValueTypes["groups_delete_key_input"],
+	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["groups_inc_input"],
 	/** prepend existing jsonb value of filtered columns with new jsonb value */
 	_prepend?:ValueTypes["groups_prepend_input"],
 	/** sets the columns of the filtered rows to the given values */
@@ -386,6 +758,21 @@ the end). throws an error if top level container is not an array */
 	/** filter the rows which have to be updated */
 	where:ValueTypes["groups_bool_exp"]
 };
+	/** aggregate var_pop on columns */
+["groups_var_pop_fields"]: AliasType<{
+	id?:true,
+		__typename?: true
+}>;
+	/** aggregate var_samp on columns */
+["groups_var_samp_fields"]: AliasType<{
+	id?:true,
+		__typename?: true
+}>;
+	/** aggregate variance on columns */
+["groups_variance_fields"]: AliasType<{
+	id?:true,
+		__typename?: true
+}>;
 	/** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 ["Int_comparison_exp"]: {
 	_eq?:number,
@@ -441,11 +828,15 @@ the end). throws an error if top level container is not an array */
 	_neq?:ValueTypes["jsonb"],
 	_nin?:ValueTypes["jsonb"][]
 };
-	/** call/message/meeting/skip */
+	/** columns and relationships of "logs" */
 ["logs"]: AliasType<{
+	/** An object relationship */
+	contact?:ValueTypes["contacts"],
+	contact_id?:true,
 	id?:true,
 	notes?:true,
 	time?:true,
+	/** call/message/meeting/skip */
 	type?:true,
 		__typename?: true
 }>;
@@ -455,6 +846,15 @@ the end). throws an error if top level container is not an array */
 	nodes?:ValueTypes["logs"],
 		__typename?: true
 }>;
+	["logs_aggregate_bool_exp"]: {
+	count?:ValueTypes["logs_aggregate_bool_exp_count"]
+};
+	["logs_aggregate_bool_exp_count"]: {
+	arguments?:ValueTypes["logs_select_column"][],
+	distinct?:boolean,
+	filter?:ValueTypes["logs_bool_exp"],
+	predicate:ValueTypes["Int_comparison_exp"]
+};
 	/** aggregate fields of "logs" */
 ["logs_aggregate_fields"]: AliasType<{
 	avg?:ValueTypes["logs_avg_fields"],
@@ -470,16 +870,44 @@ count?: [{	columns?:ValueTypes["logs_select_column"][],	distinct?:boolean},true]
 	variance?:ValueTypes["logs_variance_fields"],
 		__typename?: true
 }>;
+	/** order by aggregate values of table "logs" */
+["logs_aggregate_order_by"]: {
+	avg?:ValueTypes["logs_avg_order_by"],
+	count?:ValueTypes["order_by"],
+	max?:ValueTypes["logs_max_order_by"],
+	min?:ValueTypes["logs_min_order_by"],
+	stddev?:ValueTypes["logs_stddev_order_by"],
+	stddev_pop?:ValueTypes["logs_stddev_pop_order_by"],
+	stddev_samp?:ValueTypes["logs_stddev_samp_order_by"],
+	sum?:ValueTypes["logs_sum_order_by"],
+	var_pop?:ValueTypes["logs_var_pop_order_by"],
+	var_samp?:ValueTypes["logs_var_samp_order_by"],
+	variance?:ValueTypes["logs_variance_order_by"]
+};
+	/** input type for inserting array relation for remote table "logs" */
+["logs_arr_rel_insert_input"]: {
+	data:ValueTypes["logs_insert_input"][],
+	/** upsert condition */
+	on_conflict?:ValueTypes["logs_on_conflict"]
+};
 	/** aggregate avg on columns */
 ["logs_avg_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by avg() on columns of table "logs" */
+["logs_avg_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** Boolean expression to filter rows from the table "logs". All fields are combined with a logical 'AND'. */
 ["logs_bool_exp"]: {
 	_and?:ValueTypes["logs_bool_exp"][],
 	_not?:ValueTypes["logs_bool_exp"],
 	_or?:ValueTypes["logs_bool_exp"][],
+	contact?:ValueTypes["contacts_bool_exp"],
+	contact_id?:ValueTypes["Int_comparison_exp"],
 	id?:ValueTypes["Int_comparison_exp"],
 	notes?:ValueTypes["String_comparison_exp"],
 	time?:ValueTypes["timestamptz_comparison_exp"],
@@ -489,31 +917,57 @@ count?: [{	columns?:ValueTypes["logs_select_column"][],	distinct?:boolean},true]
 ["logs_constraint"]:logs_constraint;
 	/** input type for incrementing numeric columns in table "logs" */
 ["logs_inc_input"]: {
+	contact_id?:number,
 	id?:number
 };
 	/** input type for inserting data into table "logs" */
 ["logs_insert_input"]: {
+	contact?:ValueTypes["contacts_obj_rel_insert_input"],
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:ValueTypes["timestamptz"],
+	/** call/message/meeting/skip */
 	type?:string
 };
 	/** aggregate max on columns */
 ["logs_max_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 	notes?:true,
 	time?:true,
+	/** call/message/meeting/skip */
 	type?:true,
 		__typename?: true
 }>;
+	/** order by max() on columns of table "logs" */
+["logs_max_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"],
+	notes?:ValueTypes["order_by"],
+	time?:ValueTypes["order_by"],
+	/** call/message/meeting/skip */
+	type?:ValueTypes["order_by"]
+};
 	/** aggregate min on columns */
 ["logs_min_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 	notes?:true,
 	time?:true,
+	/** call/message/meeting/skip */
 	type?:true,
 		__typename?: true
 }>;
+	/** order by min() on columns of table "logs" */
+["logs_min_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"],
+	notes?:ValueTypes["order_by"],
+	time?:ValueTypes["order_by"],
+	/** call/message/meeting/skip */
+	type?:ValueTypes["order_by"]
+};
 	/** response of any mutation on the table "logs" */
 ["logs_mutation_response"]: AliasType<{
 	/** number of rows affected by the mutation */
@@ -530,6 +984,8 @@ count?: [{	columns?:ValueTypes["logs_select_column"][],	distinct?:boolean},true]
 };
 	/** Ordering options when selecting data from "logs". */
 ["logs_order_by"]: {
+	contact?:ValueTypes["contacts_order_by"],
+	contact_id?:ValueTypes["order_by"],
 	id?:ValueTypes["order_by"],
 	notes?:ValueTypes["order_by"],
 	time?:ValueTypes["order_by"],
@@ -543,26 +999,46 @@ count?: [{	columns?:ValueTypes["logs_select_column"][],	distinct?:boolean},true]
 ["logs_select_column"]:logs_select_column;
 	/** input type for updating data in table "logs" */
 ["logs_set_input"]: {
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:ValueTypes["timestamptz"],
+	/** call/message/meeting/skip */
 	type?:string
 };
 	/** aggregate stddev on columns */
 ["logs_stddev_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by stddev() on columns of table "logs" */
+["logs_stddev_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** aggregate stddev_pop on columns */
 ["logs_stddev_pop_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by stddev_pop() on columns of table "logs" */
+["logs_stddev_pop_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** aggregate stddev_samp on columns */
 ["logs_stddev_samp_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by stddev_samp() on columns of table "logs" */
+["logs_stddev_samp_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** Streaming cursor of the table "logs" */
 ["logs_stream_cursor_input"]: {
 	/** Stream column input with initial value */
@@ -572,16 +1048,24 @@ count?: [{	columns?:ValueTypes["logs_select_column"][],	distinct?:boolean},true]
 };
 	/** Initial value of the column from where the streaming should start */
 ["logs_stream_cursor_value_input"]: {
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:ValueTypes["timestamptz"],
+	/** call/message/meeting/skip */
 	type?:string
 };
 	/** aggregate sum on columns */
 ["logs_sum_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by sum() on columns of table "logs" */
+["logs_sum_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** update columns of table "logs" */
 ["logs_update_column"]:logs_update_column;
 	["logs_updates"]: {
@@ -594,33 +1078,60 @@ count?: [{	columns?:ValueTypes["logs_select_column"][],	distinct?:boolean},true]
 };
 	/** aggregate var_pop on columns */
 ["logs_var_pop_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by var_pop() on columns of table "logs" */
+["logs_var_pop_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** aggregate var_samp on columns */
 ["logs_var_samp_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by var_samp() on columns of table "logs" */
+["logs_var_samp_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** aggregate variance on columns */
 ["logs_variance_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by variance() on columns of table "logs" */
+["logs_variance_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** mutation root */
 ["mutation_root"]: AliasType<{
+delete_contact_group?: [{	/** filter the rows which have to be deleted */
+	where:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group_mutation_response"]],
+delete_contact_group_by_pk?: [{	contact_id:number,	group_id:number},ValueTypes["contact_group"]],
 delete_contacts?: [{	/** filter the rows which have to be deleted */
 	where:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts_mutation_response"]],
 delete_contacts_by_pk?: [{	id:number},ValueTypes["contacts"]],
 delete_groups?: [{	/** filter the rows which have to be deleted */
 	where:ValueTypes["groups_bool_exp"]},ValueTypes["groups_mutation_response"]],
-delete_groups_by_pk?: [{	name:string},ValueTypes["groups"]],
+delete_groups_by_pk?: [{	id:number},ValueTypes["groups"]],
 delete_logs?: [{	/** filter the rows which have to be deleted */
 	where:ValueTypes["logs_bool_exp"]},ValueTypes["logs_mutation_response"]],
 delete_logs_by_pk?: [{	id:number},ValueTypes["logs"]],
 delete_reminders?: [{	/** filter the rows which have to be deleted */
 	where:ValueTypes["reminders_bool_exp"]},ValueTypes["reminders_mutation_response"]],
 delete_reminders_by_pk?: [{	id:number},ValueTypes["reminders"]],
+insert_contact_group?: [{	/** the rows to be inserted */
+	objects:ValueTypes["contact_group_insert_input"][],	/** upsert condition */
+	on_conflict?:ValueTypes["contact_group_on_conflict"]},ValueTypes["contact_group_mutation_response"]],
+insert_contact_group_one?: [{	/** the row to be inserted */
+	object:ValueTypes["contact_group_insert_input"],	/** upsert condition */
+	on_conflict?:ValueTypes["contact_group_on_conflict"]},ValueTypes["contact_group"]],
 insert_contacts?: [{	/** the rows to be inserted */
 	objects:ValueTypes["contacts_insert_input"][],	/** upsert condition */
 	on_conflict?:ValueTypes["contacts_on_conflict"]},ValueTypes["contacts_mutation_response"]],
@@ -645,6 +1156,15 @@ insert_reminders?: [{	/** the rows to be inserted */
 insert_reminders_one?: [{	/** the row to be inserted */
 	object:ValueTypes["reminders_insert_input"],	/** upsert condition */
 	on_conflict?:ValueTypes["reminders_on_conflict"]},ValueTypes["reminders"]],
+update_contact_group?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["contact_group_inc_input"],	/** sets the columns of the filtered rows to the given values */
+	_set?:ValueTypes["contact_group_set_input"],	/** filter the rows which have to be updated */
+	where:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group_mutation_response"]],
+update_contact_group_by_pk?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["contact_group_inc_input"],	/** sets the columns of the filtered rows to the given values */
+	_set?:ValueTypes["contact_group_set_input"],	pk_columns:ValueTypes["contact_group_pk_columns_input"]},ValueTypes["contact_group"]],
+update_contact_group_many?: [{	/** updates to execute, in order */
+	updates:ValueTypes["contact_group_updates"][]},ValueTypes["contact_group_mutation_response"]],
 update_contacts?: [{	/** append existing jsonb value of filtered columns with new jsonb value */
 	_append?:ValueTypes["contacts_append_input"],	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 	_delete_at_path?:ValueTypes["contacts_delete_at_path_input"],	/** delete the array element with specified index (negative integers count from
@@ -671,7 +1191,8 @@ update_groups?: [{	/** append existing jsonb value of filtered columns with new 
 	_delete_at_path?:ValueTypes["groups_delete_at_path_input"],	/** delete the array element with specified index (negative integers count from
 the end). throws an error if top level container is not an array */
 	_delete_elem?:ValueTypes["groups_delete_elem_input"],	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:ValueTypes["groups_delete_key_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
+	_delete_key?:ValueTypes["groups_delete_key_input"],	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["groups_inc_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
 	_prepend?:ValueTypes["groups_prepend_input"],	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["groups_set_input"],	/** filter the rows which have to be updated */
 	where:ValueTypes["groups_bool_exp"]},ValueTypes["groups_mutation_response"]],
@@ -680,7 +1201,8 @@ update_groups_by_pk?: [{	/** append existing jsonb value of filtered columns wit
 	_delete_at_path?:ValueTypes["groups_delete_at_path_input"],	/** delete the array element with specified index (negative integers count from
 the end). throws an error if top level container is not an array */
 	_delete_elem?:ValueTypes["groups_delete_elem_input"],	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:ValueTypes["groups_delete_key_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
+	_delete_key?:ValueTypes["groups_delete_key_input"],	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["groups_inc_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
 	_prepend?:ValueTypes["groups_prepend_input"],	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["groups_set_input"],	pk_columns:ValueTypes["groups_pk_columns_input"]},ValueTypes["groups"]],
 update_groups_many?: [{	/** updates to execute, in order */
@@ -708,6 +1230,19 @@ update_reminders_many?: [{	/** updates to execute, in order */
 	/** column ordering options */
 ["order_by"]:order_by;
 	["query_root"]: AliasType<{
+contact_group?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contact_group_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contact_group_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group"]],
+contact_group_aggregate?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contact_group_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contact_group_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group_aggregate"]],
+contact_group_by_pk?: [{	contact_id:number,	group_id:number},ValueTypes["contact_group"]],
 contacts?: [{	/** distinct select on columns */
 	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
 	limit?:number,	/** skip the first n rows. Use only with order_by */
@@ -733,7 +1268,7 @@ groups_aggregate?: [{	/** distinct select on columns */
 	offset?:number,	/** sort the rows by one or more columns */
 	order_by?:ValueTypes["groups_order_by"][],	/** filter the rows returned */
 	where?:ValueTypes["groups_bool_exp"]},ValueTypes["groups_aggregate"]],
-groups_by_pk?: [{	name:string},ValueTypes["groups"]],
+groups_by_pk?: [{	id:number},ValueTypes["groups"]],
 logs?: [{	/** distinct select on columns */
 	distinct_on?:ValueTypes["logs_select_column"][],	/** limit the number of rows returned */
 	limit?:number,	/** skip the first n rows. Use only with order_by */
@@ -764,6 +1299,9 @@ reminders_by_pk?: [{	id:number},ValueTypes["reminders"]],
 }>;
 	/** columns and relationships of "reminders" */
 ["reminders"]: AliasType<{
+	/** An object relationship */
+	contact?:ValueTypes["contacts"],
+	contact_id?:true,
 	id?:true,
 	notes?:true,
 	time?:true,
@@ -775,6 +1313,15 @@ reminders_by_pk?: [{	id:number},ValueTypes["reminders"]],
 	nodes?:ValueTypes["reminders"],
 		__typename?: true
 }>;
+	["reminders_aggregate_bool_exp"]: {
+	count?:ValueTypes["reminders_aggregate_bool_exp_count"]
+};
+	["reminders_aggregate_bool_exp_count"]: {
+	arguments?:ValueTypes["reminders_select_column"][],
+	distinct?:boolean,
+	filter?:ValueTypes["reminders_bool_exp"],
+	predicate:ValueTypes["Int_comparison_exp"]
+};
 	/** aggregate fields of "reminders" */
 ["reminders_aggregate_fields"]: AliasType<{
 	avg?:ValueTypes["reminders_avg_fields"],
@@ -790,16 +1337,44 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 	variance?:ValueTypes["reminders_variance_fields"],
 		__typename?: true
 }>;
+	/** order by aggregate values of table "reminders" */
+["reminders_aggregate_order_by"]: {
+	avg?:ValueTypes["reminders_avg_order_by"],
+	count?:ValueTypes["order_by"],
+	max?:ValueTypes["reminders_max_order_by"],
+	min?:ValueTypes["reminders_min_order_by"],
+	stddev?:ValueTypes["reminders_stddev_order_by"],
+	stddev_pop?:ValueTypes["reminders_stddev_pop_order_by"],
+	stddev_samp?:ValueTypes["reminders_stddev_samp_order_by"],
+	sum?:ValueTypes["reminders_sum_order_by"],
+	var_pop?:ValueTypes["reminders_var_pop_order_by"],
+	var_samp?:ValueTypes["reminders_var_samp_order_by"],
+	variance?:ValueTypes["reminders_variance_order_by"]
+};
+	/** input type for inserting array relation for remote table "reminders" */
+["reminders_arr_rel_insert_input"]: {
+	data:ValueTypes["reminders_insert_input"][],
+	/** upsert condition */
+	on_conflict?:ValueTypes["reminders_on_conflict"]
+};
 	/** aggregate avg on columns */
 ["reminders_avg_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by avg() on columns of table "reminders" */
+["reminders_avg_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** Boolean expression to filter rows from the table "reminders". All fields are combined with a logical 'AND'. */
 ["reminders_bool_exp"]: {
 	_and?:ValueTypes["reminders_bool_exp"][],
 	_not?:ValueTypes["reminders_bool_exp"],
 	_or?:ValueTypes["reminders_bool_exp"][],
+	contact?:ValueTypes["contacts_bool_exp"],
+	contact_id?:ValueTypes["Int_comparison_exp"],
 	id?:ValueTypes["Int_comparison_exp"],
 	notes?:ValueTypes["String_comparison_exp"],
 	time?:ValueTypes["timestamptz_comparison_exp"]
@@ -808,28 +1383,47 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 ["reminders_constraint"]:reminders_constraint;
 	/** input type for incrementing numeric columns in table "reminders" */
 ["reminders_inc_input"]: {
+	contact_id?:number,
 	id?:number
 };
 	/** input type for inserting data into table "reminders" */
 ["reminders_insert_input"]: {
+	contact?:ValueTypes["contacts_obj_rel_insert_input"],
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:ValueTypes["timestamptz"]
 };
 	/** aggregate max on columns */
 ["reminders_max_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 	notes?:true,
 	time?:true,
 		__typename?: true
 }>;
+	/** order by max() on columns of table "reminders" */
+["reminders_max_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"],
+	notes?:ValueTypes["order_by"],
+	time?:ValueTypes["order_by"]
+};
 	/** aggregate min on columns */
 ["reminders_min_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 	notes?:true,
 	time?:true,
 		__typename?: true
 }>;
+	/** order by min() on columns of table "reminders" */
+["reminders_min_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"],
+	notes?:ValueTypes["order_by"],
+	time?:ValueTypes["order_by"]
+};
 	/** response of any mutation on the table "reminders" */
 ["reminders_mutation_response"]: AliasType<{
 	/** number of rows affected by the mutation */
@@ -846,6 +1440,8 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 };
 	/** Ordering options when selecting data from "reminders". */
 ["reminders_order_by"]: {
+	contact?:ValueTypes["contacts_order_by"],
+	contact_id?:ValueTypes["order_by"],
 	id?:ValueTypes["order_by"],
 	notes?:ValueTypes["order_by"],
 	time?:ValueTypes["order_by"]
@@ -858,25 +1454,44 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 ["reminders_select_column"]:reminders_select_column;
 	/** input type for updating data in table "reminders" */
 ["reminders_set_input"]: {
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:ValueTypes["timestamptz"]
 };
 	/** aggregate stddev on columns */
 ["reminders_stddev_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by stddev() on columns of table "reminders" */
+["reminders_stddev_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** aggregate stddev_pop on columns */
 ["reminders_stddev_pop_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by stddev_pop() on columns of table "reminders" */
+["reminders_stddev_pop_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** aggregate stddev_samp on columns */
 ["reminders_stddev_samp_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by stddev_samp() on columns of table "reminders" */
+["reminders_stddev_samp_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** Streaming cursor of the table "reminders" */
 ["reminders_stream_cursor_input"]: {
 	/** Stream column input with initial value */
@@ -886,15 +1501,22 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 };
 	/** Initial value of the column from where the streaming should start */
 ["reminders_stream_cursor_value_input"]: {
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:ValueTypes["timestamptz"]
 };
 	/** aggregate sum on columns */
 ["reminders_sum_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by sum() on columns of table "reminders" */
+["reminders_sum_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** update columns of table "reminders" */
 ["reminders_update_column"]:reminders_update_column;
 	["reminders_updates"]: {
@@ -907,19 +1529,37 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 };
 	/** aggregate var_pop on columns */
 ["reminders_var_pop_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by var_pop() on columns of table "reminders" */
+["reminders_var_pop_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** aggregate var_samp on columns */
 ["reminders_var_samp_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by var_samp() on columns of table "reminders" */
+["reminders_var_samp_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** aggregate variance on columns */
 ["reminders_variance_fields"]: AliasType<{
+	contact_id?:true,
 	id?:true,
 		__typename?: true
 }>;
+	/** order by variance() on columns of table "reminders" */
+["reminders_variance_order_by"]: {
+	contact_id?:ValueTypes["order_by"],
+	id?:ValueTypes["order_by"]
+};
 	/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 ["String_comparison_exp"]: {
 	_eq?:string,
@@ -953,6 +1593,23 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 	_similar?:string
 };
 	["subscription_root"]: AliasType<{
+contact_group?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contact_group_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contact_group_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group"]],
+contact_group_aggregate?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contact_group_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contact_group_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group_aggregate"]],
+contact_group_by_pk?: [{	contact_id:number,	group_id:number},ValueTypes["contact_group"]],
+contact_group_stream?: [{	/** maximum number of rows returned in a single batch */
+	batch_size:number,	/** cursor to stream the results returned by the query */
+	cursor?:ValueTypes["contact_group_stream_cursor_input"][],	/** filter the rows returned */
+	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group"]],
 contacts?: [{	/** distinct select on columns */
 	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
 	limit?:number,	/** skip the first n rows. Use only with order_by */
@@ -982,7 +1639,7 @@ groups_aggregate?: [{	/** distinct select on columns */
 	offset?:number,	/** sort the rows by one or more columns */
 	order_by?:ValueTypes["groups_order_by"][],	/** filter the rows returned */
 	where?:ValueTypes["groups_bool_exp"]},ValueTypes["groups_aggregate"]],
-groups_by_pk?: [{	name:string},ValueTypes["groups"]],
+groups_by_pk?: [{	id:number},ValueTypes["groups"]],
 groups_stream?: [{	/** maximum number of rows returned in a single batch */
 	batch_size:number,	/** cursor to stream the results returned by the query */
 	cursor?:ValueTypes["groups_stream_cursor_input"][],	/** filter the rows returned */
@@ -1051,19 +1708,280 @@ export type PartialObjects = {
 	_neq?:boolean,
 	_nin?:boolean[]
 },
+	/** columns and relationships of "contact_group" */
+["contact_group"]: {
+		__typename?: "contact_group";
+			/** An object relationship */
+	contact?:PartialObjects["contacts"],
+			contact_id?:number,
+			/** An object relationship */
+	group?:PartialObjects["groups"],
+			group_id?:number
+	},
+	/** aggregated selection of "contact_group" */
+["contact_group_aggregate"]: {
+		__typename?: "contact_group_aggregate";
+			aggregate?:PartialObjects["contact_group_aggregate_fields"],
+			nodes?:PartialObjects["contact_group"][]
+	},
+	["contact_group_aggregate_bool_exp"]: {
+	count?:PartialObjects["contact_group_aggregate_bool_exp_count"]
+},
+	["contact_group_aggregate_bool_exp_count"]: {
+	arguments?:PartialObjects["contact_group_select_column"][],
+	distinct?:boolean,
+	filter?:PartialObjects["contact_group_bool_exp"],
+	predicate:PartialObjects["Int_comparison_exp"]
+},
+	/** aggregate fields of "contact_group" */
+["contact_group_aggregate_fields"]: {
+		__typename?: "contact_group_aggregate_fields";
+			avg?:PartialObjects["contact_group_avg_fields"],
+			count?:number,
+			max?:PartialObjects["contact_group_max_fields"],
+			min?:PartialObjects["contact_group_min_fields"],
+			stddev?:PartialObjects["contact_group_stddev_fields"],
+			stddev_pop?:PartialObjects["contact_group_stddev_pop_fields"],
+			stddev_samp?:PartialObjects["contact_group_stddev_samp_fields"],
+			sum?:PartialObjects["contact_group_sum_fields"],
+			var_pop?:PartialObjects["contact_group_var_pop_fields"],
+			var_samp?:PartialObjects["contact_group_var_samp_fields"],
+			variance?:PartialObjects["contact_group_variance_fields"]
+	},
+	/** order by aggregate values of table "contact_group" */
+["contact_group_aggregate_order_by"]: {
+	avg?:PartialObjects["contact_group_avg_order_by"],
+	count?:PartialObjects["order_by"],
+	max?:PartialObjects["contact_group_max_order_by"],
+	min?:PartialObjects["contact_group_min_order_by"],
+	stddev?:PartialObjects["contact_group_stddev_order_by"],
+	stddev_pop?:PartialObjects["contact_group_stddev_pop_order_by"],
+	stddev_samp?:PartialObjects["contact_group_stddev_samp_order_by"],
+	sum?:PartialObjects["contact_group_sum_order_by"],
+	var_pop?:PartialObjects["contact_group_var_pop_order_by"],
+	var_samp?:PartialObjects["contact_group_var_samp_order_by"],
+	variance?:PartialObjects["contact_group_variance_order_by"]
+},
+	/** input type for inserting array relation for remote table "contact_group" */
+["contact_group_arr_rel_insert_input"]: {
+	data:PartialObjects["contact_group_insert_input"][],
+	/** upsert condition */
+	on_conflict?:PartialObjects["contact_group_on_conflict"]
+},
+	/** aggregate avg on columns */
+["contact_group_avg_fields"]: {
+		__typename?: "contact_group_avg_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by avg() on columns of table "contact_group" */
+["contact_group_avg_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** Boolean expression to filter rows from the table "contact_group". All fields are combined with a logical 'AND'. */
+["contact_group_bool_exp"]: {
+	_and?:PartialObjects["contact_group_bool_exp"][],
+	_not?:PartialObjects["contact_group_bool_exp"],
+	_or?:PartialObjects["contact_group_bool_exp"][],
+	contact?:PartialObjects["contacts_bool_exp"],
+	contact_id?:PartialObjects["Int_comparison_exp"],
+	group?:PartialObjects["groups_bool_exp"],
+	group_id?:PartialObjects["Int_comparison_exp"]
+},
+	/** unique or primary key constraints on table "contact_group" */
+["contact_group_constraint"]:contact_group_constraint,
+	/** input type for incrementing numeric columns in table "contact_group" */
+["contact_group_inc_input"]: {
+	contact_id?:number,
+	group_id?:number
+},
+	/** input type for inserting data into table "contact_group" */
+["contact_group_insert_input"]: {
+	contact?:PartialObjects["contacts_obj_rel_insert_input"],
+	contact_id?:number,
+	group?:PartialObjects["groups_obj_rel_insert_input"],
+	group_id?:number
+},
+	/** aggregate max on columns */
+["contact_group_max_fields"]: {
+		__typename?: "contact_group_max_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by max() on columns of table "contact_group" */
+["contact_group_max_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** aggregate min on columns */
+["contact_group_min_fields"]: {
+		__typename?: "contact_group_min_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by min() on columns of table "contact_group" */
+["contact_group_min_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** response of any mutation on the table "contact_group" */
+["contact_group_mutation_response"]: {
+		__typename?: "contact_group_mutation_response";
+			/** number of rows affected by the mutation */
+	affected_rows?:number,
+			/** data from the rows affected by the mutation */
+	returning?:PartialObjects["contact_group"][]
+	},
+	/** on_conflict condition type for table "contact_group" */
+["contact_group_on_conflict"]: {
+	constraint:PartialObjects["contact_group_constraint"],
+	update_columns:PartialObjects["contact_group_update_column"][],
+	where?:PartialObjects["contact_group_bool_exp"]
+},
+	/** Ordering options when selecting data from "contact_group". */
+["contact_group_order_by"]: {
+	contact?:PartialObjects["contacts_order_by"],
+	contact_id?:PartialObjects["order_by"],
+	group?:PartialObjects["groups_order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** primary key columns input for table: contact_group */
+["contact_group_pk_columns_input"]: {
+	contact_id:number,
+	group_id:number
+},
+	/** select columns of table "contact_group" */
+["contact_group_select_column"]:contact_group_select_column,
+	/** input type for updating data in table "contact_group" */
+["contact_group_set_input"]: {
+	contact_id?:number,
+	group_id?:number
+},
+	/** aggregate stddev on columns */
+["contact_group_stddev_fields"]: {
+		__typename?: "contact_group_stddev_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by stddev() on columns of table "contact_group" */
+["contact_group_stddev_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** aggregate stddev_pop on columns */
+["contact_group_stddev_pop_fields"]: {
+		__typename?: "contact_group_stddev_pop_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by stddev_pop() on columns of table "contact_group" */
+["contact_group_stddev_pop_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** aggregate stddev_samp on columns */
+["contact_group_stddev_samp_fields"]: {
+		__typename?: "contact_group_stddev_samp_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by stddev_samp() on columns of table "contact_group" */
+["contact_group_stddev_samp_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** Streaming cursor of the table "contact_group" */
+["contact_group_stream_cursor_input"]: {
+	/** Stream column input with initial value */
+	initial_value:PartialObjects["contact_group_stream_cursor_value_input"],
+	/** cursor ordering */
+	ordering?:PartialObjects["cursor_ordering"]
+},
+	/** Initial value of the column from where the streaming should start */
+["contact_group_stream_cursor_value_input"]: {
+	contact_id?:number,
+	group_id?:number
+},
+	/** aggregate sum on columns */
+["contact_group_sum_fields"]: {
+		__typename?: "contact_group_sum_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by sum() on columns of table "contact_group" */
+["contact_group_sum_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** update columns of table "contact_group" */
+["contact_group_update_column"]:contact_group_update_column,
+	["contact_group_updates"]: {
+	/** increments the numeric columns with given value of the filtered values */
+	_inc?:PartialObjects["contact_group_inc_input"],
+	/** sets the columns of the filtered rows to the given values */
+	_set?:PartialObjects["contact_group_set_input"],
+	/** filter the rows which have to be updated */
+	where:PartialObjects["contact_group_bool_exp"]
+},
+	/** aggregate var_pop on columns */
+["contact_group_var_pop_fields"]: {
+		__typename?: "contact_group_var_pop_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by var_pop() on columns of table "contact_group" */
+["contact_group_var_pop_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** aggregate var_samp on columns */
+["contact_group_var_samp_fields"]: {
+		__typename?: "contact_group_var_samp_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by var_samp() on columns of table "contact_group" */
+["contact_group_var_samp_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
+	/** aggregate variance on columns */
+["contact_group_variance_fields"]: {
+		__typename?: "contact_group_variance_fields";
+			contact_id?:number,
+			group_id?:number
+	},
+	/** order by variance() on columns of table "contact_group" */
+["contact_group_variance_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	group_id?:PartialObjects["order_by"]
+},
 	/** columns and relationships of "contacts" */
 ["contacts"]: {
 		__typename?: "contacts";
+			/** An array relationship */
+	contact_groups?:PartialObjects["contact_group"][],
+			/** An aggregate relationship */
+	contact_groups_aggregate?:PartialObjects["contact_group_aggregate"],
 			date_added?:PartialObjects["timestamptz"],
 			desires?:PartialObjects["jsonb"][],
 			email?:string,
 			frequency?:PartialObjects["jsonb"],
 			id?:number,
 			images?:PartialObjects["jsonb"][],
+			/** An array relationship */
+	logs?:PartialObjects["logs"][],
+			/** An aggregate relationship */
+	logs_aggregate?:PartialObjects["logs_aggregate"],
 			name?:string,
 			need_to_call?:boolean,
 			notes?:string,
-			phone_number?:string
+			phone_number?:string,
+			/** An array relationship */
+	reminders?:PartialObjects["reminders"][],
+			/** An aggregate relationship */
+	reminders_aggregate?:PartialObjects["reminders_aggregate"]
 	},
 	/** aggregated selection of "contacts" */
 ["contacts_aggregate"]: {
@@ -1100,16 +2018,22 @@ export type PartialObjects = {
 	_and?:PartialObjects["contacts_bool_exp"][],
 	_not?:PartialObjects["contacts_bool_exp"],
 	_or?:PartialObjects["contacts_bool_exp"][],
+	contact_groups?:PartialObjects["contact_group_bool_exp"],
+	contact_groups_aggregate?:PartialObjects["contact_group_aggregate_bool_exp"],
 	date_added?:PartialObjects["timestamptz_comparison_exp"],
 	desires?:PartialObjects["jsonb_array_comparison_exp"],
 	email?:PartialObjects["String_comparison_exp"],
 	frequency?:PartialObjects["jsonb_comparison_exp"],
 	id?:PartialObjects["Int_comparison_exp"],
 	images?:PartialObjects["jsonb_array_comparison_exp"],
+	logs?:PartialObjects["logs_bool_exp"],
+	logs_aggregate?:PartialObjects["logs_aggregate_bool_exp"],
 	name?:PartialObjects["String_comparison_exp"],
 	need_to_call?:PartialObjects["Boolean_comparison_exp"],
 	notes?:PartialObjects["String_comparison_exp"],
-	phone_number?:PartialObjects["String_comparison_exp"]
+	phone_number?:PartialObjects["String_comparison_exp"],
+	reminders?:PartialObjects["reminders_bool_exp"],
+	reminders_aggregate?:PartialObjects["reminders_aggregate_bool_exp"]
 },
 	/** unique or primary key constraints on table "contacts" */
 ["contacts_constraint"]:contacts_constraint,
@@ -1132,16 +2056,19 @@ end). throws an error if top level container is not an array */
 },
 	/** input type for inserting data into table "contacts" */
 ["contacts_insert_input"]: {
+	contact_groups?:PartialObjects["contact_group_arr_rel_insert_input"],
 	date_added?:PartialObjects["timestamptz"],
 	desires?:PartialObjects["jsonb"][],
 	email?:string,
 	frequency?:PartialObjects["jsonb"],
 	id?:number,
 	images?:PartialObjects["jsonb"][],
+	logs?:PartialObjects["logs_arr_rel_insert_input"],
 	name?:string,
 	need_to_call?:boolean,
 	notes?:string,
-	phone_number?:string
+	phone_number?:string,
+	reminders?:PartialObjects["reminders_arr_rel_insert_input"]
 },
 	/** aggregate max on columns */
 ["contacts_max_fields"]: {
@@ -1175,6 +2102,12 @@ end). throws an error if top level container is not an array */
 			/** data from the rows affected by the mutation */
 	returning?:PartialObjects["contacts"][]
 	},
+	/** input type for inserting object relation for remote table "contacts" */
+["contacts_obj_rel_insert_input"]: {
+	data:PartialObjects["contacts_insert_input"],
+	/** upsert condition */
+	on_conflict?:PartialObjects["contacts_on_conflict"]
+},
 	/** on_conflict condition type for table "contacts" */
 ["contacts_on_conflict"]: {
 	constraint:PartialObjects["contacts_constraint"],
@@ -1183,16 +2116,19 @@ end). throws an error if top level container is not an array */
 },
 	/** Ordering options when selecting data from "contacts". */
 ["contacts_order_by"]: {
+	contact_groups_aggregate?:PartialObjects["contact_group_aggregate_order_by"],
 	date_added?:PartialObjects["order_by"],
 	desires?:PartialObjects["order_by"],
 	email?:PartialObjects["order_by"],
 	frequency?:PartialObjects["order_by"],
 	id?:PartialObjects["order_by"],
 	images?:PartialObjects["order_by"],
+	logs_aggregate?:PartialObjects["logs_aggregate_order_by"],
 	name?:PartialObjects["order_by"],
 	need_to_call?:PartialObjects["order_by"],
 	notes?:PartialObjects["order_by"],
-	phone_number?:PartialObjects["order_by"]
+	phone_number?:PartialObjects["order_by"],
+	reminders_aggregate?:PartialObjects["reminders_aggregate_order_by"]
 },
 	/** primary key columns input for table: contacts */
 ["contacts_pk_columns_input"]: {
@@ -1298,7 +2234,12 @@ the end). throws an error if top level container is not an array */
 	/** columns and relationships of "groups" */
 ["groups"]: {
 		__typename?: "groups";
+			/** An array relationship */
+	contact_groups?:PartialObjects["contact_group"][],
+			/** An aggregate relationship */
+	contact_groups_aggregate?:PartialObjects["contact_group_aggregate"],
 			frequency?:PartialObjects["jsonb"],
+			id?:number,
 			name?:string
 	},
 	/** aggregated selection of "groups" */
@@ -1310,20 +2251,36 @@ the end). throws an error if top level container is not an array */
 	/** aggregate fields of "groups" */
 ["groups_aggregate_fields"]: {
 		__typename?: "groups_aggregate_fields";
+			avg?:PartialObjects["groups_avg_fields"],
 			count?:number,
 			max?:PartialObjects["groups_max_fields"],
-			min?:PartialObjects["groups_min_fields"]
+			min?:PartialObjects["groups_min_fields"],
+			stddev?:PartialObjects["groups_stddev_fields"],
+			stddev_pop?:PartialObjects["groups_stddev_pop_fields"],
+			stddev_samp?:PartialObjects["groups_stddev_samp_fields"],
+			sum?:PartialObjects["groups_sum_fields"],
+			var_pop?:PartialObjects["groups_var_pop_fields"],
+			var_samp?:PartialObjects["groups_var_samp_fields"],
+			variance?:PartialObjects["groups_variance_fields"]
 	},
 	/** append existing jsonb value of filtered columns with new jsonb value */
 ["groups_append_input"]: {
 	frequency?:PartialObjects["jsonb"]
 },
+	/** aggregate avg on columns */
+["groups_avg_fields"]: {
+		__typename?: "groups_avg_fields";
+			id?:number
+	},
 	/** Boolean expression to filter rows from the table "groups". All fields are combined with a logical 'AND'. */
 ["groups_bool_exp"]: {
 	_and?:PartialObjects["groups_bool_exp"][],
 	_not?:PartialObjects["groups_bool_exp"],
 	_or?:PartialObjects["groups_bool_exp"][],
+	contact_groups?:PartialObjects["contact_group_bool_exp"],
+	contact_groups_aggregate?:PartialObjects["contact_group_aggregate_bool_exp"],
 	frequency?:PartialObjects["jsonb_comparison_exp"],
+	id?:PartialObjects["Int_comparison_exp"],
 	name?:PartialObjects["String_comparison_exp"]
 },
 	/** unique or primary key constraints on table "groups" */
@@ -1341,19 +2298,27 @@ end). throws an error if top level container is not an array */
 ["groups_delete_key_input"]: {
 	frequency?:string
 },
+	/** input type for incrementing numeric columns in table "groups" */
+["groups_inc_input"]: {
+	id?:number
+},
 	/** input type for inserting data into table "groups" */
 ["groups_insert_input"]: {
+	contact_groups?:PartialObjects["contact_group_arr_rel_insert_input"],
 	frequency?:PartialObjects["jsonb"],
+	id?:number,
 	name?:string
 },
 	/** aggregate max on columns */
 ["groups_max_fields"]: {
 		__typename?: "groups_max_fields";
+			id?:number,
 			name?:string
 	},
 	/** aggregate min on columns */
 ["groups_min_fields"]: {
 		__typename?: "groups_min_fields";
+			id?:number,
 			name?:string
 	},
 	/** response of any mutation on the table "groups" */
@@ -1364,6 +2329,12 @@ end). throws an error if top level container is not an array */
 			/** data from the rows affected by the mutation */
 	returning?:PartialObjects["groups"][]
 	},
+	/** input type for inserting object relation for remote table "groups" */
+["groups_obj_rel_insert_input"]: {
+	data:PartialObjects["groups_insert_input"],
+	/** upsert condition */
+	on_conflict?:PartialObjects["groups_on_conflict"]
+},
 	/** on_conflict condition type for table "groups" */
 ["groups_on_conflict"]: {
 	constraint:PartialObjects["groups_constraint"],
@@ -1372,12 +2343,14 @@ end). throws an error if top level container is not an array */
 },
 	/** Ordering options when selecting data from "groups". */
 ["groups_order_by"]: {
+	contact_groups_aggregate?:PartialObjects["contact_group_aggregate_order_by"],
 	frequency?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"],
 	name?:PartialObjects["order_by"]
 },
 	/** primary key columns input for table: groups */
 ["groups_pk_columns_input"]: {
-	name:string
+	id:number
 },
 	/** prepend existing jsonb value of filtered columns with new jsonb value */
 ["groups_prepend_input"]: {
@@ -1388,8 +2361,24 @@ end). throws an error if top level container is not an array */
 	/** input type for updating data in table "groups" */
 ["groups_set_input"]: {
 	frequency?:PartialObjects["jsonb"],
+	id?:number,
 	name?:string
 },
+	/** aggregate stddev on columns */
+["groups_stddev_fields"]: {
+		__typename?: "groups_stddev_fields";
+			id?:number
+	},
+	/** aggregate stddev_pop on columns */
+["groups_stddev_pop_fields"]: {
+		__typename?: "groups_stddev_pop_fields";
+			id?:number
+	},
+	/** aggregate stddev_samp on columns */
+["groups_stddev_samp_fields"]: {
+		__typename?: "groups_stddev_samp_fields";
+			id?:number
+	},
 	/** Streaming cursor of the table "groups" */
 ["groups_stream_cursor_input"]: {
 	/** Stream column input with initial value */
@@ -1400,8 +2389,14 @@ end). throws an error if top level container is not an array */
 	/** Initial value of the column from where the streaming should start */
 ["groups_stream_cursor_value_input"]: {
 	frequency?:PartialObjects["jsonb"],
+	id?:number,
 	name?:string
 },
+	/** aggregate sum on columns */
+["groups_sum_fields"]: {
+		__typename?: "groups_sum_fields";
+			id?:number
+	},
 	/** update columns of table "groups" */
 ["groups_update_column"]:groups_update_column,
 	["groups_updates"]: {
@@ -1414,6 +2409,8 @@ the end). throws an error if top level container is not an array */
 	_delete_elem?:PartialObjects["groups_delete_elem_input"],
 	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
 	_delete_key?:PartialObjects["groups_delete_key_input"],
+	/** increments the numeric columns with given value of the filtered values */
+	_inc?:PartialObjects["groups_inc_input"],
 	/** prepend existing jsonb value of filtered columns with new jsonb value */
 	_prepend?:PartialObjects["groups_prepend_input"],
 	/** sets the columns of the filtered rows to the given values */
@@ -1421,6 +2418,21 @@ the end). throws an error if top level container is not an array */
 	/** filter the rows which have to be updated */
 	where:PartialObjects["groups_bool_exp"]
 },
+	/** aggregate var_pop on columns */
+["groups_var_pop_fields"]: {
+		__typename?: "groups_var_pop_fields";
+			id?:number
+	},
+	/** aggregate var_samp on columns */
+["groups_var_samp_fields"]: {
+		__typename?: "groups_var_samp_fields";
+			id?:number
+	},
+	/** aggregate variance on columns */
+["groups_variance_fields"]: {
+		__typename?: "groups_variance_fields";
+			id?:number
+	},
 	/** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 ["Int_comparison_exp"]: {
 	_eq?:number,
@@ -1476,13 +2488,17 @@ the end). throws an error if top level container is not an array */
 	_neq?:PartialObjects["jsonb"],
 	_nin?:PartialObjects["jsonb"][]
 },
-	/** call/message/meeting/skip */
+	/** columns and relationships of "logs" */
 ["logs"]: {
 		__typename?: "logs";
+			/** An object relationship */
+	contact?:PartialObjects["contacts"],
+			contact_id?:number,
 			id?:number,
 			notes?:string,
 			time?:PartialObjects["timestamptz"],
-			type?:string
+			/** call/message/meeting/skip */
+	type?:string
 	},
 	/** aggregated selection of "logs" */
 ["logs_aggregate"]: {
@@ -1490,6 +2506,15 @@ the end). throws an error if top level container is not an array */
 			aggregate?:PartialObjects["logs_aggregate_fields"],
 			nodes?:PartialObjects["logs"][]
 	},
+	["logs_aggregate_bool_exp"]: {
+	count?:PartialObjects["logs_aggregate_bool_exp_count"]
+},
+	["logs_aggregate_bool_exp_count"]: {
+	arguments?:PartialObjects["logs_select_column"][],
+	distinct?:boolean,
+	filter?:PartialObjects["logs_bool_exp"],
+	predicate:PartialObjects["Int_comparison_exp"]
+},
 	/** aggregate fields of "logs" */
 ["logs_aggregate_fields"]: {
 		__typename?: "logs_aggregate_fields";
@@ -1505,16 +2530,44 @@ the end). throws an error if top level container is not an array */
 			var_samp?:PartialObjects["logs_var_samp_fields"],
 			variance?:PartialObjects["logs_variance_fields"]
 	},
+	/** order by aggregate values of table "logs" */
+["logs_aggregate_order_by"]: {
+	avg?:PartialObjects["logs_avg_order_by"],
+	count?:PartialObjects["order_by"],
+	max?:PartialObjects["logs_max_order_by"],
+	min?:PartialObjects["logs_min_order_by"],
+	stddev?:PartialObjects["logs_stddev_order_by"],
+	stddev_pop?:PartialObjects["logs_stddev_pop_order_by"],
+	stddev_samp?:PartialObjects["logs_stddev_samp_order_by"],
+	sum?:PartialObjects["logs_sum_order_by"],
+	var_pop?:PartialObjects["logs_var_pop_order_by"],
+	var_samp?:PartialObjects["logs_var_samp_order_by"],
+	variance?:PartialObjects["logs_variance_order_by"]
+},
+	/** input type for inserting array relation for remote table "logs" */
+["logs_arr_rel_insert_input"]: {
+	data:PartialObjects["logs_insert_input"][],
+	/** upsert condition */
+	on_conflict?:PartialObjects["logs_on_conflict"]
+},
 	/** aggregate avg on columns */
 ["logs_avg_fields"]: {
 		__typename?: "logs_avg_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by avg() on columns of table "logs" */
+["logs_avg_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** Boolean expression to filter rows from the table "logs". All fields are combined with a logical 'AND'. */
 ["logs_bool_exp"]: {
 	_and?:PartialObjects["logs_bool_exp"][],
 	_not?:PartialObjects["logs_bool_exp"],
 	_or?:PartialObjects["logs_bool_exp"][],
+	contact?:PartialObjects["contacts_bool_exp"],
+	contact_id?:PartialObjects["Int_comparison_exp"],
 	id?:PartialObjects["Int_comparison_exp"],
 	notes?:PartialObjects["String_comparison_exp"],
 	time?:PartialObjects["timestamptz_comparison_exp"],
@@ -1524,31 +2577,57 @@ the end). throws an error if top level container is not an array */
 ["logs_constraint"]:logs_constraint,
 	/** input type for incrementing numeric columns in table "logs" */
 ["logs_inc_input"]: {
+	contact_id?:number,
 	id?:number
 },
 	/** input type for inserting data into table "logs" */
 ["logs_insert_input"]: {
+	contact?:PartialObjects["contacts_obj_rel_insert_input"],
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:PartialObjects["timestamptz"],
+	/** call/message/meeting/skip */
 	type?:string
 },
 	/** aggregate max on columns */
 ["logs_max_fields"]: {
 		__typename?: "logs_max_fields";
+			contact_id?:number,
 			id?:number,
 			notes?:string,
 			time?:PartialObjects["timestamptz"],
-			type?:string
+			/** call/message/meeting/skip */
+	type?:string
 	},
+	/** order by max() on columns of table "logs" */
+["logs_max_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"],
+	notes?:PartialObjects["order_by"],
+	time?:PartialObjects["order_by"],
+	/** call/message/meeting/skip */
+	type?:PartialObjects["order_by"]
+},
 	/** aggregate min on columns */
 ["logs_min_fields"]: {
 		__typename?: "logs_min_fields";
+			contact_id?:number,
 			id?:number,
 			notes?:string,
 			time?:PartialObjects["timestamptz"],
-			type?:string
+			/** call/message/meeting/skip */
+	type?:string
 	},
+	/** order by min() on columns of table "logs" */
+["logs_min_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"],
+	notes?:PartialObjects["order_by"],
+	time?:PartialObjects["order_by"],
+	/** call/message/meeting/skip */
+	type?:PartialObjects["order_by"]
+},
 	/** response of any mutation on the table "logs" */
 ["logs_mutation_response"]: {
 		__typename?: "logs_mutation_response";
@@ -1565,6 +2644,8 @@ the end). throws an error if top level container is not an array */
 },
 	/** Ordering options when selecting data from "logs". */
 ["logs_order_by"]: {
+	contact?:PartialObjects["contacts_order_by"],
+	contact_id?:PartialObjects["order_by"],
 	id?:PartialObjects["order_by"],
 	notes?:PartialObjects["order_by"],
 	time?:PartialObjects["order_by"],
@@ -1578,26 +2659,46 @@ the end). throws an error if top level container is not an array */
 ["logs_select_column"]:logs_select_column,
 	/** input type for updating data in table "logs" */
 ["logs_set_input"]: {
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:PartialObjects["timestamptz"],
+	/** call/message/meeting/skip */
 	type?:string
 },
 	/** aggregate stddev on columns */
 ["logs_stddev_fields"]: {
 		__typename?: "logs_stddev_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by stddev() on columns of table "logs" */
+["logs_stddev_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** aggregate stddev_pop on columns */
 ["logs_stddev_pop_fields"]: {
 		__typename?: "logs_stddev_pop_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by stddev_pop() on columns of table "logs" */
+["logs_stddev_pop_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** aggregate stddev_samp on columns */
 ["logs_stddev_samp_fields"]: {
 		__typename?: "logs_stddev_samp_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by stddev_samp() on columns of table "logs" */
+["logs_stddev_samp_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** Streaming cursor of the table "logs" */
 ["logs_stream_cursor_input"]: {
 	/** Stream column input with initial value */
@@ -1607,16 +2708,24 @@ the end). throws an error if top level container is not an array */
 },
 	/** Initial value of the column from where the streaming should start */
 ["logs_stream_cursor_value_input"]: {
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:PartialObjects["timestamptz"],
+	/** call/message/meeting/skip */
 	type?:string
 },
 	/** aggregate sum on columns */
 ["logs_sum_fields"]: {
 		__typename?: "logs_sum_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by sum() on columns of table "logs" */
+["logs_sum_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** update columns of table "logs" */
 ["logs_update_column"]:logs_update_column,
 	["logs_updates"]: {
@@ -1630,21 +2739,43 @@ the end). throws an error if top level container is not an array */
 	/** aggregate var_pop on columns */
 ["logs_var_pop_fields"]: {
 		__typename?: "logs_var_pop_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by var_pop() on columns of table "logs" */
+["logs_var_pop_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** aggregate var_samp on columns */
 ["logs_var_samp_fields"]: {
 		__typename?: "logs_var_samp_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by var_samp() on columns of table "logs" */
+["logs_var_samp_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** aggregate variance on columns */
 ["logs_variance_fields"]: {
 		__typename?: "logs_variance_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by variance() on columns of table "logs" */
+["logs_variance_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** mutation root */
 ["mutation_root"]: {
 		__typename?: "mutation_root";
+			/** delete data from the table: "contact_group" */
+	delete_contact_group?:PartialObjects["contact_group_mutation_response"],
+			/** delete single row from the table: "contact_group" */
+	delete_contact_group_by_pk?:PartialObjects["contact_group"],
 			/** delete data from the table: "contacts" */
 	delete_contacts?:PartialObjects["contacts_mutation_response"],
 			/** delete single row from the table: "contacts" */
@@ -1661,6 +2792,10 @@ the end). throws an error if top level container is not an array */
 	delete_reminders?:PartialObjects["reminders_mutation_response"],
 			/** delete single row from the table: "reminders" */
 	delete_reminders_by_pk?:PartialObjects["reminders"],
+			/** insert data into the table: "contact_group" */
+	insert_contact_group?:PartialObjects["contact_group_mutation_response"],
+			/** insert a single row into the table: "contact_group" */
+	insert_contact_group_one?:PartialObjects["contact_group"],
 			/** insert data into the table: "contacts" */
 	insert_contacts?:PartialObjects["contacts_mutation_response"],
 			/** insert a single row into the table: "contacts" */
@@ -1677,6 +2812,12 @@ the end). throws an error if top level container is not an array */
 	insert_reminders?:PartialObjects["reminders_mutation_response"],
 			/** insert a single row into the table: "reminders" */
 	insert_reminders_one?:PartialObjects["reminders"],
+			/** update data of the table: "contact_group" */
+	update_contact_group?:PartialObjects["contact_group_mutation_response"],
+			/** update single row of the table: "contact_group" */
+	update_contact_group_by_pk?:PartialObjects["contact_group"],
+			/** update multiples rows of table: "contact_group" */
+	update_contact_group_many?:(PartialObjects["contact_group_mutation_response"] | undefined)[],
 			/** update data of the table: "contacts" */
 	update_contacts?:PartialObjects["contacts_mutation_response"],
 			/** update single row of the table: "contacts" */
@@ -1706,6 +2847,12 @@ the end). throws an error if top level container is not an array */
 ["order_by"]:order_by,
 	["query_root"]: {
 		__typename?: "query_root";
+			/** fetch data from the table: "contact_group" */
+	contact_group?:PartialObjects["contact_group"][],
+			/** fetch aggregated fields from the table: "contact_group" */
+	contact_group_aggregate?:PartialObjects["contact_group_aggregate"],
+			/** fetch data from the table: "contact_group" using primary key columns */
+	contact_group_by_pk?:PartialObjects["contact_group"],
 			/** fetch data from the table: "contacts" */
 	contacts?:PartialObjects["contacts"][],
 			/** fetch aggregated fields from the table: "contacts" */
@@ -1718,15 +2865,15 @@ the end). throws an error if top level container is not an array */
 	groups_aggregate?:PartialObjects["groups_aggregate"],
 			/** fetch data from the table: "groups" using primary key columns */
 	groups_by_pk?:PartialObjects["groups"],
-			/** fetch data from the table: "logs" */
+			/** An array relationship */
 	logs?:PartialObjects["logs"][],
-			/** fetch aggregated fields from the table: "logs" */
+			/** An aggregate relationship */
 	logs_aggregate?:PartialObjects["logs_aggregate"],
 			/** fetch data from the table: "logs" using primary key columns */
 	logs_by_pk?:PartialObjects["logs"],
-			/** fetch data from the table: "reminders" */
+			/** An array relationship */
 	reminders?:PartialObjects["reminders"][],
-			/** fetch aggregated fields from the table: "reminders" */
+			/** An aggregate relationship */
 	reminders_aggregate?:PartialObjects["reminders_aggregate"],
 			/** fetch data from the table: "reminders" using primary key columns */
 	reminders_by_pk?:PartialObjects["reminders"]
@@ -1734,6 +2881,9 @@ the end). throws an error if top level container is not an array */
 	/** columns and relationships of "reminders" */
 ["reminders"]: {
 		__typename?: "reminders";
+			/** An object relationship */
+	contact?:PartialObjects["contacts"],
+			contact_id?:number,
 			id?:number,
 			notes?:string,
 			time?:PartialObjects["timestamptz"]
@@ -1744,6 +2894,15 @@ the end). throws an error if top level container is not an array */
 			aggregate?:PartialObjects["reminders_aggregate_fields"],
 			nodes?:PartialObjects["reminders"][]
 	},
+	["reminders_aggregate_bool_exp"]: {
+	count?:PartialObjects["reminders_aggregate_bool_exp_count"]
+},
+	["reminders_aggregate_bool_exp_count"]: {
+	arguments?:PartialObjects["reminders_select_column"][],
+	distinct?:boolean,
+	filter?:PartialObjects["reminders_bool_exp"],
+	predicate:PartialObjects["Int_comparison_exp"]
+},
 	/** aggregate fields of "reminders" */
 ["reminders_aggregate_fields"]: {
 		__typename?: "reminders_aggregate_fields";
@@ -1759,16 +2918,44 @@ the end). throws an error if top level container is not an array */
 			var_samp?:PartialObjects["reminders_var_samp_fields"],
 			variance?:PartialObjects["reminders_variance_fields"]
 	},
+	/** order by aggregate values of table "reminders" */
+["reminders_aggregate_order_by"]: {
+	avg?:PartialObjects["reminders_avg_order_by"],
+	count?:PartialObjects["order_by"],
+	max?:PartialObjects["reminders_max_order_by"],
+	min?:PartialObjects["reminders_min_order_by"],
+	stddev?:PartialObjects["reminders_stddev_order_by"],
+	stddev_pop?:PartialObjects["reminders_stddev_pop_order_by"],
+	stddev_samp?:PartialObjects["reminders_stddev_samp_order_by"],
+	sum?:PartialObjects["reminders_sum_order_by"],
+	var_pop?:PartialObjects["reminders_var_pop_order_by"],
+	var_samp?:PartialObjects["reminders_var_samp_order_by"],
+	variance?:PartialObjects["reminders_variance_order_by"]
+},
+	/** input type for inserting array relation for remote table "reminders" */
+["reminders_arr_rel_insert_input"]: {
+	data:PartialObjects["reminders_insert_input"][],
+	/** upsert condition */
+	on_conflict?:PartialObjects["reminders_on_conflict"]
+},
 	/** aggregate avg on columns */
 ["reminders_avg_fields"]: {
 		__typename?: "reminders_avg_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by avg() on columns of table "reminders" */
+["reminders_avg_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** Boolean expression to filter rows from the table "reminders". All fields are combined with a logical 'AND'. */
 ["reminders_bool_exp"]: {
 	_and?:PartialObjects["reminders_bool_exp"][],
 	_not?:PartialObjects["reminders_bool_exp"],
 	_or?:PartialObjects["reminders_bool_exp"][],
+	contact?:PartialObjects["contacts_bool_exp"],
+	contact_id?:PartialObjects["Int_comparison_exp"],
 	id?:PartialObjects["Int_comparison_exp"],
 	notes?:PartialObjects["String_comparison_exp"],
 	time?:PartialObjects["timestamptz_comparison_exp"]
@@ -1777,10 +2964,13 @@ the end). throws an error if top level container is not an array */
 ["reminders_constraint"]:reminders_constraint,
 	/** input type for incrementing numeric columns in table "reminders" */
 ["reminders_inc_input"]: {
+	contact_id?:number,
 	id?:number
 },
 	/** input type for inserting data into table "reminders" */
 ["reminders_insert_input"]: {
+	contact?:PartialObjects["contacts_obj_rel_insert_input"],
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:PartialObjects["timestamptz"]
@@ -1788,17 +2978,33 @@ the end). throws an error if top level container is not an array */
 	/** aggregate max on columns */
 ["reminders_max_fields"]: {
 		__typename?: "reminders_max_fields";
+			contact_id?:number,
 			id?:number,
 			notes?:string,
 			time?:PartialObjects["timestamptz"]
 	},
+	/** order by max() on columns of table "reminders" */
+["reminders_max_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"],
+	notes?:PartialObjects["order_by"],
+	time?:PartialObjects["order_by"]
+},
 	/** aggregate min on columns */
 ["reminders_min_fields"]: {
 		__typename?: "reminders_min_fields";
+			contact_id?:number,
 			id?:number,
 			notes?:string,
 			time?:PartialObjects["timestamptz"]
 	},
+	/** order by min() on columns of table "reminders" */
+["reminders_min_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"],
+	notes?:PartialObjects["order_by"],
+	time?:PartialObjects["order_by"]
+},
 	/** response of any mutation on the table "reminders" */
 ["reminders_mutation_response"]: {
 		__typename?: "reminders_mutation_response";
@@ -1815,6 +3021,8 @@ the end). throws an error if top level container is not an array */
 },
 	/** Ordering options when selecting data from "reminders". */
 ["reminders_order_by"]: {
+	contact?:PartialObjects["contacts_order_by"],
+	contact_id?:PartialObjects["order_by"],
 	id?:PartialObjects["order_by"],
 	notes?:PartialObjects["order_by"],
 	time?:PartialObjects["order_by"]
@@ -1827,6 +3035,7 @@ the end). throws an error if top level container is not an array */
 ["reminders_select_column"]:reminders_select_column,
 	/** input type for updating data in table "reminders" */
 ["reminders_set_input"]: {
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:PartialObjects["timestamptz"]
@@ -1834,18 +3043,36 @@ the end). throws an error if top level container is not an array */
 	/** aggregate stddev on columns */
 ["reminders_stddev_fields"]: {
 		__typename?: "reminders_stddev_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by stddev() on columns of table "reminders" */
+["reminders_stddev_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** aggregate stddev_pop on columns */
 ["reminders_stddev_pop_fields"]: {
 		__typename?: "reminders_stddev_pop_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by stddev_pop() on columns of table "reminders" */
+["reminders_stddev_pop_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** aggregate stddev_samp on columns */
 ["reminders_stddev_samp_fields"]: {
 		__typename?: "reminders_stddev_samp_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by stddev_samp() on columns of table "reminders" */
+["reminders_stddev_samp_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** Streaming cursor of the table "reminders" */
 ["reminders_stream_cursor_input"]: {
 	/** Stream column input with initial value */
@@ -1855,6 +3082,7 @@ the end). throws an error if top level container is not an array */
 },
 	/** Initial value of the column from where the streaming should start */
 ["reminders_stream_cursor_value_input"]: {
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:PartialObjects["timestamptz"]
@@ -1862,8 +3090,14 @@ the end). throws an error if top level container is not an array */
 	/** aggregate sum on columns */
 ["reminders_sum_fields"]: {
 		__typename?: "reminders_sum_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by sum() on columns of table "reminders" */
+["reminders_sum_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** update columns of table "reminders" */
 ["reminders_update_column"]:reminders_update_column,
 	["reminders_updates"]: {
@@ -1877,18 +3111,36 @@ the end). throws an error if top level container is not an array */
 	/** aggregate var_pop on columns */
 ["reminders_var_pop_fields"]: {
 		__typename?: "reminders_var_pop_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by var_pop() on columns of table "reminders" */
+["reminders_var_pop_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** aggregate var_samp on columns */
 ["reminders_var_samp_fields"]: {
 		__typename?: "reminders_var_samp_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by var_samp() on columns of table "reminders" */
+["reminders_var_samp_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** aggregate variance on columns */
 ["reminders_variance_fields"]: {
 		__typename?: "reminders_variance_fields";
+			contact_id?:number,
 			id?:number
 	},
+	/** order by variance() on columns of table "reminders" */
+["reminders_variance_order_by"]: {
+	contact_id?:PartialObjects["order_by"],
+	id?:PartialObjects["order_by"]
+},
 	/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 ["String_comparison_exp"]: {
 	_eq?:string,
@@ -1923,6 +3175,14 @@ the end). throws an error if top level container is not an array */
 },
 	["subscription_root"]: {
 		__typename?: "subscription_root";
+			/** fetch data from the table: "contact_group" */
+	contact_group?:PartialObjects["contact_group"][],
+			/** fetch aggregated fields from the table: "contact_group" */
+	contact_group_aggregate?:PartialObjects["contact_group_aggregate"],
+			/** fetch data from the table: "contact_group" using primary key columns */
+	contact_group_by_pk?:PartialObjects["contact_group"],
+			/** fetch data from the table in a streaming manner: "contact_group" */
+	contact_group_stream?:PartialObjects["contact_group"][],
 			/** fetch data from the table: "contacts" */
 	contacts?:PartialObjects["contacts"][],
 			/** fetch aggregated fields from the table: "contacts" */
@@ -1939,17 +3199,17 @@ the end). throws an error if top level container is not an array */
 	groups_by_pk?:PartialObjects["groups"],
 			/** fetch data from the table in a streaming manner: "groups" */
 	groups_stream?:PartialObjects["groups"][],
-			/** fetch data from the table: "logs" */
+			/** An array relationship */
 	logs?:PartialObjects["logs"][],
-			/** fetch aggregated fields from the table: "logs" */
+			/** An aggregate relationship */
 	logs_aggregate?:PartialObjects["logs_aggregate"],
 			/** fetch data from the table: "logs" using primary key columns */
 	logs_by_pk?:PartialObjects["logs"],
 			/** fetch data from the table in a streaming manner: "logs" */
 	logs_stream?:PartialObjects["logs"][],
-			/** fetch data from the table: "reminders" */
+			/** An array relationship */
 	reminders?:PartialObjects["reminders"][],
-			/** fetch aggregated fields from the table: "reminders" */
+			/** An aggregate relationship */
 	reminders_aggregate?:PartialObjects["reminders_aggregate"],
 			/** fetch data from the table: "reminders" using primary key columns */
 	reminders_by_pk?:PartialObjects["reminders"],
@@ -1986,19 +3246,329 @@ export type Boolean_comparison_exp = {
 	_nin?:boolean[]
 }
 
+/** columns and relationships of "contact_group" */
+export type contact_group = {
+	__typename?: "contact_group",
+	/** An object relationship */
+	contact:contacts,
+	contact_id:number,
+	/** An object relationship */
+	group:groups,
+	group_id:number
+}
+
+/** aggregated selection of "contact_group" */
+export type contact_group_aggregate = {
+	__typename?: "contact_group_aggregate",
+	aggregate?:contact_group_aggregate_fields,
+	nodes:contact_group[]
+}
+
+export type contact_group_aggregate_bool_exp = {
+		count?:contact_group_aggregate_bool_exp_count
+}
+
+export type contact_group_aggregate_bool_exp_count = {
+		arguments?:contact_group_select_column[],
+	distinct?:boolean,
+	filter?:contact_group_bool_exp,
+	predicate:Int_comparison_exp
+}
+
+/** aggregate fields of "contact_group" */
+export type contact_group_aggregate_fields = {
+	__typename?: "contact_group_aggregate_fields",
+	avg?:contact_group_avg_fields,
+	count:number,
+	max?:contact_group_max_fields,
+	min?:contact_group_min_fields,
+	stddev?:contact_group_stddev_fields,
+	stddev_pop?:contact_group_stddev_pop_fields,
+	stddev_samp?:contact_group_stddev_samp_fields,
+	sum?:contact_group_sum_fields,
+	var_pop?:contact_group_var_pop_fields,
+	var_samp?:contact_group_var_samp_fields,
+	variance?:contact_group_variance_fields
+}
+
+/** order by aggregate values of table "contact_group" */
+export type contact_group_aggregate_order_by = {
+		avg?:contact_group_avg_order_by,
+	count?:order_by,
+	max?:contact_group_max_order_by,
+	min?:contact_group_min_order_by,
+	stddev?:contact_group_stddev_order_by,
+	stddev_pop?:contact_group_stddev_pop_order_by,
+	stddev_samp?:contact_group_stddev_samp_order_by,
+	sum?:contact_group_sum_order_by,
+	var_pop?:contact_group_var_pop_order_by,
+	var_samp?:contact_group_var_samp_order_by,
+	variance?:contact_group_variance_order_by
+}
+
+/** input type for inserting array relation for remote table "contact_group" */
+export type contact_group_arr_rel_insert_input = {
+		data:contact_group_insert_input[],
+	/** upsert condition */
+	on_conflict?:contact_group_on_conflict
+}
+
+/** aggregate avg on columns */
+export type contact_group_avg_fields = {
+	__typename?: "contact_group_avg_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by avg() on columns of table "contact_group" */
+export type contact_group_avg_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
+/** Boolean expression to filter rows from the table "contact_group". All fields are combined with a logical 'AND'. */
+export type contact_group_bool_exp = {
+		_and?:contact_group_bool_exp[],
+	_not?:contact_group_bool_exp,
+	_or?:contact_group_bool_exp[],
+	contact?:contacts_bool_exp,
+	contact_id?:Int_comparison_exp,
+	group?:groups_bool_exp,
+	group_id?:Int_comparison_exp
+}
+
+/** unique or primary key constraints on table "contact_group" */
+export enum contact_group_constraint {
+	contact_group_pkey = "contact_group_pkey"
+}
+
+/** input type for incrementing numeric columns in table "contact_group" */
+export type contact_group_inc_input = {
+		contact_id?:number,
+	group_id?:number
+}
+
+/** input type for inserting data into table "contact_group" */
+export type contact_group_insert_input = {
+		contact?:contacts_obj_rel_insert_input,
+	contact_id?:number,
+	group?:groups_obj_rel_insert_input,
+	group_id?:number
+}
+
+/** aggregate max on columns */
+export type contact_group_max_fields = {
+	__typename?: "contact_group_max_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by max() on columns of table "contact_group" */
+export type contact_group_max_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
+/** aggregate min on columns */
+export type contact_group_min_fields = {
+	__typename?: "contact_group_min_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by min() on columns of table "contact_group" */
+export type contact_group_min_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
+/** response of any mutation on the table "contact_group" */
+export type contact_group_mutation_response = {
+	__typename?: "contact_group_mutation_response",
+	/** number of rows affected by the mutation */
+	affected_rows:number,
+	/** data from the rows affected by the mutation */
+	returning:contact_group[]
+}
+
+/** on_conflict condition type for table "contact_group" */
+export type contact_group_on_conflict = {
+		constraint:contact_group_constraint,
+	update_columns:contact_group_update_column[],
+	where?:contact_group_bool_exp
+}
+
+/** Ordering options when selecting data from "contact_group". */
+export type contact_group_order_by = {
+		contact?:contacts_order_by,
+	contact_id?:order_by,
+	group?:groups_order_by,
+	group_id?:order_by
+}
+
+/** primary key columns input for table: contact_group */
+export type contact_group_pk_columns_input = {
+		contact_id:number,
+	group_id:number
+}
+
+/** select columns of table "contact_group" */
+export enum contact_group_select_column {
+	contact_id = "contact_id",
+	group_id = "group_id"
+}
+
+/** input type for updating data in table "contact_group" */
+export type contact_group_set_input = {
+		contact_id?:number,
+	group_id?:number
+}
+
+/** aggregate stddev on columns */
+export type contact_group_stddev_fields = {
+	__typename?: "contact_group_stddev_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by stddev() on columns of table "contact_group" */
+export type contact_group_stddev_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
+/** aggregate stddev_pop on columns */
+export type contact_group_stddev_pop_fields = {
+	__typename?: "contact_group_stddev_pop_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by stddev_pop() on columns of table "contact_group" */
+export type contact_group_stddev_pop_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
+/** aggregate stddev_samp on columns */
+export type contact_group_stddev_samp_fields = {
+	__typename?: "contact_group_stddev_samp_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by stddev_samp() on columns of table "contact_group" */
+export type contact_group_stddev_samp_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
+/** Streaming cursor of the table "contact_group" */
+export type contact_group_stream_cursor_input = {
+		/** Stream column input with initial value */
+	initial_value:contact_group_stream_cursor_value_input,
+	/** cursor ordering */
+	ordering?:cursor_ordering
+}
+
+/** Initial value of the column from where the streaming should start */
+export type contact_group_stream_cursor_value_input = {
+		contact_id?:number,
+	group_id?:number
+}
+
+/** aggregate sum on columns */
+export type contact_group_sum_fields = {
+	__typename?: "contact_group_sum_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by sum() on columns of table "contact_group" */
+export type contact_group_sum_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
+/** update columns of table "contact_group" */
+export enum contact_group_update_column {
+	contact_id = "contact_id",
+	group_id = "group_id"
+}
+
+export type contact_group_updates = {
+		/** increments the numeric columns with given value of the filtered values */
+	_inc?:contact_group_inc_input,
+	/** sets the columns of the filtered rows to the given values */
+	_set?:contact_group_set_input,
+	/** filter the rows which have to be updated */
+	where:contact_group_bool_exp
+}
+
+/** aggregate var_pop on columns */
+export type contact_group_var_pop_fields = {
+	__typename?: "contact_group_var_pop_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by var_pop() on columns of table "contact_group" */
+export type contact_group_var_pop_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
+/** aggregate var_samp on columns */
+export type contact_group_var_samp_fields = {
+	__typename?: "contact_group_var_samp_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by var_samp() on columns of table "contact_group" */
+export type contact_group_var_samp_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
+/** aggregate variance on columns */
+export type contact_group_variance_fields = {
+	__typename?: "contact_group_variance_fields",
+	contact_id?:number,
+	group_id?:number
+}
+
+/** order by variance() on columns of table "contact_group" */
+export type contact_group_variance_order_by = {
+		contact_id?:order_by,
+	group_id?:order_by
+}
+
 /** columns and relationships of "contacts" */
 export type contacts = {
 	__typename?: "contacts",
+	/** An array relationship */
+	contact_groups:contact_group[],
+	/** An aggregate relationship */
+	contact_groups_aggregate:contact_group_aggregate,
 	date_added:timestamptz,
 	desires?:jsonb[],
 	email?:string,
 	frequency?:jsonb,
 	id:number,
 	images?:jsonb[],
+	/** An array relationship */
+	logs:logs[],
+	/** An aggregate relationship */
+	logs_aggregate:logs_aggregate,
 	name:string,
 	need_to_call?:boolean,
 	notes?:string,
-	phone_number?:string
+	phone_number?:string,
+	/** An array relationship */
+	reminders:reminders[],
+	/** An aggregate relationship */
+	reminders_aggregate:reminders_aggregate
 }
 
 /** aggregated selection of "contacts" */
@@ -2040,16 +3610,22 @@ export type contacts_bool_exp = {
 		_and?:contacts_bool_exp[],
 	_not?:contacts_bool_exp,
 	_or?:contacts_bool_exp[],
+	contact_groups?:contact_group_bool_exp,
+	contact_groups_aggregate?:contact_group_aggregate_bool_exp,
 	date_added?:timestamptz_comparison_exp,
 	desires?:jsonb_array_comparison_exp,
 	email?:String_comparison_exp,
 	frequency?:jsonb_comparison_exp,
 	id?:Int_comparison_exp,
 	images?:jsonb_array_comparison_exp,
+	logs?:logs_bool_exp,
+	logs_aggregate?:logs_aggregate_bool_exp,
 	name?:String_comparison_exp,
 	need_to_call?:Boolean_comparison_exp,
 	notes?:String_comparison_exp,
-	phone_number?:String_comparison_exp
+	phone_number?:String_comparison_exp,
+	reminders?:reminders_bool_exp,
+	reminders_aggregate?:reminders_aggregate_bool_exp
 }
 
 /** unique or primary key constraints on table "contacts" */
@@ -2080,16 +3656,19 @@ export type contacts_inc_input = {
 
 /** input type for inserting data into table "contacts" */
 export type contacts_insert_input = {
-		date_added?:timestamptz,
+		contact_groups?:contact_group_arr_rel_insert_input,
+	date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
 	frequency?:jsonb,
 	id?:number,
 	images?:jsonb[],
+	logs?:logs_arr_rel_insert_input,
 	name?:string,
 	need_to_call?:boolean,
 	notes?:string,
-	phone_number?:string
+	phone_number?:string,
+	reminders?:reminders_arr_rel_insert_input
 }
 
 /** aggregate max on columns */
@@ -2127,6 +3706,13 @@ export type contacts_mutation_response = {
 	returning:contacts[]
 }
 
+/** input type for inserting object relation for remote table "contacts" */
+export type contacts_obj_rel_insert_input = {
+		data:contacts_insert_input,
+	/** upsert condition */
+	on_conflict?:contacts_on_conflict
+}
+
 /** on_conflict condition type for table "contacts" */
 export type contacts_on_conflict = {
 		constraint:contacts_constraint,
@@ -2136,16 +3722,19 @@ export type contacts_on_conflict = {
 
 /** Ordering options when selecting data from "contacts". */
 export type contacts_order_by = {
-		date_added?:order_by,
+		contact_groups_aggregate?:contact_group_aggregate_order_by,
+	date_added?:order_by,
 	desires?:order_by,
 	email?:order_by,
 	frequency?:order_by,
 	id?:order_by,
 	images?:order_by,
+	logs_aggregate?:logs_aggregate_order_by,
 	name?:order_by,
 	need_to_call?:order_by,
 	notes?:order_by,
-	phone_number?:order_by
+	phone_number?:order_by,
+	reminders_aggregate?:reminders_aggregate_order_by
 }
 
 /** primary key columns input for table: contacts */
@@ -2293,7 +3882,12 @@ export enum cursor_ordering {
 /** columns and relationships of "groups" */
 export type groups = {
 	__typename?: "groups",
+	/** An array relationship */
+	contact_groups:contact_group[],
+	/** An aggregate relationship */
+	contact_groups_aggregate:contact_group_aggregate,
 	frequency:jsonb,
+	id:number,
 	name:string
 }
 
@@ -2307,9 +3901,17 @@ export type groups_aggregate = {
 /** aggregate fields of "groups" */
 export type groups_aggregate_fields = {
 	__typename?: "groups_aggregate_fields",
+	avg?:groups_avg_fields,
 	count:number,
 	max?:groups_max_fields,
-	min?:groups_min_fields
+	min?:groups_min_fields,
+	stddev?:groups_stddev_fields,
+	stddev_pop?:groups_stddev_pop_fields,
+	stddev_samp?:groups_stddev_samp_fields,
+	sum?:groups_sum_fields,
+	var_pop?:groups_var_pop_fields,
+	var_samp?:groups_var_samp_fields,
+	variance?:groups_variance_fields
 }
 
 /** append existing jsonb value of filtered columns with new jsonb value */
@@ -2317,12 +3919,21 @@ export type groups_append_input = {
 		frequency?:jsonb
 }
 
+/** aggregate avg on columns */
+export type groups_avg_fields = {
+	__typename?: "groups_avg_fields",
+	id?:number
+}
+
 /** Boolean expression to filter rows from the table "groups". All fields are combined with a logical 'AND'. */
 export type groups_bool_exp = {
 		_and?:groups_bool_exp[],
 	_not?:groups_bool_exp,
 	_or?:groups_bool_exp[],
+	contact_groups?:contact_group_bool_exp,
+	contact_groups_aggregate?:contact_group_aggregate_bool_exp,
 	frequency?:jsonb_comparison_exp,
+	id?:Int_comparison_exp,
 	name?:String_comparison_exp
 }
 
@@ -2347,21 +3958,30 @@ export type groups_delete_key_input = {
 		frequency?:string
 }
 
+/** input type for incrementing numeric columns in table "groups" */
+export type groups_inc_input = {
+		id?:number
+}
+
 /** input type for inserting data into table "groups" */
 export type groups_insert_input = {
-		frequency?:jsonb,
+		contact_groups?:contact_group_arr_rel_insert_input,
+	frequency?:jsonb,
+	id?:number,
 	name?:string
 }
 
 /** aggregate max on columns */
 export type groups_max_fields = {
 	__typename?: "groups_max_fields",
+	id?:number,
 	name?:string
 }
 
 /** aggregate min on columns */
 export type groups_min_fields = {
 	__typename?: "groups_min_fields",
+	id?:number,
 	name?:string
 }
 
@@ -2374,6 +3994,13 @@ export type groups_mutation_response = {
 	returning:groups[]
 }
 
+/** input type for inserting object relation for remote table "groups" */
+export type groups_obj_rel_insert_input = {
+		data:groups_insert_input,
+	/** upsert condition */
+	on_conflict?:groups_on_conflict
+}
+
 /** on_conflict condition type for table "groups" */
 export type groups_on_conflict = {
 		constraint:groups_constraint,
@@ -2383,13 +4010,15 @@ export type groups_on_conflict = {
 
 /** Ordering options when selecting data from "groups". */
 export type groups_order_by = {
-		frequency?:order_by,
+		contact_groups_aggregate?:contact_group_aggregate_order_by,
+	frequency?:order_by,
+	id?:order_by,
 	name?:order_by
 }
 
 /** primary key columns input for table: groups */
 export type groups_pk_columns_input = {
-		name:string
+		id:number
 }
 
 /** prepend existing jsonb value of filtered columns with new jsonb value */
@@ -2400,13 +4029,33 @@ export type groups_prepend_input = {
 /** select columns of table "groups" */
 export enum groups_select_column {
 	frequency = "frequency",
+	id = "id",
 	name = "name"
 }
 
 /** input type for updating data in table "groups" */
 export type groups_set_input = {
 		frequency?:jsonb,
+	id?:number,
 	name?:string
+}
+
+/** aggregate stddev on columns */
+export type groups_stddev_fields = {
+	__typename?: "groups_stddev_fields",
+	id?:number
+}
+
+/** aggregate stddev_pop on columns */
+export type groups_stddev_pop_fields = {
+	__typename?: "groups_stddev_pop_fields",
+	id?:number
+}
+
+/** aggregate stddev_samp on columns */
+export type groups_stddev_samp_fields = {
+	__typename?: "groups_stddev_samp_fields",
+	id?:number
 }
 
 /** Streaming cursor of the table "groups" */
@@ -2420,12 +4069,20 @@ export type groups_stream_cursor_input = {
 /** Initial value of the column from where the streaming should start */
 export type groups_stream_cursor_value_input = {
 		frequency?:jsonb,
+	id?:number,
 	name?:string
+}
+
+/** aggregate sum on columns */
+export type groups_sum_fields = {
+	__typename?: "groups_sum_fields",
+	id?:number
 }
 
 /** update columns of table "groups" */
 export enum groups_update_column {
 	frequency = "frequency",
+	id = "id",
 	name = "name"
 }
 
@@ -2439,12 +4096,32 @@ the end). throws an error if top level container is not an array */
 	_delete_elem?:groups_delete_elem_input,
 	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
 	_delete_key?:groups_delete_key_input,
+	/** increments the numeric columns with given value of the filtered values */
+	_inc?:groups_inc_input,
 	/** prepend existing jsonb value of filtered columns with new jsonb value */
 	_prepend?:groups_prepend_input,
 	/** sets the columns of the filtered rows to the given values */
 	_set?:groups_set_input,
 	/** filter the rows which have to be updated */
 	where:groups_bool_exp
+}
+
+/** aggregate var_pop on columns */
+export type groups_var_pop_fields = {
+	__typename?: "groups_var_pop_fields",
+	id?:number
+}
+
+/** aggregate var_samp on columns */
+export type groups_var_samp_fields = {
+	__typename?: "groups_var_samp_fields",
+	id?:number
+}
+
+/** aggregate variance on columns */
+export type groups_variance_fields = {
+	__typename?: "groups_variance_fields",
+	id?:number
 }
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
@@ -2507,12 +4184,16 @@ export type jsonb_comparison_exp = {
 	_nin?:jsonb[]
 }
 
-/** call/message/meeting/skip */
+/** columns and relationships of "logs" */
 export type logs = {
 	__typename?: "logs",
+	/** An object relationship */
+	contact:contacts,
+	contact_id:number,
 	id:number,
 	notes:string,
 	time:timestamptz,
+	/** call/message/meeting/skip */
 	type:string
 }
 
@@ -2521,6 +4202,17 @@ export type logs_aggregate = {
 	__typename?: "logs_aggregate",
 	aggregate?:logs_aggregate_fields,
 	nodes:logs[]
+}
+
+export type logs_aggregate_bool_exp = {
+		count?:logs_aggregate_bool_exp_count
+}
+
+export type logs_aggregate_bool_exp_count = {
+		arguments?:logs_select_column[],
+	distinct?:boolean,
+	filter?:logs_bool_exp,
+	predicate:Int_comparison_exp
 }
 
 /** aggregate fields of "logs" */
@@ -2539,10 +4231,39 @@ export type logs_aggregate_fields = {
 	variance?:logs_variance_fields
 }
 
+/** order by aggregate values of table "logs" */
+export type logs_aggregate_order_by = {
+		avg?:logs_avg_order_by,
+	count?:order_by,
+	max?:logs_max_order_by,
+	min?:logs_min_order_by,
+	stddev?:logs_stddev_order_by,
+	stddev_pop?:logs_stddev_pop_order_by,
+	stddev_samp?:logs_stddev_samp_order_by,
+	sum?:logs_sum_order_by,
+	var_pop?:logs_var_pop_order_by,
+	var_samp?:logs_var_samp_order_by,
+	variance?:logs_variance_order_by
+}
+
+/** input type for inserting array relation for remote table "logs" */
+export type logs_arr_rel_insert_input = {
+		data:logs_insert_input[],
+	/** upsert condition */
+	on_conflict?:logs_on_conflict
+}
+
 /** aggregate avg on columns */
 export type logs_avg_fields = {
 	__typename?: "logs_avg_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by avg() on columns of table "logs" */
+export type logs_avg_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** Boolean expression to filter rows from the table "logs". All fields are combined with a logical 'AND'. */
@@ -2550,6 +4271,8 @@ export type logs_bool_exp = {
 		_and?:logs_bool_exp[],
 	_not?:logs_bool_exp,
 	_or?:logs_bool_exp[],
+	contact?:contacts_bool_exp,
+	contact_id?:Int_comparison_exp,
 	id?:Int_comparison_exp,
 	notes?:String_comparison_exp,
 	time?:timestamptz_comparison_exp,
@@ -2563,33 +4286,61 @@ export enum logs_constraint {
 
 /** input type for incrementing numeric columns in table "logs" */
 export type logs_inc_input = {
-		id?:number
+		contact_id?:number,
+	id?:number
 }
 
 /** input type for inserting data into table "logs" */
 export type logs_insert_input = {
-		id?:number,
+		contact?:contacts_obj_rel_insert_input,
+	contact_id?:number,
+	id?:number,
 	notes?:string,
 	time?:timestamptz,
+	/** call/message/meeting/skip */
 	type?:string
 }
 
 /** aggregate max on columns */
 export type logs_max_fields = {
 	__typename?: "logs_max_fields",
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:timestamptz,
+	/** call/message/meeting/skip */
 	type?:string
+}
+
+/** order by max() on columns of table "logs" */
+export type logs_max_order_by = {
+		contact_id?:order_by,
+	id?:order_by,
+	notes?:order_by,
+	time?:order_by,
+	/** call/message/meeting/skip */
+	type?:order_by
 }
 
 /** aggregate min on columns */
 export type logs_min_fields = {
 	__typename?: "logs_min_fields",
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:timestamptz,
+	/** call/message/meeting/skip */
 	type?:string
+}
+
+/** order by min() on columns of table "logs" */
+export type logs_min_order_by = {
+		contact_id?:order_by,
+	id?:order_by,
+	notes?:order_by,
+	time?:order_by,
+	/** call/message/meeting/skip */
+	type?:order_by
 }
 
 /** response of any mutation on the table "logs" */
@@ -2610,7 +4361,9 @@ export type logs_on_conflict = {
 
 /** Ordering options when selecting data from "logs". */
 export type logs_order_by = {
-		id?:order_by,
+		contact?:contacts_order_by,
+	contact_id?:order_by,
+	id?:order_by,
 	notes?:order_by,
 	time?:order_by,
 	type?:order_by
@@ -2623,6 +4376,7 @@ export type logs_pk_columns_input = {
 
 /** select columns of table "logs" */
 export enum logs_select_column {
+	contact_id = "contact_id",
 	id = "id",
 	notes = "notes",
 	time = "time",
@@ -2631,28 +4385,51 @@ export enum logs_select_column {
 
 /** input type for updating data in table "logs" */
 export type logs_set_input = {
-		id?:number,
+		contact_id?:number,
+	id?:number,
 	notes?:string,
 	time?:timestamptz,
+	/** call/message/meeting/skip */
 	type?:string
 }
 
 /** aggregate stddev on columns */
 export type logs_stddev_fields = {
 	__typename?: "logs_stddev_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by stddev() on columns of table "logs" */
+export type logs_stddev_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** aggregate stddev_pop on columns */
 export type logs_stddev_pop_fields = {
 	__typename?: "logs_stddev_pop_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by stddev_pop() on columns of table "logs" */
+export type logs_stddev_pop_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** aggregate stddev_samp on columns */
 export type logs_stddev_samp_fields = {
 	__typename?: "logs_stddev_samp_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by stddev_samp() on columns of table "logs" */
+export type logs_stddev_samp_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** Streaming cursor of the table "logs" */
@@ -2665,20 +4442,30 @@ export type logs_stream_cursor_input = {
 
 /** Initial value of the column from where the streaming should start */
 export type logs_stream_cursor_value_input = {
-		id?:number,
+		contact_id?:number,
+	id?:number,
 	notes?:string,
 	time?:timestamptz,
+	/** call/message/meeting/skip */
 	type?:string
 }
 
 /** aggregate sum on columns */
 export type logs_sum_fields = {
 	__typename?: "logs_sum_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by sum() on columns of table "logs" */
+export type logs_sum_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** update columns of table "logs" */
 export enum logs_update_column {
+	contact_id = "contact_id",
 	id = "id",
 	notes = "notes",
 	time = "time",
@@ -2697,24 +4484,49 @@ export type logs_updates = {
 /** aggregate var_pop on columns */
 export type logs_var_pop_fields = {
 	__typename?: "logs_var_pop_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by var_pop() on columns of table "logs" */
+export type logs_var_pop_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** aggregate var_samp on columns */
 export type logs_var_samp_fields = {
 	__typename?: "logs_var_samp_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by var_samp() on columns of table "logs" */
+export type logs_var_samp_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** aggregate variance on columns */
 export type logs_variance_fields = {
 	__typename?: "logs_variance_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by variance() on columns of table "logs" */
+export type logs_variance_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** mutation root */
 export type mutation_root = {
 	__typename?: "mutation_root",
+	/** delete data from the table: "contact_group" */
+	delete_contact_group?:contact_group_mutation_response,
+	/** delete single row from the table: "contact_group" */
+	delete_contact_group_by_pk?:contact_group,
 	/** delete data from the table: "contacts" */
 	delete_contacts?:contacts_mutation_response,
 	/** delete single row from the table: "contacts" */
@@ -2731,6 +4543,10 @@ export type mutation_root = {
 	delete_reminders?:reminders_mutation_response,
 	/** delete single row from the table: "reminders" */
 	delete_reminders_by_pk?:reminders,
+	/** insert data into the table: "contact_group" */
+	insert_contact_group?:contact_group_mutation_response,
+	/** insert a single row into the table: "contact_group" */
+	insert_contact_group_one?:contact_group,
 	/** insert data into the table: "contacts" */
 	insert_contacts?:contacts_mutation_response,
 	/** insert a single row into the table: "contacts" */
@@ -2747,6 +4563,12 @@ export type mutation_root = {
 	insert_reminders?:reminders_mutation_response,
 	/** insert a single row into the table: "reminders" */
 	insert_reminders_one?:reminders,
+	/** update data of the table: "contact_group" */
+	update_contact_group?:contact_group_mutation_response,
+	/** update single row of the table: "contact_group" */
+	update_contact_group_by_pk?:contact_group,
+	/** update multiples rows of table: "contact_group" */
+	update_contact_group_many?:(contact_group_mutation_response | undefined)[],
 	/** update data of the table: "contacts" */
 	update_contacts?:contacts_mutation_response,
 	/** update single row of the table: "contacts" */
@@ -2785,6 +4607,12 @@ export enum order_by {
 
 export type query_root = {
 	__typename?: "query_root",
+	/** fetch data from the table: "contact_group" */
+	contact_group:contact_group[],
+	/** fetch aggregated fields from the table: "contact_group" */
+	contact_group_aggregate:contact_group_aggregate,
+	/** fetch data from the table: "contact_group" using primary key columns */
+	contact_group_by_pk?:contact_group,
 	/** fetch data from the table: "contacts" */
 	contacts:contacts[],
 	/** fetch aggregated fields from the table: "contacts" */
@@ -2797,15 +4625,15 @@ export type query_root = {
 	groups_aggregate:groups_aggregate,
 	/** fetch data from the table: "groups" using primary key columns */
 	groups_by_pk?:groups,
-	/** fetch data from the table: "logs" */
+	/** An array relationship */
 	logs:logs[],
-	/** fetch aggregated fields from the table: "logs" */
+	/** An aggregate relationship */
 	logs_aggregate:logs_aggregate,
 	/** fetch data from the table: "logs" using primary key columns */
 	logs_by_pk?:logs,
-	/** fetch data from the table: "reminders" */
+	/** An array relationship */
 	reminders:reminders[],
-	/** fetch aggregated fields from the table: "reminders" */
+	/** An aggregate relationship */
 	reminders_aggregate:reminders_aggregate,
 	/** fetch data from the table: "reminders" using primary key columns */
 	reminders_by_pk?:reminders
@@ -2814,6 +4642,9 @@ export type query_root = {
 /** columns and relationships of "reminders" */
 export type reminders = {
 	__typename?: "reminders",
+	/** An object relationship */
+	contact:contacts,
+	contact_id:number,
 	id:number,
 	notes:string,
 	time:timestamptz
@@ -2824,6 +4655,17 @@ export type reminders_aggregate = {
 	__typename?: "reminders_aggregate",
 	aggregate?:reminders_aggregate_fields,
 	nodes:reminders[]
+}
+
+export type reminders_aggregate_bool_exp = {
+		count?:reminders_aggregate_bool_exp_count
+}
+
+export type reminders_aggregate_bool_exp_count = {
+		arguments?:reminders_select_column[],
+	distinct?:boolean,
+	filter?:reminders_bool_exp,
+	predicate:Int_comparison_exp
 }
 
 /** aggregate fields of "reminders" */
@@ -2842,10 +4684,39 @@ export type reminders_aggregate_fields = {
 	variance?:reminders_variance_fields
 }
 
+/** order by aggregate values of table "reminders" */
+export type reminders_aggregate_order_by = {
+		avg?:reminders_avg_order_by,
+	count?:order_by,
+	max?:reminders_max_order_by,
+	min?:reminders_min_order_by,
+	stddev?:reminders_stddev_order_by,
+	stddev_pop?:reminders_stddev_pop_order_by,
+	stddev_samp?:reminders_stddev_samp_order_by,
+	sum?:reminders_sum_order_by,
+	var_pop?:reminders_var_pop_order_by,
+	var_samp?:reminders_var_samp_order_by,
+	variance?:reminders_variance_order_by
+}
+
+/** input type for inserting array relation for remote table "reminders" */
+export type reminders_arr_rel_insert_input = {
+		data:reminders_insert_input[],
+	/** upsert condition */
+	on_conflict?:reminders_on_conflict
+}
+
 /** aggregate avg on columns */
 export type reminders_avg_fields = {
 	__typename?: "reminders_avg_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by avg() on columns of table "reminders" */
+export type reminders_avg_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** Boolean expression to filter rows from the table "reminders". All fields are combined with a logical 'AND'. */
@@ -2853,6 +4724,8 @@ export type reminders_bool_exp = {
 		_and?:reminders_bool_exp[],
 	_not?:reminders_bool_exp,
 	_or?:reminders_bool_exp[],
+	contact?:contacts_bool_exp,
+	contact_id?:Int_comparison_exp,
 	id?:Int_comparison_exp,
 	notes?:String_comparison_exp,
 	time?:timestamptz_comparison_exp
@@ -2865,12 +4738,15 @@ export enum reminders_constraint {
 
 /** input type for incrementing numeric columns in table "reminders" */
 export type reminders_inc_input = {
-		id?:number
+		contact_id?:number,
+	id?:number
 }
 
 /** input type for inserting data into table "reminders" */
 export type reminders_insert_input = {
-		id?:number,
+		contact?:contacts_obj_rel_insert_input,
+	contact_id?:number,
+	id?:number,
 	notes?:string,
 	time?:timestamptz
 }
@@ -2878,17 +4754,35 @@ export type reminders_insert_input = {
 /** aggregate max on columns */
 export type reminders_max_fields = {
 	__typename?: "reminders_max_fields",
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:timestamptz
 }
 
+/** order by max() on columns of table "reminders" */
+export type reminders_max_order_by = {
+		contact_id?:order_by,
+	id?:order_by,
+	notes?:order_by,
+	time?:order_by
+}
+
 /** aggregate min on columns */
 export type reminders_min_fields = {
 	__typename?: "reminders_min_fields",
+	contact_id?:number,
 	id?:number,
 	notes?:string,
 	time?:timestamptz
+}
+
+/** order by min() on columns of table "reminders" */
+export type reminders_min_order_by = {
+		contact_id?:order_by,
+	id?:order_by,
+	notes?:order_by,
+	time?:order_by
 }
 
 /** response of any mutation on the table "reminders" */
@@ -2909,7 +4803,9 @@ export type reminders_on_conflict = {
 
 /** Ordering options when selecting data from "reminders". */
 export type reminders_order_by = {
-		id?:order_by,
+		contact?:contacts_order_by,
+	contact_id?:order_by,
+	id?:order_by,
 	notes?:order_by,
 	time?:order_by
 }
@@ -2921,6 +4817,7 @@ export type reminders_pk_columns_input = {
 
 /** select columns of table "reminders" */
 export enum reminders_select_column {
+	contact_id = "contact_id",
 	id = "id",
 	notes = "notes",
 	time = "time"
@@ -2928,7 +4825,8 @@ export enum reminders_select_column {
 
 /** input type for updating data in table "reminders" */
 export type reminders_set_input = {
-		id?:number,
+		contact_id?:number,
+	id?:number,
 	notes?:string,
 	time?:timestamptz
 }
@@ -2936,19 +4834,40 @@ export type reminders_set_input = {
 /** aggregate stddev on columns */
 export type reminders_stddev_fields = {
 	__typename?: "reminders_stddev_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by stddev() on columns of table "reminders" */
+export type reminders_stddev_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** aggregate stddev_pop on columns */
 export type reminders_stddev_pop_fields = {
 	__typename?: "reminders_stddev_pop_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by stddev_pop() on columns of table "reminders" */
+export type reminders_stddev_pop_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** aggregate stddev_samp on columns */
 export type reminders_stddev_samp_fields = {
 	__typename?: "reminders_stddev_samp_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by stddev_samp() on columns of table "reminders" */
+export type reminders_stddev_samp_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** Streaming cursor of the table "reminders" */
@@ -2961,7 +4880,8 @@ export type reminders_stream_cursor_input = {
 
 /** Initial value of the column from where the streaming should start */
 export type reminders_stream_cursor_value_input = {
-		id?:number,
+		contact_id?:number,
+	id?:number,
 	notes?:string,
 	time?:timestamptz
 }
@@ -2969,11 +4889,19 @@ export type reminders_stream_cursor_value_input = {
 /** aggregate sum on columns */
 export type reminders_sum_fields = {
 	__typename?: "reminders_sum_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by sum() on columns of table "reminders" */
+export type reminders_sum_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** update columns of table "reminders" */
 export enum reminders_update_column {
+	contact_id = "contact_id",
 	id = "id",
 	notes = "notes",
 	time = "time"
@@ -2991,19 +4919,40 @@ export type reminders_updates = {
 /** aggregate var_pop on columns */
 export type reminders_var_pop_fields = {
 	__typename?: "reminders_var_pop_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by var_pop() on columns of table "reminders" */
+export type reminders_var_pop_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** aggregate var_samp on columns */
 export type reminders_var_samp_fields = {
 	__typename?: "reminders_var_samp_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by var_samp() on columns of table "reminders" */
+export type reminders_var_samp_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** aggregate variance on columns */
 export type reminders_variance_fields = {
 	__typename?: "reminders_variance_fields",
+	contact_id?:number,
 	id?:number
+}
+
+/** order by variance() on columns of table "reminders" */
+export type reminders_variance_order_by = {
+		contact_id?:order_by,
+	id?:order_by
 }
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -3041,6 +4990,14 @@ export type String_comparison_exp = {
 
 export type subscription_root = {
 	__typename?: "subscription_root",
+	/** fetch data from the table: "contact_group" */
+	contact_group:contact_group[],
+	/** fetch aggregated fields from the table: "contact_group" */
+	contact_group_aggregate:contact_group_aggregate,
+	/** fetch data from the table: "contact_group" using primary key columns */
+	contact_group_by_pk?:contact_group,
+	/** fetch data from the table in a streaming manner: "contact_group" */
+	contact_group_stream:contact_group[],
 	/** fetch data from the table: "contacts" */
 	contacts:contacts[],
 	/** fetch aggregated fields from the table: "contacts" */
@@ -3057,17 +5014,17 @@ export type subscription_root = {
 	groups_by_pk?:groups,
 	/** fetch data from the table in a streaming manner: "groups" */
 	groups_stream:groups[],
-	/** fetch data from the table: "logs" */
+	/** An array relationship */
 	logs:logs[],
-	/** fetch aggregated fields from the table: "logs" */
+	/** An aggregate relationship */
 	logs_aggregate:logs_aggregate,
 	/** fetch data from the table: "logs" using primary key columns */
 	logs_by_pk?:logs,
 	/** fetch data from the table in a streaming manner: "logs" */
 	logs_stream:logs[],
-	/** fetch data from the table: "reminders" */
+	/** An array relationship */
 	reminders:reminders[],
-	/** fetch aggregated fields from the table: "reminders" */
+	/** An aggregate relationship */
 	reminders_aggregate:reminders_aggregate,
 	/** fetch data from the table: "reminders" using primary key columns */
 	reminders_by_pk?:reminders,
@@ -3165,10 +5122,683 @@ export const AllTypesProps: Record<string,any> = {
 			required:true
 		}
 	},
+	contact_group_aggregate_bool_exp:{
+		count:{
+			type:"contact_group_aggregate_bool_exp_count",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_aggregate_bool_exp_count:{
+		arguments:{
+			type:"contact_group_select_column",
+			array:true,
+			arrayRequired:false,
+			required:true
+		},
+		distinct:{
+			type:"Boolean",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		filter:{
+			type:"contact_group_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		predicate:{
+			type:"Int_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:true
+		}
+	},
+	contact_group_aggregate_fields:{
+		count:{
+			columns:{
+				type:"contact_group_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			distinct:{
+				type:"Boolean",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		}
+	},
+	contact_group_aggregate_order_by:{
+		avg:{
+			type:"contact_group_avg_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		count:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		max:{
+			type:"contact_group_max_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		min:{
+			type:"contact_group_min_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		stddev:{
+			type:"contact_group_stddev_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		stddev_pop:{
+			type:"contact_group_stddev_pop_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		stddev_samp:{
+			type:"contact_group_stddev_samp_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		sum:{
+			type:"contact_group_sum_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		var_pop:{
+			type:"contact_group_var_pop_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		var_samp:{
+			type:"contact_group_var_samp_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		variance:{
+			type:"contact_group_variance_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_arr_rel_insert_input:{
+		data:{
+			type:"contact_group_insert_input",
+			array:true,
+			arrayRequired:true,
+			required:true
+		},
+		on_conflict:{
+			type:"contact_group_on_conflict",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_avg_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_bool_exp:{
+		_and:{
+			type:"contact_group_bool_exp",
+			array:true,
+			arrayRequired:false,
+			required:true
+		},
+		_not:{
+			type:"contact_group_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_or:{
+			type:"contact_group_bool_exp",
+			array:true,
+			arrayRequired:false,
+			required:true
+		},
+		contact:{
+			type:"contacts_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_id:{
+			type:"Int_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group:{
+			type:"groups_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"Int_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_constraint: "enum",
+	contact_group_inc_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_insert_input:{
+		contact:{
+			type:"contacts_obj_rel_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group:{
+			type:"groups_obj_rel_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_max_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_min_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_on_conflict:{
+		constraint:{
+			type:"contact_group_constraint",
+			array:false,
+			arrayRequired:false,
+			required:true
+		},
+		update_columns:{
+			type:"contact_group_update_column",
+			array:true,
+			arrayRequired:true,
+			required:true
+		},
+		where:{
+			type:"contact_group_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_order_by:{
+		contact:{
+			type:"contacts_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group:{
+			type:"groups_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_pk_columns_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:true
+		},
+		group_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:true
+		}
+	},
+	contact_group_select_column: "enum",
+	contact_group_set_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_stddev_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_stddev_pop_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_stddev_samp_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_stream_cursor_input:{
+		initial_value:{
+			type:"contact_group_stream_cursor_value_input",
+			array:false,
+			arrayRequired:false,
+			required:true
+		},
+		ordering:{
+			type:"cursor_ordering",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_stream_cursor_value_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_sum_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_update_column: "enum",
+	contact_group_updates:{
+		_inc:{
+			type:"contact_group_inc_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_set:{
+			type:"contact_group_set_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		where:{
+			type:"contact_group_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:true
+		}
+	},
+	contact_group_var_pop_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_var_samp_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contact_group_variance_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
 	contacts:{
+		contact_groups:{
+			distinct_on:{
+				type:"contact_group_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contact_group_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		contact_groups_aggregate:{
+			distinct_on:{
+				type:"contact_group_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contact_group_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
 		frequency:{
 			path:{
 				type:"String",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		logs:{
+			distinct_on:{
+				type:"logs_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"logs_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"logs_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		logs_aggregate:{
+			distinct_on:{
+				type:"logs_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"logs_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"logs_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		reminders:{
+			distinct_on:{
+				type:"reminders_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"reminders_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"reminders_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		reminders_aggregate:{
+			distinct_on:{
+				type:"reminders_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"reminders_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"reminders_bool_exp",
 				array:false,
 				arrayRequired:false,
 				required:false
@@ -3218,6 +5848,18 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:true
 		},
+		contact_groups:{
+			type:"contact_group_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_groups_aggregate:{
+			type:"contact_group_aggregate_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		date_added:{
 			type:"timestamptz_comparison_exp",
 			array:false,
@@ -3254,6 +5896,18 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:false
 		},
+		logs:{
+			type:"logs_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		logs_aggregate:{
+			type:"logs_aggregate_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		name:{
 			type:"String_comparison_exp",
 			array:false,
@@ -3274,6 +5928,18 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		phone_number:{
 			type:"String_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		reminders:{
+			type:"reminders_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		reminders_aggregate:{
+			type:"reminders_aggregate_bool_exp",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -3313,6 +5979,12 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	contacts_insert_input:{
+		contact_groups:{
+			type:"contact_group_arr_rel_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		date_added:{
 			type:"timestamptz",
 			array:false,
@@ -3349,6 +6021,12 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:true
 		},
+		logs:{
+			type:"logs_arr_rel_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		name:{
 			type:"String",
 			array:false,
@@ -3369,6 +6047,26 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		phone_number:{
 			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		reminders:{
+			type:"reminders_arr_rel_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	contacts_obj_rel_insert_input:{
+		data:{
+			type:"contacts_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:true
+		},
+		on_conflict:{
+			type:"contacts_on_conflict",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -3395,6 +6093,12 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	contacts_order_by:{
+		contact_groups_aggregate:{
+			type:"contact_group_aggregate_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		date_added:{
 			type:"order_by",
 			array:false,
@@ -3431,6 +6135,12 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:false
 		},
+		logs_aggregate:{
+			type:"logs_aggregate_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		name:{
 			type:"order_by",
 			array:false,
@@ -3451,6 +6161,12 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		phone_number:{
 			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		reminders_aggregate:{
+			type:"reminders_aggregate_order_by",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -3664,6 +6380,70 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	cursor_ordering: "enum",
 	groups:{
+		contact_groups:{
+			distinct_on:{
+				type:"contact_group_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contact_group_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		contact_groups_aggregate:{
+			distinct_on:{
+				type:"contact_group_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contact_group_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
 		frequency:{
 			path:{
 				type:"String",
@@ -3716,8 +6496,26 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:true
 		},
+		contact_groups:{
+			type:"contact_group_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_groups_aggregate:{
+			type:"contact_group_aggregate_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		frequency:{
 			type:"jsonb_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"Int_comparison_exp",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -3754,15 +6552,49 @@ export const AllTypesProps: Record<string,any> = {
 			required:false
 		}
 	},
+	groups_inc_input:{
+		id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
 	groups_insert_input:{
+		contact_groups:{
+			type:"contact_group_arr_rel_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		frequency:{
 			type:"jsonb",
 			array:false,
 			arrayRequired:false,
 			required:false
 		},
+		id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		name:{
 			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	groups_obj_rel_insert_input:{
+		data:{
+			type:"groups_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:true
+		},
+		on_conflict:{
+			type:"groups_on_conflict",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -3789,7 +6621,19 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	groups_order_by:{
+		contact_groups_aggregate:{
+			type:"contact_group_aggregate_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		frequency:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
 			type:"order_by",
 			array:false,
 			arrayRequired:false,
@@ -3803,8 +6647,8 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	groups_pk_columns_input:{
-		name:{
-			type:"String",
+		id:{
+			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:true
@@ -3822,6 +6666,12 @@ export const AllTypesProps: Record<string,any> = {
 	groups_set_input:{
 		frequency:{
 			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -3850,6 +6700,12 @@ export const AllTypesProps: Record<string,any> = {
 	groups_stream_cursor_value_input:{
 		frequency:{
 			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -3883,6 +6739,12 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		_delete_key:{
 			type:"groups_delete_key_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_inc:{
+			type:"groups_inc_input",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -4131,6 +6993,40 @@ export const AllTypesProps: Record<string,any> = {
 			required:true
 		}
 	},
+	logs_aggregate_bool_exp:{
+		count:{
+			type:"logs_aggregate_bool_exp_count",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_aggregate_bool_exp_count:{
+		arguments:{
+			type:"logs_select_column",
+			array:true,
+			arrayRequired:false,
+			required:true
+		},
+		distinct:{
+			type:"Boolean",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		filter:{
+			type:"logs_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		predicate:{
+			type:"Int_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:true
+		}
+	},
 	logs_aggregate_fields:{
 		count:{
 			columns:{
@@ -4145,6 +7041,102 @@ export const AllTypesProps: Record<string,any> = {
 				arrayRequired:false,
 				required:false
 			}
+		}
+	},
+	logs_aggregate_order_by:{
+		avg:{
+			type:"logs_avg_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		count:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		max:{
+			type:"logs_max_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		min:{
+			type:"logs_min_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		stddev:{
+			type:"logs_stddev_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		stddev_pop:{
+			type:"logs_stddev_pop_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		stddev_samp:{
+			type:"logs_stddev_samp_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		sum:{
+			type:"logs_sum_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		var_pop:{
+			type:"logs_var_pop_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		var_samp:{
+			type:"logs_var_samp_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		variance:{
+			type:"logs_variance_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_arr_rel_insert_input:{
+		data:{
+			type:"logs_insert_input",
+			array:true,
+			arrayRequired:true,
+			required:true
+		},
+		on_conflict:{
+			type:"logs_on_conflict",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_avg_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	logs_bool_exp:{
@@ -4165,6 +7157,18 @@ export const AllTypesProps: Record<string,any> = {
 			array:true,
 			arrayRequired:false,
 			required:true
+		},
+		contact:{
+			type:"contacts_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_id:{
+			type:"Int_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
 		},
 		id:{
 			type:"Int_comparison_exp",
@@ -4193,6 +7197,12 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	logs_constraint: "enum",
 	logs_inc_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -4201,6 +7211,18 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	logs_insert_input:{
+		contact:{
+			type:"contacts_obj_rel_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -4221,6 +7243,70 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		type:{
 			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_max_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		notes:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		time:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		type:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_min_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		notes:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		time:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		type:{
+			type:"order_by",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -4247,6 +7333,18 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	logs_order_by:{
+		contact:{
+			type:"contacts_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"order_by",
 			array:false,
@@ -4282,6 +7380,12 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	logs_select_column: "enum",
 	logs_set_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -4302,6 +7406,48 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		type:{
 			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_stddev_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_stddev_pop_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_stddev_samp_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -4322,6 +7468,12 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	logs_stream_cursor_value_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -4342,6 +7494,20 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		type:{
 			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_sum_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -4368,7 +7534,71 @@ export const AllTypesProps: Record<string,any> = {
 			required:true
 		}
 	},
+	logs_var_pop_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_var_samp_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	logs_variance_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
 	mutation_root:{
+		delete_contact_group:{
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:true
+			}
+		},
+		delete_contact_group_by_pk:{
+			contact_id:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:true
+			},
+			group_id:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:true
+			}
+		},
 		delete_contacts:{
 			where:{
 				type:"contacts_bool_exp",
@@ -4394,8 +7624,8 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		},
 		delete_groups_by_pk:{
-			name:{
-				type:"String",
+			id:{
+				type:"Int",
 				array:false,
 				arrayRequired:false,
 				required:true
@@ -4431,6 +7661,34 @@ export const AllTypesProps: Record<string,any> = {
 				array:false,
 				arrayRequired:false,
 				required:true
+			}
+		},
+		insert_contact_group:{
+			objects:{
+				type:"contact_group_insert_input",
+				array:true,
+				arrayRequired:true,
+				required:true
+			},
+			on_conflict:{
+				type:"contact_group_on_conflict",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		insert_contact_group_one:{
+			object:{
+				type:"contact_group_insert_input",
+				array:false,
+				arrayRequired:false,
+				required:true
+			},
+			on_conflict:{
+				type:"contact_group_on_conflict",
+				array:false,
+				arrayRequired:false,
+				required:false
 			}
 		},
 		insert_contacts:{
@@ -4543,6 +7801,54 @@ export const AllTypesProps: Record<string,any> = {
 				array:false,
 				arrayRequired:false,
 				required:false
+			}
+		},
+		update_contact_group:{
+			_inc:{
+				type:"contact_group_inc_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_set:{
+				type:"contact_group_set_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:true
+			}
+		},
+		update_contact_group_by_pk:{
+			_inc:{
+				type:"contact_group_inc_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_set:{
+				type:"contact_group_set_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			pk_columns:{
+				type:"contact_group_pk_columns_input",
+				array:false,
+				arrayRequired:false,
+				required:true
+			}
+		},
+		update_contact_group_many:{
+			updates:{
+				type:"contact_group_updates",
+				array:true,
+				arrayRequired:true,
+				required:true
 			}
 		},
 		update_contacts:{
@@ -4678,6 +7984,12 @@ export const AllTypesProps: Record<string,any> = {
 				arrayRequired:false,
 				required:false
 			},
+			_inc:{
+				type:"groups_inc_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
 			_prepend:{
 				type:"groups_prepend_input",
 				array:false,
@@ -4718,6 +8030,12 @@ export const AllTypesProps: Record<string,any> = {
 			},
 			_delete_key:{
 				type:"groups_delete_key_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_inc:{
+				type:"groups_inc_input",
 				array:false,
 				arrayRequired:false,
 				required:false
@@ -4848,6 +8166,84 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	order_by: "enum",
 	query_root:{
+		contact_group:{
+			distinct_on:{
+				type:"contact_group_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contact_group_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		contact_group_aggregate:{
+			distinct_on:{
+				type:"contact_group_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contact_group_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		contact_group_by_pk:{
+			contact_id:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:true
+			},
+			group_id:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:true
+			}
+		},
 		contacts:{
 			distinct_on:{
 				type:"contacts_select_column",
@@ -4985,8 +8381,8 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		},
 		groups_by_pk:{
-			name:{
-				type:"String",
+			id:{
+				type:"Int",
 				array:false,
 				arrayRequired:false,
 				required:true
@@ -5137,6 +8533,40 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		}
 	},
+	reminders_aggregate_bool_exp:{
+		count:{
+			type:"reminders_aggregate_bool_exp_count",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_aggregate_bool_exp_count:{
+		arguments:{
+			type:"reminders_select_column",
+			array:true,
+			arrayRequired:false,
+			required:true
+		},
+		distinct:{
+			type:"Boolean",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		filter:{
+			type:"reminders_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		predicate:{
+			type:"Int_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:true
+		}
+	},
 	reminders_aggregate_fields:{
 		count:{
 			columns:{
@@ -5151,6 +8581,102 @@ export const AllTypesProps: Record<string,any> = {
 				arrayRequired:false,
 				required:false
 			}
+		}
+	},
+	reminders_aggregate_order_by:{
+		avg:{
+			type:"reminders_avg_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		count:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		max:{
+			type:"reminders_max_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		min:{
+			type:"reminders_min_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		stddev:{
+			type:"reminders_stddev_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		stddev_pop:{
+			type:"reminders_stddev_pop_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		stddev_samp:{
+			type:"reminders_stddev_samp_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		sum:{
+			type:"reminders_sum_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		var_pop:{
+			type:"reminders_var_pop_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		var_samp:{
+			type:"reminders_var_samp_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		variance:{
+			type:"reminders_variance_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_arr_rel_insert_input:{
+		data:{
+			type:"reminders_insert_input",
+			array:true,
+			arrayRequired:true,
+			required:true
+		},
+		on_conflict:{
+			type:"reminders_on_conflict",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_avg_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	reminders_bool_exp:{
@@ -5171,6 +8697,18 @@ export const AllTypesProps: Record<string,any> = {
 			array:true,
 			arrayRequired:false,
 			required:true
+		},
+		contact:{
+			type:"contacts_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_id:{
+			type:"Int_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
 		},
 		id:{
 			type:"Int_comparison_exp",
@@ -5193,6 +8731,12 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	reminders_constraint: "enum",
 	reminders_inc_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -5201,6 +8745,18 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	reminders_insert_input:{
+		contact:{
+			type:"contacts_obj_rel_insert_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -5215,6 +8771,58 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		time:{
 			type:"timestamptz",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_max_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		notes:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		time:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_min_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		notes:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		time:{
+			type:"order_by",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -5241,6 +8849,18 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	reminders_order_by:{
+		contact:{
+			type:"contacts_order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"order_by",
 			array:false,
@@ -5270,6 +8890,12 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	reminders_select_column: "enum",
 	reminders_set_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -5284,6 +8910,48 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		time:{
 			type:"timestamptz",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_stddev_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_stddev_pop_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_stddev_samp_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -5304,6 +8972,12 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	reminders_stream_cursor_value_input:{
+		contact_id:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -5318,6 +8992,20 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		time:{
 			type:"timestamptz",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_sum_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -5342,6 +9030,48 @@ export const AllTypesProps: Record<string,any> = {
 			array:false,
 			arrayRequired:false,
 			required:true
+		}
+	},
+	reminders_var_pop_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_var_samp_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	reminders_variance_order_by:{
+		contact_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	String_comparison_exp:{
@@ -5461,6 +9191,104 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	subscription_root:{
+		contact_group:{
+			distinct_on:{
+				type:"contact_group_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contact_group_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		contact_group_aggregate:{
+			distinct_on:{
+				type:"contact_group_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contact_group_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		contact_group_by_pk:{
+			contact_id:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:true
+			},
+			group_id:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:true
+			}
+		},
+		contact_group_stream:{
+			batch_size:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:true
+			},
+			cursor:{
+				type:"contact_group_stream_cursor_input",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contact_group_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
 		contacts:{
 			distinct_on:{
 				type:"contacts_select_column",
@@ -5618,8 +9446,8 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		},
 		groups_by_pk:{
-			name:{
-				type:"String",
+			id:{
+				type:"Int",
 				array:false,
 				arrayRequired:false,
 				required:true
@@ -5890,17 +9718,90 @@ export const AllTypesProps: Record<string,any> = {
 }
 
 export const ReturnTypes: Record<string,any> = {
+	contact_group:{
+		contact:"contacts",
+		contact_id:"Int",
+		group:"groups",
+		group_id:"Int"
+	},
+	contact_group_aggregate:{
+		aggregate:"contact_group_aggregate_fields",
+		nodes:"contact_group"
+	},
+	contact_group_aggregate_fields:{
+		avg:"contact_group_avg_fields",
+		count:"Int",
+		max:"contact_group_max_fields",
+		min:"contact_group_min_fields",
+		stddev:"contact_group_stddev_fields",
+		stddev_pop:"contact_group_stddev_pop_fields",
+		stddev_samp:"contact_group_stddev_samp_fields",
+		sum:"contact_group_sum_fields",
+		var_pop:"contact_group_var_pop_fields",
+		var_samp:"contact_group_var_samp_fields",
+		variance:"contact_group_variance_fields"
+	},
+	contact_group_avg_fields:{
+		contact_id:"Float",
+		group_id:"Float"
+	},
+	contact_group_max_fields:{
+		contact_id:"Int",
+		group_id:"Int"
+	},
+	contact_group_min_fields:{
+		contact_id:"Int",
+		group_id:"Int"
+	},
+	contact_group_mutation_response:{
+		affected_rows:"Int",
+		returning:"contact_group"
+	},
+	contact_group_stddev_fields:{
+		contact_id:"Float",
+		group_id:"Float"
+	},
+	contact_group_stddev_pop_fields:{
+		contact_id:"Float",
+		group_id:"Float"
+	},
+	contact_group_stddev_samp_fields:{
+		contact_id:"Float",
+		group_id:"Float"
+	},
+	contact_group_sum_fields:{
+		contact_id:"Int",
+		group_id:"Int"
+	},
+	contact_group_var_pop_fields:{
+		contact_id:"Float",
+		group_id:"Float"
+	},
+	contact_group_var_samp_fields:{
+		contact_id:"Float",
+		group_id:"Float"
+	},
+	contact_group_variance_fields:{
+		contact_id:"Float",
+		group_id:"Float"
+	},
 	contacts:{
+		contact_groups:"contact_group",
+		contact_groups_aggregate:"contact_group_aggregate",
 		date_added:"timestamptz",
 		desires:"jsonb",
 		email:"String",
 		frequency:"jsonb",
 		id:"Int",
 		images:"jsonb",
+		logs:"logs",
+		logs_aggregate:"logs_aggregate",
 		name:"String",
 		need_to_call:"Boolean",
 		notes:"String",
-		phone_number:"String"
+		phone_number:"String",
+		reminders:"reminders",
+		reminders_aggregate:"reminders_aggregate"
 	},
 	contacts_aggregate:{
 		aggregate:"contacts_aggregate_fields",
@@ -5968,7 +9869,10 @@ export const ReturnTypes: Record<string,any> = {
 		id:"Float"
 	},
 	groups:{
+		contact_groups:"contact_group",
+		contact_groups_aggregate:"contact_group_aggregate",
 		frequency:"jsonb",
+		id:"Int",
 		name:"String"
 	},
 	groups_aggregate:{
@@ -5976,21 +9880,57 @@ export const ReturnTypes: Record<string,any> = {
 		nodes:"groups"
 	},
 	groups_aggregate_fields:{
+		avg:"groups_avg_fields",
 		count:"Int",
 		max:"groups_max_fields",
-		min:"groups_min_fields"
+		min:"groups_min_fields",
+		stddev:"groups_stddev_fields",
+		stddev_pop:"groups_stddev_pop_fields",
+		stddev_samp:"groups_stddev_samp_fields",
+		sum:"groups_sum_fields",
+		var_pop:"groups_var_pop_fields",
+		var_samp:"groups_var_samp_fields",
+		variance:"groups_variance_fields"
+	},
+	groups_avg_fields:{
+		id:"Float"
 	},
 	groups_max_fields:{
+		id:"Int",
 		name:"String"
 	},
 	groups_min_fields:{
+		id:"Int",
 		name:"String"
 	},
 	groups_mutation_response:{
 		affected_rows:"Int",
 		returning:"groups"
 	},
+	groups_stddev_fields:{
+		id:"Float"
+	},
+	groups_stddev_pop_fields:{
+		id:"Float"
+	},
+	groups_stddev_samp_fields:{
+		id:"Float"
+	},
+	groups_sum_fields:{
+		id:"Int"
+	},
+	groups_var_pop_fields:{
+		id:"Float"
+	},
+	groups_var_samp_fields:{
+		id:"Float"
+	},
+	groups_variance_fields:{
+		id:"Float"
+	},
 	logs:{
+		contact:"contacts",
+		contact_id:"Int",
 		id:"Int",
 		notes:"String",
 		time:"timestamptz",
@@ -6014,15 +9954,18 @@ export const ReturnTypes: Record<string,any> = {
 		variance:"logs_variance_fields"
 	},
 	logs_avg_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	logs_max_fields:{
+		contact_id:"Int",
 		id:"Int",
 		notes:"String",
 		time:"timestamptz",
 		type:"String"
 	},
 	logs_min_fields:{
+		contact_id:"Int",
 		id:"Int",
 		notes:"String",
 		time:"timestamptz",
@@ -6033,27 +9976,36 @@ export const ReturnTypes: Record<string,any> = {
 		returning:"logs"
 	},
 	logs_stddev_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	logs_stddev_pop_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	logs_stddev_samp_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	logs_sum_fields:{
+		contact_id:"Int",
 		id:"Int"
 	},
 	logs_var_pop_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	logs_var_samp_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	logs_variance_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	mutation_root:{
+		delete_contact_group:"contact_group_mutation_response",
+		delete_contact_group_by_pk:"contact_group",
 		delete_contacts:"contacts_mutation_response",
 		delete_contacts_by_pk:"contacts",
 		delete_groups:"groups_mutation_response",
@@ -6062,6 +10014,8 @@ export const ReturnTypes: Record<string,any> = {
 		delete_logs_by_pk:"logs",
 		delete_reminders:"reminders_mutation_response",
 		delete_reminders_by_pk:"reminders",
+		insert_contact_group:"contact_group_mutation_response",
+		insert_contact_group_one:"contact_group",
 		insert_contacts:"contacts_mutation_response",
 		insert_contacts_one:"contacts",
 		insert_groups:"groups_mutation_response",
@@ -6070,6 +10024,9 @@ export const ReturnTypes: Record<string,any> = {
 		insert_logs_one:"logs",
 		insert_reminders:"reminders_mutation_response",
 		insert_reminders_one:"reminders",
+		update_contact_group:"contact_group_mutation_response",
+		update_contact_group_by_pk:"contact_group",
+		update_contact_group_many:"contact_group_mutation_response",
 		update_contacts:"contacts_mutation_response",
 		update_contacts_by_pk:"contacts",
 		update_contacts_many:"contacts_mutation_response",
@@ -6084,6 +10041,9 @@ export const ReturnTypes: Record<string,any> = {
 		update_reminders_many:"reminders_mutation_response"
 	},
 	query_root:{
+		contact_group:"contact_group",
+		contact_group_aggregate:"contact_group_aggregate",
+		contact_group_by_pk:"contact_group",
 		contacts:"contacts",
 		contacts_aggregate:"contacts_aggregate",
 		contacts_by_pk:"contacts",
@@ -6098,6 +10058,8 @@ export const ReturnTypes: Record<string,any> = {
 		reminders_by_pk:"reminders"
 	},
 	reminders:{
+		contact:"contacts",
+		contact_id:"Int",
 		id:"Int",
 		notes:"String",
 		time:"timestamptz"
@@ -6120,14 +10082,17 @@ export const ReturnTypes: Record<string,any> = {
 		variance:"reminders_variance_fields"
 	},
 	reminders_avg_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	reminders_max_fields:{
+		contact_id:"Int",
 		id:"Int",
 		notes:"String",
 		time:"timestamptz"
 	},
 	reminders_min_fields:{
+		contact_id:"Int",
 		id:"Int",
 		notes:"String",
 		time:"timestamptz"
@@ -6137,27 +10102,38 @@ export const ReturnTypes: Record<string,any> = {
 		returning:"reminders"
 	},
 	reminders_stddev_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	reminders_stddev_pop_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	reminders_stddev_samp_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	reminders_sum_fields:{
+		contact_id:"Int",
 		id:"Int"
 	},
 	reminders_var_pop_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	reminders_var_samp_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	reminders_variance_fields:{
+		contact_id:"Float",
 		id:"Float"
 	},
 	subscription_root:{
+		contact_group:"contact_group",
+		contact_group_aggregate:"contact_group_aggregate",
+		contact_group_by_pk:"contact_group",
+		contact_group_stream:"contact_group",
 		contacts:"contacts",
 		contacts_aggregate:"contacts_aggregate",
 		contacts_by_pk:"contacts",

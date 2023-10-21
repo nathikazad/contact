@@ -1,3 +1,11 @@
 table:
   name: contacts
   schema: public
+array_relationships:
+  - name: contact_groups
+    using:
+      foreign_key_constraint_on:
+        column: contact_id
+        table:
+          name: contact_group
+          schema: public

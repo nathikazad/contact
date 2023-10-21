@@ -1,7 +1,10 @@
 table:
-  name: reminders
+  name: contact_group
   schema: public
 object_relationships:
   - name: contact
     using:
       foreign_key_constraint_on: contact_id
+  - name: group
+    using:
+      foreign_key_constraint_on: group_id

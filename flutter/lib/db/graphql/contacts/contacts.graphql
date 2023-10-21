@@ -1,0 +1,26 @@
+fragment contactFields on contacts {
+  date_added
+  desires
+  email
+  frequency
+  images
+  name
+  need_to_call
+  notes
+  phone_number
+}
+
+
+
+
+query GetContacts($name: String_comparison_exp, $limit: Int, $offset: Int) {
+  contacts(where: {name: $name}, limit: $limit, offset: $offset) {
+    ...contactFields
+  }
+}
+
+query GetContact($id: Int!) {
+  contacts_by_pk(id: $id) {
+    ...contactFields
+  }
+}
