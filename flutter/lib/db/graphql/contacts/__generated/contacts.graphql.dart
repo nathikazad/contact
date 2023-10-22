@@ -2209,3 +2209,571 @@ class _CopyWithStubImpl$Mutation$AddContact$insert_contacts_one<TRes>
   }) =>
       _res;
 }
+
+class Variables$Mutation$UpdateContact {
+  factory Variables$Mutation$UpdateContact({
+    required int id,
+    Input$contacts_set_input? $_set,
+  }) =>
+      Variables$Mutation$UpdateContact._({
+        r'id': id,
+        if ($_set != null) r'_set': $_set,
+      });
+
+  Variables$Mutation$UpdateContact._(this._$data);
+
+  factory Variables$Mutation$UpdateContact.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$id = data['id'];
+    result$data['id'] = (l$id as int);
+    if (data.containsKey('_set')) {
+      final l$$_set = data['_set'];
+      result$data['_set'] = l$$_set == null
+          ? null
+          : Input$contacts_set_input.fromJson(
+              (l$$_set as Map<String, dynamic>));
+    }
+    return Variables$Mutation$UpdateContact._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int get id => (_$data['id'] as int);
+
+  Input$contacts_set_input? get $_set =>
+      (_$data['_set'] as Input$contacts_set_input?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$id = id;
+    result$data['id'] = l$id;
+    if (_$data.containsKey('_set')) {
+      final l$$_set = $_set;
+      result$data['_set'] = l$$_set?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$UpdateContact<Variables$Mutation$UpdateContact>
+      get copyWith => CopyWith$Variables$Mutation$UpdateContact(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$UpdateContact) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$_set = $_set;
+    final lOther$$_set = other.$_set;
+    if (_$data.containsKey('_set') != other._$data.containsKey('_set')) {
+      return false;
+    }
+    if (l$$_set != lOther$$_set) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$_set = $_set;
+    return Object.hashAll([
+      l$id,
+      _$data.containsKey('_set') ? l$$_set : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$UpdateContact<TRes> {
+  factory CopyWith$Variables$Mutation$UpdateContact(
+    Variables$Mutation$UpdateContact instance,
+    TRes Function(Variables$Mutation$UpdateContact) then,
+  ) = _CopyWithImpl$Variables$Mutation$UpdateContact;
+
+  factory CopyWith$Variables$Mutation$UpdateContact.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$UpdateContact;
+
+  TRes call({
+    int? id,
+    Input$contacts_set_input? $_set,
+  });
+}
+
+class _CopyWithImpl$Variables$Mutation$UpdateContact<TRes>
+    implements CopyWith$Variables$Mutation$UpdateContact<TRes> {
+  _CopyWithImpl$Variables$Mutation$UpdateContact(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$UpdateContact _instance;
+
+  final TRes Function(Variables$Mutation$UpdateContact) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? $_set = _undefined,
+  }) =>
+      _then(Variables$Mutation$UpdateContact._({
+        ..._instance._$data,
+        if (id != _undefined && id != null) 'id': (id as int),
+        if ($_set != _undefined) '_set': ($_set as Input$contacts_set_input?),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$UpdateContact<TRes>
+    implements CopyWith$Variables$Mutation$UpdateContact<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$UpdateContact(this._res);
+
+  TRes _res;
+
+  call({
+    int? id,
+    Input$contacts_set_input? $_set,
+  }) =>
+      _res;
+}
+
+class Mutation$UpdateContact {
+  Mutation$UpdateContact({
+    this.update_contacts_by_pk,
+    required this.$__typename,
+  });
+
+  factory Mutation$UpdateContact.fromJson(Map<String, dynamic> json) {
+    final l$update_contacts_by_pk = json['update_contacts_by_pk'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateContact(
+      update_contacts_by_pk: l$update_contacts_by_pk == null
+          ? null
+          : Mutation$UpdateContact$update_contacts_by_pk.fromJson(
+              (l$update_contacts_by_pk as Map<String, dynamic>)),
+      $__typename: ((l$$__typename ?? "none") as String),
+    );
+  }
+
+  final Mutation$UpdateContact$update_contacts_by_pk? update_contacts_by_pk;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$update_contacts_by_pk = update_contacts_by_pk;
+    _resultData['update_contacts_by_pk'] = l$update_contacts_by_pk?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$update_contacts_by_pk = update_contacts_by_pk;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$update_contacts_by_pk,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UpdateContact) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$update_contacts_by_pk = update_contacts_by_pk;
+    final lOther$update_contacts_by_pk = other.update_contacts_by_pk;
+    if (l$update_contacts_by_pk != lOther$update_contacts_by_pk) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UpdateContact on Mutation$UpdateContact {
+  CopyWith$Mutation$UpdateContact<Mutation$UpdateContact> get copyWith =>
+      CopyWith$Mutation$UpdateContact(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$UpdateContact<TRes> {
+  factory CopyWith$Mutation$UpdateContact(
+    Mutation$UpdateContact instance,
+    TRes Function(Mutation$UpdateContact) then,
+  ) = _CopyWithImpl$Mutation$UpdateContact;
+
+  factory CopyWith$Mutation$UpdateContact.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UpdateContact;
+
+  TRes call({
+    Mutation$UpdateContact$update_contacts_by_pk? update_contacts_by_pk,
+    String? $__typename,
+  });
+  CopyWith$Mutation$UpdateContact$update_contacts_by_pk<TRes>
+      get update_contacts_by_pk;
+}
+
+class _CopyWithImpl$Mutation$UpdateContact<TRes>
+    implements CopyWith$Mutation$UpdateContact<TRes> {
+  _CopyWithImpl$Mutation$UpdateContact(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$UpdateContact _instance;
+
+  final TRes Function(Mutation$UpdateContact) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? update_contacts_by_pk = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$UpdateContact(
+        update_contacts_by_pk: update_contacts_by_pk == _undefined
+            ? _instance.update_contacts_by_pk
+            : (update_contacts_by_pk
+                as Mutation$UpdateContact$update_contacts_by_pk?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$UpdateContact$update_contacts_by_pk<TRes>
+      get update_contacts_by_pk {
+    final local$update_contacts_by_pk = _instance.update_contacts_by_pk;
+    return local$update_contacts_by_pk == null
+        ? CopyWith$Mutation$UpdateContact$update_contacts_by_pk.stub(
+            _then(_instance))
+        : CopyWith$Mutation$UpdateContact$update_contacts_by_pk(
+            local$update_contacts_by_pk, (e) => call(update_contacts_by_pk: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$UpdateContact<TRes>
+    implements CopyWith$Mutation$UpdateContact<TRes> {
+  _CopyWithStubImpl$Mutation$UpdateContact(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$UpdateContact$update_contacts_by_pk? update_contacts_by_pk,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$UpdateContact$update_contacts_by_pk<TRes>
+      get update_contacts_by_pk =>
+          CopyWith$Mutation$UpdateContact$update_contacts_by_pk.stub(_res);
+}
+
+const documentNodeMutationUpdateContact = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'UpdateContact'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'id')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: '_set')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'contacts_set_input'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: ObjectValueNode(fields: [])),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'update_contacts_by_pk'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: '_set'),
+            value: VariableNode(name: NameNode(value: '_set')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'pk_columns'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'id'),
+                value: VariableNode(name: NameNode(value: 'id')),
+              )
+            ]),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      
+    ]),
+  ),
+]);
+Mutation$UpdateContact _parserFn$Mutation$UpdateContact(
+        Map<String, dynamic> data) =>
+    Mutation$UpdateContact.fromJson(data);
+typedef OnMutationCompleted$Mutation$UpdateContact = FutureOr<void> Function(
+  dynamic,
+  Mutation$UpdateContact?,
+);
+
+class Options$Mutation$UpdateContact
+    extends graphql.MutationOptions<Mutation$UpdateContact> {
+  Options$Mutation$UpdateContact({
+    String? operationName,
+    required Variables$Mutation$UpdateContact variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UpdateContact? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UpdateContact>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$UpdateContact(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUpdateContact,
+          parserFn: _parserFn$Mutation$UpdateContact,
+        );
+
+  final OnMutationCompleted$Mutation$UpdateContact? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$UpdateContact
+    extends graphql.WatchQueryOptions<Mutation$UpdateContact> {
+  WatchOptions$Mutation$UpdateContact({
+    String? operationName,
+    required Variables$Mutation$UpdateContact variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeMutationUpdateContact,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$UpdateContact,
+        );
+}
+
+extension ClientExtension$Mutation$UpdateContact on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$UpdateContact>> mutate$UpdateContact(
+          Options$Mutation$UpdateContact options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$UpdateContact> watchMutation$UpdateContact(
+          WatchOptions$Mutation$UpdateContact options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$UpdateContact$update_contacts_by_pk {
+  Mutation$UpdateContact$update_contacts_by_pk({
+    required this.id,
+    required this.$__typename,
+  });
+
+  factory Mutation$UpdateContact$update_contacts_by_pk.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateContact$update_contacts_by_pk(
+      id: (l$id as int),
+      $__typename: ((l$$__typename ?? "none") as String),
+    );
+  }
+
+  final int id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UpdateContact$update_contacts_by_pk) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UpdateContact$update_contacts_by_pk
+    on Mutation$UpdateContact$update_contacts_by_pk {
+  CopyWith$Mutation$UpdateContact$update_contacts_by_pk<
+          Mutation$UpdateContact$update_contacts_by_pk>
+      get copyWith => CopyWith$Mutation$UpdateContact$update_contacts_by_pk(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$UpdateContact$update_contacts_by_pk<TRes> {
+  factory CopyWith$Mutation$UpdateContact$update_contacts_by_pk(
+    Mutation$UpdateContact$update_contacts_by_pk instance,
+    TRes Function(Mutation$UpdateContact$update_contacts_by_pk) then,
+  ) = _CopyWithImpl$Mutation$UpdateContact$update_contacts_by_pk;
+
+  factory CopyWith$Mutation$UpdateContact$update_contacts_by_pk.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UpdateContact$update_contacts_by_pk;
+
+  TRes call({
+    int? id,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Mutation$UpdateContact$update_contacts_by_pk<TRes>
+    implements CopyWith$Mutation$UpdateContact$update_contacts_by_pk<TRes> {
+  _CopyWithImpl$Mutation$UpdateContact$update_contacts_by_pk(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$UpdateContact$update_contacts_by_pk _instance;
+
+  final TRes Function(Mutation$UpdateContact$update_contacts_by_pk) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$UpdateContact$update_contacts_by_pk(
+        id: id == _undefined || id == null ? _instance.id : (id as int),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Mutation$UpdateContact$update_contacts_by_pk<TRes>
+    implements CopyWith$Mutation$UpdateContact$update_contacts_by_pk<TRes> {
+  _CopyWithStubImpl$Mutation$UpdateContact$update_contacts_by_pk(this._res);
+
+  TRes _res;
+
+  call({
+    int? id,
+    String? $__typename,
+  }) =>
+      _res;
+}

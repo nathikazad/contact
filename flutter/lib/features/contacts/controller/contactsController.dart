@@ -6,8 +6,6 @@ import 'package:start/db/HasuraDb.dart';
 HasuraDb hasura = HasuraDb();
 Future<List<Fragment$contactFields>?> getAllContacts(
     {String? name, int limit = 50, int offset = 0}) async {
-  print(offset);
-
   Variables$Query$GetContacts? variables = Variables$Query$GetContacts(
       limit: limit, offset: offset, name: Input$String_comparison_exp());
   if (name != null) {
@@ -18,9 +16,8 @@ Future<List<Fragment$contactFields>?> getAllContacts(
   }
   QueryResult<Query$GetContacts> res = await hasura.graphQLClient
       .query$GetContacts(Options$Query$GetContacts(
-          fetchPolicy: FetchPolicy.networkOnly, variables: variables));
+          fetchPolicy: FetchPolicy.noCache, variables: variables));
 
-  print("got contacts ${res.parsedData?.contacts.length}");
   return res.parsedData?.contacts;
 }
 
@@ -34,10 +31,16 @@ Future<Fragment$contactFields?> getContact({required int id}) async {
 }
 
 Future<int?> addContact({required Input$contacts_insert_input contact}) async {
-  print("object ${contact.date_added}");
   QueryResult<Mutation$AddContact> res = await hasura.graphQLClient
       .mutate$AddContact(Options$Mutation$AddContact(
           variables: Variables$Mutation$AddContact(object: contact)));
-  print(res.exception.toString());
   return res.parsedData?.insert_contacts_one?.id;
+}
+
+Future<int?> updateContact(
+    {required Input$contacts_set_input contact, required int id}) async {
+  QueryResult<Mutation$UpdateContact> res = await hasura.graphQLClient
+      .mutate$UpdateContact(Options$Mutation$UpdateContact(
+          variables: Variables$Mutation$UpdateContact(id: id, $_set: contact)));
+  return res.parsedData?.update_contacts_by_pk?.id;
 }

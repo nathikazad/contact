@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:start/db/HasuraDb.dart';
-import 'package:start/features/contacts/pages/AddContactPage.dart';
+import 'package:start/features/contacts/controller/contactsManager.dart';
+import 'package:start/features/contacts/pages/ContactFormPage.dart';
 import 'package:start/pages/TabScreen.dart';
 
 class HomePage extends StatefulWidget {
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomePage> {
           currentIndex: _currentIndex,
           onTap: (index) {
             setState(() {
+              ContactsManager().addContacts();
               _currentIndex = index;
             });
           },
@@ -65,7 +67,9 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (ctx) => AddContactScreen()),
+              MaterialPageRoute(
+                  builder: (ctx) =>
+                      const ContactFormPage(mode: ContactMode.add)),
             );
           },
           tooltip: 'Add',

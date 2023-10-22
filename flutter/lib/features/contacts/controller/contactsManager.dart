@@ -42,6 +42,7 @@ class ContactsManager {
     fetching = false;
 
     contacts.addAll(newContacts ?? []);
+    // contacts.forEach((element) => print(element.name));
     _notifyListeners?.call();
   }
 

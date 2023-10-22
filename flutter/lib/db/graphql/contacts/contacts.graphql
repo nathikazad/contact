@@ -36,3 +36,9 @@ mutation AddContact($object: contacts_insert_input = {}) {
     id
   }
 }
+
+mutation UpdateContact($id: Int!, $_set: contacts_set_input = {}) {
+  update_contacts_by_pk(_set: $_set, pk_columns: {id: $id}) {
+    id
+  }
+}

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:start/features/contacts/controller/contactsController.dart';
 import 'package:start/db/graphql/contacts/__generated/contacts.graphql.dart';
+import 'package:start/features/contacts/model/contactModel.dart';
+import 'package:start/features/contacts/pages/ContactFormPage.dart';
 import 'package:start/features/shared/lists/ShowList.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -13,7 +15,7 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  Fragment$contactFields? _contact;
+  Contact? _contact;
   bool _isLoading = true;
 
   @override
@@ -25,7 +27,7 @@ class _DetailScreenState extends State<DetailScreen> {
   Future<void> _fetchContact() async {
     Fragment$contactFields? contact = await getContact(id: widget.contactId);
     setState(() {
-      _contact = contact;
+      _contact = Contact.fromFragment(contact!);
       _isLoading = false;
     });
   }
@@ -33,7 +35,7 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
-      return Scaffold(
+      return const Scaffold(
         body: Center(child: CircularProgressIndicator()),
       );
     }
@@ -47,43 +49,57 @@ class _DetailScreenState extends State<DetailScreen> {
             children: [
               if (_contact?.name != null) ...[
                 Text('Name: ${_contact!.name}'),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
               ],
-              if (_contact?.date_added != null) ...[
-                Text('Date Added: ${_contact!.date_added}'),
-                SizedBox(height: 8),
+              if (_contact?.dateAdded != null) ...[
+                Text('Date Added: ${_contact!.dateAdded}'),
+                const SizedBox(height: 8),
               ],
               if (_contact?.email != null) ...[
                 Text('Email: ${_contact!.email}'),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
               ],
               if (_contact?.frequency != null) ...[
                 Text('Frequency: ${_contact!.frequency}'),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
               ],
-              if (_contact?.phone_number != null) ...[
-                Text('Phone Number: ${_contact!.phone_number}'),
-                SizedBox(height: 8),
+              if (_contact?.phoneNumber != null) ...[
+                Text('Phone Number: ${_contact!.phoneNumber}'),
+                const SizedBox(height: 8),
               ],
               if (_contact?.notes != null) ...[
                 Text('Notes: ${_contact!.notes}'),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
               ],
               if (_contact?.desires != null &&
                   _contact!.desires!.isNotEmpty) ...[
                 ShowList(title: "desires", list: _contact!.desires!.toList()),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
               ],
-              if (_contact?.contact_groups != null &&
-                  _contact!.contact_groups.isNotEmpty) ...[
+              if (_contact?.groups != null && _contact!.groups!.isNotEmpty) ...[
                 ShowList(
                   title: "groups",
-                  list: _contact!.contact_groups
-                      .map((cg) => cg.group.name)
-                      .toList(),
+                  list: _contact!.groups,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
               ],
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (ctx) => ContactFormPage(
+                            mode: ContactMode.edit,
+                            updateCallback: (contact) => setState(() {
+                                  _contact = contact;
+                                }),
+                            contact:
+                                _contact // Pass the contact object you want to edit here
+                            )),
+                  );
+                },
+                child: const Text('Edit'),
+              )
             ],
           ),
         ));

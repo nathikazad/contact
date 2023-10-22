@@ -2,32 +2,38 @@ import 'package:flutter/material.dart';
 
 class AddListWidget extends StatefulWidget {
   final ValueChanged<List<String>> onChanged;
-
-  AddListWidget({required this.onChanged});
+  final List<String>? initialValues;
+  AddListWidget({required this.onChanged, this.initialValues});
 
   @override
   _AddListWidgetState createState() => _AddListWidgetState();
 }
 
 class _AddListWidgetState extends State<AddListWidget> {
-  List<String> desires = [];
+  late List<String> list;
   TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    list = widget.initialValues ?? [];
+  }
 
   _addDesire() {
     if (controller.text.isNotEmpty) {
       setState(() {
-        desires.add(controller.text);
+        list.add(controller.text);
         controller.clear();
       });
-      widget.onChanged(desires);
+      widget.onChanged(list);
     }
   }
 
   _removeDesire(int index) {
     setState(() {
-      desires.removeAt(index);
+      list.removeAt(index);
     });
-    widget.onChanged(desires);
+    widget.onChanged(list);
   }
 
   @override
@@ -42,7 +48,7 @@ class _AddListWidgetState extends State<AddListWidget> {
             Expanded(
               child: TextField(
                 controller: controller,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     labelText: 'Add Desire', hintText: 'Enter desire'),
               ),
             ),
@@ -56,7 +62,7 @@ class _AddListWidgetState extends State<AddListWidget> {
         Wrap(
           spacing: 8.0,
           runSpacing: 4.0,
-          children: desires.map((e) => _buildChip(e)).toList(),
+          children: list.map((e) => _buildChip(e)).toList(),
         ),
       ],
     );
@@ -65,7 +71,7 @@ class _AddListWidgetState extends State<AddListWidget> {
   Widget _buildChip(String desire) {
     return Chip(
       label: Text(desire),
-      onDeleted: () => _removeDesire(desires.indexOf(desire)),
+      onDeleted: () => _removeDesire(list.indexOf(desire)),
     );
   }
 }
