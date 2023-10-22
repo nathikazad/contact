@@ -419,10 +419,7 @@ type contacts {
   date_added: timestamptz!
   desires: [jsonb!]
   email: String
-  frequency(
-    """JSON select path"""
-    path: String
-  ): jsonb
+  frequency: Int
   id: Int!
   images: [jsonb!]
 
@@ -528,13 +525,9 @@ type contacts_aggregate_fields {
   variance: contacts_variance_fields
 }
 
-"""append existing jsonb value of filtered columns with new jsonb value"""
-input contacts_append_input {
-  frequency: jsonb
-}
-
 """aggregate avg on columns"""
 type contacts_avg_fields {
+  frequency: Float
   id: Float
 }
 
@@ -550,7 +543,7 @@ input contacts_bool_exp {
   date_added: timestamptz_comparison_exp
   desires: jsonb_array_comparison_exp
   email: String_comparison_exp
-  frequency: jsonb_comparison_exp
+  frequency: Int_comparison_exp
   id: Int_comparison_exp
   images: jsonb_array_comparison_exp
   logs: logs_bool_exp
@@ -574,31 +567,10 @@ enum contacts_constraint {
 }
 
 """
-delete the field or element with specified path (for JSON arrays, negative integers count from the end)
-"""
-input contacts_delete_at_path_input {
-  frequency: [String!]
-}
-
-"""
-delete the array element with specified index (negative integers count from the
-end). throws an error if top level container is not an array
-"""
-input contacts_delete_elem_input {
-  frequency: Int
-}
-
-"""
-delete key/value pair or string element. key/value pairs are matched based on their key value
-"""
-input contacts_delete_key_input {
-  frequency: String
-}
-
-"""
 input type for incrementing numeric columns in table "contacts"
 """
 input contacts_inc_input {
+  frequency: Int
   id: Int
 }
 
@@ -610,7 +582,7 @@ input contacts_insert_input {
   date_added: timestamptz
   desires: [jsonb!]
   email: String
-  frequency: jsonb
+  frequency: Int
   id: Int
   images: [jsonb!]
   logs: logs_arr_rel_insert_input
@@ -626,6 +598,7 @@ type contacts_max_fields {
   date_added: timestamptz
   desires: [jsonb!]
   email: String
+  frequency: Int
   id: Int
   images: [jsonb!]
   name: String
@@ -638,6 +611,7 @@ type contacts_min_fields {
   date_added: timestamptz
   desires: [jsonb!]
   email: String
+  frequency: Int
   id: Int
   images: [jsonb!]
   name: String
@@ -697,11 +671,6 @@ input contacts_pk_columns_input {
   id: Int!
 }
 
-"""prepend existing jsonb value of filtered columns with new jsonb value"""
-input contacts_prepend_input {
-  frequency: jsonb
-}
-
 """
 select columns of table "contacts"
 """
@@ -744,7 +713,7 @@ input contacts_set_input {
   date_added: timestamptz
   desires: [jsonb!]
   email: String
-  frequency: jsonb
+  frequency: Int
   id: Int
   images: [jsonb!]
   name: String
@@ -755,16 +724,19 @@ input contacts_set_input {
 
 """aggregate stddev on columns"""
 type contacts_stddev_fields {
+  frequency: Float
   id: Float
 }
 
 """aggregate stddev_pop on columns"""
 type contacts_stddev_pop_fields {
+  frequency: Float
   id: Float
 }
 
 """aggregate stddev_samp on columns"""
 type contacts_stddev_samp_fields {
+  frequency: Float
   id: Float
 }
 
@@ -784,7 +756,7 @@ input contacts_stream_cursor_value_input {
   date_added: timestamptz
   desires: [jsonb!]
   email: String
-  frequency: jsonb
+  frequency: Int
   id: Int
   images: [jsonb!]
   name: String
@@ -795,6 +767,7 @@ input contacts_stream_cursor_value_input {
 
 """aggregate sum on columns"""
 type contacts_sum_fields {
+  frequency: Int
   id: Int
 }
 
@@ -834,30 +807,8 @@ enum contacts_update_column {
 }
 
 input contacts_updates {
-  """append existing jsonb value of filtered columns with new jsonb value"""
-  _append: contacts_append_input
-
-  """
-  delete the field or element with specified path (for JSON arrays, negative integers count from the end)
-  """
-  _delete_at_path: contacts_delete_at_path_input
-
-  """
-  delete the array element with specified index (negative integers count from
-  the end). throws an error if top level container is not an array
-  """
-  _delete_elem: contacts_delete_elem_input
-
-  """
-  delete key/value pair or string element. key/value pairs are matched based on their key value
-  """
-  _delete_key: contacts_delete_key_input
-
   """increments the numeric columns with given value of the filtered values"""
   _inc: contacts_inc_input
-
-  """prepend existing jsonb value of filtered columns with new jsonb value"""
-  _prepend: contacts_prepend_input
 
   """sets the columns of the filtered rows to the given values"""
   _set: contacts_set_input
@@ -868,16 +819,19 @@ input contacts_updates {
 
 """aggregate var_pop on columns"""
 type contacts_var_pop_fields {
+  frequency: Float
   id: Float
 }
 
 """aggregate var_samp on columns"""
 type contacts_var_samp_fields {
+  frequency: Float
   id: Float
 }
 
 """aggregate variance on columns"""
 type contacts_variance_fields {
+  frequency: Float
   id: Float
 }
 
@@ -929,10 +883,7 @@ type groups {
     """filter the rows returned"""
     where: contact_group_bool_exp
   ): contact_group_aggregate!
-  frequency(
-    """JSON select path"""
-    path: String
-  ): jsonb!
+  frequency: Int
   id: Int!
   name: String!
 }
@@ -962,13 +913,9 @@ type groups_aggregate_fields {
   variance: groups_variance_fields
 }
 
-"""append existing jsonb value of filtered columns with new jsonb value"""
-input groups_append_input {
-  frequency: jsonb
-}
-
 """aggregate avg on columns"""
 type groups_avg_fields {
+  frequency: Float
   id: Float
 }
 
@@ -981,7 +928,7 @@ input groups_bool_exp {
   _or: [groups_bool_exp!]
   contact_groups: contact_group_bool_exp
   contact_groups_aggregate: contact_group_aggregate_bool_exp
-  frequency: jsonb_comparison_exp
+  frequency: Int_comparison_exp
   id: Int_comparison_exp
   name: String_comparison_exp
 }
@@ -997,31 +944,10 @@ enum groups_constraint {
 }
 
 """
-delete the field or element with specified path (for JSON arrays, negative integers count from the end)
-"""
-input groups_delete_at_path_input {
-  frequency: [String!]
-}
-
-"""
-delete the array element with specified index (negative integers count from the
-end). throws an error if top level container is not an array
-"""
-input groups_delete_elem_input {
-  frequency: Int
-}
-
-"""
-delete key/value pair or string element. key/value pairs are matched based on their key value
-"""
-input groups_delete_key_input {
-  frequency: String
-}
-
-"""
 input type for incrementing numeric columns in table "groups"
 """
 input groups_inc_input {
+  frequency: Int
   id: Int
 }
 
@@ -1030,19 +956,21 @@ input type for inserting data into table "groups"
 """
 input groups_insert_input {
   contact_groups: contact_group_arr_rel_insert_input
-  frequency: jsonb
+  frequency: Int
   id: Int
   name: String
 }
 
 """aggregate max on columns"""
 type groups_max_fields {
+  frequency: Int
   id: Int
   name: String
 }
 
 """aggregate min on columns"""
 type groups_min_fields {
+  frequency: Int
   id: Int
   name: String
 }
@@ -1090,11 +1018,6 @@ input groups_pk_columns_input {
   id: Int!
 }
 
-"""prepend existing jsonb value of filtered columns with new jsonb value"""
-input groups_prepend_input {
-  frequency: jsonb
-}
-
 """
 select columns of table "groups"
 """
@@ -1113,23 +1036,26 @@ enum groups_select_column {
 input type for updating data in table "groups"
 """
 input groups_set_input {
-  frequency: jsonb
+  frequency: Int
   id: Int
   name: String
 }
 
 """aggregate stddev on columns"""
 type groups_stddev_fields {
+  frequency: Float
   id: Float
 }
 
 """aggregate stddev_pop on columns"""
 type groups_stddev_pop_fields {
+  frequency: Float
   id: Float
 }
 
 """aggregate stddev_samp on columns"""
 type groups_stddev_samp_fields {
+  frequency: Float
   id: Float
 }
 
@@ -1146,13 +1072,14 @@ input groups_stream_cursor_input {
 
 """Initial value of the column from where the streaming should start"""
 input groups_stream_cursor_value_input {
-  frequency: jsonb
+  frequency: Int
   id: Int
   name: String
 }
 
 """aggregate sum on columns"""
 type groups_sum_fields {
+  frequency: Int
   id: Int
 }
 
@@ -1171,30 +1098,8 @@ enum groups_update_column {
 }
 
 input groups_updates {
-  """append existing jsonb value of filtered columns with new jsonb value"""
-  _append: groups_append_input
-
-  """
-  delete the field or element with specified path (for JSON arrays, negative integers count from the end)
-  """
-  _delete_at_path: groups_delete_at_path_input
-
-  """
-  delete the array element with specified index (negative integers count from
-  the end). throws an error if top level container is not an array
-  """
-  _delete_elem: groups_delete_elem_input
-
-  """
-  delete key/value pair or string element. key/value pairs are matched based on their key value
-  """
-  _delete_key: groups_delete_key_input
-
   """increments the numeric columns with given value of the filtered values"""
   _inc: groups_inc_input
-
-  """prepend existing jsonb value of filtered columns with new jsonb value"""
-  _prepend: groups_prepend_input
 
   """sets the columns of the filtered rows to the given values"""
   _set: groups_set_input
@@ -1205,16 +1110,19 @@ input groups_updates {
 
 """aggregate var_pop on columns"""
 type groups_var_pop_fields {
+  frequency: Float
   id: Float
 }
 
 """aggregate var_samp on columns"""
 type groups_var_samp_fields {
+  frequency: Float
   id: Float
 }
 
 """aggregate variance on columns"""
 type groups_variance_fields {
+  frequency: Float
   id: Float
 }
 
@@ -1253,41 +1161,6 @@ input jsonb_array_comparison_exp {
   _lte: [jsonb!]
   _neq: [jsonb!]
   _nin: [[jsonb!]!]
-}
-
-input jsonb_cast_exp {
-  String: String_comparison_exp
-}
-
-"""
-Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'.
-"""
-input jsonb_comparison_exp {
-  _cast: jsonb_cast_exp
-
-  """is the column contained in the given json value"""
-  _contained_in: jsonb
-
-  """does the column contain the given json value at the top level"""
-  _contains: jsonb
-  _eq: jsonb
-  _gt: jsonb
-  _gte: jsonb
-
-  """does the string exist as a top-level key in the column"""
-  _has_key: String
-
-  """do all of these strings exist as top-level keys in the column"""
-  _has_keys_all: [String!]
-
-  """do any of these strings exist as top-level keys in the column"""
-  _has_keys_any: [String!]
-  _in: [jsonb!]
-  _is_null: Boolean
-  _lt: jsonb
-  _lte: jsonb
-  _neq: jsonb
-  _nin: [jsonb!]
 }
 
 """
@@ -1911,30 +1784,8 @@ type mutation_root {
   update data of the table: "contacts"
   """
   update_contacts(
-    """append existing jsonb value of filtered columns with new jsonb value"""
-    _append: contacts_append_input
-
-    """
-    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
-    """
-    _delete_at_path: contacts_delete_at_path_input
-
-    """
-    delete the array element with specified index (negative integers count from
-    the end). throws an error if top level container is not an array
-    """
-    _delete_elem: contacts_delete_elem_input
-
-    """
-    delete key/value pair or string element. key/value pairs are matched based on their key value
-    """
-    _delete_key: contacts_delete_key_input
-
     """increments the numeric columns with given value of the filtered values"""
     _inc: contacts_inc_input
-
-    """prepend existing jsonb value of filtered columns with new jsonb value"""
-    _prepend: contacts_prepend_input
 
     """sets the columns of the filtered rows to the given values"""
     _set: contacts_set_input
@@ -1947,30 +1798,8 @@ type mutation_root {
   update single row of the table: "contacts"
   """
   update_contacts_by_pk(
-    """append existing jsonb value of filtered columns with new jsonb value"""
-    _append: contacts_append_input
-
-    """
-    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
-    """
-    _delete_at_path: contacts_delete_at_path_input
-
-    """
-    delete the array element with specified index (negative integers count from
-    the end). throws an error if top level container is not an array
-    """
-    _delete_elem: contacts_delete_elem_input
-
-    """
-    delete key/value pair or string element. key/value pairs are matched based on their key value
-    """
-    _delete_key: contacts_delete_key_input
-
     """increments the numeric columns with given value of the filtered values"""
     _inc: contacts_inc_input
-
-    """prepend existing jsonb value of filtered columns with new jsonb value"""
-    _prepend: contacts_prepend_input
 
     """sets the columns of the filtered rows to the given values"""
     _set: contacts_set_input
@@ -1989,30 +1818,8 @@ type mutation_root {
   update data of the table: "groups"
   """
   update_groups(
-    """append existing jsonb value of filtered columns with new jsonb value"""
-    _append: groups_append_input
-
-    """
-    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
-    """
-    _delete_at_path: groups_delete_at_path_input
-
-    """
-    delete the array element with specified index (negative integers count from
-    the end). throws an error if top level container is not an array
-    """
-    _delete_elem: groups_delete_elem_input
-
-    """
-    delete key/value pair or string element. key/value pairs are matched based on their key value
-    """
-    _delete_key: groups_delete_key_input
-
     """increments the numeric columns with given value of the filtered values"""
     _inc: groups_inc_input
-
-    """prepend existing jsonb value of filtered columns with new jsonb value"""
-    _prepend: groups_prepend_input
 
     """sets the columns of the filtered rows to the given values"""
     _set: groups_set_input
@@ -2025,30 +1832,8 @@ type mutation_root {
   update single row of the table: "groups"
   """
   update_groups_by_pk(
-    """append existing jsonb value of filtered columns with new jsonb value"""
-    _append: groups_append_input
-
-    """
-    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
-    """
-    _delete_at_path: groups_delete_at_path_input
-
-    """
-    delete the array element with specified index (negative integers count from
-    the end). throws an error if top level container is not an array
-    """
-    _delete_elem: groups_delete_elem_input
-
-    """
-    delete key/value pair or string element. key/value pairs are matched based on their key value
-    """
-    _delete_key: groups_delete_key_input
-
     """increments the numeric columns with given value of the filtered values"""
     _inc: groups_inc_input
-
-    """prepend existing jsonb value of filtered columns with new jsonb value"""
-    _prepend: groups_prepend_input
 
     """sets the columns of the filtered rows to the given values"""
     _set: groups_set_input
@@ -2241,6 +2026,46 @@ type query_root {
   contacts_by_pk(id: Int!): contacts
 
   """
+  execute function "get_people_to_contact_today" which returns "contacts"
+  """
+  get_people_to_contact_today(
+    """distinct select on columns"""
+    distinct_on: [contacts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contacts_order_by!]
+
+    """filter the rows returned"""
+    where: contacts_bool_exp
+  ): [contacts!]!
+
+  """
+  execute function "get_people_to_contact_today" and query aggregates on result of table type "contacts"
+  """
+  get_people_to_contact_today_aggregate(
+    """distinct select on columns"""
+    distinct_on: [contacts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contacts_order_by!]
+
+    """filter the rows returned"""
+    where: contacts_bool_exp
+  ): contacts_aggregate!
+
+  """
   fetch data from the table: "groups"
   """
   groups(
@@ -2360,6 +2185,56 @@ type query_root {
 
   """fetch data from the table: "reminders" using primary key columns"""
   reminders_by_pk(id: Int!): reminders
+
+  """
+  execute function "search_articles" which returns "contacts"
+  """
+  search_articles(
+    """
+    input parameters for function "search_articles"
+    """
+    args: search_articles_args!
+
+    """distinct select on columns"""
+    distinct_on: [contacts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contacts_order_by!]
+
+    """filter the rows returned"""
+    where: contacts_bool_exp
+  ): [contacts!]!
+
+  """
+  execute function "search_articles" and query aggregates on result of table type "contacts"
+  """
+  search_articles_aggregate(
+    """
+    input parameters for function "search_articles_aggregate"
+    """
+    args: search_articles_args!
+
+    """distinct select on columns"""
+    distinct_on: [contacts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contacts_order_by!]
+
+    """filter the rows returned"""
+    where: contacts_bool_exp
+  ): contacts_aggregate!
 }
 
 """
@@ -2369,6 +2244,7 @@ type reminders {
   """An object relationship"""
   contact: contacts!
   contact_id: Int!
+  contacted: Boolean!
   id: Int!
   notes: String!
   time: timestamptz!
@@ -2383,7 +2259,23 @@ type reminders_aggregate {
 }
 
 input reminders_aggregate_bool_exp {
+  bool_and: reminders_aggregate_bool_exp_bool_and
+  bool_or: reminders_aggregate_bool_exp_bool_or
   count: reminders_aggregate_bool_exp_count
+}
+
+input reminders_aggregate_bool_exp_bool_and {
+  arguments: reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns!
+  distinct: Boolean
+  filter: reminders_bool_exp
+  predicate: Boolean_comparison_exp!
+}
+
+input reminders_aggregate_bool_exp_bool_or {
+  arguments: reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns!
+  distinct: Boolean
+  filter: reminders_bool_exp
+  predicate: Boolean_comparison_exp!
 }
 
 input reminders_aggregate_bool_exp_count {
@@ -2460,6 +2352,7 @@ input reminders_bool_exp {
   _or: [reminders_bool_exp!]
   contact: contacts_bool_exp
   contact_id: Int_comparison_exp
+  contacted: Boolean_comparison_exp
   id: Int_comparison_exp
   notes: String_comparison_exp
   time: timestamptz_comparison_exp
@@ -2489,6 +2382,7 @@ input type for inserting data into table "reminders"
 input reminders_insert_input {
   contact: contacts_obj_rel_insert_input
   contact_id: Int
+  contacted: Boolean
   id: Int
   notes: String
   time: timestamptz
@@ -2554,6 +2448,7 @@ input reminders_on_conflict {
 input reminders_order_by {
   contact: contacts_order_by
   contact_id: order_by
+  contacted: order_by
   id: order_by
   notes: order_by
   time: order_by
@@ -2572,6 +2467,9 @@ enum reminders_select_column {
   contact_id
 
   """column name"""
+  contacted
+
+  """column name"""
   id
 
   """column name"""
@@ -2582,10 +2480,27 @@ enum reminders_select_column {
 }
 
 """
+select "reminders_aggregate_bool_exp_bool_and_arguments_columns" columns of table "reminders"
+"""
+enum reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns {
+  """column name"""
+  contacted
+}
+
+"""
+select "reminders_aggregate_bool_exp_bool_or_arguments_columns" columns of table "reminders"
+"""
+enum reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns {
+  """column name"""
+  contacted
+}
+
+"""
 input type for updating data in table "reminders"
 """
 input reminders_set_input {
   contact_id: Int
+  contacted: Boolean
   id: Int
   notes: String
   time: timestamptz
@@ -2647,6 +2562,7 @@ input reminders_stream_cursor_input {
 """Initial value of the column from where the streaming should start"""
 input reminders_stream_cursor_value_input {
   contact_id: Int
+  contacted: Boolean
   id: Int
   notes: String
   time: timestamptz
@@ -2672,6 +2588,9 @@ update columns of table "reminders"
 enum reminders_update_column {
   """column name"""
   contact_id
+
+  """column name"""
+  contacted
 
   """column name"""
   id
@@ -2734,6 +2653,10 @@ order by variance() on columns of table "reminders"
 input reminders_variance_order_by {
   contact_id: order_by
   id: order_by
+}
+
+input search_articles_args {
+  search: String
 }
 
 """
@@ -2905,6 +2828,46 @@ type subscription_root {
   ): [contacts!]!
 
   """
+  execute function "get_people_to_contact_today" which returns "contacts"
+  """
+  get_people_to_contact_today(
+    """distinct select on columns"""
+    distinct_on: [contacts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contacts_order_by!]
+
+    """filter the rows returned"""
+    where: contacts_bool_exp
+  ): [contacts!]!
+
+  """
+  execute function "get_people_to_contact_today" and query aggregates on result of table type "contacts"
+  """
+  get_people_to_contact_today_aggregate(
+    """distinct select on columns"""
+    distinct_on: [contacts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contacts_order_by!]
+
+    """filter the rows returned"""
+    where: contacts_bool_exp
+  ): contacts_aggregate!
+
+  """
   fetch data from the table: "groups"
   """
   groups(
@@ -3066,6 +3029,56 @@ type subscription_root {
     """filter the rows returned"""
     where: reminders_bool_exp
   ): [reminders!]!
+
+  """
+  execute function "search_articles" which returns "contacts"
+  """
+  search_articles(
+    """
+    input parameters for function "search_articles"
+    """
+    args: search_articles_args!
+
+    """distinct select on columns"""
+    distinct_on: [contacts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contacts_order_by!]
+
+    """filter the rows returned"""
+    where: contacts_bool_exp
+  ): [contacts!]!
+
+  """
+  execute function "search_articles" and query aggregates on result of table type "contacts"
+  """
+  search_articles_aggregate(
+    """
+    input parameters for function "search_articles_aggregate"
+    """
+    args: search_articles_args!
+
+    """distinct select on columns"""
+    distinct_on: [contacts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [contacts_order_by!]
+
+    """filter the rows returned"""
+    where: contacts_bool_exp
+  ): contacts_aggregate!
 }
 
 scalar timestamptz

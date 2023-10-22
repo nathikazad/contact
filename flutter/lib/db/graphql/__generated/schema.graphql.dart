@@ -4996,114 +4996,6 @@ class _CopyWithStubImpl$Input$contact_group_variance_order_by<TRes>
       _res;
 }
 
-class Input$contacts_append_input {
-  factory Input$contacts_append_input({dynamic? frequency}) =>
-      Input$contacts_append_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$contacts_append_input._(this._$data);
-
-  factory Input$contacts_append_input.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
-    }
-    return Input$contacts_append_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$contacts_append_input<Input$contacts_append_input>
-      get copyWith => CopyWith$Input$contacts_append_input(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$contacts_append_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll(
-        [_$data.containsKey('frequency') ? l$frequency : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$contacts_append_input<TRes> {
-  factory CopyWith$Input$contacts_append_input(
-    Input$contacts_append_input instance,
-    TRes Function(Input$contacts_append_input) then,
-  ) = _CopyWithImpl$Input$contacts_append_input;
-
-  factory CopyWith$Input$contacts_append_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$contacts_append_input;
-
-  TRes call({dynamic? frequency});
-}
-
-class _CopyWithImpl$Input$contacts_append_input<TRes>
-    implements CopyWith$Input$contacts_append_input<TRes> {
-  _CopyWithImpl$Input$contacts_append_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$contacts_append_input _instance;
-
-  final TRes Function(Input$contacts_append_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$contacts_append_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$contacts_append_input<TRes>
-    implements CopyWith$Input$contacts_append_input<TRes> {
-  _CopyWithStubImpl$Input$contacts_append_input(this._res);
-
-  TRes _res;
-
-  call({dynamic? frequency}) => _res;
-}
-
 class Input$contacts_bool_exp {
   factory Input$contacts_bool_exp({
     List<Input$contacts_bool_exp>? $_and,
@@ -5114,7 +5006,7 @@ class Input$contacts_bool_exp {
     Input$timestamptz_comparison_exp? date_added,
     Input$jsonb_array_comparison_exp? desires,
     Input$String_comparison_exp? email,
-    Input$jsonb_comparison_exp? frequency,
+    Input$Int_comparison_exp? frequency,
     Input$Int_comparison_exp? id,
     Input$jsonb_array_comparison_exp? images,
     Input$logs_bool_exp? logs,
@@ -5214,7 +5106,7 @@ class Input$contacts_bool_exp {
       final l$frequency = data['frequency'];
       result$data['frequency'] = l$frequency == null
           ? null
-          : Input$jsonb_comparison_exp.fromJson(
+          : Input$Int_comparison_exp.fromJson(
               (l$frequency as Map<String, dynamic>));
     }
     if (data.containsKey('id')) {
@@ -5315,8 +5207,8 @@ class Input$contacts_bool_exp {
   Input$String_comparison_exp? get email =>
       (_$data['email'] as Input$String_comparison_exp?);
 
-  Input$jsonb_comparison_exp? get frequency =>
-      (_$data['frequency'] as Input$jsonb_comparison_exp?);
+  Input$Int_comparison_exp? get frequency =>
+      (_$data['frequency'] as Input$Int_comparison_exp?);
 
   Input$Int_comparison_exp? get id =>
       (_$data['id'] as Input$Int_comparison_exp?);
@@ -5705,7 +5597,7 @@ abstract class CopyWith$Input$contacts_bool_exp<TRes> {
     Input$timestamptz_comparison_exp? date_added,
     Input$jsonb_array_comparison_exp? desires,
     Input$String_comparison_exp? email,
-    Input$jsonb_comparison_exp? frequency,
+    Input$Int_comparison_exp? frequency,
     Input$Int_comparison_exp? id,
     Input$jsonb_array_comparison_exp? images,
     Input$logs_bool_exp? logs,
@@ -5734,7 +5626,7 @@ abstract class CopyWith$Input$contacts_bool_exp<TRes> {
   CopyWith$Input$timestamptz_comparison_exp<TRes> get date_added;
   CopyWith$Input$jsonb_array_comparison_exp<TRes> get desires;
   CopyWith$Input$String_comparison_exp<TRes> get email;
-  CopyWith$Input$jsonb_comparison_exp<TRes> get frequency;
+  CopyWith$Input$Int_comparison_exp<TRes> get frequency;
   CopyWith$Input$Int_comparison_exp<TRes> get id;
   CopyWith$Input$jsonb_array_comparison_exp<TRes> get images;
   CopyWith$Input$logs_bool_exp<TRes> get logs;
@@ -5799,7 +5691,7 @@ class _CopyWithImpl$Input$contacts_bool_exp<TRes>
         if (email != _undefined)
           'email': (email as Input$String_comparison_exp?),
         if (frequency != _undefined)
-          'frequency': (frequency as Input$jsonb_comparison_exp?),
+          'frequency': (frequency as Input$Int_comparison_exp?),
         if (id != _undefined) 'id': (id as Input$Int_comparison_exp?),
         if (images != _undefined)
           'images': (images as Input$jsonb_array_comparison_exp?),
@@ -5894,11 +5786,11 @@ class _CopyWithImpl$Input$contacts_bool_exp<TRes>
             local$email, (e) => call(email: e));
   }
 
-  CopyWith$Input$jsonb_comparison_exp<TRes> get frequency {
+  CopyWith$Input$Int_comparison_exp<TRes> get frequency {
     final local$frequency = _instance.frequency;
     return local$frequency == null
-        ? CopyWith$Input$jsonb_comparison_exp.stub(_then(_instance))
-        : CopyWith$Input$jsonb_comparison_exp(
+        ? CopyWith$Input$Int_comparison_exp.stub(_then(_instance))
+        : CopyWith$Input$Int_comparison_exp(
             local$frequency, (e) => call(frequency: e));
   }
 
@@ -5996,7 +5888,7 @@ class _CopyWithStubImpl$Input$contacts_bool_exp<TRes>
     Input$timestamptz_comparison_exp? date_added,
     Input$jsonb_array_comparison_exp? desires,
     Input$String_comparison_exp? email,
-    Input$jsonb_comparison_exp? frequency,
+    Input$Int_comparison_exp? frequency,
     Input$Int_comparison_exp? id,
     Input$jsonb_array_comparison_exp? images,
     Input$logs_bool_exp? logs,
@@ -6033,8 +5925,8 @@ class _CopyWithStubImpl$Input$contacts_bool_exp<TRes>
   CopyWith$Input$String_comparison_exp<TRes> get email =>
       CopyWith$Input$String_comparison_exp.stub(_res);
 
-  CopyWith$Input$jsonb_comparison_exp<TRes> get frequency =>
-      CopyWith$Input$jsonb_comparison_exp.stub(_res);
+  CopyWith$Input$Int_comparison_exp<TRes> get frequency =>
+      CopyWith$Input$Int_comparison_exp.stub(_res);
 
   CopyWith$Input$Int_comparison_exp<TRes> get id =>
       CopyWith$Input$Int_comparison_exp.stub(_res);
@@ -6067,345 +5959,13 @@ class _CopyWithStubImpl$Input$contacts_bool_exp<TRes>
       CopyWith$Input$reminders_aggregate_bool_exp.stub(_res);
 }
 
-class Input$contacts_delete_at_path_input {
-  factory Input$contacts_delete_at_path_input({List<String>? frequency}) =>
-      Input$contacts_delete_at_path_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$contacts_delete_at_path_input._(this._$data);
-
-  factory Input$contacts_delete_at_path_input.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          (l$frequency as List<dynamic>?)?.map((e) => (e as String)).toList();
-    }
-    return Input$contacts_delete_at_path_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  List<String>? get frequency => (_$data['frequency'] as List<String>?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] = l$frequency?.map((e) => e).toList();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$contacts_delete_at_path_input<
-          Input$contacts_delete_at_path_input>
-      get copyWith => CopyWith$Input$contacts_delete_at_path_input(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$contacts_delete_at_path_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != null && lOther$frequency != null) {
-      if (l$frequency.length != lOther$frequency.length) {
-        return false;
-      }
-      for (int i = 0; i < l$frequency.length; i++) {
-        final l$frequency$entry = l$frequency[i];
-        final lOther$frequency$entry = lOther$frequency[i];
-        if (l$frequency$entry != lOther$frequency$entry) {
-          return false;
-        }
-      }
-    } else if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll([
-      _$data.containsKey('frequency')
-          ? l$frequency == null
-              ? null
-              : Object.hashAll(l$frequency.map((v) => v))
-          : const {}
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$contacts_delete_at_path_input<TRes> {
-  factory CopyWith$Input$contacts_delete_at_path_input(
-    Input$contacts_delete_at_path_input instance,
-    TRes Function(Input$contacts_delete_at_path_input) then,
-  ) = _CopyWithImpl$Input$contacts_delete_at_path_input;
-
-  factory CopyWith$Input$contacts_delete_at_path_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$contacts_delete_at_path_input;
-
-  TRes call({List<String>? frequency});
-}
-
-class _CopyWithImpl$Input$contacts_delete_at_path_input<TRes>
-    implements CopyWith$Input$contacts_delete_at_path_input<TRes> {
-  _CopyWithImpl$Input$contacts_delete_at_path_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$contacts_delete_at_path_input _instance;
-
-  final TRes Function(Input$contacts_delete_at_path_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$contacts_delete_at_path_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as List<String>?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$contacts_delete_at_path_input<TRes>
-    implements CopyWith$Input$contacts_delete_at_path_input<TRes> {
-  _CopyWithStubImpl$Input$contacts_delete_at_path_input(this._res);
-
-  TRes _res;
-
-  call({List<String>? frequency}) => _res;
-}
-
-class Input$contacts_delete_elem_input {
-  factory Input$contacts_delete_elem_input({int? frequency}) =>
-      Input$contacts_delete_elem_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$contacts_delete_elem_input._(this._$data);
-
-  factory Input$contacts_delete_elem_input.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] = (l$frequency as int?);
-    }
-    return Input$contacts_delete_elem_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  int? get frequency => (_$data['frequency'] as int?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] = l$frequency;
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$contacts_delete_elem_input<Input$contacts_delete_elem_input>
-      get copyWith => CopyWith$Input$contacts_delete_elem_input(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$contacts_delete_elem_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll(
-        [_$data.containsKey('frequency') ? l$frequency : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$contacts_delete_elem_input<TRes> {
-  factory CopyWith$Input$contacts_delete_elem_input(
-    Input$contacts_delete_elem_input instance,
-    TRes Function(Input$contacts_delete_elem_input) then,
-  ) = _CopyWithImpl$Input$contacts_delete_elem_input;
-
-  factory CopyWith$Input$contacts_delete_elem_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$contacts_delete_elem_input;
-
-  TRes call({int? frequency});
-}
-
-class _CopyWithImpl$Input$contacts_delete_elem_input<TRes>
-    implements CopyWith$Input$contacts_delete_elem_input<TRes> {
-  _CopyWithImpl$Input$contacts_delete_elem_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$contacts_delete_elem_input _instance;
-
-  final TRes Function(Input$contacts_delete_elem_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$contacts_delete_elem_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as int?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$contacts_delete_elem_input<TRes>
-    implements CopyWith$Input$contacts_delete_elem_input<TRes> {
-  _CopyWithStubImpl$Input$contacts_delete_elem_input(this._res);
-
-  TRes _res;
-
-  call({int? frequency}) => _res;
-}
-
-class Input$contacts_delete_key_input {
-  factory Input$contacts_delete_key_input({String? frequency}) =>
-      Input$contacts_delete_key_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$contacts_delete_key_input._(this._$data);
-
-  factory Input$contacts_delete_key_input.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] = (l$frequency as String?);
-    }
-    return Input$contacts_delete_key_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get frequency => (_$data['frequency'] as String?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] = l$frequency;
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$contacts_delete_key_input<Input$contacts_delete_key_input>
-      get copyWith => CopyWith$Input$contacts_delete_key_input(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$contacts_delete_key_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll(
-        [_$data.containsKey('frequency') ? l$frequency : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$contacts_delete_key_input<TRes> {
-  factory CopyWith$Input$contacts_delete_key_input(
-    Input$contacts_delete_key_input instance,
-    TRes Function(Input$contacts_delete_key_input) then,
-  ) = _CopyWithImpl$Input$contacts_delete_key_input;
-
-  factory CopyWith$Input$contacts_delete_key_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$contacts_delete_key_input;
-
-  TRes call({String? frequency});
-}
-
-class _CopyWithImpl$Input$contacts_delete_key_input<TRes>
-    implements CopyWith$Input$contacts_delete_key_input<TRes> {
-  _CopyWithImpl$Input$contacts_delete_key_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$contacts_delete_key_input _instance;
-
-  final TRes Function(Input$contacts_delete_key_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$contacts_delete_key_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as String?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$contacts_delete_key_input<TRes>
-    implements CopyWith$Input$contacts_delete_key_input<TRes> {
-  _CopyWithStubImpl$Input$contacts_delete_key_input(this._res);
-
-  TRes _res;
-
-  call({String? frequency}) => _res;
-}
-
 class Input$contacts_inc_input {
-  factory Input$contacts_inc_input({int? id}) => Input$contacts_inc_input._({
+  factory Input$contacts_inc_input({
+    int? frequency,
+    int? id,
+  }) =>
+      Input$contacts_inc_input._({
+        if (frequency != null) r'frequency': frequency,
         if (id != null) r'id': id,
       });
 
@@ -6413,6 +5973,10 @@ class Input$contacts_inc_input {
 
   factory Input$contacts_inc_input.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    if (data.containsKey('frequency')) {
+      final l$frequency = data['frequency'];
+      result$data['frequency'] = (l$frequency as int?);
+    }
     if (data.containsKey('id')) {
       final l$id = data['id'];
       result$data['id'] = (l$id as int?);
@@ -6422,10 +5986,16 @@ class Input$contacts_inc_input {
 
   Map<String, dynamic> _$data;
 
+  int? get frequency => (_$data['frequency'] as int?);
+
   int? get id => (_$data['id'] as int?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    if (_$data.containsKey('frequency')) {
+      final l$frequency = frequency;
+      result$data['frequency'] = l$frequency;
+    }
     if (_$data.containsKey('id')) {
       final l$id = id;
       result$data['id'] = l$id;
@@ -6448,6 +6018,15 @@ class Input$contacts_inc_input {
         runtimeType != other.runtimeType) {
       return false;
     }
+    final l$frequency = frequency;
+    final lOther$frequency = other.frequency;
+    if (_$data.containsKey('frequency') !=
+        other._$data.containsKey('frequency')) {
+      return false;
+    }
+    if (l$frequency != lOther$frequency) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
     if (_$data.containsKey('id') != other._$data.containsKey('id')) {
@@ -6461,8 +6040,12 @@ class Input$contacts_inc_input {
 
   @override
   int get hashCode {
+    final l$frequency = frequency;
     final l$id = id;
-    return Object.hashAll([_$data.containsKey('id') ? l$id : const {}]);
+    return Object.hashAll([
+      _$data.containsKey('frequency') ? l$frequency : const {},
+      _$data.containsKey('id') ? l$id : const {},
+    ]);
   }
 }
 
@@ -6475,7 +6058,10 @@ abstract class CopyWith$Input$contacts_inc_input<TRes> {
   factory CopyWith$Input$contacts_inc_input.stub(TRes res) =
       _CopyWithStubImpl$Input$contacts_inc_input;
 
-  TRes call({int? id});
+  TRes call({
+    int? frequency,
+    int? id,
+  });
 }
 
 class _CopyWithImpl$Input$contacts_inc_input<TRes>
@@ -6491,8 +6077,13 @@ class _CopyWithImpl$Input$contacts_inc_input<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? id = _undefined}) => _then(Input$contacts_inc_input._({
+  TRes call({
+    Object? frequency = _undefined,
+    Object? id = _undefined,
+  }) =>
+      _then(Input$contacts_inc_input._({
         ..._instance._$data,
+        if (frequency != _undefined) 'frequency': (frequency as int?),
         if (id != _undefined) 'id': (id as int?),
       }));
 }
@@ -6503,7 +6094,11 @@ class _CopyWithStubImpl$Input$contacts_inc_input<TRes>
 
   TRes _res;
 
-  call({int? id}) => _res;
+  call({
+    int? frequency,
+    int? id,
+  }) =>
+      _res;
 }
 
 class Input$contacts_insert_input {
@@ -6512,7 +6107,7 @@ class Input$contacts_insert_input {
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     List<dynamic>? images,
     Input$logs_arr_rel_insert_input? logs,
@@ -6564,8 +6159,7 @@ class Input$contacts_insert_input {
     }
     if (data.containsKey('frequency')) {
       final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
+      result$data['frequency'] = (l$frequency as int?);
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -6620,7 +6214,7 @@ class Input$contacts_insert_input {
 
   String? get email => (_$data['email'] as String?);
 
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
+  int? get frequency => (_$data['frequency'] as int?);
 
   int? get id => (_$data['id'] as int?);
 
@@ -6660,8 +6254,7 @@ class Input$contacts_insert_input {
     }
     if (_$data.containsKey('frequency')) {
       final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
+      result$data['frequency'] = l$frequency;
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -6903,7 +6496,7 @@ abstract class CopyWith$Input$contacts_insert_input<TRes> {
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     List<dynamic>? images,
     Input$logs_arr_rel_insert_input? logs,
@@ -6954,7 +6547,7 @@ class _CopyWithImpl$Input$contacts_insert_input<TRes>
         if (date_added != _undefined) 'date_added': (date_added as String?),
         if (desires != _undefined) 'desires': (desires as List<dynamic>?),
         if (email != _undefined) 'email': (email as String?),
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
+        if (frequency != _undefined) 'frequency': (frequency as int?),
         if (id != _undefined) 'id': (id as int?),
         if (images != _undefined) 'images': (images as List<dynamic>?),
         if (logs != _undefined)
@@ -7005,7 +6598,7 @@ class _CopyWithStubImpl$Input$contacts_insert_input<TRes>
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     List<dynamic>? images,
     Input$logs_arr_rel_insert_input? logs,
@@ -8003,120 +7596,12 @@ class _CopyWithStubImpl$Input$contacts_pk_columns_input<TRes>
   call({int? id}) => _res;
 }
 
-class Input$contacts_prepend_input {
-  factory Input$contacts_prepend_input({dynamic? frequency}) =>
-      Input$contacts_prepend_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$contacts_prepend_input._(this._$data);
-
-  factory Input$contacts_prepend_input.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
-    }
-    return Input$contacts_prepend_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$contacts_prepend_input<Input$contacts_prepend_input>
-      get copyWith => CopyWith$Input$contacts_prepend_input(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$contacts_prepend_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll(
-        [_$data.containsKey('frequency') ? l$frequency : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$contacts_prepend_input<TRes> {
-  factory CopyWith$Input$contacts_prepend_input(
-    Input$contacts_prepend_input instance,
-    TRes Function(Input$contacts_prepend_input) then,
-  ) = _CopyWithImpl$Input$contacts_prepend_input;
-
-  factory CopyWith$Input$contacts_prepend_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$contacts_prepend_input;
-
-  TRes call({dynamic? frequency});
-}
-
-class _CopyWithImpl$Input$contacts_prepend_input<TRes>
-    implements CopyWith$Input$contacts_prepend_input<TRes> {
-  _CopyWithImpl$Input$contacts_prepend_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$contacts_prepend_input _instance;
-
-  final TRes Function(Input$contacts_prepend_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$contacts_prepend_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$contacts_prepend_input<TRes>
-    implements CopyWith$Input$contacts_prepend_input<TRes> {
-  _CopyWithStubImpl$Input$contacts_prepend_input(this._res);
-
-  TRes _res;
-
-  call({dynamic? frequency}) => _res;
-}
-
 class Input$contacts_set_input {
   factory Input$contacts_set_input({
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     List<dynamic>? images,
     String? name,
@@ -8156,8 +7641,7 @@ class Input$contacts_set_input {
     }
     if (data.containsKey('frequency')) {
       final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
+      result$data['frequency'] = (l$frequency as int?);
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -8195,7 +7679,7 @@ class Input$contacts_set_input {
 
   String? get email => (_$data['email'] as String?);
 
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
+  int? get frequency => (_$data['frequency'] as int?);
 
   int? get id => (_$data['id'] as int?);
 
@@ -8225,8 +7709,7 @@ class Input$contacts_set_input {
     }
     if (_$data.containsKey('frequency')) {
       final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
+      result$data['frequency'] = l$frequency;
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -8427,7 +7910,7 @@ abstract class CopyWith$Input$contacts_set_input<TRes> {
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     List<dynamic>? images,
     String? name,
@@ -8467,7 +7950,7 @@ class _CopyWithImpl$Input$contacts_set_input<TRes>
         if (date_added != _undefined) 'date_added': (date_added as String?),
         if (desires != _undefined) 'desires': (desires as List<dynamic>?),
         if (email != _undefined) 'email': (email as String?),
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
+        if (frequency != _undefined) 'frequency': (frequency as int?),
         if (id != _undefined) 'id': (id as int?),
         if (images != _undefined) 'images': (images as List<dynamic>?),
         if (name != _undefined) 'name': (name as String?),
@@ -8488,7 +7971,7 @@ class _CopyWithStubImpl$Input$contacts_set_input<TRes>
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     List<dynamic>? images,
     String? name,
@@ -8661,7 +8144,7 @@ class Input$contacts_stream_cursor_value_input {
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     List<dynamic>? images,
     String? name,
@@ -8702,8 +8185,7 @@ class Input$contacts_stream_cursor_value_input {
     }
     if (data.containsKey('frequency')) {
       final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
+      result$data['frequency'] = (l$frequency as int?);
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -8741,7 +8223,7 @@ class Input$contacts_stream_cursor_value_input {
 
   String? get email => (_$data['email'] as String?);
 
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
+  int? get frequency => (_$data['frequency'] as int?);
 
   int? get id => (_$data['id'] as int?);
 
@@ -8771,8 +8253,7 @@ class Input$contacts_stream_cursor_value_input {
     }
     if (_$data.containsKey('frequency')) {
       final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
+      result$data['frequency'] = l$frequency;
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -8974,7 +8455,7 @@ abstract class CopyWith$Input$contacts_stream_cursor_value_input<TRes> {
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     List<dynamic>? images,
     String? name,
@@ -9014,7 +8495,7 @@ class _CopyWithImpl$Input$contacts_stream_cursor_value_input<TRes>
         if (date_added != _undefined) 'date_added': (date_added as String?),
         if (desires != _undefined) 'desires': (desires as List<dynamic>?),
         if (email != _undefined) 'email': (email as String?),
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
+        if (frequency != _undefined) 'frequency': (frequency as int?),
         if (id != _undefined) 'id': (id as int?),
         if (images != _undefined) 'images': (images as List<dynamic>?),
         if (name != _undefined) 'name': (name as String?),
@@ -9035,7 +8516,7 @@ class _CopyWithStubImpl$Input$contacts_stream_cursor_value_input<TRes>
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     List<dynamic>? images,
     String? name,
@@ -9048,22 +8529,12 @@ class _CopyWithStubImpl$Input$contacts_stream_cursor_value_input<TRes>
 
 class Input$contacts_updates {
   factory Input$contacts_updates({
-    Input$contacts_append_input? $_append,
-    Input$contacts_delete_at_path_input? $_delete_at_path,
-    Input$contacts_delete_elem_input? $_delete_elem,
-    Input$contacts_delete_key_input? $_delete_key,
     Input$contacts_inc_input? $_inc,
-    Input$contacts_prepend_input? $_prepend,
     Input$contacts_set_input? $_set,
     required Input$contacts_bool_exp where,
   }) =>
       Input$contacts_updates._({
-        if ($_append != null) r'_append': $_append,
-        if ($_delete_at_path != null) r'_delete_at_path': $_delete_at_path,
-        if ($_delete_elem != null) r'_delete_elem': $_delete_elem,
-        if ($_delete_key != null) r'_delete_key': $_delete_key,
         if ($_inc != null) r'_inc': $_inc,
-        if ($_prepend != null) r'_prepend': $_prepend,
         if ($_set != null) r'_set': $_set,
         r'where': where,
       });
@@ -9072,47 +8543,12 @@ class Input$contacts_updates {
 
   factory Input$contacts_updates.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
-    if (data.containsKey('_append')) {
-      final l$$_append = data['_append'];
-      result$data['_append'] = l$$_append == null
-          ? null
-          : Input$contacts_append_input.fromJson(
-              (l$$_append as Map<String, dynamic>));
-    }
-    if (data.containsKey('_delete_at_path')) {
-      final l$$_delete_at_path = data['_delete_at_path'];
-      result$data['_delete_at_path'] = l$$_delete_at_path == null
-          ? null
-          : Input$contacts_delete_at_path_input.fromJson(
-              (l$$_delete_at_path as Map<String, dynamic>));
-    }
-    if (data.containsKey('_delete_elem')) {
-      final l$$_delete_elem = data['_delete_elem'];
-      result$data['_delete_elem'] = l$$_delete_elem == null
-          ? null
-          : Input$contacts_delete_elem_input.fromJson(
-              (l$$_delete_elem as Map<String, dynamic>));
-    }
-    if (data.containsKey('_delete_key')) {
-      final l$$_delete_key = data['_delete_key'];
-      result$data['_delete_key'] = l$$_delete_key == null
-          ? null
-          : Input$contacts_delete_key_input.fromJson(
-              (l$$_delete_key as Map<String, dynamic>));
-    }
     if (data.containsKey('_inc')) {
       final l$$_inc = data['_inc'];
       result$data['_inc'] = l$$_inc == null
           ? null
           : Input$contacts_inc_input.fromJson(
               (l$$_inc as Map<String, dynamic>));
-    }
-    if (data.containsKey('_prepend')) {
-      final l$$_prepend = data['_prepend'];
-      result$data['_prepend'] = l$$_prepend == null
-          ? null
-          : Input$contacts_prepend_input.fromJson(
-              (l$$_prepend as Map<String, dynamic>));
     }
     if (data.containsKey('_set')) {
       final l$$_set = data['_set'];
@@ -9129,23 +8565,8 @@ class Input$contacts_updates {
 
   Map<String, dynamic> _$data;
 
-  Input$contacts_append_input? get $_append =>
-      (_$data['_append'] as Input$contacts_append_input?);
-
-  Input$contacts_delete_at_path_input? get $_delete_at_path =>
-      (_$data['_delete_at_path'] as Input$contacts_delete_at_path_input?);
-
-  Input$contacts_delete_elem_input? get $_delete_elem =>
-      (_$data['_delete_elem'] as Input$contacts_delete_elem_input?);
-
-  Input$contacts_delete_key_input? get $_delete_key =>
-      (_$data['_delete_key'] as Input$contacts_delete_key_input?);
-
   Input$contacts_inc_input? get $_inc =>
       (_$data['_inc'] as Input$contacts_inc_input?);
-
-  Input$contacts_prepend_input? get $_prepend =>
-      (_$data['_prepend'] as Input$contacts_prepend_input?);
 
   Input$contacts_set_input? get $_set =>
       (_$data['_set'] as Input$contacts_set_input?);
@@ -9155,29 +8576,9 @@ class Input$contacts_updates {
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
-    if (_$data.containsKey('_append')) {
-      final l$$_append = $_append;
-      result$data['_append'] = l$$_append?.toJson();
-    }
-    if (_$data.containsKey('_delete_at_path')) {
-      final l$$_delete_at_path = $_delete_at_path;
-      result$data['_delete_at_path'] = l$$_delete_at_path?.toJson();
-    }
-    if (_$data.containsKey('_delete_elem')) {
-      final l$$_delete_elem = $_delete_elem;
-      result$data['_delete_elem'] = l$$_delete_elem?.toJson();
-    }
-    if (_$data.containsKey('_delete_key')) {
-      final l$$_delete_key = $_delete_key;
-      result$data['_delete_key'] = l$$_delete_key?.toJson();
-    }
     if (_$data.containsKey('_inc')) {
       final l$$_inc = $_inc;
       result$data['_inc'] = l$$_inc?.toJson();
-    }
-    if (_$data.containsKey('_prepend')) {
-      final l$$_prepend = $_prepend;
-      result$data['_prepend'] = l$$_prepend?.toJson();
     }
     if (_$data.containsKey('_set')) {
       final l$$_set = $_set;
@@ -9203,56 +8604,12 @@ class Input$contacts_updates {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$$_append = $_append;
-    final lOther$$_append = other.$_append;
-    if (_$data.containsKey('_append') != other._$data.containsKey('_append')) {
-      return false;
-    }
-    if (l$$_append != lOther$$_append) {
-      return false;
-    }
-    final l$$_delete_at_path = $_delete_at_path;
-    final lOther$$_delete_at_path = other.$_delete_at_path;
-    if (_$data.containsKey('_delete_at_path') !=
-        other._$data.containsKey('_delete_at_path')) {
-      return false;
-    }
-    if (l$$_delete_at_path != lOther$$_delete_at_path) {
-      return false;
-    }
-    final l$$_delete_elem = $_delete_elem;
-    final lOther$$_delete_elem = other.$_delete_elem;
-    if (_$data.containsKey('_delete_elem') !=
-        other._$data.containsKey('_delete_elem')) {
-      return false;
-    }
-    if (l$$_delete_elem != lOther$$_delete_elem) {
-      return false;
-    }
-    final l$$_delete_key = $_delete_key;
-    final lOther$$_delete_key = other.$_delete_key;
-    if (_$data.containsKey('_delete_key') !=
-        other._$data.containsKey('_delete_key')) {
-      return false;
-    }
-    if (l$$_delete_key != lOther$$_delete_key) {
-      return false;
-    }
     final l$$_inc = $_inc;
     final lOther$$_inc = other.$_inc;
     if (_$data.containsKey('_inc') != other._$data.containsKey('_inc')) {
       return false;
     }
     if (l$$_inc != lOther$$_inc) {
-      return false;
-    }
-    final l$$_prepend = $_prepend;
-    final lOther$$_prepend = other.$_prepend;
-    if (_$data.containsKey('_prepend') !=
-        other._$data.containsKey('_prepend')) {
-      return false;
-    }
-    if (l$$_prepend != lOther$$_prepend) {
       return false;
     }
     final l$$_set = $_set;
@@ -9273,21 +8630,11 @@ class Input$contacts_updates {
 
   @override
   int get hashCode {
-    final l$$_append = $_append;
-    final l$$_delete_at_path = $_delete_at_path;
-    final l$$_delete_elem = $_delete_elem;
-    final l$$_delete_key = $_delete_key;
     final l$$_inc = $_inc;
-    final l$$_prepend = $_prepend;
     final l$$_set = $_set;
     final l$where = where;
     return Object.hashAll([
-      _$data.containsKey('_append') ? l$$_append : const {},
-      _$data.containsKey('_delete_at_path') ? l$$_delete_at_path : const {},
-      _$data.containsKey('_delete_elem') ? l$$_delete_elem : const {},
-      _$data.containsKey('_delete_key') ? l$$_delete_key : const {},
       _$data.containsKey('_inc') ? l$$_inc : const {},
-      _$data.containsKey('_prepend') ? l$$_prepend : const {},
       _$data.containsKey('_set') ? l$$_set : const {},
       l$where,
     ]);
@@ -9304,21 +8651,11 @@ abstract class CopyWith$Input$contacts_updates<TRes> {
       _CopyWithStubImpl$Input$contacts_updates;
 
   TRes call({
-    Input$contacts_append_input? $_append,
-    Input$contacts_delete_at_path_input? $_delete_at_path,
-    Input$contacts_delete_elem_input? $_delete_elem,
-    Input$contacts_delete_key_input? $_delete_key,
     Input$contacts_inc_input? $_inc,
-    Input$contacts_prepend_input? $_prepend,
     Input$contacts_set_input? $_set,
     Input$contacts_bool_exp? where,
   });
-  CopyWith$Input$contacts_append_input<TRes> get $_append;
-  CopyWith$Input$contacts_delete_at_path_input<TRes> get $_delete_at_path;
-  CopyWith$Input$contacts_delete_elem_input<TRes> get $_delete_elem;
-  CopyWith$Input$contacts_delete_key_input<TRes> get $_delete_key;
   CopyWith$Input$contacts_inc_input<TRes> get $_inc;
-  CopyWith$Input$contacts_prepend_input<TRes> get $_prepend;
   CopyWith$Input$contacts_set_input<TRes> get $_set;
   CopyWith$Input$contacts_bool_exp<TRes> get where;
 }
@@ -9337,79 +8674,23 @@ class _CopyWithImpl$Input$contacts_updates<TRes>
   static const _undefined = {};
 
   TRes call({
-    Object? $_append = _undefined,
-    Object? $_delete_at_path = _undefined,
-    Object? $_delete_elem = _undefined,
-    Object? $_delete_key = _undefined,
     Object? $_inc = _undefined,
-    Object? $_prepend = _undefined,
     Object? $_set = _undefined,
     Object? where = _undefined,
   }) =>
       _then(Input$contacts_updates._({
         ..._instance._$data,
-        if ($_append != _undefined)
-          '_append': ($_append as Input$contacts_append_input?),
-        if ($_delete_at_path != _undefined)
-          '_delete_at_path':
-              ($_delete_at_path as Input$contacts_delete_at_path_input?),
-        if ($_delete_elem != _undefined)
-          '_delete_elem': ($_delete_elem as Input$contacts_delete_elem_input?),
-        if ($_delete_key != _undefined)
-          '_delete_key': ($_delete_key as Input$contacts_delete_key_input?),
         if ($_inc != _undefined) '_inc': ($_inc as Input$contacts_inc_input?),
-        if ($_prepend != _undefined)
-          '_prepend': ($_prepend as Input$contacts_prepend_input?),
         if ($_set != _undefined) '_set': ($_set as Input$contacts_set_input?),
         if (where != _undefined && where != null)
           'where': (where as Input$contacts_bool_exp),
       }));
-
-  CopyWith$Input$contacts_append_input<TRes> get $_append {
-    final local$$_append = _instance.$_append;
-    return local$$_append == null
-        ? CopyWith$Input$contacts_append_input.stub(_then(_instance))
-        : CopyWith$Input$contacts_append_input(
-            local$$_append, (e) => call($_append: e));
-  }
-
-  CopyWith$Input$contacts_delete_at_path_input<TRes> get $_delete_at_path {
-    final local$$_delete_at_path = _instance.$_delete_at_path;
-    return local$$_delete_at_path == null
-        ? CopyWith$Input$contacts_delete_at_path_input.stub(_then(_instance))
-        : CopyWith$Input$contacts_delete_at_path_input(
-            local$$_delete_at_path, (e) => call($_delete_at_path: e));
-  }
-
-  CopyWith$Input$contacts_delete_elem_input<TRes> get $_delete_elem {
-    final local$$_delete_elem = _instance.$_delete_elem;
-    return local$$_delete_elem == null
-        ? CopyWith$Input$contacts_delete_elem_input.stub(_then(_instance))
-        : CopyWith$Input$contacts_delete_elem_input(
-            local$$_delete_elem, (e) => call($_delete_elem: e));
-  }
-
-  CopyWith$Input$contacts_delete_key_input<TRes> get $_delete_key {
-    final local$$_delete_key = _instance.$_delete_key;
-    return local$$_delete_key == null
-        ? CopyWith$Input$contacts_delete_key_input.stub(_then(_instance))
-        : CopyWith$Input$contacts_delete_key_input(
-            local$$_delete_key, (e) => call($_delete_key: e));
-  }
 
   CopyWith$Input$contacts_inc_input<TRes> get $_inc {
     final local$$_inc = _instance.$_inc;
     return local$$_inc == null
         ? CopyWith$Input$contacts_inc_input.stub(_then(_instance))
         : CopyWith$Input$contacts_inc_input(local$$_inc, (e) => call($_inc: e));
-  }
-
-  CopyWith$Input$contacts_prepend_input<TRes> get $_prepend {
-    final local$$_prepend = _instance.$_prepend;
-    return local$$_prepend == null
-        ? CopyWith$Input$contacts_prepend_input.stub(_then(_instance))
-        : CopyWith$Input$contacts_prepend_input(
-            local$$_prepend, (e) => call($_prepend: e));
   }
 
   CopyWith$Input$contacts_set_input<TRes> get $_set {
@@ -9432,148 +8713,20 @@ class _CopyWithStubImpl$Input$contacts_updates<TRes>
   TRes _res;
 
   call({
-    Input$contacts_append_input? $_append,
-    Input$contacts_delete_at_path_input? $_delete_at_path,
-    Input$contacts_delete_elem_input? $_delete_elem,
-    Input$contacts_delete_key_input? $_delete_key,
     Input$contacts_inc_input? $_inc,
-    Input$contacts_prepend_input? $_prepend,
     Input$contacts_set_input? $_set,
     Input$contacts_bool_exp? where,
   }) =>
       _res;
 
-  CopyWith$Input$contacts_append_input<TRes> get $_append =>
-      CopyWith$Input$contacts_append_input.stub(_res);
-
-  CopyWith$Input$contacts_delete_at_path_input<TRes> get $_delete_at_path =>
-      CopyWith$Input$contacts_delete_at_path_input.stub(_res);
-
-  CopyWith$Input$contacts_delete_elem_input<TRes> get $_delete_elem =>
-      CopyWith$Input$contacts_delete_elem_input.stub(_res);
-
-  CopyWith$Input$contacts_delete_key_input<TRes> get $_delete_key =>
-      CopyWith$Input$contacts_delete_key_input.stub(_res);
-
   CopyWith$Input$contacts_inc_input<TRes> get $_inc =>
       CopyWith$Input$contacts_inc_input.stub(_res);
-
-  CopyWith$Input$contacts_prepend_input<TRes> get $_prepend =>
-      CopyWith$Input$contacts_prepend_input.stub(_res);
 
   CopyWith$Input$contacts_set_input<TRes> get $_set =>
       CopyWith$Input$contacts_set_input.stub(_res);
 
   CopyWith$Input$contacts_bool_exp<TRes> get where =>
       CopyWith$Input$contacts_bool_exp.stub(_res);
-}
-
-class Input$groups_append_input {
-  factory Input$groups_append_input({dynamic? frequency}) =>
-      Input$groups_append_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$groups_append_input._(this._$data);
-
-  factory Input$groups_append_input.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
-    }
-    return Input$groups_append_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$groups_append_input<Input$groups_append_input> get copyWith =>
-      CopyWith$Input$groups_append_input(
-        this,
-        (i) => i,
-      );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$groups_append_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll(
-        [_$data.containsKey('frequency') ? l$frequency : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$groups_append_input<TRes> {
-  factory CopyWith$Input$groups_append_input(
-    Input$groups_append_input instance,
-    TRes Function(Input$groups_append_input) then,
-  ) = _CopyWithImpl$Input$groups_append_input;
-
-  factory CopyWith$Input$groups_append_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$groups_append_input;
-
-  TRes call({dynamic? frequency});
-}
-
-class _CopyWithImpl$Input$groups_append_input<TRes>
-    implements CopyWith$Input$groups_append_input<TRes> {
-  _CopyWithImpl$Input$groups_append_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$groups_append_input _instance;
-
-  final TRes Function(Input$groups_append_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$groups_append_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$groups_append_input<TRes>
-    implements CopyWith$Input$groups_append_input<TRes> {
-  _CopyWithStubImpl$Input$groups_append_input(this._res);
-
-  TRes _res;
-
-  call({dynamic? frequency}) => _res;
 }
 
 class Input$groups_bool_exp {
@@ -9583,7 +8736,7 @@ class Input$groups_bool_exp {
     List<Input$groups_bool_exp>? $_or,
     Input$contact_group_bool_exp? contact_groups,
     Input$contact_group_aggregate_bool_exp? contact_groups_aggregate,
-    Input$jsonb_comparison_exp? frequency,
+    Input$Int_comparison_exp? frequency,
     Input$Int_comparison_exp? id,
     Input$String_comparison_exp? name,
   }) =>
@@ -9642,7 +8795,7 @@ class Input$groups_bool_exp {
       final l$frequency = data['frequency'];
       result$data['frequency'] = l$frequency == null
           ? null
-          : Input$jsonb_comparison_exp.fromJson(
+          : Input$Int_comparison_exp.fromJson(
               (l$frequency as Map<String, dynamic>));
     }
     if (data.containsKey('id')) {
@@ -9679,8 +8832,8 @@ class Input$groups_bool_exp {
       (_$data['contact_groups_aggregate']
           as Input$contact_group_aggregate_bool_exp?);
 
-  Input$jsonb_comparison_exp? get frequency =>
-      (_$data['frequency'] as Input$jsonb_comparison_exp?);
+  Input$Int_comparison_exp? get frequency =>
+      (_$data['frequency'] as Input$Int_comparison_exp?);
 
   Input$Int_comparison_exp? get id =>
       (_$data['id'] as Input$Int_comparison_exp?);
@@ -9880,7 +9033,7 @@ abstract class CopyWith$Input$groups_bool_exp<TRes> {
     List<Input$groups_bool_exp>? $_or,
     Input$contact_group_bool_exp? contact_groups,
     Input$contact_group_aggregate_bool_exp? contact_groups_aggregate,
-    Input$jsonb_comparison_exp? frequency,
+    Input$Int_comparison_exp? frequency,
     Input$Int_comparison_exp? id,
     Input$String_comparison_exp? name,
   });
@@ -9896,7 +9049,7 @@ abstract class CopyWith$Input$groups_bool_exp<TRes> {
   CopyWith$Input$contact_group_bool_exp<TRes> get contact_groups;
   CopyWith$Input$contact_group_aggregate_bool_exp<TRes>
       get contact_groups_aggregate;
-  CopyWith$Input$jsonb_comparison_exp<TRes> get frequency;
+  CopyWith$Input$Int_comparison_exp<TRes> get frequency;
   CopyWith$Input$Int_comparison_exp<TRes> get id;
   CopyWith$Input$String_comparison_exp<TRes> get name;
 }
@@ -9936,7 +9089,7 @@ class _CopyWithImpl$Input$groups_bool_exp<TRes>
           'contact_groups_aggregate': (contact_groups_aggregate
               as Input$contact_group_aggregate_bool_exp?),
         if (frequency != _undefined)
-          'frequency': (frequency as Input$jsonb_comparison_exp?),
+          'frequency': (frequency as Input$Int_comparison_exp?),
         if (id != _undefined) 'id': (id as Input$Int_comparison_exp?),
         if (name != _undefined) 'name': (name as Input$String_comparison_exp?),
       }));
@@ -9988,11 +9141,11 @@ class _CopyWithImpl$Input$groups_bool_exp<TRes>
             (e) => call(contact_groups_aggregate: e));
   }
 
-  CopyWith$Input$jsonb_comparison_exp<TRes> get frequency {
+  CopyWith$Input$Int_comparison_exp<TRes> get frequency {
     final local$frequency = _instance.frequency;
     return local$frequency == null
-        ? CopyWith$Input$jsonb_comparison_exp.stub(_then(_instance))
-        : CopyWith$Input$jsonb_comparison_exp(
+        ? CopyWith$Input$Int_comparison_exp.stub(_then(_instance))
+        : CopyWith$Input$Int_comparison_exp(
             local$frequency, (e) => call(frequency: e));
   }
 
@@ -10024,7 +9177,7 @@ class _CopyWithStubImpl$Input$groups_bool_exp<TRes>
     List<Input$groups_bool_exp>? $_or,
     Input$contact_group_bool_exp? contact_groups,
     Input$contact_group_aggregate_bool_exp? contact_groups_aggregate,
-    Input$jsonb_comparison_exp? frequency,
+    Input$Int_comparison_exp? frequency,
     Input$Int_comparison_exp? id,
     Input$String_comparison_exp? name,
   }) =>
@@ -10044,8 +9197,8 @@ class _CopyWithStubImpl$Input$groups_bool_exp<TRes>
       get contact_groups_aggregate =>
           CopyWith$Input$contact_group_aggregate_bool_exp.stub(_res);
 
-  CopyWith$Input$jsonb_comparison_exp<TRes> get frequency =>
-      CopyWith$Input$jsonb_comparison_exp.stub(_res);
+  CopyWith$Input$Int_comparison_exp<TRes> get frequency =>
+      CopyWith$Input$Int_comparison_exp.stub(_res);
 
   CopyWith$Input$Int_comparison_exp<TRes> get id =>
       CopyWith$Input$Int_comparison_exp.stub(_res);
@@ -10054,344 +9207,13 @@ class _CopyWithStubImpl$Input$groups_bool_exp<TRes>
       CopyWith$Input$String_comparison_exp.stub(_res);
 }
 
-class Input$groups_delete_at_path_input {
-  factory Input$groups_delete_at_path_input({List<String>? frequency}) =>
-      Input$groups_delete_at_path_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$groups_delete_at_path_input._(this._$data);
-
-  factory Input$groups_delete_at_path_input.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          (l$frequency as List<dynamic>?)?.map((e) => (e as String)).toList();
-    }
-    return Input$groups_delete_at_path_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  List<String>? get frequency => (_$data['frequency'] as List<String>?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] = l$frequency?.map((e) => e).toList();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$groups_delete_at_path_input<Input$groups_delete_at_path_input>
-      get copyWith => CopyWith$Input$groups_delete_at_path_input(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$groups_delete_at_path_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != null && lOther$frequency != null) {
-      if (l$frequency.length != lOther$frequency.length) {
-        return false;
-      }
-      for (int i = 0; i < l$frequency.length; i++) {
-        final l$frequency$entry = l$frequency[i];
-        final lOther$frequency$entry = lOther$frequency[i];
-        if (l$frequency$entry != lOther$frequency$entry) {
-          return false;
-        }
-      }
-    } else if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll([
-      _$data.containsKey('frequency')
-          ? l$frequency == null
-              ? null
-              : Object.hashAll(l$frequency.map((v) => v))
-          : const {}
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$groups_delete_at_path_input<TRes> {
-  factory CopyWith$Input$groups_delete_at_path_input(
-    Input$groups_delete_at_path_input instance,
-    TRes Function(Input$groups_delete_at_path_input) then,
-  ) = _CopyWithImpl$Input$groups_delete_at_path_input;
-
-  factory CopyWith$Input$groups_delete_at_path_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$groups_delete_at_path_input;
-
-  TRes call({List<String>? frequency});
-}
-
-class _CopyWithImpl$Input$groups_delete_at_path_input<TRes>
-    implements CopyWith$Input$groups_delete_at_path_input<TRes> {
-  _CopyWithImpl$Input$groups_delete_at_path_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$groups_delete_at_path_input _instance;
-
-  final TRes Function(Input$groups_delete_at_path_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$groups_delete_at_path_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as List<String>?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$groups_delete_at_path_input<TRes>
-    implements CopyWith$Input$groups_delete_at_path_input<TRes> {
-  _CopyWithStubImpl$Input$groups_delete_at_path_input(this._res);
-
-  TRes _res;
-
-  call({List<String>? frequency}) => _res;
-}
-
-class Input$groups_delete_elem_input {
-  factory Input$groups_delete_elem_input({int? frequency}) =>
-      Input$groups_delete_elem_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$groups_delete_elem_input._(this._$data);
-
-  factory Input$groups_delete_elem_input.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] = (l$frequency as int?);
-    }
-    return Input$groups_delete_elem_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  int? get frequency => (_$data['frequency'] as int?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] = l$frequency;
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$groups_delete_elem_input<Input$groups_delete_elem_input>
-      get copyWith => CopyWith$Input$groups_delete_elem_input(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$groups_delete_elem_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll(
-        [_$data.containsKey('frequency') ? l$frequency : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$groups_delete_elem_input<TRes> {
-  factory CopyWith$Input$groups_delete_elem_input(
-    Input$groups_delete_elem_input instance,
-    TRes Function(Input$groups_delete_elem_input) then,
-  ) = _CopyWithImpl$Input$groups_delete_elem_input;
-
-  factory CopyWith$Input$groups_delete_elem_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$groups_delete_elem_input;
-
-  TRes call({int? frequency});
-}
-
-class _CopyWithImpl$Input$groups_delete_elem_input<TRes>
-    implements CopyWith$Input$groups_delete_elem_input<TRes> {
-  _CopyWithImpl$Input$groups_delete_elem_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$groups_delete_elem_input _instance;
-
-  final TRes Function(Input$groups_delete_elem_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$groups_delete_elem_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as int?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$groups_delete_elem_input<TRes>
-    implements CopyWith$Input$groups_delete_elem_input<TRes> {
-  _CopyWithStubImpl$Input$groups_delete_elem_input(this._res);
-
-  TRes _res;
-
-  call({int? frequency}) => _res;
-}
-
-class Input$groups_delete_key_input {
-  factory Input$groups_delete_key_input({String? frequency}) =>
-      Input$groups_delete_key_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$groups_delete_key_input._(this._$data);
-
-  factory Input$groups_delete_key_input.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] = (l$frequency as String?);
-    }
-    return Input$groups_delete_key_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get frequency => (_$data['frequency'] as String?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] = l$frequency;
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$groups_delete_key_input<Input$groups_delete_key_input>
-      get copyWith => CopyWith$Input$groups_delete_key_input(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$groups_delete_key_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll(
-        [_$data.containsKey('frequency') ? l$frequency : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$groups_delete_key_input<TRes> {
-  factory CopyWith$Input$groups_delete_key_input(
-    Input$groups_delete_key_input instance,
-    TRes Function(Input$groups_delete_key_input) then,
-  ) = _CopyWithImpl$Input$groups_delete_key_input;
-
-  factory CopyWith$Input$groups_delete_key_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$groups_delete_key_input;
-
-  TRes call({String? frequency});
-}
-
-class _CopyWithImpl$Input$groups_delete_key_input<TRes>
-    implements CopyWith$Input$groups_delete_key_input<TRes> {
-  _CopyWithImpl$Input$groups_delete_key_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$groups_delete_key_input _instance;
-
-  final TRes Function(Input$groups_delete_key_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$groups_delete_key_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as String?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$groups_delete_key_input<TRes>
-    implements CopyWith$Input$groups_delete_key_input<TRes> {
-  _CopyWithStubImpl$Input$groups_delete_key_input(this._res);
-
-  TRes _res;
-
-  call({String? frequency}) => _res;
-}
-
 class Input$groups_inc_input {
-  factory Input$groups_inc_input({int? id}) => Input$groups_inc_input._({
+  factory Input$groups_inc_input({
+    int? frequency,
+    int? id,
+  }) =>
+      Input$groups_inc_input._({
+        if (frequency != null) r'frequency': frequency,
         if (id != null) r'id': id,
       });
 
@@ -10399,6 +9221,10 @@ class Input$groups_inc_input {
 
   factory Input$groups_inc_input.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    if (data.containsKey('frequency')) {
+      final l$frequency = data['frequency'];
+      result$data['frequency'] = (l$frequency as int?);
+    }
     if (data.containsKey('id')) {
       final l$id = data['id'];
       result$data['id'] = (l$id as int?);
@@ -10408,10 +9234,16 @@ class Input$groups_inc_input {
 
   Map<String, dynamic> _$data;
 
+  int? get frequency => (_$data['frequency'] as int?);
+
   int? get id => (_$data['id'] as int?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    if (_$data.containsKey('frequency')) {
+      final l$frequency = frequency;
+      result$data['frequency'] = l$frequency;
+    }
     if (_$data.containsKey('id')) {
       final l$id = id;
       result$data['id'] = l$id;
@@ -10434,6 +9266,15 @@ class Input$groups_inc_input {
         runtimeType != other.runtimeType) {
       return false;
     }
+    final l$frequency = frequency;
+    final lOther$frequency = other.frequency;
+    if (_$data.containsKey('frequency') !=
+        other._$data.containsKey('frequency')) {
+      return false;
+    }
+    if (l$frequency != lOther$frequency) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
     if (_$data.containsKey('id') != other._$data.containsKey('id')) {
@@ -10447,8 +9288,12 @@ class Input$groups_inc_input {
 
   @override
   int get hashCode {
+    final l$frequency = frequency;
     final l$id = id;
-    return Object.hashAll([_$data.containsKey('id') ? l$id : const {}]);
+    return Object.hashAll([
+      _$data.containsKey('frequency') ? l$frequency : const {},
+      _$data.containsKey('id') ? l$id : const {},
+    ]);
   }
 }
 
@@ -10461,7 +9306,10 @@ abstract class CopyWith$Input$groups_inc_input<TRes> {
   factory CopyWith$Input$groups_inc_input.stub(TRes res) =
       _CopyWithStubImpl$Input$groups_inc_input;
 
-  TRes call({int? id});
+  TRes call({
+    int? frequency,
+    int? id,
+  });
 }
 
 class _CopyWithImpl$Input$groups_inc_input<TRes>
@@ -10477,8 +9325,13 @@ class _CopyWithImpl$Input$groups_inc_input<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? id = _undefined}) => _then(Input$groups_inc_input._({
+  TRes call({
+    Object? frequency = _undefined,
+    Object? id = _undefined,
+  }) =>
+      _then(Input$groups_inc_input._({
         ..._instance._$data,
+        if (frequency != _undefined) 'frequency': (frequency as int?),
         if (id != _undefined) 'id': (id as int?),
       }));
 }
@@ -10489,13 +9342,17 @@ class _CopyWithStubImpl$Input$groups_inc_input<TRes>
 
   TRes _res;
 
-  call({int? id}) => _res;
+  call({
+    int? frequency,
+    int? id,
+  }) =>
+      _res;
 }
 
 class Input$groups_insert_input {
   factory Input$groups_insert_input({
     Input$contact_group_arr_rel_insert_input? contact_groups,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     String? name,
   }) =>
@@ -10519,8 +9376,7 @@ class Input$groups_insert_input {
     }
     if (data.containsKey('frequency')) {
       final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
+      result$data['frequency'] = (l$frequency as int?);
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -10538,7 +9394,7 @@ class Input$groups_insert_input {
   Input$contact_group_arr_rel_insert_input? get contact_groups =>
       (_$data['contact_groups'] as Input$contact_group_arr_rel_insert_input?);
 
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
+  int? get frequency => (_$data['frequency'] as int?);
 
   int? get id => (_$data['id'] as int?);
 
@@ -10552,8 +9408,7 @@ class Input$groups_insert_input {
     }
     if (_$data.containsKey('frequency')) {
       final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
+      result$data['frequency'] = l$frequency;
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -10644,7 +9499,7 @@ abstract class CopyWith$Input$groups_insert_input<TRes> {
 
   TRes call({
     Input$contact_group_arr_rel_insert_input? contact_groups,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     String? name,
   });
@@ -10675,7 +9530,7 @@ class _CopyWithImpl$Input$groups_insert_input<TRes>
         if (contact_groups != _undefined)
           'contact_groups':
               (contact_groups as Input$contact_group_arr_rel_insert_input?),
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
+        if (frequency != _undefined) 'frequency': (frequency as int?),
         if (id != _undefined) 'id': (id as int?),
         if (name != _undefined) 'name': (name as String?),
       }));
@@ -10698,7 +9553,7 @@ class _CopyWithStubImpl$Input$groups_insert_input<TRes>
 
   call({
     Input$contact_group_arr_rel_insert_input? contact_groups,
-    dynamic? frequency,
+    int? frequency,
     int? id,
     String? name,
   }) =>
@@ -11381,117 +10236,9 @@ class _CopyWithStubImpl$Input$groups_pk_columns_input<TRes>
   call({int? id}) => _res;
 }
 
-class Input$groups_prepend_input {
-  factory Input$groups_prepend_input({dynamic? frequency}) =>
-      Input$groups_prepend_input._({
-        if (frequency != null) r'frequency': frequency,
-      });
-
-  Input$groups_prepend_input._(this._$data);
-
-  factory Input$groups_prepend_input.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('frequency')) {
-      final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
-    }
-    return Input$groups_prepend_input._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('frequency')) {
-      final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$groups_prepend_input<Input$groups_prepend_input>
-      get copyWith => CopyWith$Input$groups_prepend_input(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$groups_prepend_input) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$frequency = frequency;
-    final lOther$frequency = other.frequency;
-    if (_$data.containsKey('frequency') !=
-        other._$data.containsKey('frequency')) {
-      return false;
-    }
-    if (l$frequency != lOther$frequency) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$frequency = frequency;
-    return Object.hashAll(
-        [_$data.containsKey('frequency') ? l$frequency : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$groups_prepend_input<TRes> {
-  factory CopyWith$Input$groups_prepend_input(
-    Input$groups_prepend_input instance,
-    TRes Function(Input$groups_prepend_input) then,
-  ) = _CopyWithImpl$Input$groups_prepend_input;
-
-  factory CopyWith$Input$groups_prepend_input.stub(TRes res) =
-      _CopyWithStubImpl$Input$groups_prepend_input;
-
-  TRes call({dynamic? frequency});
-}
-
-class _CopyWithImpl$Input$groups_prepend_input<TRes>
-    implements CopyWith$Input$groups_prepend_input<TRes> {
-  _CopyWithImpl$Input$groups_prepend_input(
-    this._instance,
-    this._then,
-  );
-
-  final Input$groups_prepend_input _instance;
-
-  final TRes Function(Input$groups_prepend_input) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? frequency = _undefined}) =>
-      _then(Input$groups_prepend_input._({
-        ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$groups_prepend_input<TRes>
-    implements CopyWith$Input$groups_prepend_input<TRes> {
-  _CopyWithStubImpl$Input$groups_prepend_input(this._res);
-
-  TRes _res;
-
-  call({dynamic? frequency}) => _res;
-}
-
 class Input$groups_set_input {
   factory Input$groups_set_input({
-    dynamic? frequency,
+    int? frequency,
     int? id,
     String? name,
   }) =>
@@ -11507,8 +10254,7 @@ class Input$groups_set_input {
     final result$data = <String, dynamic>{};
     if (data.containsKey('frequency')) {
       final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
+      result$data['frequency'] = (l$frequency as int?);
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -11523,7 +10269,7 @@ class Input$groups_set_input {
 
   Map<String, dynamic> _$data;
 
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
+  int? get frequency => (_$data['frequency'] as int?);
 
   int? get id => (_$data['id'] as int?);
 
@@ -11533,8 +10279,7 @@ class Input$groups_set_input {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('frequency')) {
       final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
+      result$data['frequency'] = l$frequency;
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -11613,7 +10358,7 @@ abstract class CopyWith$Input$groups_set_input<TRes> {
       _CopyWithStubImpl$Input$groups_set_input;
 
   TRes call({
-    dynamic? frequency,
+    int? frequency,
     int? id,
     String? name,
   });
@@ -11639,7 +10384,7 @@ class _CopyWithImpl$Input$groups_set_input<TRes>
   }) =>
       _then(Input$groups_set_input._({
         ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
+        if (frequency != _undefined) 'frequency': (frequency as int?),
         if (id != _undefined) 'id': (id as int?),
         if (name != _undefined) 'name': (name as String?),
       }));
@@ -11652,7 +10397,7 @@ class _CopyWithStubImpl$Input$groups_set_input<TRes>
   TRes _res;
 
   call({
-    dynamic? frequency,
+    int? frequency,
     int? id,
     String? name,
   }) =>
@@ -11816,7 +10561,7 @@ class _CopyWithStubImpl$Input$groups_stream_cursor_input<TRes>
 
 class Input$groups_stream_cursor_value_input {
   factory Input$groups_stream_cursor_value_input({
-    dynamic? frequency,
+    int? frequency,
     int? id,
     String? name,
   }) =>
@@ -11833,8 +10578,7 @@ class Input$groups_stream_cursor_value_input {
     final result$data = <String, dynamic>{};
     if (data.containsKey('frequency')) {
       final l$frequency = data['frequency'];
-      result$data['frequency'] =
-          l$frequency == null ? null : mapFromJson(l$frequency);
+      result$data['frequency'] = (l$frequency as int?);
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -11849,7 +10593,7 @@ class Input$groups_stream_cursor_value_input {
 
   Map<String, dynamic> _$data;
 
-  dynamic? get frequency => (_$data['frequency'] as dynamic?);
+  int? get frequency => (_$data['frequency'] as int?);
 
   int? get id => (_$data['id'] as int?);
 
@@ -11859,8 +10603,7 @@ class Input$groups_stream_cursor_value_input {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('frequency')) {
       final l$frequency = frequency;
-      result$data['frequency'] =
-          l$frequency == null ? null : mapToJson(l$frequency);
+      result$data['frequency'] = l$frequency;
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -11940,7 +10683,7 @@ abstract class CopyWith$Input$groups_stream_cursor_value_input<TRes> {
       _CopyWithStubImpl$Input$groups_stream_cursor_value_input;
 
   TRes call({
-    dynamic? frequency,
+    int? frequency,
     int? id,
     String? name,
   });
@@ -11966,7 +10709,7 @@ class _CopyWithImpl$Input$groups_stream_cursor_value_input<TRes>
   }) =>
       _then(Input$groups_stream_cursor_value_input._({
         ..._instance._$data,
-        if (frequency != _undefined) 'frequency': (frequency as dynamic?),
+        if (frequency != _undefined) 'frequency': (frequency as int?),
         if (id != _undefined) 'id': (id as int?),
         if (name != _undefined) 'name': (name as String?),
       }));
@@ -11979,7 +10722,7 @@ class _CopyWithStubImpl$Input$groups_stream_cursor_value_input<TRes>
   TRes _res;
 
   call({
-    dynamic? frequency,
+    int? frequency,
     int? id,
     String? name,
   }) =>
@@ -11988,22 +10731,12 @@ class _CopyWithStubImpl$Input$groups_stream_cursor_value_input<TRes>
 
 class Input$groups_updates {
   factory Input$groups_updates({
-    Input$groups_append_input? $_append,
-    Input$groups_delete_at_path_input? $_delete_at_path,
-    Input$groups_delete_elem_input? $_delete_elem,
-    Input$groups_delete_key_input? $_delete_key,
     Input$groups_inc_input? $_inc,
-    Input$groups_prepend_input? $_prepend,
     Input$groups_set_input? $_set,
     required Input$groups_bool_exp where,
   }) =>
       Input$groups_updates._({
-        if ($_append != null) r'_append': $_append,
-        if ($_delete_at_path != null) r'_delete_at_path': $_delete_at_path,
-        if ($_delete_elem != null) r'_delete_elem': $_delete_elem,
-        if ($_delete_key != null) r'_delete_key': $_delete_key,
         if ($_inc != null) r'_inc': $_inc,
-        if ($_prepend != null) r'_prepend': $_prepend,
         if ($_set != null) r'_set': $_set,
         r'where': where,
       });
@@ -12012,46 +10745,11 @@ class Input$groups_updates {
 
   factory Input$groups_updates.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
-    if (data.containsKey('_append')) {
-      final l$$_append = data['_append'];
-      result$data['_append'] = l$$_append == null
-          ? null
-          : Input$groups_append_input.fromJson(
-              (l$$_append as Map<String, dynamic>));
-    }
-    if (data.containsKey('_delete_at_path')) {
-      final l$$_delete_at_path = data['_delete_at_path'];
-      result$data['_delete_at_path'] = l$$_delete_at_path == null
-          ? null
-          : Input$groups_delete_at_path_input.fromJson(
-              (l$$_delete_at_path as Map<String, dynamic>));
-    }
-    if (data.containsKey('_delete_elem')) {
-      final l$$_delete_elem = data['_delete_elem'];
-      result$data['_delete_elem'] = l$$_delete_elem == null
-          ? null
-          : Input$groups_delete_elem_input.fromJson(
-              (l$$_delete_elem as Map<String, dynamic>));
-    }
-    if (data.containsKey('_delete_key')) {
-      final l$$_delete_key = data['_delete_key'];
-      result$data['_delete_key'] = l$$_delete_key == null
-          ? null
-          : Input$groups_delete_key_input.fromJson(
-              (l$$_delete_key as Map<String, dynamic>));
-    }
     if (data.containsKey('_inc')) {
       final l$$_inc = data['_inc'];
       result$data['_inc'] = l$$_inc == null
           ? null
           : Input$groups_inc_input.fromJson((l$$_inc as Map<String, dynamic>));
-    }
-    if (data.containsKey('_prepend')) {
-      final l$$_prepend = data['_prepend'];
-      result$data['_prepend'] = l$$_prepend == null
-          ? null
-          : Input$groups_prepend_input.fromJson(
-              (l$$_prepend as Map<String, dynamic>));
     }
     if (data.containsKey('_set')) {
       final l$$_set = data['_set'];
@@ -12067,23 +10765,8 @@ class Input$groups_updates {
 
   Map<String, dynamic> _$data;
 
-  Input$groups_append_input? get $_append =>
-      (_$data['_append'] as Input$groups_append_input?);
-
-  Input$groups_delete_at_path_input? get $_delete_at_path =>
-      (_$data['_delete_at_path'] as Input$groups_delete_at_path_input?);
-
-  Input$groups_delete_elem_input? get $_delete_elem =>
-      (_$data['_delete_elem'] as Input$groups_delete_elem_input?);
-
-  Input$groups_delete_key_input? get $_delete_key =>
-      (_$data['_delete_key'] as Input$groups_delete_key_input?);
-
   Input$groups_inc_input? get $_inc =>
       (_$data['_inc'] as Input$groups_inc_input?);
-
-  Input$groups_prepend_input? get $_prepend =>
-      (_$data['_prepend'] as Input$groups_prepend_input?);
 
   Input$groups_set_input? get $_set =>
       (_$data['_set'] as Input$groups_set_input?);
@@ -12092,29 +10775,9 @@ class Input$groups_updates {
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
-    if (_$data.containsKey('_append')) {
-      final l$$_append = $_append;
-      result$data['_append'] = l$$_append?.toJson();
-    }
-    if (_$data.containsKey('_delete_at_path')) {
-      final l$$_delete_at_path = $_delete_at_path;
-      result$data['_delete_at_path'] = l$$_delete_at_path?.toJson();
-    }
-    if (_$data.containsKey('_delete_elem')) {
-      final l$$_delete_elem = $_delete_elem;
-      result$data['_delete_elem'] = l$$_delete_elem?.toJson();
-    }
-    if (_$data.containsKey('_delete_key')) {
-      final l$$_delete_key = $_delete_key;
-      result$data['_delete_key'] = l$$_delete_key?.toJson();
-    }
     if (_$data.containsKey('_inc')) {
       final l$$_inc = $_inc;
       result$data['_inc'] = l$$_inc?.toJson();
-    }
-    if (_$data.containsKey('_prepend')) {
-      final l$$_prepend = $_prepend;
-      result$data['_prepend'] = l$$_prepend?.toJson();
     }
     if (_$data.containsKey('_set')) {
       final l$$_set = $_set;
@@ -12139,56 +10802,12 @@ class Input$groups_updates {
     if (!(other is Input$groups_updates) || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$$_append = $_append;
-    final lOther$$_append = other.$_append;
-    if (_$data.containsKey('_append') != other._$data.containsKey('_append')) {
-      return false;
-    }
-    if (l$$_append != lOther$$_append) {
-      return false;
-    }
-    final l$$_delete_at_path = $_delete_at_path;
-    final lOther$$_delete_at_path = other.$_delete_at_path;
-    if (_$data.containsKey('_delete_at_path') !=
-        other._$data.containsKey('_delete_at_path')) {
-      return false;
-    }
-    if (l$$_delete_at_path != lOther$$_delete_at_path) {
-      return false;
-    }
-    final l$$_delete_elem = $_delete_elem;
-    final lOther$$_delete_elem = other.$_delete_elem;
-    if (_$data.containsKey('_delete_elem') !=
-        other._$data.containsKey('_delete_elem')) {
-      return false;
-    }
-    if (l$$_delete_elem != lOther$$_delete_elem) {
-      return false;
-    }
-    final l$$_delete_key = $_delete_key;
-    final lOther$$_delete_key = other.$_delete_key;
-    if (_$data.containsKey('_delete_key') !=
-        other._$data.containsKey('_delete_key')) {
-      return false;
-    }
-    if (l$$_delete_key != lOther$$_delete_key) {
-      return false;
-    }
     final l$$_inc = $_inc;
     final lOther$$_inc = other.$_inc;
     if (_$data.containsKey('_inc') != other._$data.containsKey('_inc')) {
       return false;
     }
     if (l$$_inc != lOther$$_inc) {
-      return false;
-    }
-    final l$$_prepend = $_prepend;
-    final lOther$$_prepend = other.$_prepend;
-    if (_$data.containsKey('_prepend') !=
-        other._$data.containsKey('_prepend')) {
-      return false;
-    }
-    if (l$$_prepend != lOther$$_prepend) {
       return false;
     }
     final l$$_set = $_set;
@@ -12209,21 +10828,11 @@ class Input$groups_updates {
 
   @override
   int get hashCode {
-    final l$$_append = $_append;
-    final l$$_delete_at_path = $_delete_at_path;
-    final l$$_delete_elem = $_delete_elem;
-    final l$$_delete_key = $_delete_key;
     final l$$_inc = $_inc;
-    final l$$_prepend = $_prepend;
     final l$$_set = $_set;
     final l$where = where;
     return Object.hashAll([
-      _$data.containsKey('_append') ? l$$_append : const {},
-      _$data.containsKey('_delete_at_path') ? l$$_delete_at_path : const {},
-      _$data.containsKey('_delete_elem') ? l$$_delete_elem : const {},
-      _$data.containsKey('_delete_key') ? l$$_delete_key : const {},
       _$data.containsKey('_inc') ? l$$_inc : const {},
-      _$data.containsKey('_prepend') ? l$$_prepend : const {},
       _$data.containsKey('_set') ? l$$_set : const {},
       l$where,
     ]);
@@ -12240,21 +10849,11 @@ abstract class CopyWith$Input$groups_updates<TRes> {
       _CopyWithStubImpl$Input$groups_updates;
 
   TRes call({
-    Input$groups_append_input? $_append,
-    Input$groups_delete_at_path_input? $_delete_at_path,
-    Input$groups_delete_elem_input? $_delete_elem,
-    Input$groups_delete_key_input? $_delete_key,
     Input$groups_inc_input? $_inc,
-    Input$groups_prepend_input? $_prepend,
     Input$groups_set_input? $_set,
     Input$groups_bool_exp? where,
   });
-  CopyWith$Input$groups_append_input<TRes> get $_append;
-  CopyWith$Input$groups_delete_at_path_input<TRes> get $_delete_at_path;
-  CopyWith$Input$groups_delete_elem_input<TRes> get $_delete_elem;
-  CopyWith$Input$groups_delete_key_input<TRes> get $_delete_key;
   CopyWith$Input$groups_inc_input<TRes> get $_inc;
-  CopyWith$Input$groups_prepend_input<TRes> get $_prepend;
   CopyWith$Input$groups_set_input<TRes> get $_set;
   CopyWith$Input$groups_bool_exp<TRes> get where;
 }
@@ -12273,79 +10872,23 @@ class _CopyWithImpl$Input$groups_updates<TRes>
   static const _undefined = {};
 
   TRes call({
-    Object? $_append = _undefined,
-    Object? $_delete_at_path = _undefined,
-    Object? $_delete_elem = _undefined,
-    Object? $_delete_key = _undefined,
     Object? $_inc = _undefined,
-    Object? $_prepend = _undefined,
     Object? $_set = _undefined,
     Object? where = _undefined,
   }) =>
       _then(Input$groups_updates._({
         ..._instance._$data,
-        if ($_append != _undefined)
-          '_append': ($_append as Input$groups_append_input?),
-        if ($_delete_at_path != _undefined)
-          '_delete_at_path':
-              ($_delete_at_path as Input$groups_delete_at_path_input?),
-        if ($_delete_elem != _undefined)
-          '_delete_elem': ($_delete_elem as Input$groups_delete_elem_input?),
-        if ($_delete_key != _undefined)
-          '_delete_key': ($_delete_key as Input$groups_delete_key_input?),
         if ($_inc != _undefined) '_inc': ($_inc as Input$groups_inc_input?),
-        if ($_prepend != _undefined)
-          '_prepend': ($_prepend as Input$groups_prepend_input?),
         if ($_set != _undefined) '_set': ($_set as Input$groups_set_input?),
         if (where != _undefined && where != null)
           'where': (where as Input$groups_bool_exp),
       }));
-
-  CopyWith$Input$groups_append_input<TRes> get $_append {
-    final local$$_append = _instance.$_append;
-    return local$$_append == null
-        ? CopyWith$Input$groups_append_input.stub(_then(_instance))
-        : CopyWith$Input$groups_append_input(
-            local$$_append, (e) => call($_append: e));
-  }
-
-  CopyWith$Input$groups_delete_at_path_input<TRes> get $_delete_at_path {
-    final local$$_delete_at_path = _instance.$_delete_at_path;
-    return local$$_delete_at_path == null
-        ? CopyWith$Input$groups_delete_at_path_input.stub(_then(_instance))
-        : CopyWith$Input$groups_delete_at_path_input(
-            local$$_delete_at_path, (e) => call($_delete_at_path: e));
-  }
-
-  CopyWith$Input$groups_delete_elem_input<TRes> get $_delete_elem {
-    final local$$_delete_elem = _instance.$_delete_elem;
-    return local$$_delete_elem == null
-        ? CopyWith$Input$groups_delete_elem_input.stub(_then(_instance))
-        : CopyWith$Input$groups_delete_elem_input(
-            local$$_delete_elem, (e) => call($_delete_elem: e));
-  }
-
-  CopyWith$Input$groups_delete_key_input<TRes> get $_delete_key {
-    final local$$_delete_key = _instance.$_delete_key;
-    return local$$_delete_key == null
-        ? CopyWith$Input$groups_delete_key_input.stub(_then(_instance))
-        : CopyWith$Input$groups_delete_key_input(
-            local$$_delete_key, (e) => call($_delete_key: e));
-  }
 
   CopyWith$Input$groups_inc_input<TRes> get $_inc {
     final local$$_inc = _instance.$_inc;
     return local$$_inc == null
         ? CopyWith$Input$groups_inc_input.stub(_then(_instance))
         : CopyWith$Input$groups_inc_input(local$$_inc, (e) => call($_inc: e));
-  }
-
-  CopyWith$Input$groups_prepend_input<TRes> get $_prepend {
-    final local$$_prepend = _instance.$_prepend;
-    return local$$_prepend == null
-        ? CopyWith$Input$groups_prepend_input.stub(_then(_instance))
-        : CopyWith$Input$groups_prepend_input(
-            local$$_prepend, (e) => call($_prepend: e));
   }
 
   CopyWith$Input$groups_set_input<TRes> get $_set {
@@ -12368,34 +10911,14 @@ class _CopyWithStubImpl$Input$groups_updates<TRes>
   TRes _res;
 
   call({
-    Input$groups_append_input? $_append,
-    Input$groups_delete_at_path_input? $_delete_at_path,
-    Input$groups_delete_elem_input? $_delete_elem,
-    Input$groups_delete_key_input? $_delete_key,
     Input$groups_inc_input? $_inc,
-    Input$groups_prepend_input? $_prepend,
     Input$groups_set_input? $_set,
     Input$groups_bool_exp? where,
   }) =>
       _res;
 
-  CopyWith$Input$groups_append_input<TRes> get $_append =>
-      CopyWith$Input$groups_append_input.stub(_res);
-
-  CopyWith$Input$groups_delete_at_path_input<TRes> get $_delete_at_path =>
-      CopyWith$Input$groups_delete_at_path_input.stub(_res);
-
-  CopyWith$Input$groups_delete_elem_input<TRes> get $_delete_elem =>
-      CopyWith$Input$groups_delete_elem_input.stub(_res);
-
-  CopyWith$Input$groups_delete_key_input<TRes> get $_delete_key =>
-      CopyWith$Input$groups_delete_key_input.stub(_res);
-
   CopyWith$Input$groups_inc_input<TRes> get $_inc =>
       CopyWith$Input$groups_inc_input.stub(_res);
-
-  CopyWith$Input$groups_prepend_input<TRes> get $_prepend =>
-      CopyWith$Input$groups_prepend_input.stub(_res);
 
   CopyWith$Input$groups_set_input<TRes> get $_set =>
       CopyWith$Input$groups_set_input.stub(_res);
@@ -13322,699 +11845,6 @@ class _CopyWithStubImpl$Input$jsonb_array_comparison_exp<TRes>
     List<List<dynamic>>? $_nin,
   }) =>
       _res;
-}
-
-class Input$jsonb_cast_exp {
-  factory Input$jsonb_cast_exp({Input$String_comparison_exp? String}) =>
-      Input$jsonb_cast_exp._({
-        if (String != null) r'String': String,
-      });
-
-  Input$jsonb_cast_exp._(this._$data);
-
-  factory Input$jsonb_cast_exp.fromJson(Map<dynamic, dynamic> data) {
-    final result$data = <dynamic, dynamic>{};
-    if (data.containsKey('String')) {
-      final l$String = data['String'];
-      result$data['String'] = l$String == null
-          ? null
-          : Input$String_comparison_exp.fromJson(
-              (l$String));
-    }
-    return Input$jsonb_cast_exp._(result$data);
-  }
-
-  Map<dynamic, dynamic> _$data;
-
-  Input$String_comparison_exp? get String =>
-      (_$data['String'] as Input$String_comparison_exp?);
-
-  Map<dynamic, dynamic> toJson() {
-    final result$data = <dynamic, dynamic>{};
-    if (_$data.containsKey('String')) {
-      final l$String = String;
-      result$data['String'] = l$String?.toJson();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$jsonb_cast_exp<Input$jsonb_cast_exp> get copyWith =>
-      CopyWith$Input$jsonb_cast_exp(
-        this,
-        (i) => i,
-      );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$jsonb_cast_exp) || runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$String = String;
-    final lOther$String = other.String;
-    if (_$data.containsKey('String') != other._$data.containsKey('String')) {
-      return false;
-    }
-    if (l$String != lOther$String) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$String = String;
-    return Object.hashAll([_$data.containsKey('String') ? l$String : const {}]);
-  }
-}
-
-abstract class CopyWith$Input$jsonb_cast_exp<TRes> {
-  factory CopyWith$Input$jsonb_cast_exp(
-    Input$jsonb_cast_exp instance,
-    TRes Function(Input$jsonb_cast_exp) then,
-  ) = _CopyWithImpl$Input$jsonb_cast_exp;
-
-  factory CopyWith$Input$jsonb_cast_exp.stub(TRes res) =
-      _CopyWithStubImpl$Input$jsonb_cast_exp;
-
-  TRes call({Input$String_comparison_exp? String});
-  CopyWith$Input$String_comparison_exp<TRes> get String;
-}
-
-class _CopyWithImpl$Input$jsonb_cast_exp<TRes>
-    implements CopyWith$Input$jsonb_cast_exp<TRes> {
-  _CopyWithImpl$Input$jsonb_cast_exp(
-    this._instance,
-    this._then,
-  );
-
-  final Input$jsonb_cast_exp _instance;
-
-  final TRes Function(Input$jsonb_cast_exp) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? String = _undefined}) => _then(Input$jsonb_cast_exp._({
-        ..._instance._$data,
-        if (String != _undefined)
-          'String': (String as Input$String_comparison_exp?),
-      }));
-
-  CopyWith$Input$String_comparison_exp<TRes> get String {
-    final local$String = _instance.String;
-    return local$String == null
-        ? CopyWith$Input$String_comparison_exp.stub(_then(_instance))
-        : CopyWith$Input$String_comparison_exp(
-            local$String, (e) => call(String: e));
-  }
-}
-
-class _CopyWithStubImpl$Input$jsonb_cast_exp<TRes>
-    implements CopyWith$Input$jsonb_cast_exp<TRes> {
-  _CopyWithStubImpl$Input$jsonb_cast_exp(this._res);
-
-  TRes _res;
-
-  call({Input$String_comparison_exp? String}) => _res;
-
-  CopyWith$Input$String_comparison_exp<TRes> get String =>
-      CopyWith$Input$String_comparison_exp.stub(_res);
-}
-
-class Input$jsonb_comparison_exp {
-  factory Input$jsonb_comparison_exp({
-    Input$jsonb_cast_exp? $_cast,
-    dynamic? $_contained_in,
-    dynamic? $_contains,
-    dynamic? $_eq,
-    dynamic? $_gt,
-    dynamic? $_gte,
-    String? $_has_key,
-    List<String>? $_has_keys_all,
-    List<String>? $_has_keys_any,
-    List<dynamic>? $_in,
-    bool? $_is_null,
-    dynamic? $_lt,
-    dynamic? $_lte,
-    dynamic? $_neq,
-    List<dynamic>? $_nin,
-  }) =>
-      Input$jsonb_comparison_exp._({
-        if ($_cast != null) r'_cast': $_cast,
-        if ($_contained_in != null) r'_contained_in': $_contained_in,
-        if ($_contains != null) r'_contains': $_contains,
-        if ($_eq != null) r'_eq': $_eq,
-        if ($_gt != null) r'_gt': $_gt,
-        if ($_gte != null) r'_gte': $_gte,
-        if ($_has_key != null) r'_has_key': $_has_key,
-        if ($_has_keys_all != null) r'_has_keys_all': $_has_keys_all,
-        if ($_has_keys_any != null) r'_has_keys_any': $_has_keys_any,
-        if ($_in != null) r'_in': $_in,
-        if ($_is_null != null) r'_is_null': $_is_null,
-        if ($_lt != null) r'_lt': $_lt,
-        if ($_lte != null) r'_lte': $_lte,
-        if ($_neq != null) r'_neq': $_neq,
-        if ($_nin != null) r'_nin': $_nin,
-      });
-
-  Input$jsonb_comparison_exp._(this._$data);
-
-  factory Input$jsonb_comparison_exp.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('_cast')) {
-      final l$$_cast = data['_cast'];
-      result$data['_cast'] = l$$_cast == null
-          ? null
-          : Input$jsonb_cast_exp.fromJson((l$$_cast as Map<String, dynamic>));
-    }
-    if (data.containsKey('_contained_in')) {
-      final l$$_contained_in = data['_contained_in'];
-      result$data['_contained_in'] =
-          l$$_contained_in == null ? null : mapFromJson(l$$_contained_in);
-    }
-    if (data.containsKey('_contains')) {
-      final l$$_contains = data['_contains'];
-      result$data['_contains'] =
-          l$$_contains == null ? null : mapFromJson(l$$_contains);
-    }
-    if (data.containsKey('_eq')) {
-      final l$$_eq = data['_eq'];
-      result$data['_eq'] = l$$_eq == null ? null : mapFromJson(l$$_eq);
-    }
-    if (data.containsKey('_gt')) {
-      final l$$_gt = data['_gt'];
-      result$data['_gt'] = l$$_gt == null ? null : mapFromJson(l$$_gt);
-    }
-    if (data.containsKey('_gte')) {
-      final l$$_gte = data['_gte'];
-      result$data['_gte'] = l$$_gte == null ? null : mapFromJson(l$$_gte);
-    }
-    if (data.containsKey('_has_key')) {
-      final l$$_has_key = data['_has_key'];
-      result$data['_has_key'] = (l$$_has_key as String?);
-    }
-    if (data.containsKey('_has_keys_all')) {
-      final l$$_has_keys_all = data['_has_keys_all'];
-      result$data['_has_keys_all'] = (l$$_has_keys_all as List<dynamic>?)
-          ?.map((e) => (e as String))
-          .toList();
-    }
-    if (data.containsKey('_has_keys_any')) {
-      final l$$_has_keys_any = data['_has_keys_any'];
-      result$data['_has_keys_any'] = (l$$_has_keys_any as List<dynamic>?)
-          ?.map((e) => (e as String))
-          .toList();
-    }
-    if (data.containsKey('_in')) {
-      final l$$_in = data['_in'];
-      result$data['_in'] =
-          (l$$_in as List<dynamic>?)?.map((e) => mapFromJson(e)).toList();
-    }
-    if (data.containsKey('_is_null')) {
-      final l$$_is_null = data['_is_null'];
-      result$data['_is_null'] = (l$$_is_null as bool?);
-    }
-    if (data.containsKey('_lt')) {
-      final l$$_lt = data['_lt'];
-      result$data['_lt'] = l$$_lt == null ? null : mapFromJson(l$$_lt);
-    }
-    if (data.containsKey('_lte')) {
-      final l$$_lte = data['_lte'];
-      result$data['_lte'] = l$$_lte == null ? null : mapFromJson(l$$_lte);
-    }
-    if (data.containsKey('_neq')) {
-      final l$$_neq = data['_neq'];
-      result$data['_neq'] = l$$_neq == null ? null : mapFromJson(l$$_neq);
-    }
-    if (data.containsKey('_nin')) {
-      final l$$_nin = data['_nin'];
-      result$data['_nin'] =
-          (l$$_nin as List<dynamic>?)?.map((e) => mapFromJson(e)).toList();
-    }
-    return Input$jsonb_comparison_exp._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Input$jsonb_cast_exp? get $_cast =>
-      (_$data['_cast'] as Input$jsonb_cast_exp?);
-
-  dynamic? get $_contained_in => (_$data['_contained_in'] as dynamic?);
-
-  dynamic? get $_contains => (_$data['_contains'] as dynamic?);
-
-  dynamic? get $_eq => (_$data['_eq'] as dynamic?);
-
-  dynamic? get $_gt => (_$data['_gt'] as dynamic?);
-
-  dynamic? get $_gte => (_$data['_gte'] as dynamic?);
-
-  String? get $_has_key => (_$data['_has_key'] as String?);
-
-  List<String>? get $_has_keys_all =>
-      (_$data['_has_keys_all'] as List<String>?);
-
-  List<String>? get $_has_keys_any =>
-      (_$data['_has_keys_any'] as List<String>?);
-
-  List<dynamic>? get $_in => (_$data['_in'] as List<dynamic>?);
-
-  bool? get $_is_null => (_$data['_is_null'] as bool?);
-
-  dynamic? get $_lt => (_$data['_lt'] as dynamic?);
-
-  dynamic? get $_lte => (_$data['_lte'] as dynamic?);
-
-  dynamic? get $_neq => (_$data['_neq'] as dynamic?);
-
-  List<dynamic>? get $_nin => (_$data['_nin'] as List<dynamic>?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('_cast')) {
-      final l$$_cast = $_cast;
-      result$data['_cast'] = l$$_cast?.toJson();
-    }
-    if (_$data.containsKey('_contained_in')) {
-      final l$$_contained_in = $_contained_in;
-      result$data['_contained_in'] =
-          l$$_contained_in == null ? null : mapToJson(l$$_contained_in);
-    }
-    if (_$data.containsKey('_contains')) {
-      final l$$_contains = $_contains;
-      result$data['_contains'] =
-          l$$_contains == null ? null : mapToJson(l$$_contains);
-    }
-    if (_$data.containsKey('_eq')) {
-      final l$$_eq = $_eq;
-      result$data['_eq'] = l$$_eq == null ? null : mapToJson(l$$_eq);
-    }
-    if (_$data.containsKey('_gt')) {
-      final l$$_gt = $_gt;
-      result$data['_gt'] = l$$_gt == null ? null : mapToJson(l$$_gt);
-    }
-    if (_$data.containsKey('_gte')) {
-      final l$$_gte = $_gte;
-      result$data['_gte'] = l$$_gte == null ? null : mapToJson(l$$_gte);
-    }
-    if (_$data.containsKey('_has_key')) {
-      final l$$_has_key = $_has_key;
-      result$data['_has_key'] = l$$_has_key;
-    }
-    if (_$data.containsKey('_has_keys_all')) {
-      final l$$_has_keys_all = $_has_keys_all;
-      result$data['_has_keys_all'] = l$$_has_keys_all?.map((e) => e).toList();
-    }
-    if (_$data.containsKey('_has_keys_any')) {
-      final l$$_has_keys_any = $_has_keys_any;
-      result$data['_has_keys_any'] = l$$_has_keys_any?.map((e) => e).toList();
-    }
-    if (_$data.containsKey('_in')) {
-      final l$$_in = $_in;
-      result$data['_in'] = l$$_in?.map((e) => mapToJson(e)).toList();
-    }
-    if (_$data.containsKey('_is_null')) {
-      final l$$_is_null = $_is_null;
-      result$data['_is_null'] = l$$_is_null;
-    }
-    if (_$data.containsKey('_lt')) {
-      final l$$_lt = $_lt;
-      result$data['_lt'] = l$$_lt == null ? null : mapToJson(l$$_lt);
-    }
-    if (_$data.containsKey('_lte')) {
-      final l$$_lte = $_lte;
-      result$data['_lte'] = l$$_lte == null ? null : mapToJson(l$$_lte);
-    }
-    if (_$data.containsKey('_neq')) {
-      final l$$_neq = $_neq;
-      result$data['_neq'] = l$$_neq == null ? null : mapToJson(l$$_neq);
-    }
-    if (_$data.containsKey('_nin')) {
-      final l$$_nin = $_nin;
-      result$data['_nin'] = l$$_nin?.map((e) => mapToJson(e)).toList();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$jsonb_comparison_exp<Input$jsonb_comparison_exp>
-      get copyWith => CopyWith$Input$jsonb_comparison_exp(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Input$jsonb_comparison_exp) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$$_cast = $_cast;
-    final lOther$$_cast = other.$_cast;
-    if (_$data.containsKey('_cast') != other._$data.containsKey('_cast')) {
-      return false;
-    }
-    if (l$$_cast != lOther$$_cast) {
-      return false;
-    }
-    final l$$_contained_in = $_contained_in;
-    final lOther$$_contained_in = other.$_contained_in;
-    if (_$data.containsKey('_contained_in') !=
-        other._$data.containsKey('_contained_in')) {
-      return false;
-    }
-    if (l$$_contained_in != lOther$$_contained_in) {
-      return false;
-    }
-    final l$$_contains = $_contains;
-    final lOther$$_contains = other.$_contains;
-    if (_$data.containsKey('_contains') !=
-        other._$data.containsKey('_contains')) {
-      return false;
-    }
-    if (l$$_contains != lOther$$_contains) {
-      return false;
-    }
-    final l$$_eq = $_eq;
-    final lOther$$_eq = other.$_eq;
-    if (_$data.containsKey('_eq') != other._$data.containsKey('_eq')) {
-      return false;
-    }
-    if (l$$_eq != lOther$$_eq) {
-      return false;
-    }
-    final l$$_gt = $_gt;
-    final lOther$$_gt = other.$_gt;
-    if (_$data.containsKey('_gt') != other._$data.containsKey('_gt')) {
-      return false;
-    }
-    if (l$$_gt != lOther$$_gt) {
-      return false;
-    }
-    final l$$_gte = $_gte;
-    final lOther$$_gte = other.$_gte;
-    if (_$data.containsKey('_gte') != other._$data.containsKey('_gte')) {
-      return false;
-    }
-    if (l$$_gte != lOther$$_gte) {
-      return false;
-    }
-    final l$$_has_key = $_has_key;
-    final lOther$$_has_key = other.$_has_key;
-    if (_$data.containsKey('_has_key') !=
-        other._$data.containsKey('_has_key')) {
-      return false;
-    }
-    if (l$$_has_key != lOther$$_has_key) {
-      return false;
-    }
-    final l$$_has_keys_all = $_has_keys_all;
-    final lOther$$_has_keys_all = other.$_has_keys_all;
-    if (_$data.containsKey('_has_keys_all') !=
-        other._$data.containsKey('_has_keys_all')) {
-      return false;
-    }
-    if (l$$_has_keys_all != null && lOther$$_has_keys_all != null) {
-      if (l$$_has_keys_all.length != lOther$$_has_keys_all.length) {
-        return false;
-      }
-      for (int i = 0; i < l$$_has_keys_all.length; i++) {
-        final l$$_has_keys_all$entry = l$$_has_keys_all[i];
-        final lOther$$_has_keys_all$entry = lOther$$_has_keys_all[i];
-        if (l$$_has_keys_all$entry != lOther$$_has_keys_all$entry) {
-          return false;
-        }
-      }
-    } else if (l$$_has_keys_all != lOther$$_has_keys_all) {
-      return false;
-    }
-    final l$$_has_keys_any = $_has_keys_any;
-    final lOther$$_has_keys_any = other.$_has_keys_any;
-    if (_$data.containsKey('_has_keys_any') !=
-        other._$data.containsKey('_has_keys_any')) {
-      return false;
-    }
-    if (l$$_has_keys_any != null && lOther$$_has_keys_any != null) {
-      if (l$$_has_keys_any.length != lOther$$_has_keys_any.length) {
-        return false;
-      }
-      for (int i = 0; i < l$$_has_keys_any.length; i++) {
-        final l$$_has_keys_any$entry = l$$_has_keys_any[i];
-        final lOther$$_has_keys_any$entry = lOther$$_has_keys_any[i];
-        if (l$$_has_keys_any$entry != lOther$$_has_keys_any$entry) {
-          return false;
-        }
-      }
-    } else if (l$$_has_keys_any != lOther$$_has_keys_any) {
-      return false;
-    }
-    final l$$_in = $_in;
-    final lOther$$_in = other.$_in;
-    if (_$data.containsKey('_in') != other._$data.containsKey('_in')) {
-      return false;
-    }
-    if (l$$_in != null && lOther$$_in != null) {
-      if (l$$_in.length != lOther$$_in.length) {
-        return false;
-      }
-      for (int i = 0; i < l$$_in.length; i++) {
-        final l$$_in$entry = l$$_in[i];
-        final lOther$$_in$entry = lOther$$_in[i];
-        if (l$$_in$entry != lOther$$_in$entry) {
-          return false;
-        }
-      }
-    } else if (l$$_in != lOther$$_in) {
-      return false;
-    }
-    final l$$_is_null = $_is_null;
-    final lOther$$_is_null = other.$_is_null;
-    if (_$data.containsKey('_is_null') !=
-        other._$data.containsKey('_is_null')) {
-      return false;
-    }
-    if (l$$_is_null != lOther$$_is_null) {
-      return false;
-    }
-    final l$$_lt = $_lt;
-    final lOther$$_lt = other.$_lt;
-    if (_$data.containsKey('_lt') != other._$data.containsKey('_lt')) {
-      return false;
-    }
-    if (l$$_lt != lOther$$_lt) {
-      return false;
-    }
-    final l$$_lte = $_lte;
-    final lOther$$_lte = other.$_lte;
-    if (_$data.containsKey('_lte') != other._$data.containsKey('_lte')) {
-      return false;
-    }
-    if (l$$_lte != lOther$$_lte) {
-      return false;
-    }
-    final l$$_neq = $_neq;
-    final lOther$$_neq = other.$_neq;
-    if (_$data.containsKey('_neq') != other._$data.containsKey('_neq')) {
-      return false;
-    }
-    if (l$$_neq != lOther$$_neq) {
-      return false;
-    }
-    final l$$_nin = $_nin;
-    final lOther$$_nin = other.$_nin;
-    if (_$data.containsKey('_nin') != other._$data.containsKey('_nin')) {
-      return false;
-    }
-    if (l$$_nin != null && lOther$$_nin != null) {
-      if (l$$_nin.length != lOther$$_nin.length) {
-        return false;
-      }
-      for (int i = 0; i < l$$_nin.length; i++) {
-        final l$$_nin$entry = l$$_nin[i];
-        final lOther$$_nin$entry = lOther$$_nin[i];
-        if (l$$_nin$entry != lOther$$_nin$entry) {
-          return false;
-        }
-      }
-    } else if (l$$_nin != lOther$$_nin) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$$_cast = $_cast;
-    final l$$_contained_in = $_contained_in;
-    final l$$_contains = $_contains;
-    final l$$_eq = $_eq;
-    final l$$_gt = $_gt;
-    final l$$_gte = $_gte;
-    final l$$_has_key = $_has_key;
-    final l$$_has_keys_all = $_has_keys_all;
-    final l$$_has_keys_any = $_has_keys_any;
-    final l$$_in = $_in;
-    final l$$_is_null = $_is_null;
-    final l$$_lt = $_lt;
-    final l$$_lte = $_lte;
-    final l$$_neq = $_neq;
-    final l$$_nin = $_nin;
-    return Object.hashAll([
-      _$data.containsKey('_cast') ? l$$_cast : const {},
-      _$data.containsKey('_contained_in') ? l$$_contained_in : const {},
-      _$data.containsKey('_contains') ? l$$_contains : const {},
-      _$data.containsKey('_eq') ? l$$_eq : const {},
-      _$data.containsKey('_gt') ? l$$_gt : const {},
-      _$data.containsKey('_gte') ? l$$_gte : const {},
-      _$data.containsKey('_has_key') ? l$$_has_key : const {},
-      _$data.containsKey('_has_keys_all')
-          ? l$$_has_keys_all == null
-              ? null
-              : Object.hashAll(l$$_has_keys_all.map((v) => v))
-          : const {},
-      _$data.containsKey('_has_keys_any')
-          ? l$$_has_keys_any == null
-              ? null
-              : Object.hashAll(l$$_has_keys_any.map((v) => v))
-          : const {},
-      _$data.containsKey('_in')
-          ? l$$_in == null
-              ? null
-              : Object.hashAll(l$$_in.map((v) => v))
-          : const {},
-      _$data.containsKey('_is_null') ? l$$_is_null : const {},
-      _$data.containsKey('_lt') ? l$$_lt : const {},
-      _$data.containsKey('_lte') ? l$$_lte : const {},
-      _$data.containsKey('_neq') ? l$$_neq : const {},
-      _$data.containsKey('_nin')
-          ? l$$_nin == null
-              ? null
-              : Object.hashAll(l$$_nin.map((v) => v))
-          : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$jsonb_comparison_exp<TRes> {
-  factory CopyWith$Input$jsonb_comparison_exp(
-    Input$jsonb_comparison_exp instance,
-    TRes Function(Input$jsonb_comparison_exp) then,
-  ) = _CopyWithImpl$Input$jsonb_comparison_exp;
-
-  factory CopyWith$Input$jsonb_comparison_exp.stub(TRes res) =
-      _CopyWithStubImpl$Input$jsonb_comparison_exp;
-
-  TRes call({
-    Input$jsonb_cast_exp? $_cast,
-    dynamic? $_contained_in,
-    dynamic? $_contains,
-    dynamic? $_eq,
-    dynamic? $_gt,
-    dynamic? $_gte,
-    String? $_has_key,
-    List<String>? $_has_keys_all,
-    List<String>? $_has_keys_any,
-    List<dynamic>? $_in,
-    bool? $_is_null,
-    dynamic? $_lt,
-    dynamic? $_lte,
-    dynamic? $_neq,
-    List<dynamic>? $_nin,
-  });
-  CopyWith$Input$jsonb_cast_exp<TRes> get $_cast;
-}
-
-class _CopyWithImpl$Input$jsonb_comparison_exp<TRes>
-    implements CopyWith$Input$jsonb_comparison_exp<TRes> {
-  _CopyWithImpl$Input$jsonb_comparison_exp(
-    this._instance,
-    this._then,
-  );
-
-  final Input$jsonb_comparison_exp _instance;
-
-  final TRes Function(Input$jsonb_comparison_exp) _then;
-
-  static const _undefined = {};
-
-  TRes call({
-    Object? $_cast = _undefined,
-    Object? $_contained_in = _undefined,
-    Object? $_contains = _undefined,
-    Object? $_eq = _undefined,
-    Object? $_gt = _undefined,
-    Object? $_gte = _undefined,
-    Object? $_has_key = _undefined,
-    Object? $_has_keys_all = _undefined,
-    Object? $_has_keys_any = _undefined,
-    Object? $_in = _undefined,
-    Object? $_is_null = _undefined,
-    Object? $_lt = _undefined,
-    Object? $_lte = _undefined,
-    Object? $_neq = _undefined,
-    Object? $_nin = _undefined,
-  }) =>
-      _then(Input$jsonb_comparison_exp._({
-        ..._instance._$data,
-        if ($_cast != _undefined) '_cast': ($_cast as Input$jsonb_cast_exp?),
-        if ($_contained_in != _undefined)
-          '_contained_in': ($_contained_in as dynamic?),
-        if ($_contains != _undefined) '_contains': ($_contains as dynamic?),
-        if ($_eq != _undefined) '_eq': ($_eq as dynamic?),
-        if ($_gt != _undefined) '_gt': ($_gt as dynamic?),
-        if ($_gte != _undefined) '_gte': ($_gte as dynamic?),
-        if ($_has_key != _undefined) '_has_key': ($_has_key as String?),
-        if ($_has_keys_all != _undefined)
-          '_has_keys_all': ($_has_keys_all as List<String>?),
-        if ($_has_keys_any != _undefined)
-          '_has_keys_any': ($_has_keys_any as List<String>?),
-        if ($_in != _undefined) '_in': ($_in as List<dynamic>?),
-        if ($_is_null != _undefined) '_is_null': ($_is_null as bool?),
-        if ($_lt != _undefined) '_lt': ($_lt as dynamic?),
-        if ($_lte != _undefined) '_lte': ($_lte as dynamic?),
-        if ($_neq != _undefined) '_neq': ($_neq as dynamic?),
-        if ($_nin != _undefined) '_nin': ($_nin as List<dynamic>?),
-      }));
-
-  CopyWith$Input$jsonb_cast_exp<TRes> get $_cast {
-    final local$$_cast = _instance.$_cast;
-    return local$$_cast == null
-        ? CopyWith$Input$jsonb_cast_exp.stub(_then(_instance))
-        : CopyWith$Input$jsonb_cast_exp(local$$_cast, (e) => call($_cast: e));
-  }
-}
-
-class _CopyWithStubImpl$Input$jsonb_comparison_exp<TRes>
-    implements CopyWith$Input$jsonb_comparison_exp<TRes> {
-  _CopyWithStubImpl$Input$jsonb_comparison_exp(this._res);
-
-  TRes _res;
-
-  call({
-    Input$jsonb_cast_exp? $_cast,
-    dynamic? $_contained_in,
-    dynamic? $_contains,
-    dynamic? $_eq,
-    dynamic? $_gt,
-    dynamic? $_gte,
-    String? $_has_key,
-    List<String>? $_has_keys_all,
-    List<String>? $_has_keys_any,
-    List<dynamic>? $_in,
-    bool? $_is_null,
-    dynamic? $_lt,
-    dynamic? $_lte,
-    dynamic? $_neq,
-    List<dynamic>? $_nin,
-  }) =>
-      _res;
-
-  CopyWith$Input$jsonb_cast_exp<TRes> get $_cast =>
-      CopyWith$Input$jsonb_cast_exp.stub(_res);
 }
 
 class Input$logs_aggregate_bool_exp {
@@ -18986,9 +16816,14 @@ class _CopyWithStubImpl$Input$logs_variance_order_by<TRes>
 }
 
 class Input$reminders_aggregate_bool_exp {
-  factory Input$reminders_aggregate_bool_exp(
-          {Input$reminders_aggregate_bool_exp_count? count}) =>
+  factory Input$reminders_aggregate_bool_exp({
+    Input$reminders_aggregate_bool_exp_bool_and? bool_and,
+    Input$reminders_aggregate_bool_exp_bool_or? bool_or,
+    Input$reminders_aggregate_bool_exp_count? count,
+  }) =>
       Input$reminders_aggregate_bool_exp._({
+        if (bool_and != null) r'bool_and': bool_and,
+        if (bool_or != null) r'bool_or': bool_or,
         if (count != null) r'count': count,
       });
 
@@ -18997,6 +16832,20 @@ class Input$reminders_aggregate_bool_exp {
   factory Input$reminders_aggregate_bool_exp.fromJson(
       Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    if (data.containsKey('bool_and')) {
+      final l$bool_and = data['bool_and'];
+      result$data['bool_and'] = l$bool_and == null
+          ? null
+          : Input$reminders_aggregate_bool_exp_bool_and.fromJson(
+              (l$bool_and as Map<String, dynamic>));
+    }
+    if (data.containsKey('bool_or')) {
+      final l$bool_or = data['bool_or'];
+      result$data['bool_or'] = l$bool_or == null
+          ? null
+          : Input$reminders_aggregate_bool_exp_bool_or.fromJson(
+              (l$bool_or as Map<String, dynamic>));
+    }
     if (data.containsKey('count')) {
       final l$count = data['count'];
       result$data['count'] = l$count == null
@@ -19009,11 +16858,25 @@ class Input$reminders_aggregate_bool_exp {
 
   Map<String, dynamic> _$data;
 
+  Input$reminders_aggregate_bool_exp_bool_and? get bool_and =>
+      (_$data['bool_and'] as Input$reminders_aggregate_bool_exp_bool_and?);
+
+  Input$reminders_aggregate_bool_exp_bool_or? get bool_or =>
+      (_$data['bool_or'] as Input$reminders_aggregate_bool_exp_bool_or?);
+
   Input$reminders_aggregate_bool_exp_count? get count =>
       (_$data['count'] as Input$reminders_aggregate_bool_exp_count?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    if (_$data.containsKey('bool_and')) {
+      final l$bool_and = bool_and;
+      result$data['bool_and'] = l$bool_and?.toJson();
+    }
+    if (_$data.containsKey('bool_or')) {
+      final l$bool_or = bool_or;
+      result$data['bool_or'] = l$bool_or?.toJson();
+    }
     if (_$data.containsKey('count')) {
       final l$count = count;
       result$data['count'] = l$count?.toJson();
@@ -19037,6 +16900,23 @@ class Input$reminders_aggregate_bool_exp {
         runtimeType != other.runtimeType) {
       return false;
     }
+    final l$bool_and = bool_and;
+    final lOther$bool_and = other.bool_and;
+    if (_$data.containsKey('bool_and') !=
+        other._$data.containsKey('bool_and')) {
+      return false;
+    }
+    if (l$bool_and != lOther$bool_and) {
+      return false;
+    }
+    final l$bool_or = bool_or;
+    final lOther$bool_or = other.bool_or;
+    if (_$data.containsKey('bool_or') != other._$data.containsKey('bool_or')) {
+      return false;
+    }
+    if (l$bool_or != lOther$bool_or) {
+      return false;
+    }
     final l$count = count;
     final lOther$count = other.count;
     if (_$data.containsKey('count') != other._$data.containsKey('count')) {
@@ -19050,8 +16930,14 @@ class Input$reminders_aggregate_bool_exp {
 
   @override
   int get hashCode {
+    final l$bool_and = bool_and;
+    final l$bool_or = bool_or;
     final l$count = count;
-    return Object.hashAll([_$data.containsKey('count') ? l$count : const {}]);
+    return Object.hashAll([
+      _$data.containsKey('bool_and') ? l$bool_and : const {},
+      _$data.containsKey('bool_or') ? l$bool_or : const {},
+      _$data.containsKey('count') ? l$count : const {},
+    ]);
   }
 }
 
@@ -19064,7 +16950,13 @@ abstract class CopyWith$Input$reminders_aggregate_bool_exp<TRes> {
   factory CopyWith$Input$reminders_aggregate_bool_exp.stub(TRes res) =
       _CopyWithStubImpl$Input$reminders_aggregate_bool_exp;
 
-  TRes call({Input$reminders_aggregate_bool_exp_count? count});
+  TRes call({
+    Input$reminders_aggregate_bool_exp_bool_and? bool_and,
+    Input$reminders_aggregate_bool_exp_bool_or? bool_or,
+    Input$reminders_aggregate_bool_exp_count? count,
+  });
+  CopyWith$Input$reminders_aggregate_bool_exp_bool_and<TRes> get bool_and;
+  CopyWith$Input$reminders_aggregate_bool_exp_bool_or<TRes> get bool_or;
   CopyWith$Input$reminders_aggregate_bool_exp_count<TRes> get count;
 }
 
@@ -19081,12 +16973,39 @@ class _CopyWithImpl$Input$reminders_aggregate_bool_exp<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? count = _undefined}) =>
+  TRes call({
+    Object? bool_and = _undefined,
+    Object? bool_or = _undefined,
+    Object? count = _undefined,
+  }) =>
       _then(Input$reminders_aggregate_bool_exp._({
         ..._instance._$data,
+        if (bool_and != _undefined)
+          'bool_and':
+              (bool_and as Input$reminders_aggregate_bool_exp_bool_and?),
+        if (bool_or != _undefined)
+          'bool_or': (bool_or as Input$reminders_aggregate_bool_exp_bool_or?),
         if (count != _undefined)
           'count': (count as Input$reminders_aggregate_bool_exp_count?),
       }));
+
+  CopyWith$Input$reminders_aggregate_bool_exp_bool_and<TRes> get bool_and {
+    final local$bool_and = _instance.bool_and;
+    return local$bool_and == null
+        ? CopyWith$Input$reminders_aggregate_bool_exp_bool_and.stub(
+            _then(_instance))
+        : CopyWith$Input$reminders_aggregate_bool_exp_bool_and(
+            local$bool_and, (e) => call(bool_and: e));
+  }
+
+  CopyWith$Input$reminders_aggregate_bool_exp_bool_or<TRes> get bool_or {
+    final local$bool_or = _instance.bool_or;
+    return local$bool_or == null
+        ? CopyWith$Input$reminders_aggregate_bool_exp_bool_or.stub(
+            _then(_instance))
+        : CopyWith$Input$reminders_aggregate_bool_exp_bool_or(
+            local$bool_or, (e) => call(bool_or: e));
+  }
 
   CopyWith$Input$reminders_aggregate_bool_exp_count<TRes> get count {
     final local$count = _instance.count;
@@ -19104,10 +17023,467 @@ class _CopyWithStubImpl$Input$reminders_aggregate_bool_exp<TRes>
 
   TRes _res;
 
-  call({Input$reminders_aggregate_bool_exp_count? count}) => _res;
+  call({
+    Input$reminders_aggregate_bool_exp_bool_and? bool_and,
+    Input$reminders_aggregate_bool_exp_bool_or? bool_or,
+    Input$reminders_aggregate_bool_exp_count? count,
+  }) =>
+      _res;
+
+  CopyWith$Input$reminders_aggregate_bool_exp_bool_and<TRes> get bool_and =>
+      CopyWith$Input$reminders_aggregate_bool_exp_bool_and.stub(_res);
+
+  CopyWith$Input$reminders_aggregate_bool_exp_bool_or<TRes> get bool_or =>
+      CopyWith$Input$reminders_aggregate_bool_exp_bool_or.stub(_res);
 
   CopyWith$Input$reminders_aggregate_bool_exp_count<TRes> get count =>
       CopyWith$Input$reminders_aggregate_bool_exp_count.stub(_res);
+}
+
+class Input$reminders_aggregate_bool_exp_bool_and {
+  factory Input$reminders_aggregate_bool_exp_bool_and({
+    required Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns
+        arguments,
+    bool? distinct,
+    Input$reminders_bool_exp? filter,
+    required Input$Boolean_comparison_exp predicate,
+  }) =>
+      Input$reminders_aggregate_bool_exp_bool_and._({
+        r'arguments': arguments,
+        if (distinct != null) r'distinct': distinct,
+        if (filter != null) r'filter': filter,
+        r'predicate': predicate,
+      });
+
+  Input$reminders_aggregate_bool_exp_bool_and._(this._$data);
+
+  factory Input$reminders_aggregate_bool_exp_bool_and.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$arguments = data['arguments'];
+    result$data['arguments'] =
+        fromJson$Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns(
+            (l$arguments as String));
+    if (data.containsKey('distinct')) {
+      final l$distinct = data['distinct'];
+      result$data['distinct'] = (l$distinct as bool?);
+    }
+    if (data.containsKey('filter')) {
+      final l$filter = data['filter'];
+      result$data['filter'] = l$filter == null
+          ? null
+          : Input$reminders_bool_exp.fromJson(
+              (l$filter as Map<String, dynamic>));
+    }
+    final l$predicate = data['predicate'];
+    result$data['predicate'] = Input$Boolean_comparison_exp.fromJson(
+        (l$predicate as Map<String, dynamic>));
+    return Input$reminders_aggregate_bool_exp_bool_and._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns
+      get arguments => (_$data['arguments']
+          as Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns);
+
+  bool? get distinct => (_$data['distinct'] as bool?);
+
+  Input$reminders_bool_exp? get filter =>
+      (_$data['filter'] as Input$reminders_bool_exp?);
+
+  Input$Boolean_comparison_exp get predicate =>
+      (_$data['predicate'] as Input$Boolean_comparison_exp);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$arguments = arguments;
+    result$data['arguments'] =
+        toJson$Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns(
+            l$arguments);
+    if (_$data.containsKey('distinct')) {
+      final l$distinct = distinct;
+      result$data['distinct'] = l$distinct;
+    }
+    if (_$data.containsKey('filter')) {
+      final l$filter = filter;
+      result$data['filter'] = l$filter?.toJson();
+    }
+    final l$predicate = predicate;
+    result$data['predicate'] = l$predicate.toJson();
+    return result$data;
+  }
+
+  CopyWith$Input$reminders_aggregate_bool_exp_bool_and<
+          Input$reminders_aggregate_bool_exp_bool_and>
+      get copyWith => CopyWith$Input$reminders_aggregate_bool_exp_bool_and(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$reminders_aggregate_bool_exp_bool_and) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$arguments = arguments;
+    final lOther$arguments = other.arguments;
+    if (l$arguments != lOther$arguments) {
+      return false;
+    }
+    final l$distinct = distinct;
+    final lOther$distinct = other.distinct;
+    if (_$data.containsKey('distinct') !=
+        other._$data.containsKey('distinct')) {
+      return false;
+    }
+    if (l$distinct != lOther$distinct) {
+      return false;
+    }
+    final l$filter = filter;
+    final lOther$filter = other.filter;
+    if (_$data.containsKey('filter') != other._$data.containsKey('filter')) {
+      return false;
+    }
+    if (l$filter != lOther$filter) {
+      return false;
+    }
+    final l$predicate = predicate;
+    final lOther$predicate = other.predicate;
+    if (l$predicate != lOther$predicate) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$arguments = arguments;
+    final l$distinct = distinct;
+    final l$filter = filter;
+    final l$predicate = predicate;
+    return Object.hashAll([
+      l$arguments,
+      _$data.containsKey('distinct') ? l$distinct : const {},
+      _$data.containsKey('filter') ? l$filter : const {},
+      l$predicate,
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$reminders_aggregate_bool_exp_bool_and<TRes> {
+  factory CopyWith$Input$reminders_aggregate_bool_exp_bool_and(
+    Input$reminders_aggregate_bool_exp_bool_and instance,
+    TRes Function(Input$reminders_aggregate_bool_exp_bool_and) then,
+  ) = _CopyWithImpl$Input$reminders_aggregate_bool_exp_bool_and;
+
+  factory CopyWith$Input$reminders_aggregate_bool_exp_bool_and.stub(TRes res) =
+      _CopyWithStubImpl$Input$reminders_aggregate_bool_exp_bool_and;
+
+  TRes call({
+    Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns?
+        arguments,
+    bool? distinct,
+    Input$reminders_bool_exp? filter,
+    Input$Boolean_comparison_exp? predicate,
+  });
+  CopyWith$Input$reminders_bool_exp<TRes> get filter;
+  CopyWith$Input$Boolean_comparison_exp<TRes> get predicate;
+}
+
+class _CopyWithImpl$Input$reminders_aggregate_bool_exp_bool_and<TRes>
+    implements CopyWith$Input$reminders_aggregate_bool_exp_bool_and<TRes> {
+  _CopyWithImpl$Input$reminders_aggregate_bool_exp_bool_and(
+    this._instance,
+    this._then,
+  );
+
+  final Input$reminders_aggregate_bool_exp_bool_and _instance;
+
+  final TRes Function(Input$reminders_aggregate_bool_exp_bool_and) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? arguments = _undefined,
+    Object? distinct = _undefined,
+    Object? filter = _undefined,
+    Object? predicate = _undefined,
+  }) =>
+      _then(Input$reminders_aggregate_bool_exp_bool_and._({
+        ..._instance._$data,
+        if (arguments != _undefined && arguments != null)
+          'arguments': (arguments
+              as Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns),
+        if (distinct != _undefined) 'distinct': (distinct as bool?),
+        if (filter != _undefined)
+          'filter': (filter as Input$reminders_bool_exp?),
+        if (predicate != _undefined && predicate != null)
+          'predicate': (predicate as Input$Boolean_comparison_exp),
+      }));
+
+  CopyWith$Input$reminders_bool_exp<TRes> get filter {
+    final local$filter = _instance.filter;
+    return local$filter == null
+        ? CopyWith$Input$reminders_bool_exp.stub(_then(_instance))
+        : CopyWith$Input$reminders_bool_exp(
+            local$filter, (e) => call(filter: e));
+  }
+
+  CopyWith$Input$Boolean_comparison_exp<TRes> get predicate {
+    final local$predicate = _instance.predicate;
+    return CopyWith$Input$Boolean_comparison_exp(
+        local$predicate, (e) => call(predicate: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$reminders_aggregate_bool_exp_bool_and<TRes>
+    implements CopyWith$Input$reminders_aggregate_bool_exp_bool_and<TRes> {
+  _CopyWithStubImpl$Input$reminders_aggregate_bool_exp_bool_and(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns?
+        arguments,
+    bool? distinct,
+    Input$reminders_bool_exp? filter,
+    Input$Boolean_comparison_exp? predicate,
+  }) =>
+      _res;
+
+  CopyWith$Input$reminders_bool_exp<TRes> get filter =>
+      CopyWith$Input$reminders_bool_exp.stub(_res);
+
+  CopyWith$Input$Boolean_comparison_exp<TRes> get predicate =>
+      CopyWith$Input$Boolean_comparison_exp.stub(_res);
+}
+
+class Input$reminders_aggregate_bool_exp_bool_or {
+  factory Input$reminders_aggregate_bool_exp_bool_or({
+    required Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns
+        arguments,
+    bool? distinct,
+    Input$reminders_bool_exp? filter,
+    required Input$Boolean_comparison_exp predicate,
+  }) =>
+      Input$reminders_aggregate_bool_exp_bool_or._({
+        r'arguments': arguments,
+        if (distinct != null) r'distinct': distinct,
+        if (filter != null) r'filter': filter,
+        r'predicate': predicate,
+      });
+
+  Input$reminders_aggregate_bool_exp_bool_or._(this._$data);
+
+  factory Input$reminders_aggregate_bool_exp_bool_or.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$arguments = data['arguments'];
+    result$data['arguments'] =
+        fromJson$Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns(
+            (l$arguments as String));
+    if (data.containsKey('distinct')) {
+      final l$distinct = data['distinct'];
+      result$data['distinct'] = (l$distinct as bool?);
+    }
+    if (data.containsKey('filter')) {
+      final l$filter = data['filter'];
+      result$data['filter'] = l$filter == null
+          ? null
+          : Input$reminders_bool_exp.fromJson(
+              (l$filter as Map<String, dynamic>));
+    }
+    final l$predicate = data['predicate'];
+    result$data['predicate'] = Input$Boolean_comparison_exp.fromJson(
+        (l$predicate as Map<String, dynamic>));
+    return Input$reminders_aggregate_bool_exp_bool_or._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns
+      get arguments => (_$data['arguments']
+          as Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns);
+
+  bool? get distinct => (_$data['distinct'] as bool?);
+
+  Input$reminders_bool_exp? get filter =>
+      (_$data['filter'] as Input$reminders_bool_exp?);
+
+  Input$Boolean_comparison_exp get predicate =>
+      (_$data['predicate'] as Input$Boolean_comparison_exp);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$arguments = arguments;
+    result$data['arguments'] =
+        toJson$Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns(
+            l$arguments);
+    if (_$data.containsKey('distinct')) {
+      final l$distinct = distinct;
+      result$data['distinct'] = l$distinct;
+    }
+    if (_$data.containsKey('filter')) {
+      final l$filter = filter;
+      result$data['filter'] = l$filter?.toJson();
+    }
+    final l$predicate = predicate;
+    result$data['predicate'] = l$predicate.toJson();
+    return result$data;
+  }
+
+  CopyWith$Input$reminders_aggregate_bool_exp_bool_or<
+          Input$reminders_aggregate_bool_exp_bool_or>
+      get copyWith => CopyWith$Input$reminders_aggregate_bool_exp_bool_or(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$reminders_aggregate_bool_exp_bool_or) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$arguments = arguments;
+    final lOther$arguments = other.arguments;
+    if (l$arguments != lOther$arguments) {
+      return false;
+    }
+    final l$distinct = distinct;
+    final lOther$distinct = other.distinct;
+    if (_$data.containsKey('distinct') !=
+        other._$data.containsKey('distinct')) {
+      return false;
+    }
+    if (l$distinct != lOther$distinct) {
+      return false;
+    }
+    final l$filter = filter;
+    final lOther$filter = other.filter;
+    if (_$data.containsKey('filter') != other._$data.containsKey('filter')) {
+      return false;
+    }
+    if (l$filter != lOther$filter) {
+      return false;
+    }
+    final l$predicate = predicate;
+    final lOther$predicate = other.predicate;
+    if (l$predicate != lOther$predicate) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$arguments = arguments;
+    final l$distinct = distinct;
+    final l$filter = filter;
+    final l$predicate = predicate;
+    return Object.hashAll([
+      l$arguments,
+      _$data.containsKey('distinct') ? l$distinct : const {},
+      _$data.containsKey('filter') ? l$filter : const {},
+      l$predicate,
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$reminders_aggregate_bool_exp_bool_or<TRes> {
+  factory CopyWith$Input$reminders_aggregate_bool_exp_bool_or(
+    Input$reminders_aggregate_bool_exp_bool_or instance,
+    TRes Function(Input$reminders_aggregate_bool_exp_bool_or) then,
+  ) = _CopyWithImpl$Input$reminders_aggregate_bool_exp_bool_or;
+
+  factory CopyWith$Input$reminders_aggregate_bool_exp_bool_or.stub(TRes res) =
+      _CopyWithStubImpl$Input$reminders_aggregate_bool_exp_bool_or;
+
+  TRes call({
+    Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns?
+        arguments,
+    bool? distinct,
+    Input$reminders_bool_exp? filter,
+    Input$Boolean_comparison_exp? predicate,
+  });
+  CopyWith$Input$reminders_bool_exp<TRes> get filter;
+  CopyWith$Input$Boolean_comparison_exp<TRes> get predicate;
+}
+
+class _CopyWithImpl$Input$reminders_aggregate_bool_exp_bool_or<TRes>
+    implements CopyWith$Input$reminders_aggregate_bool_exp_bool_or<TRes> {
+  _CopyWithImpl$Input$reminders_aggregate_bool_exp_bool_or(
+    this._instance,
+    this._then,
+  );
+
+  final Input$reminders_aggregate_bool_exp_bool_or _instance;
+
+  final TRes Function(Input$reminders_aggregate_bool_exp_bool_or) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? arguments = _undefined,
+    Object? distinct = _undefined,
+    Object? filter = _undefined,
+    Object? predicate = _undefined,
+  }) =>
+      _then(Input$reminders_aggregate_bool_exp_bool_or._({
+        ..._instance._$data,
+        if (arguments != _undefined && arguments != null)
+          'arguments': (arguments
+              as Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns),
+        if (distinct != _undefined) 'distinct': (distinct as bool?),
+        if (filter != _undefined)
+          'filter': (filter as Input$reminders_bool_exp?),
+        if (predicate != _undefined && predicate != null)
+          'predicate': (predicate as Input$Boolean_comparison_exp),
+      }));
+
+  CopyWith$Input$reminders_bool_exp<TRes> get filter {
+    final local$filter = _instance.filter;
+    return local$filter == null
+        ? CopyWith$Input$reminders_bool_exp.stub(_then(_instance))
+        : CopyWith$Input$reminders_bool_exp(
+            local$filter, (e) => call(filter: e));
+  }
+
+  CopyWith$Input$Boolean_comparison_exp<TRes> get predicate {
+    final local$predicate = _instance.predicate;
+    return CopyWith$Input$Boolean_comparison_exp(
+        local$predicate, (e) => call(predicate: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$reminders_aggregate_bool_exp_bool_or<TRes>
+    implements CopyWith$Input$reminders_aggregate_bool_exp_bool_or<TRes> {
+  _CopyWithStubImpl$Input$reminders_aggregate_bool_exp_bool_or(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns?
+        arguments,
+    bool? distinct,
+    Input$reminders_bool_exp? filter,
+    Input$Boolean_comparison_exp? predicate,
+  }) =>
+      _res;
+
+  CopyWith$Input$reminders_bool_exp<TRes> get filter =>
+      CopyWith$Input$reminders_bool_exp.stub(_res);
+
+  CopyWith$Input$Boolean_comparison_exp<TRes> get predicate =>
+      CopyWith$Input$Boolean_comparison_exp.stub(_res);
 }
 
 class Input$reminders_aggregate_bool_exp_count {
@@ -20237,6 +18613,7 @@ class Input$reminders_bool_exp {
     List<Input$reminders_bool_exp>? $_or,
     Input$contacts_bool_exp? contact,
     Input$Int_comparison_exp? contact_id,
+    Input$Boolean_comparison_exp? contacted,
     Input$Int_comparison_exp? id,
     Input$String_comparison_exp? notes,
     Input$timestamptz_comparison_exp? time,
@@ -20247,6 +18624,7 @@ class Input$reminders_bool_exp {
         if ($_or != null) r'_or': $_or,
         if (contact != null) r'contact': contact,
         if (contact_id != null) r'contact_id': contact_id,
+        if (contacted != null) r'contacted': contacted,
         if (id != null) r'id': id,
         if (notes != null) r'notes': notes,
         if (time != null) r'time': time,
@@ -20291,6 +18669,13 @@ class Input$reminders_bool_exp {
           : Input$Int_comparison_exp.fromJson(
               (l$contact_id as Map<String, dynamic>));
     }
+    if (data.containsKey('contacted')) {
+      final l$contacted = data['contacted'];
+      result$data['contacted'] = l$contacted == null
+          ? null
+          : Input$Boolean_comparison_exp.fromJson(
+              (l$contacted as Map<String, dynamic>));
+    }
     if (data.containsKey('id')) {
       final l$id = data['id'];
       result$data['id'] = l$id == null
@@ -20331,6 +18716,9 @@ class Input$reminders_bool_exp {
   Input$Int_comparison_exp? get contact_id =>
       (_$data['contact_id'] as Input$Int_comparison_exp?);
 
+  Input$Boolean_comparison_exp? get contacted =>
+      (_$data['contacted'] as Input$Boolean_comparison_exp?);
+
   Input$Int_comparison_exp? get id =>
       (_$data['id'] as Input$Int_comparison_exp?);
 
@@ -20361,6 +18749,10 @@ class Input$reminders_bool_exp {
     if (_$data.containsKey('contact_id')) {
       final l$contact_id = contact_id;
       result$data['contact_id'] = l$contact_id?.toJson();
+    }
+    if (_$data.containsKey('contacted')) {
+      final l$contacted = contacted;
+      result$data['contacted'] = l$contacted?.toJson();
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -20455,6 +18847,15 @@ class Input$reminders_bool_exp {
     if (l$contact_id != lOther$contact_id) {
       return false;
     }
+    final l$contacted = contacted;
+    final lOther$contacted = other.contacted;
+    if (_$data.containsKey('contacted') !=
+        other._$data.containsKey('contacted')) {
+      return false;
+    }
+    if (l$contacted != lOther$contacted) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
     if (_$data.containsKey('id') != other._$data.containsKey('id')) {
@@ -20489,6 +18890,7 @@ class Input$reminders_bool_exp {
     final l$$_or = $_or;
     final l$contact = contact;
     final l$contact_id = contact_id;
+    final l$contacted = contacted;
     final l$id = id;
     final l$notes = notes;
     final l$time = time;
@@ -20506,6 +18908,7 @@ class Input$reminders_bool_exp {
           : const {},
       _$data.containsKey('contact') ? l$contact : const {},
       _$data.containsKey('contact_id') ? l$contact_id : const {},
+      _$data.containsKey('contacted') ? l$contacted : const {},
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('notes') ? l$notes : const {},
       _$data.containsKey('time') ? l$time : const {},
@@ -20528,6 +18931,7 @@ abstract class CopyWith$Input$reminders_bool_exp<TRes> {
     List<Input$reminders_bool_exp>? $_or,
     Input$contacts_bool_exp? contact,
     Input$Int_comparison_exp? contact_id,
+    Input$Boolean_comparison_exp? contacted,
     Input$Int_comparison_exp? id,
     Input$String_comparison_exp? notes,
     Input$timestamptz_comparison_exp? time,
@@ -20545,6 +18949,7 @@ abstract class CopyWith$Input$reminders_bool_exp<TRes> {
           _fn);
   CopyWith$Input$contacts_bool_exp<TRes> get contact;
   CopyWith$Input$Int_comparison_exp<TRes> get contact_id;
+  CopyWith$Input$Boolean_comparison_exp<TRes> get contacted;
   CopyWith$Input$Int_comparison_exp<TRes> get id;
   CopyWith$Input$String_comparison_exp<TRes> get notes;
   CopyWith$Input$timestamptz_comparison_exp<TRes> get time;
@@ -20569,6 +18974,7 @@ class _CopyWithImpl$Input$reminders_bool_exp<TRes>
     Object? $_or = _undefined,
     Object? contact = _undefined,
     Object? contact_id = _undefined,
+    Object? contacted = _undefined,
     Object? id = _undefined,
     Object? notes = _undefined,
     Object? time = _undefined,
@@ -20584,6 +18990,8 @@ class _CopyWithImpl$Input$reminders_bool_exp<TRes>
           'contact': (contact as Input$contacts_bool_exp?),
         if (contact_id != _undefined)
           'contact_id': (contact_id as Input$Int_comparison_exp?),
+        if (contacted != _undefined)
+          'contacted': (contacted as Input$Boolean_comparison_exp?),
         if (id != _undefined) 'id': (id as Input$Int_comparison_exp?),
         if (notes != _undefined)
           'notes': (notes as Input$String_comparison_exp?),
@@ -20640,6 +19048,14 @@ class _CopyWithImpl$Input$reminders_bool_exp<TRes>
             local$contact_id, (e) => call(contact_id: e));
   }
 
+  CopyWith$Input$Boolean_comparison_exp<TRes> get contacted {
+    final local$contacted = _instance.contacted;
+    return local$contacted == null
+        ? CopyWith$Input$Boolean_comparison_exp.stub(_then(_instance))
+        : CopyWith$Input$Boolean_comparison_exp(
+            local$contacted, (e) => call(contacted: e));
+  }
+
   CopyWith$Input$Int_comparison_exp<TRes> get id {
     final local$id = _instance.id;
     return local$id == null
@@ -20676,6 +19092,7 @@ class _CopyWithStubImpl$Input$reminders_bool_exp<TRes>
     List<Input$reminders_bool_exp>? $_or,
     Input$contacts_bool_exp? contact,
     Input$Int_comparison_exp? contact_id,
+    Input$Boolean_comparison_exp? contacted,
     Input$Int_comparison_exp? id,
     Input$String_comparison_exp? notes,
     Input$timestamptz_comparison_exp? time,
@@ -20694,6 +19111,9 @@ class _CopyWithStubImpl$Input$reminders_bool_exp<TRes>
 
   CopyWith$Input$Int_comparison_exp<TRes> get contact_id =>
       CopyWith$Input$Int_comparison_exp.stub(_res);
+
+  CopyWith$Input$Boolean_comparison_exp<TRes> get contacted =>
+      CopyWith$Input$Boolean_comparison_exp.stub(_res);
 
   CopyWith$Input$Int_comparison_exp<TRes> get id =>
       CopyWith$Input$Int_comparison_exp.stub(_res);
@@ -20851,6 +19271,7 @@ class Input$reminders_insert_input {
   factory Input$reminders_insert_input({
     Input$contacts_obj_rel_insert_input? contact,
     int? contact_id,
+    bool? contacted,
     int? id,
     String? notes,
     String? time,
@@ -20858,6 +19279,7 @@ class Input$reminders_insert_input {
       Input$reminders_insert_input._({
         if (contact != null) r'contact': contact,
         if (contact_id != null) r'contact_id': contact_id,
+        if (contacted != null) r'contacted': contacted,
         if (id != null) r'id': id,
         if (notes != null) r'notes': notes,
         if (time != null) r'time': time,
@@ -20877,6 +19299,10 @@ class Input$reminders_insert_input {
     if (data.containsKey('contact_id')) {
       final l$contact_id = data['contact_id'];
       result$data['contact_id'] = (l$contact_id as int?);
+    }
+    if (data.containsKey('contacted')) {
+      final l$contacted = data['contacted'];
+      result$data['contacted'] = (l$contacted as bool?);
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -20900,6 +19326,8 @@ class Input$reminders_insert_input {
 
   int? get contact_id => (_$data['contact_id'] as int?);
 
+  bool? get contacted => (_$data['contacted'] as bool?);
+
   int? get id => (_$data['id'] as int?);
 
   String? get notes => (_$data['notes'] as String?);
@@ -20915,6 +19343,10 @@ class Input$reminders_insert_input {
     if (_$data.containsKey('contact_id')) {
       final l$contact_id = contact_id;
       result$data['contact_id'] = l$contact_id;
+    }
+    if (_$data.containsKey('contacted')) {
+      final l$contacted = contacted;
+      result$data['contacted'] = l$contacted;
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -20963,6 +19395,15 @@ class Input$reminders_insert_input {
     if (l$contact_id != lOther$contact_id) {
       return false;
     }
+    final l$contacted = contacted;
+    final lOther$contacted = other.contacted;
+    if (_$data.containsKey('contacted') !=
+        other._$data.containsKey('contacted')) {
+      return false;
+    }
+    if (l$contacted != lOther$contacted) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
     if (_$data.containsKey('id') != other._$data.containsKey('id')) {
@@ -20994,12 +19435,14 @@ class Input$reminders_insert_input {
   int get hashCode {
     final l$contact = contact;
     final l$contact_id = contact_id;
+    final l$contacted = contacted;
     final l$id = id;
     final l$notes = notes;
     final l$time = time;
     return Object.hashAll([
       _$data.containsKey('contact') ? l$contact : const {},
       _$data.containsKey('contact_id') ? l$contact_id : const {},
+      _$data.containsKey('contacted') ? l$contacted : const {},
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('notes') ? l$notes : const {},
       _$data.containsKey('time') ? l$time : const {},
@@ -21019,6 +19462,7 @@ abstract class CopyWith$Input$reminders_insert_input<TRes> {
   TRes call({
     Input$contacts_obj_rel_insert_input? contact,
     int? contact_id,
+    bool? contacted,
     int? id,
     String? notes,
     String? time,
@@ -21042,6 +19486,7 @@ class _CopyWithImpl$Input$reminders_insert_input<TRes>
   TRes call({
     Object? contact = _undefined,
     Object? contact_id = _undefined,
+    Object? contacted = _undefined,
     Object? id = _undefined,
     Object? notes = _undefined,
     Object? time = _undefined,
@@ -21051,6 +19496,7 @@ class _CopyWithImpl$Input$reminders_insert_input<TRes>
         if (contact != _undefined)
           'contact': (contact as Input$contacts_obj_rel_insert_input?),
         if (contact_id != _undefined) 'contact_id': (contact_id as int?),
+        if (contacted != _undefined) 'contacted': (contacted as bool?),
         if (id != _undefined) 'id': (id as int?),
         if (notes != _undefined) 'notes': (notes as String?),
         if (time != _undefined) 'time': (time as String?),
@@ -21074,6 +19520,7 @@ class _CopyWithStubImpl$Input$reminders_insert_input<TRes>
   call({
     Input$contacts_obj_rel_insert_input? contact,
     int? contact_id,
+    bool? contacted,
     int? id,
     String? notes,
     String? time,
@@ -21679,6 +20126,7 @@ class Input$reminders_order_by {
   factory Input$reminders_order_by({
     Input$contacts_order_by? contact,
     Enum$order_by? contact_id,
+    Enum$order_by? contacted,
     Enum$order_by? id,
     Enum$order_by? notes,
     Enum$order_by? time,
@@ -21686,6 +20134,7 @@ class Input$reminders_order_by {
       Input$reminders_order_by._({
         if (contact != null) r'contact': contact,
         if (contact_id != null) r'contact_id': contact_id,
+        if (contacted != null) r'contacted': contacted,
         if (id != null) r'id': id,
         if (notes != null) r'notes': notes,
         if (time != null) r'time': time,
@@ -21707,6 +20156,12 @@ class Input$reminders_order_by {
       result$data['contact_id'] = l$contact_id == null
           ? null
           : fromJson$Enum$order_by((l$contact_id as String));
+    }
+    if (data.containsKey('contacted')) {
+      final l$contacted = data['contacted'];
+      result$data['contacted'] = l$contacted == null
+          ? null
+          : fromJson$Enum$order_by((l$contacted as String));
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -21733,6 +20188,8 @@ class Input$reminders_order_by {
 
   Enum$order_by? get contact_id => (_$data['contact_id'] as Enum$order_by?);
 
+  Enum$order_by? get contacted => (_$data['contacted'] as Enum$order_by?);
+
   Enum$order_by? get id => (_$data['id'] as Enum$order_by?);
 
   Enum$order_by? get notes => (_$data['notes'] as Enum$order_by?);
@@ -21749,6 +20206,11 @@ class Input$reminders_order_by {
       final l$contact_id = contact_id;
       result$data['contact_id'] =
           l$contact_id == null ? null : toJson$Enum$order_by(l$contact_id);
+    }
+    if (_$data.containsKey('contacted')) {
+      final l$contacted = contacted;
+      result$data['contacted'] =
+          l$contacted == null ? null : toJson$Enum$order_by(l$contacted);
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -21799,6 +20261,15 @@ class Input$reminders_order_by {
     if (l$contact_id != lOther$contact_id) {
       return false;
     }
+    final l$contacted = contacted;
+    final lOther$contacted = other.contacted;
+    if (_$data.containsKey('contacted') !=
+        other._$data.containsKey('contacted')) {
+      return false;
+    }
+    if (l$contacted != lOther$contacted) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
     if (_$data.containsKey('id') != other._$data.containsKey('id')) {
@@ -21830,12 +20301,14 @@ class Input$reminders_order_by {
   int get hashCode {
     final l$contact = contact;
     final l$contact_id = contact_id;
+    final l$contacted = contacted;
     final l$id = id;
     final l$notes = notes;
     final l$time = time;
     return Object.hashAll([
       _$data.containsKey('contact') ? l$contact : const {},
       _$data.containsKey('contact_id') ? l$contact_id : const {},
+      _$data.containsKey('contacted') ? l$contacted : const {},
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('notes') ? l$notes : const {},
       _$data.containsKey('time') ? l$time : const {},
@@ -21855,6 +20328,7 @@ abstract class CopyWith$Input$reminders_order_by<TRes> {
   TRes call({
     Input$contacts_order_by? contact,
     Enum$order_by? contact_id,
+    Enum$order_by? contacted,
     Enum$order_by? id,
     Enum$order_by? notes,
     Enum$order_by? time,
@@ -21878,6 +20352,7 @@ class _CopyWithImpl$Input$reminders_order_by<TRes>
   TRes call({
     Object? contact = _undefined,
     Object? contact_id = _undefined,
+    Object? contacted = _undefined,
     Object? id = _undefined,
     Object? notes = _undefined,
     Object? time = _undefined,
@@ -21888,6 +20363,7 @@ class _CopyWithImpl$Input$reminders_order_by<TRes>
           'contact': (contact as Input$contacts_order_by?),
         if (contact_id != _undefined)
           'contact_id': (contact_id as Enum$order_by?),
+        if (contacted != _undefined) 'contacted': (contacted as Enum$order_by?),
         if (id != _undefined) 'id': (id as Enum$order_by?),
         if (notes != _undefined) 'notes': (notes as Enum$order_by?),
         if (time != _undefined) 'time': (time as Enum$order_by?),
@@ -21911,6 +20387,7 @@ class _CopyWithStubImpl$Input$reminders_order_by<TRes>
   call({
     Input$contacts_order_by? contact,
     Enum$order_by? contact_id,
+    Enum$order_by? contacted,
     Enum$order_by? id,
     Enum$order_by? notes,
     Enum$order_by? time,
@@ -22021,12 +20498,14 @@ class _CopyWithStubImpl$Input$reminders_pk_columns_input<TRes>
 class Input$reminders_set_input {
   factory Input$reminders_set_input({
     int? contact_id,
+    bool? contacted,
     int? id,
     String? notes,
     String? time,
   }) =>
       Input$reminders_set_input._({
         if (contact_id != null) r'contact_id': contact_id,
+        if (contacted != null) r'contacted': contacted,
         if (id != null) r'id': id,
         if (notes != null) r'notes': notes,
         if (time != null) r'time': time,
@@ -22039,6 +20518,10 @@ class Input$reminders_set_input {
     if (data.containsKey('contact_id')) {
       final l$contact_id = data['contact_id'];
       result$data['contact_id'] = (l$contact_id as int?);
+    }
+    if (data.containsKey('contacted')) {
+      final l$contacted = data['contacted'];
+      result$data['contacted'] = (l$contacted as bool?);
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -22059,6 +20542,8 @@ class Input$reminders_set_input {
 
   int? get contact_id => (_$data['contact_id'] as int?);
 
+  bool? get contacted => (_$data['contacted'] as bool?);
+
   int? get id => (_$data['id'] as int?);
 
   String? get notes => (_$data['notes'] as String?);
@@ -22070,6 +20555,10 @@ class Input$reminders_set_input {
     if (_$data.containsKey('contact_id')) {
       final l$contact_id = contact_id;
       result$data['contact_id'] = l$contact_id;
+    }
+    if (_$data.containsKey('contacted')) {
+      final l$contacted = contacted;
+      result$data['contacted'] = l$contacted;
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -22110,6 +20599,15 @@ class Input$reminders_set_input {
     if (l$contact_id != lOther$contact_id) {
       return false;
     }
+    final l$contacted = contacted;
+    final lOther$contacted = other.contacted;
+    if (_$data.containsKey('contacted') !=
+        other._$data.containsKey('contacted')) {
+      return false;
+    }
+    if (l$contacted != lOther$contacted) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
     if (_$data.containsKey('id') != other._$data.containsKey('id')) {
@@ -22140,11 +20638,13 @@ class Input$reminders_set_input {
   @override
   int get hashCode {
     final l$contact_id = contact_id;
+    final l$contacted = contacted;
     final l$id = id;
     final l$notes = notes;
     final l$time = time;
     return Object.hashAll([
       _$data.containsKey('contact_id') ? l$contact_id : const {},
+      _$data.containsKey('contacted') ? l$contacted : const {},
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('notes') ? l$notes : const {},
       _$data.containsKey('time') ? l$time : const {},
@@ -22163,6 +20663,7 @@ abstract class CopyWith$Input$reminders_set_input<TRes> {
 
   TRes call({
     int? contact_id,
+    bool? contacted,
     int? id,
     String? notes,
     String? time,
@@ -22184,6 +20685,7 @@ class _CopyWithImpl$Input$reminders_set_input<TRes>
 
   TRes call({
     Object? contact_id = _undefined,
+    Object? contacted = _undefined,
     Object? id = _undefined,
     Object? notes = _undefined,
     Object? time = _undefined,
@@ -22191,6 +20693,7 @@ class _CopyWithImpl$Input$reminders_set_input<TRes>
       _then(Input$reminders_set_input._({
         ..._instance._$data,
         if (contact_id != _undefined) 'contact_id': (contact_id as int?),
+        if (contacted != _undefined) 'contacted': (contacted as bool?),
         if (id != _undefined) 'id': (id as int?),
         if (notes != _undefined) 'notes': (notes as String?),
         if (time != _undefined) 'time': (time as String?),
@@ -22205,6 +20708,7 @@ class _CopyWithStubImpl$Input$reminders_set_input<TRes>
 
   call({
     int? contact_id,
+    bool? contacted,
     int? id,
     String? notes,
     String? time,
@@ -22817,12 +21321,14 @@ class _CopyWithStubImpl$Input$reminders_stream_cursor_input<TRes>
 class Input$reminders_stream_cursor_value_input {
   factory Input$reminders_stream_cursor_value_input({
     int? contact_id,
+    bool? contacted,
     int? id,
     String? notes,
     String? time,
   }) =>
       Input$reminders_stream_cursor_value_input._({
         if (contact_id != null) r'contact_id': contact_id,
+        if (contacted != null) r'contacted': contacted,
         if (id != null) r'id': id,
         if (notes != null) r'notes': notes,
         if (time != null) r'time': time,
@@ -22836,6 +21342,10 @@ class Input$reminders_stream_cursor_value_input {
     if (data.containsKey('contact_id')) {
       final l$contact_id = data['contact_id'];
       result$data['contact_id'] = (l$contact_id as int?);
+    }
+    if (data.containsKey('contacted')) {
+      final l$contacted = data['contacted'];
+      result$data['contacted'] = (l$contacted as bool?);
     }
     if (data.containsKey('id')) {
       final l$id = data['id'];
@@ -22856,6 +21366,8 @@ class Input$reminders_stream_cursor_value_input {
 
   int? get contact_id => (_$data['contact_id'] as int?);
 
+  bool? get contacted => (_$data['contacted'] as bool?);
+
   int? get id => (_$data['id'] as int?);
 
   String? get notes => (_$data['notes'] as String?);
@@ -22867,6 +21379,10 @@ class Input$reminders_stream_cursor_value_input {
     if (_$data.containsKey('contact_id')) {
       final l$contact_id = contact_id;
       result$data['contact_id'] = l$contact_id;
+    }
+    if (_$data.containsKey('contacted')) {
+      final l$contacted = contacted;
+      result$data['contacted'] = l$contacted;
     }
     if (_$data.containsKey('id')) {
       final l$id = id;
@@ -22908,6 +21424,15 @@ class Input$reminders_stream_cursor_value_input {
     if (l$contact_id != lOther$contact_id) {
       return false;
     }
+    final l$contacted = contacted;
+    final lOther$contacted = other.contacted;
+    if (_$data.containsKey('contacted') !=
+        other._$data.containsKey('contacted')) {
+      return false;
+    }
+    if (l$contacted != lOther$contacted) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
     if (_$data.containsKey('id') != other._$data.containsKey('id')) {
@@ -22938,11 +21463,13 @@ class Input$reminders_stream_cursor_value_input {
   @override
   int get hashCode {
     final l$contact_id = contact_id;
+    final l$contacted = contacted;
     final l$id = id;
     final l$notes = notes;
     final l$time = time;
     return Object.hashAll([
       _$data.containsKey('contact_id') ? l$contact_id : const {},
+      _$data.containsKey('contacted') ? l$contacted : const {},
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('notes') ? l$notes : const {},
       _$data.containsKey('time') ? l$time : const {},
@@ -22961,6 +21488,7 @@ abstract class CopyWith$Input$reminders_stream_cursor_value_input<TRes> {
 
   TRes call({
     int? contact_id,
+    bool? contacted,
     int? id,
     String? notes,
     String? time,
@@ -22982,6 +21510,7 @@ class _CopyWithImpl$Input$reminders_stream_cursor_value_input<TRes>
 
   TRes call({
     Object? contact_id = _undefined,
+    Object? contacted = _undefined,
     Object? id = _undefined,
     Object? notes = _undefined,
     Object? time = _undefined,
@@ -22989,6 +21518,7 @@ class _CopyWithImpl$Input$reminders_stream_cursor_value_input<TRes>
       _then(Input$reminders_stream_cursor_value_input._({
         ..._instance._$data,
         if (contact_id != _undefined) 'contact_id': (contact_id as int?),
+        if (contacted != _undefined) 'contacted': (contacted as bool?),
         if (id != _undefined) 'id': (id as int?),
         if (notes != _undefined) 'notes': (notes as String?),
         if (time != _undefined) 'time': (time as String?),
@@ -23003,6 +21533,7 @@ class _CopyWithStubImpl$Input$reminders_stream_cursor_value_input<TRes>
 
   call({
     int? contact_id,
+    bool? contacted,
     int? id,
     String? notes,
     String? time,
@@ -23803,6 +22334,110 @@ class _CopyWithStubImpl$Input$reminders_variance_order_by<TRes>
     Enum$order_by? id,
   }) =>
       _res;
+}
+
+class Input$search_articles_args {
+  factory Input$search_articles_args({String? search}) =>
+      Input$search_articles_args._({
+        if (search != null) r'search': search,
+      });
+
+  Input$search_articles_args._(this._$data);
+
+  factory Input$search_articles_args.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('search')) {
+      final l$search = data['search'];
+      result$data['search'] = (l$search as String?);
+    }
+    return Input$search_articles_args._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get search => (_$data['search'] as String?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('search')) {
+      final l$search = search;
+      result$data['search'] = l$search;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$search_articles_args<Input$search_articles_args>
+      get copyWith => CopyWith$Input$search_articles_args(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$search_articles_args) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$search = search;
+    final lOther$search = other.search;
+    if (_$data.containsKey('search') != other._$data.containsKey('search')) {
+      return false;
+    }
+    if (l$search != lOther$search) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$search = search;
+    return Object.hashAll([_$data.containsKey('search') ? l$search : const {}]);
+  }
+}
+
+abstract class CopyWith$Input$search_articles_args<TRes> {
+  factory CopyWith$Input$search_articles_args(
+    Input$search_articles_args instance,
+    TRes Function(Input$search_articles_args) then,
+  ) = _CopyWithImpl$Input$search_articles_args;
+
+  factory CopyWith$Input$search_articles_args.stub(TRes res) =
+      _CopyWithStubImpl$Input$search_articles_args;
+
+  TRes call({String? search});
+}
+
+class _CopyWithImpl$Input$search_articles_args<TRes>
+    implements CopyWith$Input$search_articles_args<TRes> {
+  _CopyWithImpl$Input$search_articles_args(
+    this._instance,
+    this._then,
+  );
+
+  final Input$search_articles_args _instance;
+
+  final TRes Function(Input$search_articles_args) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? search = _undefined}) =>
+      _then(Input$search_articles_args._({
+        ..._instance._$data,
+        if (search != _undefined) 'search': (search as String?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$search_articles_args<TRes>
+    implements CopyWith$Input$search_articles_args<TRes> {
+  _CopyWithStubImpl$Input$search_articles_args(this._res);
+
+  TRes _res;
+
+  call({String? search}) => _res;
 }
 
 class Input$String_comparison_exp {
@@ -25269,12 +23904,21 @@ Enum$reminders_constraint fromJson$Enum$reminders_constraint(String value) {
   }
 }
 
-enum Enum$reminders_select_column { contact_id, id, notes, time, $unknown }
+enum Enum$reminders_select_column {
+  contact_id,
+  contacted,
+  id,
+  notes,
+  time,
+  $unknown
+}
 
 String toJson$Enum$reminders_select_column(Enum$reminders_select_column e) {
   switch (e) {
     case Enum$reminders_select_column.contact_id:
       return r'contact_id';
+    case Enum$reminders_select_column.contacted:
+      return r'contacted';
     case Enum$reminders_select_column.id:
       return r'id';
     case Enum$reminders_select_column.notes:
@@ -25291,6 +23935,8 @@ Enum$reminders_select_column fromJson$Enum$reminders_select_column(
   switch (value) {
     case r'contact_id':
       return Enum$reminders_select_column.contact_id;
+    case r'contacted':
+      return Enum$reminders_select_column.contacted;
     case r'id':
       return Enum$reminders_select_column.id;
     case r'notes':
@@ -25302,12 +23948,83 @@ Enum$reminders_select_column fromJson$Enum$reminders_select_column(
   }
 }
 
-enum Enum$reminders_update_column { contact_id, id, notes, time, $unknown }
+enum Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns {
+  contacted,
+  $unknown
+}
+
+String toJson$Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns(
+    Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns
+        e) {
+  switch (e) {
+    case Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns
+        .contacted:
+      return r'contacted';
+    case Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns
+        .$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns
+    fromJson$Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns(
+        String value) {
+  switch (value) {
+    case r'contacted':
+      return Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns
+          .contacted;
+    default:
+      return Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns
+          .$unknown;
+  }
+}
+
+enum Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns {
+  contacted,
+  $unknown
+}
+
+String toJson$Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns(
+    Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns
+        e) {
+  switch (e) {
+    case Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns
+        .contacted:
+      return r'contacted';
+    case Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns
+        .$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns
+    fromJson$Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns(
+        String value) {
+  switch (value) {
+    case r'contacted':
+      return Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns
+          .contacted;
+    default:
+      return Enum$reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns
+          .$unknown;
+  }
+}
+
+enum Enum$reminders_update_column {
+  contact_id,
+  contacted,
+  id,
+  notes,
+  time,
+  $unknown
+}
 
 String toJson$Enum$reminders_update_column(Enum$reminders_update_column e) {
   switch (e) {
     case Enum$reminders_update_column.contact_id:
       return r'contact_id';
+    case Enum$reminders_update_column.contacted:
+      return r'contacted';
     case Enum$reminders_update_column.id:
       return r'id';
     case Enum$reminders_update_column.notes:
@@ -25324,6 +24041,8 @@ Enum$reminders_update_column fromJson$Enum$reminders_update_column(
   switch (value) {
     case r'contact_id':
       return Enum$reminders_update_column.contact_id;
+    case r'contacted':
+      return Enum$reminders_update_column.contacted;
     case r'id':
       return Enum$reminders_update_column.id;
     case r'notes':

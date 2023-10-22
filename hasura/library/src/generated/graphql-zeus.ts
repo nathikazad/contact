@@ -280,8 +280,7 @@ contact_groups_aggregate?: [{	/** distinct select on columns */
 	date_added?:true,
 	desires?:true,
 	email?:true,
-frequency?: [{	/** JSON select path */
-	path?:string},true],
+	frequency?:true,
 	id?:true,
 	images?:true,
 logs?: [{	/** distinct select on columns */
@@ -335,12 +334,9 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 	variance?:ValueTypes["contacts_variance_fields"],
 		__typename?: true
 }>;
-	/** append existing jsonb value of filtered columns with new jsonb value */
-["contacts_append_input"]: {
-	frequency?:ValueTypes["jsonb"]
-};
 	/** aggregate avg on columns */
 ["contacts_avg_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
@@ -354,7 +350,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 	date_added?:ValueTypes["timestamptz_comparison_exp"],
 	desires?:ValueTypes["jsonb_array_comparison_exp"],
 	email?:ValueTypes["String_comparison_exp"],
-	frequency?:ValueTypes["jsonb_comparison_exp"],
+	frequency?:ValueTypes["Int_comparison_exp"],
 	id?:ValueTypes["Int_comparison_exp"],
 	images?:ValueTypes["jsonb_array_comparison_exp"],
 	logs?:ValueTypes["logs_bool_exp"],
@@ -368,21 +364,9 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 };
 	/** unique or primary key constraints on table "contacts" */
 ["contacts_constraint"]:contacts_constraint;
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-["contacts_delete_at_path_input"]: {
-	frequency?:string[]
-};
-	/** delete the array element with specified index (negative integers count from the
-end). throws an error if top level container is not an array */
-["contacts_delete_elem_input"]: {
-	frequency?:number
-};
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-["contacts_delete_key_input"]: {
-	frequency?:string
-};
 	/** input type for incrementing numeric columns in table "contacts" */
 ["contacts_inc_input"]: {
+	frequency?:number,
 	id?:number
 };
 	/** input type for inserting data into table "contacts" */
@@ -391,7 +375,7 @@ end). throws an error if top level container is not an array */
 	date_added?:ValueTypes["timestamptz"],
 	desires?:ValueTypes["jsonb"][],
 	email?:string,
-	frequency?:ValueTypes["jsonb"],
+	frequency?:number,
 	id?:number,
 	images?:ValueTypes["jsonb"][],
 	logs?:ValueTypes["logs_arr_rel_insert_input"],
@@ -406,6 +390,7 @@ end). throws an error if top level container is not an array */
 	date_added?:true,
 	desires?:true,
 	email?:true,
+	frequency?:true,
 	id?:true,
 	images?:true,
 	name?:true,
@@ -418,6 +403,7 @@ end). throws an error if top level container is not an array */
 	date_added?:true,
 	desires?:true,
 	email?:true,
+	frequency?:true,
 	id?:true,
 	images?:true,
 	name?:true,
@@ -465,10 +451,6 @@ end). throws an error if top level container is not an array */
 ["contacts_pk_columns_input"]: {
 	id:number
 };
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-["contacts_prepend_input"]: {
-	frequency?:ValueTypes["jsonb"]
-};
 	/** select columns of table "contacts" */
 ["contacts_select_column"]:contacts_select_column;
 	/** input type for updating data in table "contacts" */
@@ -476,7 +458,7 @@ end). throws an error if top level container is not an array */
 	date_added?:ValueTypes["timestamptz"],
 	desires?:ValueTypes["jsonb"][],
 	email?:string,
-	frequency?:ValueTypes["jsonb"],
+	frequency?:number,
 	id?:number,
 	images?:ValueTypes["jsonb"][],
 	name?:string,
@@ -486,16 +468,19 @@ end). throws an error if top level container is not an array */
 };
 	/** aggregate stddev on columns */
 ["contacts_stddev_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** aggregate stddev_pop on columns */
 ["contacts_stddev_pop_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** aggregate stddev_samp on columns */
 ["contacts_stddev_samp_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
@@ -511,7 +496,7 @@ end). throws an error if top level container is not an array */
 	date_added?:ValueTypes["timestamptz"],
 	desires?:ValueTypes["jsonb"][],
 	email?:string,
-	frequency?:ValueTypes["jsonb"],
+	frequency?:number,
 	id?:number,
 	images?:ValueTypes["jsonb"][],
 	name?:string,
@@ -521,25 +506,15 @@ end). throws an error if top level container is not an array */
 };
 	/** aggregate sum on columns */
 ["contacts_sum_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** update columns of table "contacts" */
 ["contacts_update_column"]:contacts_update_column;
 	["contacts_updates"]: {
-	/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:ValueTypes["contacts_append_input"],
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:ValueTypes["contacts_delete_at_path_input"],
-	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:ValueTypes["contacts_delete_elem_input"],
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:ValueTypes["contacts_delete_key_input"],
 	/** increments the numeric columns with given value of the filtered values */
 	_inc?:ValueTypes["contacts_inc_input"],
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:ValueTypes["contacts_prepend_input"],
 	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["contacts_set_input"],
 	/** filter the rows which have to be updated */
@@ -547,16 +522,19 @@ the end). throws an error if top level container is not an array */
 };
 	/** aggregate var_pop on columns */
 ["contacts_var_pop_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** aggregate var_samp on columns */
 ["contacts_var_samp_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** aggregate variance on columns */
 ["contacts_variance_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
@@ -576,8 +554,7 @@ contact_groups_aggregate?: [{	/** distinct select on columns */
 	offset?:number,	/** sort the rows by one or more columns */
 	order_by?:ValueTypes["contact_group_order_by"][],	/** filter the rows returned */
 	where?:ValueTypes["contact_group_bool_exp"]},ValueTypes["contact_group_aggregate"]],
-frequency?: [{	/** JSON select path */
-	path?:string},true],
+	frequency?:true,
 	id?:true,
 	name?:true,
 		__typename?: true
@@ -603,12 +580,9 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 	variance?:ValueTypes["groups_variance_fields"],
 		__typename?: true
 }>;
-	/** append existing jsonb value of filtered columns with new jsonb value */
-["groups_append_input"]: {
-	frequency?:ValueTypes["jsonb"]
-};
 	/** aggregate avg on columns */
 ["groups_avg_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
@@ -619,44 +593,34 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 	_or?:ValueTypes["groups_bool_exp"][],
 	contact_groups?:ValueTypes["contact_group_bool_exp"],
 	contact_groups_aggregate?:ValueTypes["contact_group_aggregate_bool_exp"],
-	frequency?:ValueTypes["jsonb_comparison_exp"],
+	frequency?:ValueTypes["Int_comparison_exp"],
 	id?:ValueTypes["Int_comparison_exp"],
 	name?:ValueTypes["String_comparison_exp"]
 };
 	/** unique or primary key constraints on table "groups" */
 ["groups_constraint"]:groups_constraint;
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-["groups_delete_at_path_input"]: {
-	frequency?:string[]
-};
-	/** delete the array element with specified index (negative integers count from the
-end). throws an error if top level container is not an array */
-["groups_delete_elem_input"]: {
-	frequency?:number
-};
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-["groups_delete_key_input"]: {
-	frequency?:string
-};
 	/** input type for incrementing numeric columns in table "groups" */
 ["groups_inc_input"]: {
+	frequency?:number,
 	id?:number
 };
 	/** input type for inserting data into table "groups" */
 ["groups_insert_input"]: {
 	contact_groups?:ValueTypes["contact_group_arr_rel_insert_input"],
-	frequency?:ValueTypes["jsonb"],
+	frequency?:number,
 	id?:number,
 	name?:string
 };
 	/** aggregate max on columns */
 ["groups_max_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 	name?:true,
 		__typename?: true
 }>;
 	/** aggregate min on columns */
 ["groups_min_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 	name?:true,
 		__typename?: true
@@ -692,30 +656,29 @@ end). throws an error if top level container is not an array */
 ["groups_pk_columns_input"]: {
 	id:number
 };
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-["groups_prepend_input"]: {
-	frequency?:ValueTypes["jsonb"]
-};
 	/** select columns of table "groups" */
 ["groups_select_column"]:groups_select_column;
 	/** input type for updating data in table "groups" */
 ["groups_set_input"]: {
-	frequency?:ValueTypes["jsonb"],
+	frequency?:number,
 	id?:number,
 	name?:string
 };
 	/** aggregate stddev on columns */
 ["groups_stddev_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** aggregate stddev_pop on columns */
 ["groups_stddev_pop_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** aggregate stddev_samp on columns */
 ["groups_stddev_samp_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
@@ -728,31 +691,21 @@ end). throws an error if top level container is not an array */
 };
 	/** Initial value of the column from where the streaming should start */
 ["groups_stream_cursor_value_input"]: {
-	frequency?:ValueTypes["jsonb"],
+	frequency?:number,
 	id?:number,
 	name?:string
 };
 	/** aggregate sum on columns */
 ["groups_sum_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** update columns of table "groups" */
 ["groups_update_column"]:groups_update_column;
 	["groups_updates"]: {
-	/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:ValueTypes["groups_append_input"],
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:ValueTypes["groups_delete_at_path_input"],
-	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:ValueTypes["groups_delete_elem_input"],
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:ValueTypes["groups_delete_key_input"],
 	/** increments the numeric columns with given value of the filtered values */
 	_inc?:ValueTypes["groups_inc_input"],
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:ValueTypes["groups_prepend_input"],
 	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["groups_set_input"],
 	/** filter the rows which have to be updated */
@@ -760,16 +713,19 @@ the end). throws an error if top level container is not an array */
 };
 	/** aggregate var_pop on columns */
 ["groups_var_pop_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** aggregate var_samp on columns */
 ["groups_var_samp_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
 	/** aggregate variance on columns */
 ["groups_variance_fields"]: AliasType<{
+	frequency?:true,
 	id?:true,
 		__typename?: true
 }>;
@@ -801,32 +757,6 @@ the end). throws an error if top level container is not an array */
 	_lte?:ValueTypes["jsonb"][],
 	_neq?:ValueTypes["jsonb"][],
 	_nin:ValueTypes["jsonb"][]
-};
-	["jsonb_cast_exp"]: {
-	String?:ValueTypes["String_comparison_exp"]
-};
-	/** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
-["jsonb_comparison_exp"]: {
-	_cast?:ValueTypes["jsonb_cast_exp"],
-	/** is the column contained in the given json value */
-	_contained_in?:ValueTypes["jsonb"],
-	/** does the column contain the given json value at the top level */
-	_contains?:ValueTypes["jsonb"],
-	_eq?:ValueTypes["jsonb"],
-	_gt?:ValueTypes["jsonb"],
-	_gte?:ValueTypes["jsonb"],
-	/** does the string exist as a top-level key in the column */
-	_has_key?:string,
-	/** do all of these strings exist as top-level keys in the column */
-	_has_keys_all?:string[],
-	/** do any of these strings exist as top-level keys in the column */
-	_has_keys_any?:string[],
-	_in?:ValueTypes["jsonb"][],
-	_is_null?:boolean,
-	_lt?:ValueTypes["jsonb"],
-	_lte?:ValueTypes["jsonb"],
-	_neq?:ValueTypes["jsonb"],
-	_nin?:ValueTypes["jsonb"][]
 };
 	/** columns and relationships of "logs" */
 ["logs"]: AliasType<{
@@ -1165,45 +1095,21 @@ update_contact_group_by_pk?: [{	/** increments the numeric columns with given va
 	_set?:ValueTypes["contact_group_set_input"],	pk_columns:ValueTypes["contact_group_pk_columns_input"]},ValueTypes["contact_group"]],
 update_contact_group_many?: [{	/** updates to execute, in order */
 	updates:ValueTypes["contact_group_updates"][]},ValueTypes["contact_group_mutation_response"]],
-update_contacts?: [{	/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:ValueTypes["contacts_append_input"],	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:ValueTypes["contacts_delete_at_path_input"],	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:ValueTypes["contacts_delete_elem_input"],	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:ValueTypes["contacts_delete_key_input"],	/** increments the numeric columns with given value of the filtered values */
-	_inc?:ValueTypes["contacts_inc_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:ValueTypes["contacts_prepend_input"],	/** sets the columns of the filtered rows to the given values */
+update_contacts?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["contacts_inc_input"],	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["contacts_set_input"],	/** filter the rows which have to be updated */
 	where:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts_mutation_response"]],
-update_contacts_by_pk?: [{	/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:ValueTypes["contacts_append_input"],	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:ValueTypes["contacts_delete_at_path_input"],	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:ValueTypes["contacts_delete_elem_input"],	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:ValueTypes["contacts_delete_key_input"],	/** increments the numeric columns with given value of the filtered values */
-	_inc?:ValueTypes["contacts_inc_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:ValueTypes["contacts_prepend_input"],	/** sets the columns of the filtered rows to the given values */
+update_contacts_by_pk?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["contacts_inc_input"],	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["contacts_set_input"],	pk_columns:ValueTypes["contacts_pk_columns_input"]},ValueTypes["contacts"]],
 update_contacts_many?: [{	/** updates to execute, in order */
 	updates:ValueTypes["contacts_updates"][]},ValueTypes["contacts_mutation_response"]],
-update_groups?: [{	/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:ValueTypes["groups_append_input"],	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:ValueTypes["groups_delete_at_path_input"],	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:ValueTypes["groups_delete_elem_input"],	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:ValueTypes["groups_delete_key_input"],	/** increments the numeric columns with given value of the filtered values */
-	_inc?:ValueTypes["groups_inc_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:ValueTypes["groups_prepend_input"],	/** sets the columns of the filtered rows to the given values */
+update_groups?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["groups_inc_input"],	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["groups_set_input"],	/** filter the rows which have to be updated */
 	where:ValueTypes["groups_bool_exp"]},ValueTypes["groups_mutation_response"]],
-update_groups_by_pk?: [{	/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:ValueTypes["groups_append_input"],	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:ValueTypes["groups_delete_at_path_input"],	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:ValueTypes["groups_delete_elem_input"],	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:ValueTypes["groups_delete_key_input"],	/** increments the numeric columns with given value of the filtered values */
-	_inc?:ValueTypes["groups_inc_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:ValueTypes["groups_prepend_input"],	/** sets the columns of the filtered rows to the given values */
+update_groups_by_pk?: [{	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["groups_inc_input"],	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["groups_set_input"],	pk_columns:ValueTypes["groups_pk_columns_input"]},ValueTypes["groups"]],
 update_groups_many?: [{	/** updates to execute, in order */
 	updates:ValueTypes["groups_updates"][]},ValueTypes["groups_mutation_response"]],
@@ -1256,6 +1162,18 @@ contacts_aggregate?: [{	/** distinct select on columns */
 	order_by?:ValueTypes["contacts_order_by"][],	/** filter the rows returned */
 	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts_aggregate"]],
 contacts_by_pk?: [{	id:number},ValueTypes["contacts"]],
+get_people_to_contact_today?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contacts_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts"]],
+get_people_to_contact_today_aggregate?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contacts_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts_aggregate"]],
 groups?: [{	/** distinct select on columns */
 	distinct_on?:ValueTypes["groups_select_column"][],	/** limit the number of rows returned */
 	limit?:number,	/** skip the first n rows. Use only with order_by */
@@ -1295,6 +1213,20 @@ reminders_aggregate?: [{	/** distinct select on columns */
 	order_by?:ValueTypes["reminders_order_by"][],	/** filter the rows returned */
 	where?:ValueTypes["reminders_bool_exp"]},ValueTypes["reminders_aggregate"]],
 reminders_by_pk?: [{	id:number},ValueTypes["reminders"]],
+search_articles?: [{	/** input parameters for function "search_articles" */
+	args:ValueTypes["search_articles_args"],	/** distinct select on columns */
+	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contacts_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts"]],
+search_articles_aggregate?: [{	/** input parameters for function "search_articles_aggregate" */
+	args:ValueTypes["search_articles_args"],	/** distinct select on columns */
+	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contacts_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts_aggregate"]],
 		__typename?: true
 }>;
 	/** columns and relationships of "reminders" */
@@ -1302,6 +1234,7 @@ reminders_by_pk?: [{	id:number},ValueTypes["reminders"]],
 	/** An object relationship */
 	contact?:ValueTypes["contacts"],
 	contact_id?:true,
+	contacted?:true,
 	id?:true,
 	notes?:true,
 	time?:true,
@@ -1314,7 +1247,21 @@ reminders_by_pk?: [{	id:number},ValueTypes["reminders"]],
 		__typename?: true
 }>;
 	["reminders_aggregate_bool_exp"]: {
+	bool_and?:ValueTypes["reminders_aggregate_bool_exp_bool_and"],
+	bool_or?:ValueTypes["reminders_aggregate_bool_exp_bool_or"],
 	count?:ValueTypes["reminders_aggregate_bool_exp_count"]
+};
+	["reminders_aggregate_bool_exp_bool_and"]: {
+	arguments:ValueTypes["reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns"],
+	distinct?:boolean,
+	filter?:ValueTypes["reminders_bool_exp"],
+	predicate:ValueTypes["Boolean_comparison_exp"]
+};
+	["reminders_aggregate_bool_exp_bool_or"]: {
+	arguments:ValueTypes["reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns"],
+	distinct?:boolean,
+	filter?:ValueTypes["reminders_bool_exp"],
+	predicate:ValueTypes["Boolean_comparison_exp"]
 };
 	["reminders_aggregate_bool_exp_count"]: {
 	arguments?:ValueTypes["reminders_select_column"][],
@@ -1375,6 +1322,7 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 	_or?:ValueTypes["reminders_bool_exp"][],
 	contact?:ValueTypes["contacts_bool_exp"],
 	contact_id?:ValueTypes["Int_comparison_exp"],
+	contacted?:ValueTypes["Boolean_comparison_exp"],
 	id?:ValueTypes["Int_comparison_exp"],
 	notes?:ValueTypes["String_comparison_exp"],
 	time?:ValueTypes["timestamptz_comparison_exp"]
@@ -1390,6 +1338,7 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 ["reminders_insert_input"]: {
 	contact?:ValueTypes["contacts_obj_rel_insert_input"],
 	contact_id?:number,
+	contacted?:boolean,
 	id?:number,
 	notes?:string,
 	time?:ValueTypes["timestamptz"]
@@ -1442,6 +1391,7 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 ["reminders_order_by"]: {
 	contact?:ValueTypes["contacts_order_by"],
 	contact_id?:ValueTypes["order_by"],
+	contacted?:ValueTypes["order_by"],
 	id?:ValueTypes["order_by"],
 	notes?:ValueTypes["order_by"],
 	time?:ValueTypes["order_by"]
@@ -1452,9 +1402,14 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 };
 	/** select columns of table "reminders" */
 ["reminders_select_column"]:reminders_select_column;
+	/** select "reminders_aggregate_bool_exp_bool_and_arguments_columns" columns of table "reminders" */
+["reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns"]:reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns;
+	/** select "reminders_aggregate_bool_exp_bool_or_arguments_columns" columns of table "reminders" */
+["reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns"]:reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns;
 	/** input type for updating data in table "reminders" */
 ["reminders_set_input"]: {
 	contact_id?:number,
+	contacted?:boolean,
 	id?:number,
 	notes?:string,
 	time?:ValueTypes["timestamptz"]
@@ -1502,6 +1457,7 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 	/** Initial value of the column from where the streaming should start */
 ["reminders_stream_cursor_value_input"]: {
 	contact_id?:number,
+	contacted?:boolean,
 	id?:number,
 	notes?:string,
 	time?:ValueTypes["timestamptz"]
@@ -1559,6 +1515,9 @@ count?: [{	columns?:ValueTypes["reminders_select_column"][],	distinct?:boolean},
 ["reminders_variance_order_by"]: {
 	contact_id?:ValueTypes["order_by"],
 	id?:ValueTypes["order_by"]
+};
+	["search_articles_args"]: {
+	search?:string
 };
 	/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 ["String_comparison_exp"]: {
@@ -1627,6 +1586,18 @@ contacts_stream?: [{	/** maximum number of rows returned in a single batch */
 	batch_size:number,	/** cursor to stream the results returned by the query */
 	cursor?:ValueTypes["contacts_stream_cursor_input"][],	/** filter the rows returned */
 	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts"]],
+get_people_to_contact_today?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contacts_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts"]],
+get_people_to_contact_today_aggregate?: [{	/** distinct select on columns */
+	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contacts_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts_aggregate"]],
 groups?: [{	/** distinct select on columns */
 	distinct_on?:ValueTypes["groups_select_column"][],	/** limit the number of rows returned */
 	limit?:number,	/** skip the first n rows. Use only with order_by */
@@ -1678,6 +1649,20 @@ reminders_stream?: [{	/** maximum number of rows returned in a single batch */
 	batch_size:number,	/** cursor to stream the results returned by the query */
 	cursor?:ValueTypes["reminders_stream_cursor_input"][],	/** filter the rows returned */
 	where?:ValueTypes["reminders_bool_exp"]},ValueTypes["reminders"]],
+search_articles?: [{	/** input parameters for function "search_articles" */
+	args:ValueTypes["search_articles_args"],	/** distinct select on columns */
+	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contacts_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts"]],
+search_articles_aggregate?: [{	/** input parameters for function "search_articles_aggregate" */
+	args:ValueTypes["search_articles_args"],	/** distinct select on columns */
+	distinct_on?:ValueTypes["contacts_select_column"][],	/** limit the number of rows returned */
+	limit?:number,	/** skip the first n rows. Use only with order_by */
+	offset?:number,	/** sort the rows by one or more columns */
+	order_by?:ValueTypes["contacts_order_by"][],	/** filter the rows returned */
+	where?:ValueTypes["contacts_bool_exp"]},ValueTypes["contacts_aggregate"]],
 		__typename?: true
 }>;
 	["timestamptz"]:unknown;
@@ -1967,7 +1952,7 @@ export type PartialObjects = {
 			date_added?:PartialObjects["timestamptz"],
 			desires?:PartialObjects["jsonb"][],
 			email?:string,
-			frequency?:PartialObjects["jsonb"],
+			frequency?:number,
 			id?:number,
 			images?:PartialObjects["jsonb"][],
 			/** An array relationship */
@@ -2004,13 +1989,10 @@ export type PartialObjects = {
 			var_samp?:PartialObjects["contacts_var_samp_fields"],
 			variance?:PartialObjects["contacts_variance_fields"]
 	},
-	/** append existing jsonb value of filtered columns with new jsonb value */
-["contacts_append_input"]: {
-	frequency?:PartialObjects["jsonb"]
-},
 	/** aggregate avg on columns */
 ["contacts_avg_fields"]: {
 		__typename?: "contacts_avg_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** Boolean expression to filter rows from the table "contacts". All fields are combined with a logical 'AND'. */
@@ -2023,7 +2005,7 @@ export type PartialObjects = {
 	date_added?:PartialObjects["timestamptz_comparison_exp"],
 	desires?:PartialObjects["jsonb_array_comparison_exp"],
 	email?:PartialObjects["String_comparison_exp"],
-	frequency?:PartialObjects["jsonb_comparison_exp"],
+	frequency?:PartialObjects["Int_comparison_exp"],
 	id?:PartialObjects["Int_comparison_exp"],
 	images?:PartialObjects["jsonb_array_comparison_exp"],
 	logs?:PartialObjects["logs_bool_exp"],
@@ -2037,21 +2019,9 @@ export type PartialObjects = {
 },
 	/** unique or primary key constraints on table "contacts" */
 ["contacts_constraint"]:contacts_constraint,
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-["contacts_delete_at_path_input"]: {
-	frequency?:string[]
-},
-	/** delete the array element with specified index (negative integers count from the
-end). throws an error if top level container is not an array */
-["contacts_delete_elem_input"]: {
-	frequency?:number
-},
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-["contacts_delete_key_input"]: {
-	frequency?:string
-},
 	/** input type for incrementing numeric columns in table "contacts" */
 ["contacts_inc_input"]: {
+	frequency?:number,
 	id?:number
 },
 	/** input type for inserting data into table "contacts" */
@@ -2060,7 +2030,7 @@ end). throws an error if top level container is not an array */
 	date_added?:PartialObjects["timestamptz"],
 	desires?:PartialObjects["jsonb"][],
 	email?:string,
-	frequency?:PartialObjects["jsonb"],
+	frequency?:number,
 	id?:number,
 	images?:PartialObjects["jsonb"][],
 	logs?:PartialObjects["logs_arr_rel_insert_input"],
@@ -2076,6 +2046,7 @@ end). throws an error if top level container is not an array */
 			date_added?:PartialObjects["timestamptz"],
 			desires?:PartialObjects["jsonb"][],
 			email?:string,
+			frequency?:number,
 			id?:number,
 			images?:PartialObjects["jsonb"][],
 			name?:string,
@@ -2088,6 +2059,7 @@ end). throws an error if top level container is not an array */
 			date_added?:PartialObjects["timestamptz"],
 			desires?:PartialObjects["jsonb"][],
 			email?:string,
+			frequency?:number,
 			id?:number,
 			images?:PartialObjects["jsonb"][],
 			name?:string,
@@ -2134,10 +2106,6 @@ end). throws an error if top level container is not an array */
 ["contacts_pk_columns_input"]: {
 	id:number
 },
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-["contacts_prepend_input"]: {
-	frequency?:PartialObjects["jsonb"]
-},
 	/** select columns of table "contacts" */
 ["contacts_select_column"]:contacts_select_column,
 	/** input type for updating data in table "contacts" */
@@ -2145,7 +2113,7 @@ end). throws an error if top level container is not an array */
 	date_added?:PartialObjects["timestamptz"],
 	desires?:PartialObjects["jsonb"][],
 	email?:string,
-	frequency?:PartialObjects["jsonb"],
+	frequency?:number,
 	id?:number,
 	images?:PartialObjects["jsonb"][],
 	name?:string,
@@ -2156,16 +2124,19 @@ end). throws an error if top level container is not an array */
 	/** aggregate stddev on columns */
 ["contacts_stddev_fields"]: {
 		__typename?: "contacts_stddev_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** aggregate stddev_pop on columns */
 ["contacts_stddev_pop_fields"]: {
 		__typename?: "contacts_stddev_pop_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** aggregate stddev_samp on columns */
 ["contacts_stddev_samp_fields"]: {
 		__typename?: "contacts_stddev_samp_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** Streaming cursor of the table "contacts" */
@@ -2180,7 +2151,7 @@ end). throws an error if top level container is not an array */
 	date_added?:PartialObjects["timestamptz"],
 	desires?:PartialObjects["jsonb"][],
 	email?:string,
-	frequency?:PartialObjects["jsonb"],
+	frequency?:number,
 	id?:number,
 	images?:PartialObjects["jsonb"][],
 	name?:string,
@@ -2191,24 +2162,14 @@ end). throws an error if top level container is not an array */
 	/** aggregate sum on columns */
 ["contacts_sum_fields"]: {
 		__typename?: "contacts_sum_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** update columns of table "contacts" */
 ["contacts_update_column"]:contacts_update_column,
 	["contacts_updates"]: {
-	/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:PartialObjects["contacts_append_input"],
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:PartialObjects["contacts_delete_at_path_input"],
-	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:PartialObjects["contacts_delete_elem_input"],
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:PartialObjects["contacts_delete_key_input"],
 	/** increments the numeric columns with given value of the filtered values */
 	_inc?:PartialObjects["contacts_inc_input"],
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:PartialObjects["contacts_prepend_input"],
 	/** sets the columns of the filtered rows to the given values */
 	_set?:PartialObjects["contacts_set_input"],
 	/** filter the rows which have to be updated */
@@ -2217,16 +2178,19 @@ the end). throws an error if top level container is not an array */
 	/** aggregate var_pop on columns */
 ["contacts_var_pop_fields"]: {
 		__typename?: "contacts_var_pop_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** aggregate var_samp on columns */
 ["contacts_var_samp_fields"]: {
 		__typename?: "contacts_var_samp_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** aggregate variance on columns */
 ["contacts_variance_fields"]: {
 		__typename?: "contacts_variance_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** ordering argument of a cursor */
@@ -2238,7 +2202,7 @@ the end). throws an error if top level container is not an array */
 	contact_groups?:PartialObjects["contact_group"][],
 			/** An aggregate relationship */
 	contact_groups_aggregate?:PartialObjects["contact_group_aggregate"],
-			frequency?:PartialObjects["jsonb"],
+			frequency?:number,
 			id?:number,
 			name?:string
 	},
@@ -2263,13 +2227,10 @@ the end). throws an error if top level container is not an array */
 			var_samp?:PartialObjects["groups_var_samp_fields"],
 			variance?:PartialObjects["groups_variance_fields"]
 	},
-	/** append existing jsonb value of filtered columns with new jsonb value */
-["groups_append_input"]: {
-	frequency?:PartialObjects["jsonb"]
-},
 	/** aggregate avg on columns */
 ["groups_avg_fields"]: {
 		__typename?: "groups_avg_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** Boolean expression to filter rows from the table "groups". All fields are combined with a logical 'AND'. */
@@ -2279,45 +2240,35 @@ the end). throws an error if top level container is not an array */
 	_or?:PartialObjects["groups_bool_exp"][],
 	contact_groups?:PartialObjects["contact_group_bool_exp"],
 	contact_groups_aggregate?:PartialObjects["contact_group_aggregate_bool_exp"],
-	frequency?:PartialObjects["jsonb_comparison_exp"],
+	frequency?:PartialObjects["Int_comparison_exp"],
 	id?:PartialObjects["Int_comparison_exp"],
 	name?:PartialObjects["String_comparison_exp"]
 },
 	/** unique or primary key constraints on table "groups" */
 ["groups_constraint"]:groups_constraint,
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-["groups_delete_at_path_input"]: {
-	frequency?:string[]
-},
-	/** delete the array element with specified index (negative integers count from the
-end). throws an error if top level container is not an array */
-["groups_delete_elem_input"]: {
-	frequency?:number
-},
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-["groups_delete_key_input"]: {
-	frequency?:string
-},
 	/** input type for incrementing numeric columns in table "groups" */
 ["groups_inc_input"]: {
+	frequency?:number,
 	id?:number
 },
 	/** input type for inserting data into table "groups" */
 ["groups_insert_input"]: {
 	contact_groups?:PartialObjects["contact_group_arr_rel_insert_input"],
-	frequency?:PartialObjects["jsonb"],
+	frequency?:number,
 	id?:number,
 	name?:string
 },
 	/** aggregate max on columns */
 ["groups_max_fields"]: {
 		__typename?: "groups_max_fields";
+			frequency?:number,
 			id?:number,
 			name?:string
 	},
 	/** aggregate min on columns */
 ["groups_min_fields"]: {
 		__typename?: "groups_min_fields";
+			frequency?:number,
 			id?:number,
 			name?:string
 	},
@@ -2352,31 +2303,30 @@ end). throws an error if top level container is not an array */
 ["groups_pk_columns_input"]: {
 	id:number
 },
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-["groups_prepend_input"]: {
-	frequency?:PartialObjects["jsonb"]
-},
 	/** select columns of table "groups" */
 ["groups_select_column"]:groups_select_column,
 	/** input type for updating data in table "groups" */
 ["groups_set_input"]: {
-	frequency?:PartialObjects["jsonb"],
+	frequency?:number,
 	id?:number,
 	name?:string
 },
 	/** aggregate stddev on columns */
 ["groups_stddev_fields"]: {
 		__typename?: "groups_stddev_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** aggregate stddev_pop on columns */
 ["groups_stddev_pop_fields"]: {
 		__typename?: "groups_stddev_pop_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** aggregate stddev_samp on columns */
 ["groups_stddev_samp_fields"]: {
 		__typename?: "groups_stddev_samp_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** Streaming cursor of the table "groups" */
@@ -2388,31 +2338,21 @@ end). throws an error if top level container is not an array */
 },
 	/** Initial value of the column from where the streaming should start */
 ["groups_stream_cursor_value_input"]: {
-	frequency?:PartialObjects["jsonb"],
+	frequency?:number,
 	id?:number,
 	name?:string
 },
 	/** aggregate sum on columns */
 ["groups_sum_fields"]: {
 		__typename?: "groups_sum_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** update columns of table "groups" */
 ["groups_update_column"]:groups_update_column,
 	["groups_updates"]: {
-	/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:PartialObjects["groups_append_input"],
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:PartialObjects["groups_delete_at_path_input"],
-	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:PartialObjects["groups_delete_elem_input"],
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:PartialObjects["groups_delete_key_input"],
 	/** increments the numeric columns with given value of the filtered values */
 	_inc?:PartialObjects["groups_inc_input"],
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:PartialObjects["groups_prepend_input"],
 	/** sets the columns of the filtered rows to the given values */
 	_set?:PartialObjects["groups_set_input"],
 	/** filter the rows which have to be updated */
@@ -2421,16 +2361,19 @@ the end). throws an error if top level container is not an array */
 	/** aggregate var_pop on columns */
 ["groups_var_pop_fields"]: {
 		__typename?: "groups_var_pop_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** aggregate var_samp on columns */
 ["groups_var_samp_fields"]: {
 		__typename?: "groups_var_samp_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** aggregate variance on columns */
 ["groups_variance_fields"]: {
 		__typename?: "groups_variance_fields";
+			frequency?:number,
 			id?:number
 	},
 	/** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
@@ -2461,32 +2404,6 @@ the end). throws an error if top level container is not an array */
 	_lte?:PartialObjects["jsonb"][],
 	_neq?:PartialObjects["jsonb"][],
 	_nin:PartialObjects["jsonb"][]
-},
-	["jsonb_cast_exp"]: {
-	String?:PartialObjects["String_comparison_exp"]
-},
-	/** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
-["jsonb_comparison_exp"]: {
-	_cast?:PartialObjects["jsonb_cast_exp"],
-	/** is the column contained in the given json value */
-	_contained_in?:PartialObjects["jsonb"],
-	/** does the column contain the given json value at the top level */
-	_contains?:PartialObjects["jsonb"],
-	_eq?:PartialObjects["jsonb"],
-	_gt?:PartialObjects["jsonb"],
-	_gte?:PartialObjects["jsonb"],
-	/** does the string exist as a top-level key in the column */
-	_has_key?:string,
-	/** do all of these strings exist as top-level keys in the column */
-	_has_keys_all?:string[],
-	/** do any of these strings exist as top-level keys in the column */
-	_has_keys_any?:string[],
-	_in?:PartialObjects["jsonb"][],
-	_is_null?:boolean,
-	_lt?:PartialObjects["jsonb"],
-	_lte?:PartialObjects["jsonb"],
-	_neq?:PartialObjects["jsonb"],
-	_nin?:PartialObjects["jsonb"][]
 },
 	/** columns and relationships of "logs" */
 ["logs"]: {
@@ -2859,6 +2776,10 @@ the end). throws an error if top level container is not an array */
 	contacts_aggregate?:PartialObjects["contacts_aggregate"],
 			/** fetch data from the table: "contacts" using primary key columns */
 	contacts_by_pk?:PartialObjects["contacts"],
+			/** execute function "get_people_to_contact_today" which returns "contacts" */
+	get_people_to_contact_today?:PartialObjects["contacts"][],
+			/** execute function "get_people_to_contact_today" and query aggregates on result of table type "contacts" */
+	get_people_to_contact_today_aggregate?:PartialObjects["contacts_aggregate"],
 			/** fetch data from the table: "groups" */
 	groups?:PartialObjects["groups"][],
 			/** fetch aggregated fields from the table: "groups" */
@@ -2876,7 +2797,11 @@ the end). throws an error if top level container is not an array */
 			/** An aggregate relationship */
 	reminders_aggregate?:PartialObjects["reminders_aggregate"],
 			/** fetch data from the table: "reminders" using primary key columns */
-	reminders_by_pk?:PartialObjects["reminders"]
+	reminders_by_pk?:PartialObjects["reminders"],
+			/** execute function "search_articles" which returns "contacts" */
+	search_articles?:PartialObjects["contacts"][],
+			/** execute function "search_articles" and query aggregates on result of table type "contacts" */
+	search_articles_aggregate?:PartialObjects["contacts_aggregate"]
 	},
 	/** columns and relationships of "reminders" */
 ["reminders"]: {
@@ -2884,6 +2809,7 @@ the end). throws an error if top level container is not an array */
 			/** An object relationship */
 	contact?:PartialObjects["contacts"],
 			contact_id?:number,
+			contacted?:boolean,
 			id?:number,
 			notes?:string,
 			time?:PartialObjects["timestamptz"]
@@ -2895,7 +2821,21 @@ the end). throws an error if top level container is not an array */
 			nodes?:PartialObjects["reminders"][]
 	},
 	["reminders_aggregate_bool_exp"]: {
+	bool_and?:PartialObjects["reminders_aggregate_bool_exp_bool_and"],
+	bool_or?:PartialObjects["reminders_aggregate_bool_exp_bool_or"],
 	count?:PartialObjects["reminders_aggregate_bool_exp_count"]
+},
+	["reminders_aggregate_bool_exp_bool_and"]: {
+	arguments:PartialObjects["reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns"],
+	distinct?:boolean,
+	filter?:PartialObjects["reminders_bool_exp"],
+	predicate:PartialObjects["Boolean_comparison_exp"]
+},
+	["reminders_aggregate_bool_exp_bool_or"]: {
+	arguments:PartialObjects["reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns"],
+	distinct?:boolean,
+	filter?:PartialObjects["reminders_bool_exp"],
+	predicate:PartialObjects["Boolean_comparison_exp"]
 },
 	["reminders_aggregate_bool_exp_count"]: {
 	arguments?:PartialObjects["reminders_select_column"][],
@@ -2956,6 +2896,7 @@ the end). throws an error if top level container is not an array */
 	_or?:PartialObjects["reminders_bool_exp"][],
 	contact?:PartialObjects["contacts_bool_exp"],
 	contact_id?:PartialObjects["Int_comparison_exp"],
+	contacted?:PartialObjects["Boolean_comparison_exp"],
 	id?:PartialObjects["Int_comparison_exp"],
 	notes?:PartialObjects["String_comparison_exp"],
 	time?:PartialObjects["timestamptz_comparison_exp"]
@@ -2971,6 +2912,7 @@ the end). throws an error if top level container is not an array */
 ["reminders_insert_input"]: {
 	contact?:PartialObjects["contacts_obj_rel_insert_input"],
 	contact_id?:number,
+	contacted?:boolean,
 	id?:number,
 	notes?:string,
 	time?:PartialObjects["timestamptz"]
@@ -3023,6 +2965,7 @@ the end). throws an error if top level container is not an array */
 ["reminders_order_by"]: {
 	contact?:PartialObjects["contacts_order_by"],
 	contact_id?:PartialObjects["order_by"],
+	contacted?:PartialObjects["order_by"],
 	id?:PartialObjects["order_by"],
 	notes?:PartialObjects["order_by"],
 	time?:PartialObjects["order_by"]
@@ -3033,9 +2976,14 @@ the end). throws an error if top level container is not an array */
 },
 	/** select columns of table "reminders" */
 ["reminders_select_column"]:reminders_select_column,
+	/** select "reminders_aggregate_bool_exp_bool_and_arguments_columns" columns of table "reminders" */
+["reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns"]:reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns,
+	/** select "reminders_aggregate_bool_exp_bool_or_arguments_columns" columns of table "reminders" */
+["reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns"]:reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns,
 	/** input type for updating data in table "reminders" */
 ["reminders_set_input"]: {
 	contact_id?:number,
+	contacted?:boolean,
 	id?:number,
 	notes?:string,
 	time?:PartialObjects["timestamptz"]
@@ -3083,6 +3031,7 @@ the end). throws an error if top level container is not an array */
 	/** Initial value of the column from where the streaming should start */
 ["reminders_stream_cursor_value_input"]: {
 	contact_id?:number,
+	contacted?:boolean,
 	id?:number,
 	notes?:string,
 	time?:PartialObjects["timestamptz"]
@@ -3141,6 +3090,9 @@ the end). throws an error if top level container is not an array */
 	contact_id?:PartialObjects["order_by"],
 	id?:PartialObjects["order_by"]
 },
+	["search_articles_args"]: {
+	search?:string
+},
 	/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 ["String_comparison_exp"]: {
 	_eq?:string,
@@ -3191,6 +3143,10 @@ the end). throws an error if top level container is not an array */
 	contacts_by_pk?:PartialObjects["contacts"],
 			/** fetch data from the table in a streaming manner: "contacts" */
 	contacts_stream?:PartialObjects["contacts"][],
+			/** execute function "get_people_to_contact_today" which returns "contacts" */
+	get_people_to_contact_today?:PartialObjects["contacts"][],
+			/** execute function "get_people_to_contact_today" and query aggregates on result of table type "contacts" */
+	get_people_to_contact_today_aggregate?:PartialObjects["contacts_aggregate"],
 			/** fetch data from the table: "groups" */
 	groups?:PartialObjects["groups"][],
 			/** fetch aggregated fields from the table: "groups" */
@@ -3214,7 +3170,11 @@ the end). throws an error if top level container is not an array */
 			/** fetch data from the table: "reminders" using primary key columns */
 	reminders_by_pk?:PartialObjects["reminders"],
 			/** fetch data from the table in a streaming manner: "reminders" */
-	reminders_stream?:PartialObjects["reminders"][]
+	reminders_stream?:PartialObjects["reminders"][],
+			/** execute function "search_articles" which returns "contacts" */
+	search_articles?:PartialObjects["contacts"][],
+			/** execute function "search_articles" and query aggregates on result of table type "contacts" */
+	search_articles_aggregate?:PartialObjects["contacts_aggregate"]
 	},
 	["timestamptz"]:any,
 	/** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
@@ -3554,7 +3514,7 @@ export type contacts = {
 	date_added:timestamptz,
 	desires?:jsonb[],
 	email?:string,
-	frequency?:jsonb,
+	frequency?:number,
 	id:number,
 	images?:jsonb[],
 	/** An array relationship */
@@ -3594,14 +3554,10 @@ export type contacts_aggregate_fields = {
 	variance?:contacts_variance_fields
 }
 
-/** append existing jsonb value of filtered columns with new jsonb value */
-export type contacts_append_input = {
-		frequency?:jsonb
-}
-
 /** aggregate avg on columns */
 export type contacts_avg_fields = {
 	__typename?: "contacts_avg_fields",
+	frequency?:number,
 	id?:number
 }
 
@@ -3615,7 +3571,7 @@ export type contacts_bool_exp = {
 	date_added?:timestamptz_comparison_exp,
 	desires?:jsonb_array_comparison_exp,
 	email?:String_comparison_exp,
-	frequency?:jsonb_comparison_exp,
+	frequency?:Int_comparison_exp,
 	id?:Int_comparison_exp,
 	images?:jsonb_array_comparison_exp,
 	logs?:logs_bool_exp,
@@ -3633,25 +3589,10 @@ export enum contacts_constraint {
 	contacts_pkey = "contacts_pkey"
 }
 
-/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-export type contacts_delete_at_path_input = {
-		frequency?:string[]
-}
-
-/** delete the array element with specified index (negative integers count from the
-end). throws an error if top level container is not an array */
-export type contacts_delete_elem_input = {
-		frequency?:number
-}
-
-/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-export type contacts_delete_key_input = {
-		frequency?:string
-}
-
 /** input type for incrementing numeric columns in table "contacts" */
 export type contacts_inc_input = {
-		id?:number
+		frequency?:number,
+	id?:number
 }
 
 /** input type for inserting data into table "contacts" */
@@ -3660,7 +3601,7 @@ export type contacts_insert_input = {
 	date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
-	frequency?:jsonb,
+	frequency?:number,
 	id?:number,
 	images?:jsonb[],
 	logs?:logs_arr_rel_insert_input,
@@ -3677,6 +3618,7 @@ export type contacts_max_fields = {
 	date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
+	frequency?:number,
 	id?:number,
 	images?:jsonb[],
 	name?:string,
@@ -3690,6 +3632,7 @@ export type contacts_min_fields = {
 	date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
+	frequency?:number,
 	id?:number,
 	images?:jsonb[],
 	name?:string,
@@ -3742,11 +3685,6 @@ export type contacts_pk_columns_input = {
 		id:number
 }
 
-/** prepend existing jsonb value of filtered columns with new jsonb value */
-export type contacts_prepend_input = {
-		frequency?:jsonb
-}
-
 /** select columns of table "contacts" */
 export enum contacts_select_column {
 	date_added = "date_added",
@@ -3766,7 +3704,7 @@ export type contacts_set_input = {
 		date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
-	frequency?:jsonb,
+	frequency?:number,
 	id?:number,
 	images?:jsonb[],
 	name?:string,
@@ -3778,18 +3716,21 @@ export type contacts_set_input = {
 /** aggregate stddev on columns */
 export type contacts_stddev_fields = {
 	__typename?: "contacts_stddev_fields",
+	frequency?:number,
 	id?:number
 }
 
 /** aggregate stddev_pop on columns */
 export type contacts_stddev_pop_fields = {
 	__typename?: "contacts_stddev_pop_fields",
+	frequency?:number,
 	id?:number
 }
 
 /** aggregate stddev_samp on columns */
 export type contacts_stddev_samp_fields = {
 	__typename?: "contacts_stddev_samp_fields",
+	frequency?:number,
 	id?:number
 }
 
@@ -3806,7 +3747,7 @@ export type contacts_stream_cursor_value_input = {
 		date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
-	frequency?:jsonb,
+	frequency?:number,
 	id?:number,
 	images?:jsonb[],
 	name?:string,
@@ -3818,6 +3759,7 @@ export type contacts_stream_cursor_value_input = {
 /** aggregate sum on columns */
 export type contacts_sum_fields = {
 	__typename?: "contacts_sum_fields",
+	frequency?:number,
 	id?:number
 }
 
@@ -3836,19 +3778,8 @@ export enum contacts_update_column {
 }
 
 export type contacts_updates = {
-		/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:contacts_append_input,
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:contacts_delete_at_path_input,
-	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:contacts_delete_elem_input,
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:contacts_delete_key_input,
-	/** increments the numeric columns with given value of the filtered values */
+		/** increments the numeric columns with given value of the filtered values */
 	_inc?:contacts_inc_input,
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:contacts_prepend_input,
 	/** sets the columns of the filtered rows to the given values */
 	_set?:contacts_set_input,
 	/** filter the rows which have to be updated */
@@ -3858,18 +3789,21 @@ the end). throws an error if top level container is not an array */
 /** aggregate var_pop on columns */
 export type contacts_var_pop_fields = {
 	__typename?: "contacts_var_pop_fields",
+	frequency?:number,
 	id?:number
 }
 
 /** aggregate var_samp on columns */
 export type contacts_var_samp_fields = {
 	__typename?: "contacts_var_samp_fields",
+	frequency?:number,
 	id?:number
 }
 
 /** aggregate variance on columns */
 export type contacts_variance_fields = {
 	__typename?: "contacts_variance_fields",
+	frequency?:number,
 	id?:number
 }
 
@@ -3886,7 +3820,7 @@ export type groups = {
 	contact_groups:contact_group[],
 	/** An aggregate relationship */
 	contact_groups_aggregate:contact_group_aggregate,
-	frequency:jsonb,
+	frequency?:number,
 	id:number,
 	name:string
 }
@@ -3914,14 +3848,10 @@ export type groups_aggregate_fields = {
 	variance?:groups_variance_fields
 }
 
-/** append existing jsonb value of filtered columns with new jsonb value */
-export type groups_append_input = {
-		frequency?:jsonb
-}
-
 /** aggregate avg on columns */
 export type groups_avg_fields = {
 	__typename?: "groups_avg_fields",
+	frequency?:number,
 	id?:number
 }
 
@@ -3932,7 +3862,7 @@ export type groups_bool_exp = {
 	_or?:groups_bool_exp[],
 	contact_groups?:contact_group_bool_exp,
 	contact_groups_aggregate?:contact_group_aggregate_bool_exp,
-	frequency?:jsonb_comparison_exp,
+	frequency?:Int_comparison_exp,
 	id?:Int_comparison_exp,
 	name?:String_comparison_exp
 }
@@ -3942,31 +3872,16 @@ export enum groups_constraint {
 	groups_pkey = "groups_pkey"
 }
 
-/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-export type groups_delete_at_path_input = {
-		frequency?:string[]
-}
-
-/** delete the array element with specified index (negative integers count from the
-end). throws an error if top level container is not an array */
-export type groups_delete_elem_input = {
-		frequency?:number
-}
-
-/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-export type groups_delete_key_input = {
-		frequency?:string
-}
-
 /** input type for incrementing numeric columns in table "groups" */
 export type groups_inc_input = {
-		id?:number
+		frequency?:number,
+	id?:number
 }
 
 /** input type for inserting data into table "groups" */
 export type groups_insert_input = {
 		contact_groups?:contact_group_arr_rel_insert_input,
-	frequency?:jsonb,
+	frequency?:number,
 	id?:number,
 	name?:string
 }
@@ -3974,6 +3889,7 @@ export type groups_insert_input = {
 /** aggregate max on columns */
 export type groups_max_fields = {
 	__typename?: "groups_max_fields",
+	frequency?:number,
 	id?:number,
 	name?:string
 }
@@ -3981,6 +3897,7 @@ export type groups_max_fields = {
 /** aggregate min on columns */
 export type groups_min_fields = {
 	__typename?: "groups_min_fields",
+	frequency?:number,
 	id?:number,
 	name?:string
 }
@@ -4021,11 +3938,6 @@ export type groups_pk_columns_input = {
 		id:number
 }
 
-/** prepend existing jsonb value of filtered columns with new jsonb value */
-export type groups_prepend_input = {
-		frequency?:jsonb
-}
-
 /** select columns of table "groups" */
 export enum groups_select_column {
 	frequency = "frequency",
@@ -4035,7 +3947,7 @@ export enum groups_select_column {
 
 /** input type for updating data in table "groups" */
 export type groups_set_input = {
-		frequency?:jsonb,
+		frequency?:number,
 	id?:number,
 	name?:string
 }
@@ -4043,18 +3955,21 @@ export type groups_set_input = {
 /** aggregate stddev on columns */
 export type groups_stddev_fields = {
 	__typename?: "groups_stddev_fields",
+	frequency?:number,
 	id?:number
 }
 
 /** aggregate stddev_pop on columns */
 export type groups_stddev_pop_fields = {
 	__typename?: "groups_stddev_pop_fields",
+	frequency?:number,
 	id?:number
 }
 
 /** aggregate stddev_samp on columns */
 export type groups_stddev_samp_fields = {
 	__typename?: "groups_stddev_samp_fields",
+	frequency?:number,
 	id?:number
 }
 
@@ -4068,7 +3983,7 @@ export type groups_stream_cursor_input = {
 
 /** Initial value of the column from where the streaming should start */
 export type groups_stream_cursor_value_input = {
-		frequency?:jsonb,
+		frequency?:number,
 	id?:number,
 	name?:string
 }
@@ -4076,6 +3991,7 @@ export type groups_stream_cursor_value_input = {
 /** aggregate sum on columns */
 export type groups_sum_fields = {
 	__typename?: "groups_sum_fields",
+	frequency?:number,
 	id?:number
 }
 
@@ -4087,19 +4003,8 @@ export enum groups_update_column {
 }
 
 export type groups_updates = {
-		/** append existing jsonb value of filtered columns with new jsonb value */
-	_append?:groups_append_input,
-	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
-	_delete_at_path?:groups_delete_at_path_input,
-	/** delete the array element with specified index (negative integers count from
-the end). throws an error if top level container is not an array */
-	_delete_elem?:groups_delete_elem_input,
-	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
-	_delete_key?:groups_delete_key_input,
-	/** increments the numeric columns with given value of the filtered values */
+		/** increments the numeric columns with given value of the filtered values */
 	_inc?:groups_inc_input,
-	/** prepend existing jsonb value of filtered columns with new jsonb value */
-	_prepend?:groups_prepend_input,
 	/** sets the columns of the filtered rows to the given values */
 	_set?:groups_set_input,
 	/** filter the rows which have to be updated */
@@ -4109,18 +4014,21 @@ the end). throws an error if top level container is not an array */
 /** aggregate var_pop on columns */
 export type groups_var_pop_fields = {
 	__typename?: "groups_var_pop_fields",
+	frequency?:number,
 	id?:number
 }
 
 /** aggregate var_samp on columns */
 export type groups_var_samp_fields = {
 	__typename?: "groups_var_samp_fields",
+	frequency?:number,
 	id?:number
 }
 
 /** aggregate variance on columns */
 export type groups_variance_fields = {
 	__typename?: "groups_variance_fields",
+	frequency?:number,
 	id?:number
 }
 
@@ -4154,34 +4062,6 @@ export type jsonb_array_comparison_exp = {
 	_lte?:jsonb[],
 	_neq?:jsonb[],
 	_nin:jsonb[]
-}
-
-export type jsonb_cast_exp = {
-		String?:String_comparison_exp
-}
-
-/** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
-export type jsonb_comparison_exp = {
-		_cast?:jsonb_cast_exp,
-	/** is the column contained in the given json value */
-	_contained_in?:jsonb,
-	/** does the column contain the given json value at the top level */
-	_contains?:jsonb,
-	_eq?:jsonb,
-	_gt?:jsonb,
-	_gte?:jsonb,
-	/** does the string exist as a top-level key in the column */
-	_has_key?:string,
-	/** do all of these strings exist as top-level keys in the column */
-	_has_keys_all?:string[],
-	/** do any of these strings exist as top-level keys in the column */
-	_has_keys_any?:string[],
-	_in?:jsonb[],
-	_is_null?:boolean,
-	_lt?:jsonb,
-	_lte?:jsonb,
-	_neq?:jsonb,
-	_nin?:jsonb[]
 }
 
 /** columns and relationships of "logs" */
@@ -4619,6 +4499,10 @@ export type query_root = {
 	contacts_aggregate:contacts_aggregate,
 	/** fetch data from the table: "contacts" using primary key columns */
 	contacts_by_pk?:contacts,
+	/** execute function "get_people_to_contact_today" which returns "contacts" */
+	get_people_to_contact_today:contacts[],
+	/** execute function "get_people_to_contact_today" and query aggregates on result of table type "contacts" */
+	get_people_to_contact_today_aggregate:contacts_aggregate,
 	/** fetch data from the table: "groups" */
 	groups:groups[],
 	/** fetch aggregated fields from the table: "groups" */
@@ -4636,7 +4520,11 @@ export type query_root = {
 	/** An aggregate relationship */
 	reminders_aggregate:reminders_aggregate,
 	/** fetch data from the table: "reminders" using primary key columns */
-	reminders_by_pk?:reminders
+	reminders_by_pk?:reminders,
+	/** execute function "search_articles" which returns "contacts" */
+	search_articles:contacts[],
+	/** execute function "search_articles" and query aggregates on result of table type "contacts" */
+	search_articles_aggregate:contacts_aggregate
 }
 
 /** columns and relationships of "reminders" */
@@ -4645,6 +4533,7 @@ export type reminders = {
 	/** An object relationship */
 	contact:contacts,
 	contact_id:number,
+	contacted:boolean,
 	id:number,
 	notes:string,
 	time:timestamptz
@@ -4658,7 +4547,23 @@ export type reminders_aggregate = {
 }
 
 export type reminders_aggregate_bool_exp = {
-		count?:reminders_aggregate_bool_exp_count
+		bool_and?:reminders_aggregate_bool_exp_bool_and,
+	bool_or?:reminders_aggregate_bool_exp_bool_or,
+	count?:reminders_aggregate_bool_exp_count
+}
+
+export type reminders_aggregate_bool_exp_bool_and = {
+		arguments:reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns,
+	distinct?:boolean,
+	filter?:reminders_bool_exp,
+	predicate:Boolean_comparison_exp
+}
+
+export type reminders_aggregate_bool_exp_bool_or = {
+		arguments:reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns,
+	distinct?:boolean,
+	filter?:reminders_bool_exp,
+	predicate:Boolean_comparison_exp
 }
 
 export type reminders_aggregate_bool_exp_count = {
@@ -4726,6 +4631,7 @@ export type reminders_bool_exp = {
 	_or?:reminders_bool_exp[],
 	contact?:contacts_bool_exp,
 	contact_id?:Int_comparison_exp,
+	contacted?:Boolean_comparison_exp,
 	id?:Int_comparison_exp,
 	notes?:String_comparison_exp,
 	time?:timestamptz_comparison_exp
@@ -4746,6 +4652,7 @@ export type reminders_inc_input = {
 export type reminders_insert_input = {
 		contact?:contacts_obj_rel_insert_input,
 	contact_id?:number,
+	contacted?:boolean,
 	id?:number,
 	notes?:string,
 	time?:timestamptz
@@ -4805,6 +4712,7 @@ export type reminders_on_conflict = {
 export type reminders_order_by = {
 		contact?:contacts_order_by,
 	contact_id?:order_by,
+	contacted?:order_by,
 	id?:order_by,
 	notes?:order_by,
 	time?:order_by
@@ -4818,14 +4726,26 @@ export type reminders_pk_columns_input = {
 /** select columns of table "reminders" */
 export enum reminders_select_column {
 	contact_id = "contact_id",
+	contacted = "contacted",
 	id = "id",
 	notes = "notes",
 	time = "time"
 }
 
+/** select "reminders_aggregate_bool_exp_bool_and_arguments_columns" columns of table "reminders" */
+export enum reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns {
+	contacted = "contacted"
+}
+
+/** select "reminders_aggregate_bool_exp_bool_or_arguments_columns" columns of table "reminders" */
+export enum reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns {
+	contacted = "contacted"
+}
+
 /** input type for updating data in table "reminders" */
 export type reminders_set_input = {
 		contact_id?:number,
+	contacted?:boolean,
 	id?:number,
 	notes?:string,
 	time?:timestamptz
@@ -4881,6 +4801,7 @@ export type reminders_stream_cursor_input = {
 /** Initial value of the column from where the streaming should start */
 export type reminders_stream_cursor_value_input = {
 		contact_id?:number,
+	contacted?:boolean,
 	id?:number,
 	notes?:string,
 	time?:timestamptz
@@ -4902,6 +4823,7 @@ export type reminders_sum_order_by = {
 /** update columns of table "reminders" */
 export enum reminders_update_column {
 	contact_id = "contact_id",
+	contacted = "contacted",
 	id = "id",
 	notes = "notes",
 	time = "time"
@@ -4955,6 +4877,10 @@ export type reminders_variance_order_by = {
 	id?:order_by
 }
 
+export type search_articles_args = {
+		search?:string
+}
+
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_comparison_exp = {
 		_eq?:string,
@@ -5006,6 +4932,10 @@ export type subscription_root = {
 	contacts_by_pk?:contacts,
 	/** fetch data from the table in a streaming manner: "contacts" */
 	contacts_stream:contacts[],
+	/** execute function "get_people_to_contact_today" which returns "contacts" */
+	get_people_to_contact_today:contacts[],
+	/** execute function "get_people_to_contact_today" and query aggregates on result of table type "contacts" */
+	get_people_to_contact_today_aggregate:contacts_aggregate,
 	/** fetch data from the table: "groups" */
 	groups:groups[],
 	/** fetch aggregated fields from the table: "groups" */
@@ -5029,7 +4959,11 @@ export type subscription_root = {
 	/** fetch data from the table: "reminders" using primary key columns */
 	reminders_by_pk?:reminders,
 	/** fetch data from the table in a streaming manner: "reminders" */
-	reminders_stream:reminders[]
+	reminders_stream:reminders[],
+	/** execute function "search_articles" which returns "contacts" */
+	search_articles:contacts[],
+	/** execute function "search_articles" and query aggregates on result of table type "contacts" */
+	search_articles_aggregate:contacts_aggregate
 }
 
 export type timestamptz = any
@@ -5668,14 +5602,6 @@ export const AllTypesProps: Record<string,any> = {
 				required:false
 			}
 		},
-		frequency:{
-			path:{
-				type:"String",
-				array:false,
-				arrayRequired:false,
-				required:false
-			}
-		},
 		logs:{
 			distinct_on:{
 				type:"logs_select_column",
@@ -5821,14 +5747,6 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		}
 	},
-	contacts_append_input:{
-		frequency:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		}
-	},
 	contacts_bool_exp:{
 		_and:{
 			type:"contacts_bool_exp",
@@ -5879,7 +5797,7 @@ export const AllTypesProps: Record<string,any> = {
 			required:false
 		},
 		frequency:{
-			type:"jsonb_comparison_exp",
+			type:"Int_comparison_exp",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -5946,31 +5864,13 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	contacts_constraint: "enum",
-	contacts_delete_at_path_input:{
-		frequency:{
-			type:"String",
-			array:true,
-			arrayRequired:false,
-			required:true
-		}
-	},
-	contacts_delete_elem_input:{
+	contacts_inc_input:{
 		frequency:{
 			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
-		}
-	},
-	contacts_delete_key_input:{
-		frequency:{
-			type:"String",
-			array:false,
-			arrayRequired:false,
-			required:false
-		}
-	},
-	contacts_inc_input:{
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -6004,7 +5904,7 @@ export const AllTypesProps: Record<string,any> = {
 			required:false
 		},
 		frequency:{
-			type:"jsonb",
+			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6180,14 +6080,6 @@ export const AllTypesProps: Record<string,any> = {
 			required:true
 		}
 	},
-	contacts_prepend_input:{
-		frequency:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		}
-	},
 	contacts_select_column: "enum",
 	contacts_set_input:{
 		date_added:{
@@ -6209,7 +6101,7 @@ export const AllTypesProps: Record<string,any> = {
 			required:false
 		},
 		frequency:{
-			type:"jsonb",
+			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6285,7 +6177,7 @@ export const AllTypesProps: Record<string,any> = {
 			required:false
 		},
 		frequency:{
-			type:"jsonb",
+			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6329,38 +6221,8 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	contacts_update_column: "enum",
 	contacts_updates:{
-		_append:{
-			type:"contacts_append_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_delete_at_path:{
-			type:"contacts_delete_at_path_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_delete_elem:{
-			type:"contacts_delete_elem_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_delete_key:{
-			type:"contacts_delete_key_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
 		_inc:{
 			type:"contacts_inc_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_prepend:{
-			type:"contacts_prepend_input",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6443,14 +6305,6 @@ export const AllTypesProps: Record<string,any> = {
 				arrayRequired:false,
 				required:false
 			}
-		},
-		frequency:{
-			path:{
-				type:"String",
-				array:false,
-				arrayRequired:false,
-				required:false
-			}
 		}
 	},
 	groups_aggregate_fields:{
@@ -6467,14 +6321,6 @@ export const AllTypesProps: Record<string,any> = {
 				arrayRequired:false,
 				required:false
 			}
-		}
-	},
-	groups_append_input:{
-		frequency:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
 		}
 	},
 	groups_bool_exp:{
@@ -6509,7 +6355,7 @@ export const AllTypesProps: Record<string,any> = {
 			required:false
 		},
 		frequency:{
-			type:"jsonb_comparison_exp",
+			type:"Int_comparison_exp",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6528,31 +6374,13 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	groups_constraint: "enum",
-	groups_delete_at_path_input:{
-		frequency:{
-			type:"String",
-			array:true,
-			arrayRequired:false,
-			required:true
-		}
-	},
-	groups_delete_elem_input:{
+	groups_inc_input:{
 		frequency:{
 			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
-		}
-	},
-	groups_delete_key_input:{
-		frequency:{
-			type:"String",
-			array:false,
-			arrayRequired:false,
-			required:false
-		}
-	},
-	groups_inc_input:{
+		},
 		id:{
 			type:"Int",
 			array:false,
@@ -6568,7 +6396,7 @@ export const AllTypesProps: Record<string,any> = {
 			required:false
 		},
 		frequency:{
-			type:"jsonb",
+			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6654,18 +6482,10 @@ export const AllTypesProps: Record<string,any> = {
 			required:true
 		}
 	},
-	groups_prepend_input:{
-		frequency:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		}
-	},
 	groups_select_column: "enum",
 	groups_set_input:{
 		frequency:{
-			type:"jsonb",
+			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6699,7 +6519,7 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	groups_stream_cursor_value_input:{
 		frequency:{
-			type:"jsonb",
+			type:"Int",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6719,38 +6539,8 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	groups_update_column: "enum",
 	groups_updates:{
-		_append:{
-			type:"groups_append_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_delete_at_path:{
-			type:"groups_delete_at_path_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_delete_elem:{
-			type:"groups_delete_elem_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_delete_key:{
-			type:"groups_delete_key_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
 		_inc:{
 			type:"groups_inc_input",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_prepend:{
-			type:"groups_prepend_input",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6890,106 +6680,6 @@ export const AllTypesProps: Record<string,any> = {
 			type:"jsonb",
 			array:true,
 			arrayRequired:true,
-			required:true
-		}
-	},
-	jsonb_cast_exp:{
-		String:{
-			type:"String_comparison_exp",
-			array:false,
-			arrayRequired:false,
-			required:false
-		}
-	},
-	jsonb_comparison_exp:{
-		_cast:{
-			type:"jsonb_cast_exp",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_contained_in:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_contains:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_eq:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_gt:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_gte:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_has_key:{
-			type:"String",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_has_keys_all:{
-			type:"String",
-			array:true,
-			arrayRequired:false,
-			required:true
-		},
-		_has_keys_any:{
-			type:"String",
-			array:true,
-			arrayRequired:false,
-			required:true
-		},
-		_in:{
-			type:"jsonb",
-			array:true,
-			arrayRequired:false,
-			required:true
-		},
-		_is_null:{
-			type:"Boolean",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_lt:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_lte:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_neq:{
-			type:"jsonb",
-			array:false,
-			arrayRequired:false,
-			required:false
-		},
-		_nin:{
-			type:"jsonb",
-			array:true,
-			arrayRequired:false,
 			required:true
 		}
 	},
@@ -7852,38 +7542,8 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		},
 		update_contacts:{
-			_append:{
-				type:"contacts_append_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_at_path:{
-				type:"contacts_delete_at_path_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_elem:{
-				type:"contacts_delete_elem_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_key:{
-				type:"contacts_delete_key_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
 			_inc:{
 				type:"contacts_inc_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_prepend:{
-				type:"contacts_prepend_input",
 				array:false,
 				arrayRequired:false,
 				required:false
@@ -7902,38 +7562,8 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		},
 		update_contacts_by_pk:{
-			_append:{
-				type:"contacts_append_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_at_path:{
-				type:"contacts_delete_at_path_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_elem:{
-				type:"contacts_delete_elem_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_key:{
-				type:"contacts_delete_key_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
 			_inc:{
 				type:"contacts_inc_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_prepend:{
-				type:"contacts_prepend_input",
 				array:false,
 				arrayRequired:false,
 				required:false
@@ -7960,38 +7590,8 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		},
 		update_groups:{
-			_append:{
-				type:"groups_append_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_at_path:{
-				type:"groups_delete_at_path_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_elem:{
-				type:"groups_delete_elem_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_key:{
-				type:"groups_delete_key_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
 			_inc:{
 				type:"groups_inc_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_prepend:{
-				type:"groups_prepend_input",
 				array:false,
 				arrayRequired:false,
 				required:false
@@ -8010,38 +7610,8 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		},
 		update_groups_by_pk:{
-			_append:{
-				type:"groups_append_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_at_path:{
-				type:"groups_delete_at_path_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_elem:{
-				type:"groups_delete_elem_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_delete_key:{
-				type:"groups_delete_key_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
 			_inc:{
 				type:"groups_inc_input",
-				array:false,
-				arrayRequired:false,
-				required:false
-			},
-			_prepend:{
-				type:"groups_prepend_input",
 				array:false,
 				arrayRequired:false,
 				required:false
@@ -8316,6 +7886,70 @@ export const AllTypesProps: Record<string,any> = {
 				required:true
 			}
 		},
+		get_people_to_contact_today:{
+			distinct_on:{
+				type:"contacts_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contacts_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contacts_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		get_people_to_contact_today_aggregate:{
+			distinct_on:{
+				type:"contacts_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contacts_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contacts_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
 		groups:{
 			distinct_on:{
 				type:"groups_select_column",
@@ -8531,14 +8165,154 @@ export const AllTypesProps: Record<string,any> = {
 				arrayRequired:false,
 				required:true
 			}
+		},
+		search_articles:{
+			args:{
+				type:"search_articles_args",
+				array:false,
+				arrayRequired:false,
+				required:true
+			},
+			distinct_on:{
+				type:"contacts_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contacts_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contacts_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		search_articles_aggregate:{
+			args:{
+				type:"search_articles_args",
+				array:false,
+				arrayRequired:false,
+				required:true
+			},
+			distinct_on:{
+				type:"contacts_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contacts_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contacts_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
 		}
 	},
 	reminders_aggregate_bool_exp:{
+		bool_and:{
+			type:"reminders_aggregate_bool_exp_bool_and",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		bool_or:{
+			type:"reminders_aggregate_bool_exp_bool_or",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		count:{
 			type:"reminders_aggregate_bool_exp_count",
 			array:false,
 			arrayRequired:false,
 			required:false
+		}
+	},
+	reminders_aggregate_bool_exp_bool_and:{
+		arguments:{
+			type:"reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns",
+			array:false,
+			arrayRequired:false,
+			required:true
+		},
+		distinct:{
+			type:"Boolean",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		filter:{
+			type:"reminders_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		predicate:{
+			type:"Boolean_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:true
+		}
+	},
+	reminders_aggregate_bool_exp_bool_or:{
+		arguments:{
+			type:"reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns",
+			array:false,
+			arrayRequired:false,
+			required:true
+		},
+		distinct:{
+			type:"Boolean",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		filter:{
+			type:"reminders_bool_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		predicate:{
+			type:"Boolean_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:true
 		}
 	},
 	reminders_aggregate_bool_exp_count:{
@@ -8710,6 +8484,12 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:false
 		},
+		contacted:{
+			type:"Boolean_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"Int_comparison_exp",
 			array:false,
@@ -8753,6 +8533,12 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		contact_id:{
 			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contacted:{
+			type:"Boolean",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -8861,6 +8647,12 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:false
 		},
+		contacted:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		id:{
 			type:"order_by",
 			array:false,
@@ -8889,9 +8681,17 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	reminders_select_column: "enum",
+	reminders_select_column_reminders_aggregate_bool_exp_bool_and_arguments_columns: "enum",
+	reminders_select_column_reminders_aggregate_bool_exp_bool_or_arguments_columns: "enum",
 	reminders_set_input:{
 		contact_id:{
 			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contacted:{
+			type:"Boolean",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -8974,6 +8774,12 @@ export const AllTypesProps: Record<string,any> = {
 	reminders_stream_cursor_value_input:{
 		contact_id:{
 			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		contacted:{
+			type:"Boolean",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -9069,6 +8875,14 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		id:{
 			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	search_articles_args:{
+		search:{
+			type:"String",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -9381,6 +9195,70 @@ export const AllTypesProps: Record<string,any> = {
 				required:false
 			}
 		},
+		get_people_to_contact_today:{
+			distinct_on:{
+				type:"contacts_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contacts_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contacts_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		get_people_to_contact_today_aggregate:{
+			distinct_on:{
+				type:"contacts_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contacts_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contacts_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
 		groups:{
 			distinct_on:{
 				type:"groups_select_column",
@@ -9656,6 +9534,82 @@ export const AllTypesProps: Record<string,any> = {
 				arrayRequired:false,
 				required:false
 			}
+		},
+		search_articles:{
+			args:{
+				type:"search_articles_args",
+				array:false,
+				arrayRequired:false,
+				required:true
+			},
+			distinct_on:{
+				type:"contacts_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contacts_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contacts_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
+		},
+		search_articles_aggregate:{
+			args:{
+				type:"search_articles_args",
+				array:false,
+				arrayRequired:false,
+				required:true
+			},
+			distinct_on:{
+				type:"contacts_select_column",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			limit:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			offset:{
+				type:"Int",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			order_by:{
+				type:"contacts_order_by",
+				array:true,
+				arrayRequired:false,
+				required:true
+			},
+			where:{
+				type:"contacts_bool_exp",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
 		}
 	},
 	timestamptz: "String",
@@ -9791,7 +9745,7 @@ export const ReturnTypes: Record<string,any> = {
 		date_added:"timestamptz",
 		desires:"jsonb",
 		email:"String",
-		frequency:"jsonb",
+		frequency:"Int",
 		id:"Int",
 		images:"jsonb",
 		logs:"logs",
@@ -9821,12 +9775,14 @@ export const ReturnTypes: Record<string,any> = {
 		variance:"contacts_variance_fields"
 	},
 	contacts_avg_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	contacts_max_fields:{
 		date_added:"timestamptz",
 		desires:"jsonb",
 		email:"String",
+		frequency:"Int",
 		id:"Int",
 		images:"jsonb",
 		name:"String",
@@ -9837,6 +9793,7 @@ export const ReturnTypes: Record<string,any> = {
 		date_added:"timestamptz",
 		desires:"jsonb",
 		email:"String",
+		frequency:"Int",
 		id:"Int",
 		images:"jsonb",
 		name:"String",
@@ -9848,30 +9805,37 @@ export const ReturnTypes: Record<string,any> = {
 		returning:"contacts"
 	},
 	contacts_stddev_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	contacts_stddev_pop_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	contacts_stddev_samp_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	contacts_sum_fields:{
+		frequency:"Int",
 		id:"Int"
 	},
 	contacts_var_pop_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	contacts_var_samp_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	contacts_variance_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	groups:{
 		contact_groups:"contact_group",
 		contact_groups_aggregate:"contact_group_aggregate",
-		frequency:"jsonb",
+		frequency:"Int",
 		id:"Int",
 		name:"String"
 	},
@@ -9893,13 +9857,16 @@ export const ReturnTypes: Record<string,any> = {
 		variance:"groups_variance_fields"
 	},
 	groups_avg_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	groups_max_fields:{
+		frequency:"Int",
 		id:"Int",
 		name:"String"
 	},
 	groups_min_fields:{
+		frequency:"Int",
 		id:"Int",
 		name:"String"
 	},
@@ -9908,24 +9875,31 @@ export const ReturnTypes: Record<string,any> = {
 		returning:"groups"
 	},
 	groups_stddev_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	groups_stddev_pop_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	groups_stddev_samp_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	groups_sum_fields:{
+		frequency:"Int",
 		id:"Int"
 	},
 	groups_var_pop_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	groups_var_samp_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	groups_variance_fields:{
+		frequency:"Float",
 		id:"Float"
 	},
 	logs:{
@@ -10047,6 +10021,8 @@ export const ReturnTypes: Record<string,any> = {
 		contacts:"contacts",
 		contacts_aggregate:"contacts_aggregate",
 		contacts_by_pk:"contacts",
+		get_people_to_contact_today:"contacts",
+		get_people_to_contact_today_aggregate:"contacts_aggregate",
 		groups:"groups",
 		groups_aggregate:"groups_aggregate",
 		groups_by_pk:"groups",
@@ -10055,11 +10031,14 @@ export const ReturnTypes: Record<string,any> = {
 		logs_by_pk:"logs",
 		reminders:"reminders",
 		reminders_aggregate:"reminders_aggregate",
-		reminders_by_pk:"reminders"
+		reminders_by_pk:"reminders",
+		search_articles:"contacts",
+		search_articles_aggregate:"contacts_aggregate"
 	},
 	reminders:{
 		contact:"contacts",
 		contact_id:"Int",
+		contacted:"Boolean",
 		id:"Int",
 		notes:"String",
 		time:"timestamptz"
@@ -10138,6 +10117,8 @@ export const ReturnTypes: Record<string,any> = {
 		contacts_aggregate:"contacts_aggregate",
 		contacts_by_pk:"contacts",
 		contacts_stream:"contacts",
+		get_people_to_contact_today:"contacts",
+		get_people_to_contact_today_aggregate:"contacts_aggregate",
 		groups:"groups",
 		groups_aggregate:"groups_aggregate",
 		groups_by_pk:"groups",
@@ -10149,7 +10130,9 @@ export const ReturnTypes: Record<string,any> = {
 		reminders:"reminders",
 		reminders_aggregate:"reminders_aggregate",
 		reminders_by_pk:"reminders",
-		reminders_stream:"reminders"
+		reminders_stream:"reminders",
+		search_articles:"contacts",
+		search_articles_aggregate:"contacts_aggregate"
 	}
 }
 

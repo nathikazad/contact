@@ -1,0 +1,3 @@
+function:
+  name: get_people_to_contact_today
+  schema: public

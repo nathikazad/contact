@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:start/db/HasuraDb.dart';
+import 'package:start/features/contacts/pages/AddContactPage.dart';
 import 'package:start/pages/TabScreen.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,33 +34,43 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Contacts App'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: _showDialog,
-          ),
-        ],
-      ),
-      body: hasuraInitialized
-          ? _children[_currentIndex]
-          : const Center(
-              child:
-                  CircularProgressIndicator()), // Loading screen when Hasura is not initialized
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.tab), label: 'Tab 1'),
-          BottomNavigationBarItem(icon: Icon(Icons.tab), label: 'Tab 2'),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Contacts App'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: _showDialog,
+            ),
+          ],
+        ),
+        body: hasuraInitialized
+            ? _children[_currentIndex]
+            : const Center(
+                child:
+                    CircularProgressIndicator()), // Loading screen when Hasura is not initialized
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.contact_page), label: 'Contacts'),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (ctx) => AddContactScreen()),
+            );
+          },
+          tooltip: 'Add',
+          child: const Icon(Icons.add),
+        ));
   }
 
   _showDialog() {

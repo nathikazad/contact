@@ -1,4 +1,5 @@
 fragment contactFields on contacts {
+  id
   date_added
   desires
   email
@@ -8,6 +9,11 @@ fragment contactFields on contacts {
   need_to_call
   notes
   phone_number
+  contact_groups {
+    group {
+      name
+    }
+  }
 }
 
 
@@ -22,5 +28,11 @@ query GetContacts($name: String_comparison_exp, $limit: Int, $offset: Int) {
 query GetContact($id: Int!) {
   contacts_by_pk(id: $id) {
     ...contactFields
+  }
+}
+
+mutation AddContact($object: contacts_insert_input = {}) {
+  insert_contacts_one(object: $object) {
+    id
   }
 }

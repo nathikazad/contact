@@ -1,10 +1,12 @@
 import '../../__generated/schema.graphql.dart';
+import 'dart:async';
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:start/db/hasuraTypes.dart';
 
 class Fragment$contactFields {
   Fragment$contactFields({
+    required this.id,
     required this.date_added,
     this.desires,
     this.email,
@@ -14,10 +16,12 @@ class Fragment$contactFields {
     this.need_to_call,
     this.notes,
     this.phone_number,
+    required this.contact_groups,
     required this.$__typename,
   });
 
   factory Fragment$contactFields.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
     final l$date_added = json['date_added'];
     final l$desires = json['desires'];
     final l$email = json['email'];
@@ -27,21 +31,29 @@ class Fragment$contactFields {
     final l$need_to_call = json['need_to_call'];
     final l$notes = json['notes'];
     final l$phone_number = json['phone_number'];
+    final l$contact_groups = json['contact_groups'];
     final l$$__typename = json['__typename'];
     return Fragment$contactFields(
+      id: (l$id as int),
       date_added: (l$date_added as String),
       desires:
           (l$desires as List<dynamic>?)?.map((e) => mapFromJson(e)).toList(),
       email: (l$email as String?),
-      frequency: l$frequency == null ? null : mapFromJson(l$frequency),
+      frequency: (l$frequency as int?),
       images: (l$images as List<dynamic>?)?.map((e) => mapFromJson(e)).toList(),
       name: (l$name as String),
       need_to_call: (l$need_to_call as bool?),
       notes: (l$notes as String?),
       phone_number: (l$phone_number as String?),
+      contact_groups: (l$contact_groups as List<dynamic>)
+          .map((e) => Fragment$contactFields$contact_groups.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
       $__typename: ((l$$__typename ?? "none") as String),
     );
   }
+
+  final int id;
 
   final String date_added;
 
@@ -49,7 +61,7 @@ class Fragment$contactFields {
 
   final String? email;
 
-  final dynamic? frequency;
+  final int? frequency;
 
   final List<dynamic>? images;
 
@@ -61,10 +73,14 @@ class Fragment$contactFields {
 
   final String? phone_number;
 
+  final List<Fragment$contactFields$contact_groups> contact_groups;
+
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
     final l$date_added = date_added;
     _resultData['date_added'] = l$date_added;
     final l$desires = desires;
@@ -72,8 +88,7 @@ class Fragment$contactFields {
     final l$email = email;
     _resultData['email'] = l$email;
     final l$frequency = frequency;
-    _resultData['frequency'] =
-        l$frequency == null ? null : mapToJson(l$frequency);
+    _resultData['frequency'] = l$frequency;
     final l$images = images;
     _resultData['images'] = l$images?.map((e) => mapToJson(e)).toList();
     final l$name = name;
@@ -84,6 +99,9 @@ class Fragment$contactFields {
     _resultData['notes'] = l$notes;
     final l$phone_number = phone_number;
     _resultData['phone_number'] = l$phone_number;
+    final l$contact_groups = contact_groups;
+    _resultData['contact_groups'] =
+        l$contact_groups.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -91,6 +109,7 @@ class Fragment$contactFields {
 
   @override
   int get hashCode {
+    final l$id = id;
     final l$date_added = date_added;
     final l$desires = desires;
     final l$email = email;
@@ -100,8 +119,10 @@ class Fragment$contactFields {
     final l$need_to_call = need_to_call;
     final l$notes = notes;
     final l$phone_number = phone_number;
+    final l$contact_groups = contact_groups;
     final l$$__typename = $__typename;
     return Object.hashAll([
+      l$id,
       l$date_added,
       l$desires == null ? null : Object.hashAll(l$desires.map((v) => v)),
       l$email,
@@ -111,6 +132,7 @@ class Fragment$contactFields {
       l$need_to_call,
       l$notes,
       l$phone_number,
+      Object.hashAll(l$contact_groups.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -122,6 +144,11 @@ class Fragment$contactFields {
     }
     if (!(other is Fragment$contactFields) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
       return false;
     }
     final l$date_added = date_added;
@@ -191,6 +218,18 @@ class Fragment$contactFields {
     if (l$phone_number != lOther$phone_number) {
       return false;
     }
+    final l$contact_groups = contact_groups;
+    final lOther$contact_groups = other.contact_groups;
+    if (l$contact_groups.length != lOther$contact_groups.length) {
+      return false;
+    }
+    for (int i = 0; i < l$contact_groups.length; i++) {
+      final l$contact_groups$entry = l$contact_groups[i];
+      final lOther$contact_groups$entry = lOther$contact_groups[i];
+      if (l$contact_groups$entry != lOther$contact_groups$entry) {
+        return false;
+      }
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -218,17 +257,25 @@ abstract class CopyWith$Fragment$contactFields<TRes> {
       _CopyWithStubImpl$Fragment$contactFields;
 
   TRes call({
+    int? id,
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     List<dynamic>? images,
     String? name,
     bool? need_to_call,
     String? notes,
     String? phone_number,
+    List<Fragment$contactFields$contact_groups>? contact_groups,
     String? $__typename,
   });
+  TRes contact_groups(
+      Iterable<Fragment$contactFields$contact_groups> Function(
+              Iterable<
+                  CopyWith$Fragment$contactFields$contact_groups<
+                      Fragment$contactFields$contact_groups>>)
+          _fn);
 }
 
 class _CopyWithImpl$Fragment$contactFields<TRes>
@@ -245,6 +292,7 @@ class _CopyWithImpl$Fragment$contactFields<TRes>
   static const _undefined = {};
 
   TRes call({
+    Object? id = _undefined,
     Object? date_added = _undefined,
     Object? desires = _undefined,
     Object? email = _undefined,
@@ -254,9 +302,11 @@ class _CopyWithImpl$Fragment$contactFields<TRes>
     Object? need_to_call = _undefined,
     Object? notes = _undefined,
     Object? phone_number = _undefined,
+    Object? contact_groups = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$contactFields(
+        id: id == _undefined || id == null ? _instance.id : (id as int),
         date_added: date_added == _undefined || date_added == null
             ? _instance.date_added
             : (date_added as String),
@@ -264,9 +314,8 @@ class _CopyWithImpl$Fragment$contactFields<TRes>
             ? _instance.desires
             : (desires as List<dynamic>?),
         email: email == _undefined ? _instance.email : (email as String?),
-        frequency: frequency == _undefined
-            ? _instance.frequency
-            : (frequency as dynamic?),
+        frequency:
+            frequency == _undefined ? _instance.frequency : (frequency as int?),
         images: images == _undefined
             ? _instance.images
             : (images as List<dynamic>?),
@@ -280,10 +329,26 @@ class _CopyWithImpl$Fragment$contactFields<TRes>
         phone_number: phone_number == _undefined
             ? _instance.phone_number
             : (phone_number as String?),
+        contact_groups: contact_groups == _undefined || contact_groups == null
+            ? _instance.contact_groups
+            : (contact_groups as List<Fragment$contactFields$contact_groups>),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
+
+  TRes contact_groups(
+          Iterable<Fragment$contactFields$contact_groups> Function(
+                  Iterable<
+                      CopyWith$Fragment$contactFields$contact_groups<
+                          Fragment$contactFields$contact_groups>>)
+              _fn) =>
+      call(
+          contact_groups: _fn(_instance.contact_groups
+              .map((e) => CopyWith$Fragment$contactFields$contact_groups(
+                    e,
+                    (i) => i,
+                  ))).toList());
 }
 
 class _CopyWithStubImpl$Fragment$contactFields<TRes>
@@ -293,18 +358,22 @@ class _CopyWithStubImpl$Fragment$contactFields<TRes>
   TRes _res;
 
   call({
+    int? id,
     String? date_added,
     List<dynamic>? desires,
     String? email,
-    dynamic? frequency,
+    int? frequency,
     List<dynamic>? images,
     String? name,
     bool? need_to_call,
     String? notes,
     String? phone_number,
+    List<Fragment$contactFields$contact_groups>? contact_groups,
     String? $__typename,
   }) =>
       _res;
+
+  contact_groups(_fn) => _res;
 }
 
 const fragmentDefinitioncontactFields = FragmentDefinitionNode(
@@ -316,6 +385,13 @@ const fragmentDefinitioncontactFields = FragmentDefinitionNode(
   )),
   directives: [],
   selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
     FieldNode(
       name: NameNode(value: 'date_added'),
       alias: null,
@@ -380,6 +456,43 @@ const fragmentDefinitioncontactFields = FragmentDefinitionNode(
       selectionSet: null,
     ),
     FieldNode(
+      name: NameNode(value: 'contact_groups'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'group'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'name'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
       name: NameNode(value: '__typename'),
       alias: null,
       arguments: [],
@@ -425,6 +538,271 @@ extension ClientExtension$Fragment$contactFields on graphql.GraphQLClient {
     );
     return result == null ? null : Fragment$contactFields.fromJson(result);
   }
+}
+
+class Fragment$contactFields$contact_groups {
+  Fragment$contactFields$contact_groups({
+    required this.group,
+    required this.$__typename,
+  });
+
+  factory Fragment$contactFields$contact_groups.fromJson(
+      Map<String, dynamic> json) {
+    final l$group = json['group'];
+    final l$$__typename = json['__typename'];
+    return Fragment$contactFields$contact_groups(
+      group: Fragment$contactFields$contact_groups$group.fromJson(
+          (l$group as Map<String, dynamic>)),
+      $__typename: ((l$$__typename ?? "none") as String),
+    );
+  }
+
+  final Fragment$contactFields$contact_groups$group group;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$group = group;
+    _resultData['group'] = l$group.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$group = group;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$group,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$contactFields$contact_groups) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$group = group;
+    final lOther$group = other.group;
+    if (l$group != lOther$group) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$contactFields$contact_groups
+    on Fragment$contactFields$contact_groups {
+  CopyWith$Fragment$contactFields$contact_groups<
+          Fragment$contactFields$contact_groups>
+      get copyWith => CopyWith$Fragment$contactFields$contact_groups(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$contactFields$contact_groups<TRes> {
+  factory CopyWith$Fragment$contactFields$contact_groups(
+    Fragment$contactFields$contact_groups instance,
+    TRes Function(Fragment$contactFields$contact_groups) then,
+  ) = _CopyWithImpl$Fragment$contactFields$contact_groups;
+
+  factory CopyWith$Fragment$contactFields$contact_groups.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$contactFields$contact_groups;
+
+  TRes call({
+    Fragment$contactFields$contact_groups$group? group,
+    String? $__typename,
+  });
+  CopyWith$Fragment$contactFields$contact_groups$group<TRes> get group;
+}
+
+class _CopyWithImpl$Fragment$contactFields$contact_groups<TRes>
+    implements CopyWith$Fragment$contactFields$contact_groups<TRes> {
+  _CopyWithImpl$Fragment$contactFields$contact_groups(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$contactFields$contact_groups _instance;
+
+  final TRes Function(Fragment$contactFields$contact_groups) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? group = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$contactFields$contact_groups(
+        group: group == _undefined || group == null
+            ? _instance.group
+            : (group as Fragment$contactFields$contact_groups$group),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$contactFields$contact_groups$group<TRes> get group {
+    final local$group = _instance.group;
+    return CopyWith$Fragment$contactFields$contact_groups$group(
+        local$group, (e) => call(group: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$contactFields$contact_groups<TRes>
+    implements CopyWith$Fragment$contactFields$contact_groups<TRes> {
+  _CopyWithStubImpl$Fragment$contactFields$contact_groups(this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$contactFields$contact_groups$group? group,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$contactFields$contact_groups$group<TRes> get group =>
+      CopyWith$Fragment$contactFields$contact_groups$group.stub(_res);
+}
+
+class Fragment$contactFields$contact_groups$group {
+  Fragment$contactFields$contact_groups$group({
+    required this.name,
+    required this.$__typename,
+  });
+
+  factory Fragment$contactFields$contact_groups$group.fromJson(
+      Map<String, dynamic> json) {
+    final l$name = json['name'];
+    final l$$__typename = json['__typename'];
+    return Fragment$contactFields$contact_groups$group(
+      name: (l$name as String),
+      $__typename: ((l$$__typename ?? "none") as String),
+    );
+  }
+
+  final String name;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$name = name;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$name,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$contactFields$contact_groups$group) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$contactFields$contact_groups$group
+    on Fragment$contactFields$contact_groups$group {
+  CopyWith$Fragment$contactFields$contact_groups$group<
+          Fragment$contactFields$contact_groups$group>
+      get copyWith => CopyWith$Fragment$contactFields$contact_groups$group(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$contactFields$contact_groups$group<TRes> {
+  factory CopyWith$Fragment$contactFields$contact_groups$group(
+    Fragment$contactFields$contact_groups$group instance,
+    TRes Function(Fragment$contactFields$contact_groups$group) then,
+  ) = _CopyWithImpl$Fragment$contactFields$contact_groups$group;
+
+  factory CopyWith$Fragment$contactFields$contact_groups$group.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$contactFields$contact_groups$group;
+
+  TRes call({
+    String? name,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$contactFields$contact_groups$group<TRes>
+    implements CopyWith$Fragment$contactFields$contact_groups$group<TRes> {
+  _CopyWithImpl$Fragment$contactFields$contact_groups$group(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$contactFields$contact_groups$group _instance;
+
+  final TRes Function(Fragment$contactFields$contact_groups$group) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? name = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$contactFields$contact_groups$group(
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Fragment$contactFields$contact_groups$group<TRes>
+    implements CopyWith$Fragment$contactFields$contact_groups$group<TRes> {
+  _CopyWithStubImpl$Fragment$contactFields$contact_groups$group(this._res);
+
+  TRes _res;
+
+  call({
+    String? name,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Variables$Query$GetContacts {
@@ -1313,4 +1691,521 @@ extension ClientExtension$Query$GetContact on graphql.GraphQLClient {
     );
     return result == null ? null : Query$GetContact.fromJson(result);
   }
+}
+
+class Variables$Mutation$AddContact {
+  factory Variables$Mutation$AddContact(
+          {Input$contacts_insert_input? object}) =>
+      Variables$Mutation$AddContact._({
+        if (object != null) r'object': object,
+      });
+
+  Variables$Mutation$AddContact._(this._$data);
+
+  factory Variables$Mutation$AddContact.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('object')) {
+      final l$object = data['object'];
+      result$data['object'] = l$object == null
+          ? null
+          : Input$contacts_insert_input.fromJson(
+              (l$object as Map<String, dynamic>));
+    }
+    return Variables$Mutation$AddContact._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$contacts_insert_input? get object =>
+      (_$data['object'] as Input$contacts_insert_input?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('object')) {
+      final l$object = object;
+      result$data['object'] = l$object?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$AddContact<Variables$Mutation$AddContact>
+      get copyWith => CopyWith$Variables$Mutation$AddContact(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$AddContact) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$object = object;
+    final lOther$object = other.object;
+    if (_$data.containsKey('object') != other._$data.containsKey('object')) {
+      return false;
+    }
+    if (l$object != lOther$object) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$object = object;
+    return Object.hashAll([_$data.containsKey('object') ? l$object : const {}]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$AddContact<TRes> {
+  factory CopyWith$Variables$Mutation$AddContact(
+    Variables$Mutation$AddContact instance,
+    TRes Function(Variables$Mutation$AddContact) then,
+  ) = _CopyWithImpl$Variables$Mutation$AddContact;
+
+  factory CopyWith$Variables$Mutation$AddContact.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$AddContact;
+
+  TRes call({Input$contacts_insert_input? object});
+}
+
+class _CopyWithImpl$Variables$Mutation$AddContact<TRes>
+    implements CopyWith$Variables$Mutation$AddContact<TRes> {
+  _CopyWithImpl$Variables$Mutation$AddContact(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$AddContact _instance;
+
+  final TRes Function(Variables$Mutation$AddContact) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? object = _undefined}) =>
+      _then(Variables$Mutation$AddContact._({
+        ..._instance._$data,
+        if (object != _undefined)
+          'object': (object as Input$contacts_insert_input?),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$AddContact<TRes>
+    implements CopyWith$Variables$Mutation$AddContact<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$AddContact(this._res);
+
+  TRes _res;
+
+  call({Input$contacts_insert_input? object}) => _res;
+}
+
+class Mutation$AddContact {
+  Mutation$AddContact({
+    this.insert_contacts_one,
+    required this.$__typename,
+  });
+
+  factory Mutation$AddContact.fromJson(Map<String, dynamic> json) {
+    final l$insert_contacts_one = json['insert_contacts_one'];
+    final l$$__typename = json['__typename'];
+    return Mutation$AddContact(
+      insert_contacts_one: l$insert_contacts_one == null
+          ? null
+          : Mutation$AddContact$insert_contacts_one.fromJson(
+              (l$insert_contacts_one as Map<String, dynamic>)),
+      $__typename: ((l$$__typename ?? "none") as String),
+    );
+  }
+
+  final Mutation$AddContact$insert_contacts_one? insert_contacts_one;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$insert_contacts_one = insert_contacts_one;
+    _resultData['insert_contacts_one'] = l$insert_contacts_one?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$insert_contacts_one = insert_contacts_one;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$insert_contacts_one,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$AddContact) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$insert_contacts_one = insert_contacts_one;
+    final lOther$insert_contacts_one = other.insert_contacts_one;
+    if (l$insert_contacts_one != lOther$insert_contacts_one) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$AddContact on Mutation$AddContact {
+  CopyWith$Mutation$AddContact<Mutation$AddContact> get copyWith =>
+      CopyWith$Mutation$AddContact(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$AddContact<TRes> {
+  factory CopyWith$Mutation$AddContact(
+    Mutation$AddContact instance,
+    TRes Function(Mutation$AddContact) then,
+  ) = _CopyWithImpl$Mutation$AddContact;
+
+  factory CopyWith$Mutation$AddContact.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$AddContact;
+
+  TRes call({
+    Mutation$AddContact$insert_contacts_one? insert_contacts_one,
+    String? $__typename,
+  });
+  CopyWith$Mutation$AddContact$insert_contacts_one<TRes>
+      get insert_contacts_one;
+}
+
+class _CopyWithImpl$Mutation$AddContact<TRes>
+    implements CopyWith$Mutation$AddContact<TRes> {
+  _CopyWithImpl$Mutation$AddContact(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$AddContact _instance;
+
+  final TRes Function(Mutation$AddContact) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? insert_contacts_one = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$AddContact(
+        insert_contacts_one: insert_contacts_one == _undefined
+            ? _instance.insert_contacts_one
+            : (insert_contacts_one as Mutation$AddContact$insert_contacts_one?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$AddContact$insert_contacts_one<TRes>
+      get insert_contacts_one {
+    final local$insert_contacts_one = _instance.insert_contacts_one;
+    return local$insert_contacts_one == null
+        ? CopyWith$Mutation$AddContact$insert_contacts_one.stub(
+            _then(_instance))
+        : CopyWith$Mutation$AddContact$insert_contacts_one(
+            local$insert_contacts_one, (e) => call(insert_contacts_one: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$AddContact<TRes>
+    implements CopyWith$Mutation$AddContact<TRes> {
+  _CopyWithStubImpl$Mutation$AddContact(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$AddContact$insert_contacts_one? insert_contacts_one,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$AddContact$insert_contacts_one<TRes>
+      get insert_contacts_one =>
+          CopyWith$Mutation$AddContact$insert_contacts_one.stub(_res);
+}
+
+const documentNodeMutationAddContact = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'AddContact'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'object')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'contacts_insert_input'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: ObjectValueNode(fields: [])),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'insert_contacts_one'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'object'),
+            value: VariableNode(name: NameNode(value: 'object')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      
+    ]),
+  ),
+]);
+Mutation$AddContact _parserFn$Mutation$AddContact(Map<String, dynamic> data) =>
+    Mutation$AddContact.fromJson(data);
+typedef OnMutationCompleted$Mutation$AddContact = FutureOr<void> Function(
+  dynamic,
+  Mutation$AddContact?,
+);
+
+class Options$Mutation$AddContact
+    extends graphql.MutationOptions<Mutation$AddContact> {
+  Options$Mutation$AddContact({
+    String? operationName,
+    Variables$Mutation$AddContact? variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$AddContact? onCompleted,
+    graphql.OnMutationUpdate<Mutation$AddContact>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables?.toJson() ?? {},
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$AddContact(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationAddContact,
+          parserFn: _parserFn$Mutation$AddContact,
+        );
+
+  final OnMutationCompleted$Mutation$AddContact? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$AddContact
+    extends graphql.WatchQueryOptions<Mutation$AddContact> {
+  WatchOptions$Mutation$AddContact({
+    String? operationName,
+    Variables$Mutation$AddContact? variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables?.toJson() ?? {},
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeMutationAddContact,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$AddContact,
+        );
+}
+
+extension ClientExtension$Mutation$AddContact on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$AddContact>> mutate$AddContact(
+          [Options$Mutation$AddContact? options]) async =>
+      await this.mutate(options ?? Options$Mutation$AddContact());
+  graphql.ObservableQuery<Mutation$AddContact> watchMutation$AddContact(
+          [WatchOptions$Mutation$AddContact? options]) =>
+      this.watchMutation(options ?? WatchOptions$Mutation$AddContact());
+}
+
+class Mutation$AddContact$insert_contacts_one {
+  Mutation$AddContact$insert_contacts_one({
+    required this.id,
+    required this.$__typename,
+  });
+
+  factory Mutation$AddContact$insert_contacts_one.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$AddContact$insert_contacts_one(
+      id: (l$id as int),
+      $__typename: ((l$$__typename ?? "none") as String),
+    );
+  }
+
+  final int id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$AddContact$insert_contacts_one) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$AddContact$insert_contacts_one
+    on Mutation$AddContact$insert_contacts_one {
+  CopyWith$Mutation$AddContact$insert_contacts_one<
+          Mutation$AddContact$insert_contacts_one>
+      get copyWith => CopyWith$Mutation$AddContact$insert_contacts_one(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$AddContact$insert_contacts_one<TRes> {
+  factory CopyWith$Mutation$AddContact$insert_contacts_one(
+    Mutation$AddContact$insert_contacts_one instance,
+    TRes Function(Mutation$AddContact$insert_contacts_one) then,
+  ) = _CopyWithImpl$Mutation$AddContact$insert_contacts_one;
+
+  factory CopyWith$Mutation$AddContact$insert_contacts_one.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$AddContact$insert_contacts_one;
+
+  TRes call({
+    int? id,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Mutation$AddContact$insert_contacts_one<TRes>
+    implements CopyWith$Mutation$AddContact$insert_contacts_one<TRes> {
+  _CopyWithImpl$Mutation$AddContact$insert_contacts_one(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$AddContact$insert_contacts_one _instance;
+
+  final TRes Function(Mutation$AddContact$insert_contacts_one) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$AddContact$insert_contacts_one(
+        id: id == _undefined || id == null ? _instance.id : (id as int),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Mutation$AddContact$insert_contacts_one<TRes>
+    implements CopyWith$Mutation$AddContact$insert_contacts_one<TRes> {
+  _CopyWithStubImpl$Mutation$AddContact$insert_contacts_one(this._res);
+
+  TRes _res;
+
+  call({
+    int? id,
+    String? $__typename,
+  }) =>
+      _res;
 }
