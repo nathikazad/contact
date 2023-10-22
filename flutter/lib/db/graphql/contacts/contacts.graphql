@@ -16,11 +16,14 @@ fragment contactFields on contacts {
   }
 }
 
+query GetTodayContacts($limit: Int, $offset: Int, $where: contacts_bool_exp) {
+  get_people_to_contact_today(limit: $limit, offset: $offset, where: $where) {
+    ...contactFields
+  }
+}
 
-
-
-query GetContacts($name: String_comparison_exp, $limit: Int, $offset: Int) {
-  contacts(where: {name: $name}, limit: $limit, offset: $offset) {
+query GetContacts($limit: Int, $offset: Int, $where: contacts_bool_exp) {
+  contacts(where: $where, limit: $limit, offset: $offset) {
     ...contactFields
   }
 }

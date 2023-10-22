@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     print("HomePage initialized!");
 
     HasuraDb().initializeHasura().then((value) {
+      ContactsManager().loadGroups();
       setState(() {
         hasuraInitialized = true;
       });
@@ -52,8 +53,11 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) {
+            print(index);
+            ContactsManager().fetchContactMode =
+                (index == 0) ? FetchContactMode.today : FetchContactMode.all;
+            ContactsManager().addContacts(startOver: true);
             setState(() {
-              ContactsManager().addContacts();
               _currentIndex = index;
             });
           },

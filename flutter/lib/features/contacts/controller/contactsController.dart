@@ -5,20 +5,45 @@ import 'package:start/db/HasuraDb.dart';
 
 HasuraDb hasura = HasuraDb();
 Future<List<Fragment$contactFields>?> getAllContacts(
-    {String? name, int limit = 50, int offset = 0}) async {
-  Variables$Query$GetContacts? variables = Variables$Query$GetContacts(
-      limit: limit, offset: offset, name: Input$String_comparison_exp());
-  if (name != null) {
-    variables = Variables$Query$GetContacts(
-        name: Input$String_comparison_exp($_ilike: "%$name%"),
-        limit: limit,
-        offset: offset);
-  }
+    {String? name, int limit = 50, int offset = 0, int? groupId}) async {
+  final nameComparison = name != null
+      ? Input$String_comparison_exp($_ilike: "%$name%")
+      : Input$String_comparison_exp();
+
+  final contactGroupsComparison = Input$contact_group_bool_exp(
+      group_id: Input$Int_comparison_exp($_eq: groupId));
+
+  Input$contacts_bool_exp where = groupId != null
+      ? Input$contacts_bool_exp(
+          name: nameComparison, contact_groups: contactGroupsComparison)
+      : Input$contacts_bool_exp(name: nameComparison);
+
   QueryResult<Query$GetContacts> res = await hasura.graphQLClient
       .query$GetContacts(Options$Query$GetContacts(
-          fetchPolicy: FetchPolicy.noCache, variables: variables));
+          fetchPolicy: FetchPolicy.noCache,
+          variables: Variables$Query$GetContacts(
+              where: where, limit: limit, offset: offset)));
 
   return res.parsedData?.contacts;
+}
+
+Future<List<Fragment$contactFields>?> getTodayContacts(
+    {int limit = 50, int offset = 0, int? groupId}) async {
+  Input$contacts_bool_exp? where = groupId != null
+      ? Input$contacts_bool_exp(
+          contact_groups: Input$contact_group_bool_exp(
+              group_id: Input$Int_comparison_exp($_eq: groupId)))
+      : Input$contacts_bool_exp();
+  QueryResult<Query$GetTodayContacts> res = await hasura.graphQLClient
+      .query$GetTodayContacts(Options$Query$GetTodayContacts(
+          fetchPolicy: FetchPolicy.noCache,
+          variables: Variables$Query$GetTodayContacts(
+            limit: limit,
+            offset: offset,
+            where: where,
+          )));
+
+  return res.parsedData?.get_people_to_contact_today;
 }
 
 Future<Fragment$contactFields?> getContact({required int id}) async {
