@@ -1,9 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:start/features/contacts/components/ContactDetailsComponent.dart';
+import 'package:start/features/contacts/components/ContactEditButton.dart';
 import 'package:start/features/contacts/controller/contactsController.dart';
 import 'package:start/db/graphql/contacts/__generated/contacts.graphql.dart';
+import 'package:start/features/contacts/controller/contactsManager.dart';
 import 'package:start/features/contacts/model/contactModel.dart';
-import 'package:start/features/contacts/pages/ContactFormPage.dart';
-import 'package:start/features/shared/lists/ShowList.dart';
+import 'package:start/features/logs/components/LogComponent.dart';
+import 'package:start/features/reminders/components/ReminderComponent.dart';
 
 class DetailScreen extends StatefulWidget {
   final int contactId;
@@ -25,6 +30,7 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   Future<void> _fetchContact() async {
+    _isLoading = true;
     Fragment$contactFields? contact = await getContact(id: widget.contactId);
     setState(() {
       _contact = Contact.fromFragment(contact!);
@@ -47,59 +53,32 @@ class _DetailScreenState extends State<DetailScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (_contact?.name != null) ...[
-                Text('Name: ${_contact!.name}'),
-                const SizedBox(height: 8),
-              ],
-              if (_contact?.dateAdded != null) ...[
-                Text('Date Added: ${_contact!.dateAdded}'),
-                const SizedBox(height: 8),
-              ],
-              if (_contact?.email != null) ...[
-                Text('Email: ${_contact!.email}'),
-                const SizedBox(height: 8),
-              ],
-              if (_contact?.frequency != null) ...[
-                Text('Frequency: ${_contact!.frequency}'),
-                const SizedBox(height: 8),
-              ],
-              if (_contact?.phoneNumber != null) ...[
-                Text('Phone Number: ${_contact!.phoneNumber}'),
-                const SizedBox(height: 8),
-              ],
-              if (_contact?.notes != null) ...[
-                Text('Notes: ${_contact!.notes}'),
-                const SizedBox(height: 8),
-              ],
-              if (_contact?.desires != null &&
-                  _contact!.desires!.isNotEmpty) ...[
-                ShowList(title: "desires", list: _contact!.desires!.toList()),
-                const SizedBox(height: 8),
-              ],
-              if (_contact?.groups != null && _contact!.groups!.isNotEmpty) ...[
-                ShowList(
-                  title: "groups",
-                  list: _contact!.groups,
-                ),
-                const SizedBox(height: 8),
-              ],
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (ctx) => ContactFormPage(
-                            mode: ContactMode.edit,
-                            updateCallback: (contact) => setState(() {
-                                  _contact = contact;
-                                }),
-                            contact:
-                                _contact // Pass the contact object you want to edit here
-                            )),
-                  );
-                },
-                child: const Text('Edit'),
-              )
+              SwitchListTile(
+                title: const Text('Need to call?'),
+                value: _contact?.needToCall ?? false,
+                onChanged: (value) => setState(() {
+                  _contact?.needToCall = value;
+                  updateNeedToCall(contactId: widget.contactId, value: value)
+                      .then((value) {
+                    ContactsManager().addContacts(startOver: true);
+                  });
+                }),
+              ),
+              ContactDetailsComponent(contact: _contact),
+              const SizedBox(height: 8),
+              ContactEditButton(
+                contact: _contact,
+                updateCallback: (contact) => setState(() {
+                  _contact = contact;
+                }),
+              ),
+              RemindersComponent(widget.contactId),
+              LogsComponent(
+                widget.contactId,
+                updateCallback: (contact) => setState(() {
+                  _contact = contact;
+                }),
+              ),
             ],
           ),
         ));

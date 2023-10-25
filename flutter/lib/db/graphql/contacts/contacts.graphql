@@ -45,3 +45,9 @@ mutation UpdateContact($id: Int!, $_set: contacts_set_input = {}) {
     id
   }
 }
+
+mutation UpdateNeedToCall($id: Int!, $need_to_call: Boolean!) {
+  update_contacts_by_pk(pk_columns: {id: $id}, _set: {need_to_call: $need_to_call}) {
+    id
+  }
+}

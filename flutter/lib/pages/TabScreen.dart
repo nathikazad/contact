@@ -20,7 +20,6 @@ class TabScreenState extends State<TabScreen> {
   void initState() {
     super.initState();
     contactsManager.setListener(() {
-      print("contact manager set");
       setState(() {});
     });
     _fetchContacts();

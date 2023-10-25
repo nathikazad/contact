@@ -11,7 +11,7 @@ class ShowList extends StatelessWidget {
       return SizedBox.shrink();
     }
     return Wrap(
-      direction: Axis.vertical, // Set main axis direction to vertical
+      // direction: Axis.vertical, // Set main axis direction to vertical
       spacing: 8.0,
       runSpacing: 4.0,
       children: [

@@ -46,6 +46,14 @@ Future<List<Fragment$contactFields>?> getTodayContacts(
   return res.parsedData?.get_people_to_contact_today;
 }
 
+Future<void> updateNeedToCall(
+    {required int contactId, required bool value}) async {
+  await hasura.graphQLClient.mutate$UpdateNeedToCall(
+      Options$Mutation$UpdateNeedToCall(
+          variables: Variables$Mutation$UpdateNeedToCall(
+              id: contactId, need_to_call: value)));
+}
+
 Future<Fragment$contactFields?> getContact({required int id}) async {
   QueryResult<Query$GetContact> res = await hasura.graphQLClient
       .query$GetContact(Options$Query$GetContact(

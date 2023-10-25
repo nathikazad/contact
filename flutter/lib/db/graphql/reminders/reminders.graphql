@@ -1,0 +1,14 @@
+query GetReminders($contact_id: Int) {
+  reminders(where: {contact_id: {_eq: $contact_id}, contacted: {_eq: false}}) {
+    notes
+    time
+    contacted
+    id
+  }
+}
+
+mutation InsertReminder($object: reminders_insert_input!) {
+  insert_reminders_one(object: $object) {
+    id
+  }
+}

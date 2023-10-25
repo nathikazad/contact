@@ -1,0 +1,20 @@
+query GetLogs($contact_id: Int) {
+  logs(where: {contact_id: {_eq: $contact_id}}) {
+    notes
+    time
+    type
+    id
+  }
+}
+
+mutation InsertLog($contact_id: Int!, $object: logs_insert_input!) {
+  insert_logs_one(object: $object) {
+    id
+  }
+  update_reminders_many(updates: {where: {contact_id: {_eq: $contact_id}, contacted: {_eq: false}}, _set: {contacted: true}}) {
+    affected_rows
+  }
+  update_contacts_by_pk(pk_columns: {id: $contact_id}, _set: {need_to_call: false}) {
+    ...contactFields
+  }
+}
