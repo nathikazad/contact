@@ -38,6 +38,10 @@ class TabScreenState extends State<TabScreen> {
     }).toList();
   }
 
+  String appendCompanyName(String? companyName) {
+    return companyName != null ? "($companyName)" : "";
+  }
+
   @override
   Widget build(BuildContext context) {
     final contacts = contactsManager.getContacts();
@@ -115,7 +119,8 @@ class TabScreenState extends State<TabScreen> {
               }
               return ListTile(
                 tileColor: widget.color,
-                title: Text(contacts[index].name),
+                title: Text(
+                    "${contacts[index].name}${appendCompanyName(contacts[index].company_name)}"),
                 onTap: () {
                   Navigator.push(
                     context,

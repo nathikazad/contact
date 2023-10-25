@@ -9,7 +9,8 @@ CREATE TABLE public.contacts (
     desires jsonb[],
     need_to_call boolean,
     date_added timestamp with time zone DEFAULT now() NOT NULL,
-    frequency integer
+    frequency integer,
+    company_name text
 );
 CREATE FUNCTION public.get_people_to_contact_today() RETURNS SETOF public.contacts
     LANGUAGE sql STABLE
@@ -75,7 +76,8 @@ CREATE FUNCTION public.search_articles(search text) RETURNS SETOF public.contact
 $$;
 CREATE TABLE public.contact_group (
     contact_id integer NOT NULL,
-    group_id integer NOT NULL
+    group_id integer NOT NULL,
+    sales_state text
 );
 CREATE SEQUENCE public.contacts_id_seq
     AS integer
@@ -88,7 +90,8 @@ ALTER SEQUENCE public.contacts_id_seq OWNED BY public.contacts.id;
 CREATE TABLE public.groups (
     name text NOT NULL,
     id integer NOT NULL,
-    frequency integer
+    frequency integer,
+    sales_states jsonb
 );
 CREATE SEQUENCE public.groups_id_seq
     AS integer

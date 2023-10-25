@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:start/db/graphql/reminders/__generated/reminders.graphql.dart';
-import 'package:intl/intl.dart';
 import 'package:start/features/shared/utility.dart';
 
 class RemindersList extends StatelessWidget {

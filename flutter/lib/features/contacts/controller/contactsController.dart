@@ -71,9 +71,10 @@ Future<int?> addContact({required Input$contacts_insert_input contact}) async {
 }
 
 Future<int?> updateContact(
-    {required Input$contacts_set_input contact, required int id}) async {
+    {required Input$contacts_set_input contact, required int contactId}) async {
   QueryResult<Mutation$UpdateContact> res = await hasura.graphQLClient
       .mutate$UpdateContact(Options$Mutation$UpdateContact(
-          variables: Variables$Mutation$UpdateContact(id: id, $_set: contact)));
+          variables:
+              Variables$Mutation$UpdateContact(id: contactId, $_set: contact)));
   return res.parsedData?.update_contacts_by_pk?.id;
 }

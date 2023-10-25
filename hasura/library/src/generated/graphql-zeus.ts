@@ -265,6 +265,7 @@ count?: [{	columns?:ValueTypes["contact_group_select_column"][],	distinct?:boole
 };
 	/** columns and relationships of "contacts" */
 ["contacts"]: AliasType<{
+	company_name?:true,
 contact_groups?: [{	/** distinct select on columns */
 	distinct_on?:ValueTypes["contact_group_select_column"][],	/** limit the number of rows returned */
 	limit?:number,	/** skip the first n rows. Use only with order_by */
@@ -345,6 +346,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 	_and?:ValueTypes["contacts_bool_exp"][],
 	_not?:ValueTypes["contacts_bool_exp"],
 	_or?:ValueTypes["contacts_bool_exp"][],
+	company_name?:ValueTypes["String_comparison_exp"],
 	contact_groups?:ValueTypes["contact_group_bool_exp"],
 	contact_groups_aggregate?:ValueTypes["contact_group_aggregate_bool_exp"],
 	date_added?:ValueTypes["timestamptz_comparison_exp"],
@@ -371,6 +373,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 };
 	/** input type for inserting data into table "contacts" */
 ["contacts_insert_input"]: {
+	company_name?:string,
 	contact_groups?:ValueTypes["contact_group_arr_rel_insert_input"],
 	date_added?:ValueTypes["timestamptz"],
 	desires?:ValueTypes["jsonb"][],
@@ -387,6 +390,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 };
 	/** aggregate max on columns */
 ["contacts_max_fields"]: AliasType<{
+	company_name?:true,
 	date_added?:true,
 	desires?:true,
 	email?:true,
@@ -400,6 +404,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 }>;
 	/** aggregate min on columns */
 ["contacts_min_fields"]: AliasType<{
+	company_name?:true,
 	date_added?:true,
 	desires?:true,
 	email?:true,
@@ -433,6 +438,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 };
 	/** Ordering options when selecting data from "contacts". */
 ["contacts_order_by"]: {
+	company_name?:ValueTypes["order_by"],
 	contact_groups_aggregate?:ValueTypes["contact_group_aggregate_order_by"],
 	date_added?:ValueTypes["order_by"],
 	desires?:ValueTypes["order_by"],
@@ -455,6 +461,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 ["contacts_select_column"]:contacts_select_column;
 	/** input type for updating data in table "contacts" */
 ["contacts_set_input"]: {
+	company_name?:string,
 	date_added?:ValueTypes["timestamptz"],
 	desires?:ValueTypes["jsonb"][],
 	email?:string,
@@ -493,6 +500,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 };
 	/** Initial value of the column from where the streaming should start */
 ["contacts_stream_cursor_value_input"]: {
+	company_name?:string,
 	date_added?:ValueTypes["timestamptz"],
 	desires?:ValueTypes["jsonb"][],
 	email?:string,
@@ -1945,6 +1953,7 @@ export type PartialObjects = {
 	/** columns and relationships of "contacts" */
 ["contacts"]: {
 		__typename?: "contacts";
+			company_name?:string,
 			/** An array relationship */
 	contact_groups?:PartialObjects["contact_group"][],
 			/** An aggregate relationship */
@@ -2000,6 +2009,7 @@ export type PartialObjects = {
 	_and?:PartialObjects["contacts_bool_exp"][],
 	_not?:PartialObjects["contacts_bool_exp"],
 	_or?:PartialObjects["contacts_bool_exp"][],
+	company_name?:PartialObjects["String_comparison_exp"],
 	contact_groups?:PartialObjects["contact_group_bool_exp"],
 	contact_groups_aggregate?:PartialObjects["contact_group_aggregate_bool_exp"],
 	date_added?:PartialObjects["timestamptz_comparison_exp"],
@@ -2026,6 +2036,7 @@ export type PartialObjects = {
 },
 	/** input type for inserting data into table "contacts" */
 ["contacts_insert_input"]: {
+	company_name?:string,
 	contact_groups?:PartialObjects["contact_group_arr_rel_insert_input"],
 	date_added?:PartialObjects["timestamptz"],
 	desires?:PartialObjects["jsonb"][],
@@ -2043,6 +2054,7 @@ export type PartialObjects = {
 	/** aggregate max on columns */
 ["contacts_max_fields"]: {
 		__typename?: "contacts_max_fields";
+			company_name?:string,
 			date_added?:PartialObjects["timestamptz"],
 			desires?:PartialObjects["jsonb"][],
 			email?:string,
@@ -2056,6 +2068,7 @@ export type PartialObjects = {
 	/** aggregate min on columns */
 ["contacts_min_fields"]: {
 		__typename?: "contacts_min_fields";
+			company_name?:string,
 			date_added?:PartialObjects["timestamptz"],
 			desires?:PartialObjects["jsonb"][],
 			email?:string,
@@ -2088,6 +2101,7 @@ export type PartialObjects = {
 },
 	/** Ordering options when selecting data from "contacts". */
 ["contacts_order_by"]: {
+	company_name?:PartialObjects["order_by"],
 	contact_groups_aggregate?:PartialObjects["contact_group_aggregate_order_by"],
 	date_added?:PartialObjects["order_by"],
 	desires?:PartialObjects["order_by"],
@@ -2110,6 +2124,7 @@ export type PartialObjects = {
 ["contacts_select_column"]:contacts_select_column,
 	/** input type for updating data in table "contacts" */
 ["contacts_set_input"]: {
+	company_name?:string,
 	date_added?:PartialObjects["timestamptz"],
 	desires?:PartialObjects["jsonb"][],
 	email?:string,
@@ -2148,6 +2163,7 @@ export type PartialObjects = {
 },
 	/** Initial value of the column from where the streaming should start */
 ["contacts_stream_cursor_value_input"]: {
+	company_name?:string,
 	date_added?:PartialObjects["timestamptz"],
 	desires?:PartialObjects["jsonb"][],
 	email?:string,
@@ -3507,6 +3523,7 @@ export type contact_group_variance_order_by = {
 /** columns and relationships of "contacts" */
 export type contacts = {
 	__typename?: "contacts",
+	company_name?:string,
 	/** An array relationship */
 	contact_groups:contact_group[],
 	/** An aggregate relationship */
@@ -3566,6 +3583,7 @@ export type contacts_bool_exp = {
 		_and?:contacts_bool_exp[],
 	_not?:contacts_bool_exp,
 	_or?:contacts_bool_exp[],
+	company_name?:String_comparison_exp,
 	contact_groups?:contact_group_bool_exp,
 	contact_groups_aggregate?:contact_group_aggregate_bool_exp,
 	date_added?:timestamptz_comparison_exp,
@@ -3597,7 +3615,8 @@ export type contacts_inc_input = {
 
 /** input type for inserting data into table "contacts" */
 export type contacts_insert_input = {
-		contact_groups?:contact_group_arr_rel_insert_input,
+		company_name?:string,
+	contact_groups?:contact_group_arr_rel_insert_input,
 	date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
@@ -3615,6 +3634,7 @@ export type contacts_insert_input = {
 /** aggregate max on columns */
 export type contacts_max_fields = {
 	__typename?: "contacts_max_fields",
+	company_name?:string,
 	date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
@@ -3629,6 +3649,7 @@ export type contacts_max_fields = {
 /** aggregate min on columns */
 export type contacts_min_fields = {
 	__typename?: "contacts_min_fields",
+	company_name?:string,
 	date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
@@ -3665,7 +3686,8 @@ export type contacts_on_conflict = {
 
 /** Ordering options when selecting data from "contacts". */
 export type contacts_order_by = {
-		contact_groups_aggregate?:contact_group_aggregate_order_by,
+		company_name?:order_by,
+	contact_groups_aggregate?:contact_group_aggregate_order_by,
 	date_added?:order_by,
 	desires?:order_by,
 	email?:order_by,
@@ -3687,6 +3709,7 @@ export type contacts_pk_columns_input = {
 
 /** select columns of table "contacts" */
 export enum contacts_select_column {
+	company_name = "company_name",
 	date_added = "date_added",
 	desires = "desires",
 	email = "email",
@@ -3701,7 +3724,8 @@ export enum contacts_select_column {
 
 /** input type for updating data in table "contacts" */
 export type contacts_set_input = {
-		date_added?:timestamptz,
+		company_name?:string,
+	date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
 	frequency?:number,
@@ -3744,7 +3768,8 @@ export type contacts_stream_cursor_input = {
 
 /** Initial value of the column from where the streaming should start */
 export type contacts_stream_cursor_value_input = {
-		date_added?:timestamptz,
+		company_name?:string,
+	date_added?:timestamptz,
 	desires?:jsonb[],
 	email?:string,
 	frequency?:number,
@@ -3765,6 +3790,7 @@ export type contacts_sum_fields = {
 
 /** update columns of table "contacts" */
 export enum contacts_update_column {
+	company_name = "company_name",
 	date_added = "date_added",
 	desires = "desires",
 	email = "email",
@@ -5766,6 +5792,12 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:true
 		},
+		company_name:{
+			type:"String_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		contact_groups:{
 			type:"contact_group_bool_exp",
 			array:false,
@@ -5879,6 +5911,12 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	contacts_insert_input:{
+		company_name:{
+			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		contact_groups:{
 			type:"contact_group_arr_rel_insert_input",
 			array:false,
@@ -5993,6 +6031,12 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	contacts_order_by:{
+		company_name:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		contact_groups_aggregate:{
 			type:"contact_group_aggregate_order_by",
 			array:false,
@@ -6082,6 +6126,12 @@ export const AllTypesProps: Record<string,any> = {
 	},
 	contacts_select_column: "enum",
 	contacts_set_input:{
+		company_name:{
+			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		date_added:{
 			type:"timestamptz",
 			array:false,
@@ -6158,6 +6208,12 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	contacts_stream_cursor_value_input:{
+		company_name:{
+			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		date_added:{
 			type:"timestamptz",
 			array:false,
@@ -9740,6 +9796,7 @@ export const ReturnTypes: Record<string,any> = {
 		group_id:"Float"
 	},
 	contacts:{
+		company_name:"String",
 		contact_groups:"contact_group",
 		contact_groups_aggregate:"contact_group_aggregate",
 		date_added:"timestamptz",
@@ -9779,6 +9836,7 @@ export const ReturnTypes: Record<string,any> = {
 		id:"Float"
 	},
 	contacts_max_fields:{
+		company_name:"String",
 		date_added:"timestamptz",
 		desires:"jsonb",
 		email:"String",
@@ -9790,6 +9848,7 @@ export const ReturnTypes: Record<string,any> = {
 		phone_number:"String"
 	},
 	contacts_min_fields:{
+		company_name:"String",
 		date_added:"timestamptz",
 		desires:"jsonb",
 		email:"String",

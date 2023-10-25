@@ -1,9 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:start/features/contacts/controller/contactsController.dart';
 import 'package:start/features/contacts/controller/contactsManager.dart';
 import 'package:start/features/contacts/model/contactModel.dart';
 import 'package:start/features/contacts/pages/ContactDetailsPage.dart';
-import 'package:start/features/shared/lists/AddList.dart';
+import 'package:start/features/groups/controller/groupsController.dart';
+import 'package:start/features/shared/lists/ListFormWidget.dart';
 
 enum ContactMode { add, edit }
 
@@ -20,6 +23,8 @@ class ContactFormPage extends StatefulWidget {
 
 class _ContactScreenState extends State<ContactFormPage> {
   final _formKey = GlobalKey<FormState>();
+  final ContactsManager _contactsManager = ContactsManager();
+  List<String> _newGroups = [];
   late Contact _contact;
   DateTime? _selectedDate;
   final TextEditingController _dateController = TextEditingController();
@@ -27,12 +32,8 @@ class _ContactScreenState extends State<ContactFormPage> {
   @override
   void initState() {
     super.initState();
-
     _contact = (widget.contact != null) ? widget.contact! : Contact();
-
     _dateController.text = _contact.dateAdded ?? '';
-
-    print(_contact.toString());
   }
 
   void _submitForm() async {
@@ -41,28 +42,47 @@ class _ContactScreenState extends State<ContactFormPage> {
           _dateController.text.isEmpty ? null : _dateController.text;
       _formKey.currentState!.save();
       if (widget.mode == ContactMode.add) {
-        addContact(contact: _contact.toAddContact()).then((id) {
-          if (id != null) {
-            // widget.onContactAdded();
-            ContactsManager().addContacts(startOver: true);
-            Navigator.of(context)
-                .pop(); // Optionally pop the screen after adding the contact
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (ctx) => DetailScreen(id)),
-            );
-          } else {
-            // Handle error
-          }
-        });
+        int? id = await addContact(contact: _contact.toAddContact());
+
+        if (id != null) {
+          List<int> newGroups = _contactsManager.getGroupInts(_newGroups);
+          List<int> oldGroups =
+              _contactsManager.getGroupInts(_contact.groups ?? []);
+          List<int> groupsToAdd =
+              newGroups.toSet().difference(oldGroups.toSet()).toList();
+          await updateGroups(
+            contactId: id,
+            groupsToAdd: groupsToAdd,
+          );
+          _contactsManager.addContacts(startOver: true);
+          Navigator.of(context)
+              .pop(); // Optionally pop the screen after adding the contact
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (ctx) => DetailScreen(id)),
+          );
+        } else {
+          // Handle error
+        }
       } else {
-        updateContact(contact: _contact.toUpdateContact(), id: _contact.id!)
-            .then((id) {
-          print("finished updating contact");
-          ContactsManager().addContacts(startOver: true);
-          widget.updateCallback!(_contact);
-          Navigator.of(context).pop();
-        });
+        List<int> newGroups = _contactsManager.getGroupInts(_newGroups);
+        List<int> oldGroups =
+            _contactsManager.getGroupInts(_contact.groups ?? []);
+        List<int> groupsToAdd =
+            newGroups.toSet().difference(oldGroups.toSet()).toList();
+        List<int> groupsToRemove =
+            oldGroups.toSet().difference(newGroups.toSet()).toList();
+        await updateContact(
+            contact: _contact.toUpdateContact(), contactId: _contact.id!);
+        await updateGroups(
+            contactId: _contact.id!,
+            groupsToAdd: groupsToAdd,
+            groupsToRemove: groupsToRemove);
+
+        _contactsManager.addContacts(startOver: true);
+        _contact.groups = _newGroups;
+        widget.updateCallback!(_contact);
+        Navigator.of(context).pop();
       }
     }
   }
@@ -109,6 +129,13 @@ class _ContactScreenState extends State<ContactFormPage> {
                       value!.isEmpty ? 'Please enter a name' : null,
                 ),
                 TextFormField(
+                  initialValue: _contact.companyName,
+                  decoration: const InputDecoration(labelText: 'Company Name'),
+                  onSaved: (value) =>
+                      _contact.companyName = value!.isEmpty ? null : value,
+                  validator: (value) => value!.isEmpty ? 'Company Name' : null,
+                ),
+                TextFormField(
                   initialValue: _contact.email,
                   decoration: const InputDecoration(labelText: 'Email'),
                   onSaved: (value) =>
@@ -141,9 +168,17 @@ class _ContactScreenState extends State<ContactFormPage> {
                       _contact.notes = value!.isEmpty ? null : value,
                 ),
                 const SizedBox(height: 20),
-                AddListWidget(
+                ListFormWidget(
+                    listTitle: "Desire",
                     onChanged: _onDesiresChanged,
                     initialValues: _contact.desires),
+                ListFormWidget(
+                    listTitle: "Group",
+                    onChanged: (newGroups) {
+                      _newGroups = newGroups;
+                    },
+                    initialValues: _contact.groups?.toList(),
+                    acceptedValues: _contactsManager.groups.keys.toList()),
                 SwitchListTile(
                   title: const Text('Need to call?'),
                   value: _contact.needToCall ?? false,

@@ -5001,6 +5001,7 @@ class Input$contacts_bool_exp {
     List<Input$contacts_bool_exp>? $_and,
     Input$contacts_bool_exp? $_not,
     List<Input$contacts_bool_exp>? $_or,
+    Input$String_comparison_exp? company_name,
     Input$contact_group_bool_exp? contact_groups,
     Input$contact_group_aggregate_bool_exp? contact_groups_aggregate,
     Input$timestamptz_comparison_exp? date_added,
@@ -5022,6 +5023,7 @@ class Input$contacts_bool_exp {
         if ($_and != null) r'_and': $_and,
         if ($_not != null) r'_not': $_not,
         if ($_or != null) r'_or': $_or,
+        if (company_name != null) r'company_name': company_name,
         if (contact_groups != null) r'contact_groups': contact_groups,
         if (contact_groups_aggregate != null)
           r'contact_groups_aggregate': contact_groups_aggregate,
@@ -5065,6 +5067,13 @@ class Input$contacts_bool_exp {
           ?.map((e) =>
               Input$contacts_bool_exp.fromJson((e as Map<String, dynamic>)))
           .toList();
+    }
+    if (data.containsKey('company_name')) {
+      final l$company_name = data['company_name'];
+      result$data['company_name'] = l$company_name == null
+          ? null
+          : Input$String_comparison_exp.fromJson(
+              (l$company_name as Map<String, dynamic>));
     }
     if (data.containsKey('contact_groups')) {
       final l$contact_groups = data['contact_groups'];
@@ -5191,6 +5200,9 @@ class Input$contacts_bool_exp {
   List<Input$contacts_bool_exp>? get $_or =>
       (_$data['_or'] as List<Input$contacts_bool_exp>?);
 
+  Input$String_comparison_exp? get company_name =>
+      (_$data['company_name'] as Input$String_comparison_exp?);
+
   Input$contact_group_bool_exp? get contact_groups =>
       (_$data['contact_groups'] as Input$contact_group_bool_exp?);
 
@@ -5252,6 +5264,10 @@ class Input$contacts_bool_exp {
     if (_$data.containsKey('_or')) {
       final l$$_or = $_or;
       result$data['_or'] = l$$_or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('company_name')) {
+      final l$company_name = company_name;
+      result$data['company_name'] = l$company_name?.toJson();
     }
     if (_$data.containsKey('contact_groups')) {
       final l$contact_groups = contact_groups;
@@ -5380,6 +5396,15 @@ class Input$contacts_bool_exp {
         }
       }
     } else if (l$$_or != lOther$$_or) {
+      return false;
+    }
+    final l$company_name = company_name;
+    final lOther$company_name = other.company_name;
+    if (_$data.containsKey('company_name') !=
+        other._$data.containsKey('company_name')) {
+      return false;
+    }
+    if (l$company_name != lOther$company_name) {
       return false;
     }
     final l$contact_groups = contact_groups;
@@ -5527,6 +5552,7 @@ class Input$contacts_bool_exp {
     final l$$_and = $_and;
     final l$$_not = $_not;
     final l$$_or = $_or;
+    final l$company_name = company_name;
     final l$contact_groups = contact_groups;
     final l$contact_groups_aggregate = contact_groups_aggregate;
     final l$date_added = date_added;
@@ -5555,6 +5581,7 @@ class Input$contacts_bool_exp {
               ? null
               : Object.hashAll(l$$_or.map((v) => v))
           : const {},
+      _$data.containsKey('company_name') ? l$company_name : const {},
       _$data.containsKey('contact_groups') ? l$contact_groups : const {},
       _$data.containsKey('contact_groups_aggregate')
           ? l$contact_groups_aggregate
@@ -5592,6 +5619,7 @@ abstract class CopyWith$Input$contacts_bool_exp<TRes> {
     List<Input$contacts_bool_exp>? $_and,
     Input$contacts_bool_exp? $_not,
     List<Input$contacts_bool_exp>? $_or,
+    Input$String_comparison_exp? company_name,
     Input$contact_group_bool_exp? contact_groups,
     Input$contact_group_aggregate_bool_exp? contact_groups_aggregate,
     Input$timestamptz_comparison_exp? date_added,
@@ -5620,6 +5648,7 @@ abstract class CopyWith$Input$contacts_bool_exp<TRes> {
               Iterable<
                   CopyWith$Input$contacts_bool_exp<Input$contacts_bool_exp>>?)
           _fn);
+  CopyWith$Input$String_comparison_exp<TRes> get company_name;
   CopyWith$Input$contact_group_bool_exp<TRes> get contact_groups;
   CopyWith$Input$contact_group_aggregate_bool_exp<TRes>
       get contact_groups_aggregate;
@@ -5656,6 +5685,7 @@ class _CopyWithImpl$Input$contacts_bool_exp<TRes>
     Object? $_and = _undefined,
     Object? $_not = _undefined,
     Object? $_or = _undefined,
+    Object? company_name = _undefined,
     Object? contact_groups = _undefined,
     Object? contact_groups_aggregate = _undefined,
     Object? date_added = _undefined,
@@ -5679,6 +5709,8 @@ class _CopyWithImpl$Input$contacts_bool_exp<TRes>
           '_and': ($_and as List<Input$contacts_bool_exp>?),
         if ($_not != _undefined) '_not': ($_not as Input$contacts_bool_exp?),
         if ($_or != _undefined) '_or': ($_or as List<Input$contacts_bool_exp>?),
+        if (company_name != _undefined)
+          'company_name': (company_name as Input$String_comparison_exp?),
         if (contact_groups != _undefined)
           'contact_groups': (contact_groups as Input$contact_group_bool_exp?),
         if (contact_groups_aggregate != _undefined)
@@ -5743,6 +5775,14 @@ class _CopyWithImpl$Input$contacts_bool_exp<TRes>
                 e,
                 (i) => i,
               )))?.toList());
+
+  CopyWith$Input$String_comparison_exp<TRes> get company_name {
+    final local$company_name = _instance.company_name;
+    return local$company_name == null
+        ? CopyWith$Input$String_comparison_exp.stub(_then(_instance))
+        : CopyWith$Input$String_comparison_exp(
+            local$company_name, (e) => call(company_name: e));
+  }
 
   CopyWith$Input$contact_group_bool_exp<TRes> get contact_groups {
     final local$contact_groups = _instance.contact_groups;
@@ -5883,6 +5923,7 @@ class _CopyWithStubImpl$Input$contacts_bool_exp<TRes>
     List<Input$contacts_bool_exp>? $_and,
     Input$contacts_bool_exp? $_not,
     List<Input$contacts_bool_exp>? $_or,
+    Input$String_comparison_exp? company_name,
     Input$contact_group_bool_exp? contact_groups,
     Input$contact_group_aggregate_bool_exp? contact_groups_aggregate,
     Input$timestamptz_comparison_exp? date_added,
@@ -5908,6 +5949,9 @@ class _CopyWithStubImpl$Input$contacts_bool_exp<TRes>
       CopyWith$Input$contacts_bool_exp.stub(_res);
 
   $_or(_fn) => _res;
+
+  CopyWith$Input$String_comparison_exp<TRes> get company_name =>
+      CopyWith$Input$String_comparison_exp.stub(_res);
 
   CopyWith$Input$contact_group_bool_exp<TRes> get contact_groups =>
       CopyWith$Input$contact_group_bool_exp.stub(_res);
@@ -6103,6 +6147,7 @@ class _CopyWithStubImpl$Input$contacts_inc_input<TRes>
 
 class Input$contacts_insert_input {
   factory Input$contacts_insert_input({
+    String? company_name,
     Input$contact_group_arr_rel_insert_input? contact_groups,
     String? date_added,
     List<dynamic>? desires,
@@ -6118,6 +6163,7 @@ class Input$contacts_insert_input {
     Input$reminders_arr_rel_insert_input? reminders,
   }) =>
       Input$contacts_insert_input._({
+        if (company_name != null) r'company_name': company_name,
         if (contact_groups != null) r'contact_groups': contact_groups,
         if (date_added != null) r'date_added': date_added,
         if (desires != null) r'desires': desires,
@@ -6137,6 +6183,10 @@ class Input$contacts_insert_input {
 
   factory Input$contacts_insert_input.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    if (data.containsKey('company_name')) {
+      final l$company_name = data['company_name'];
+      result$data['company_name'] = (l$company_name as String?);
+    }
     if (data.containsKey('contact_groups')) {
       final l$contact_groups = data['contact_groups'];
       result$data['contact_groups'] = l$contact_groups == null
@@ -6205,6 +6255,8 @@ class Input$contacts_insert_input {
 
   Map<String, dynamic> _$data;
 
+  String? get company_name => (_$data['company_name'] as String?);
+
   Input$contact_group_arr_rel_insert_input? get contact_groups =>
       (_$data['contact_groups'] as Input$contact_group_arr_rel_insert_input?);
 
@@ -6236,6 +6288,10 @@ class Input$contacts_insert_input {
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    if (_$data.containsKey('company_name')) {
+      final l$company_name = company_name;
+      result$data['company_name'] = l$company_name;
+    }
     if (_$data.containsKey('contact_groups')) {
       final l$contact_groups = contact_groups;
       result$data['contact_groups'] = l$contact_groups?.toJson();
@@ -6304,6 +6360,15 @@ class Input$contacts_insert_input {
     }
     if (!(other is Input$contacts_insert_input) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$company_name = company_name;
+    final lOther$company_name = other.company_name;
+    if (_$data.containsKey('company_name') !=
+        other._$data.containsKey('company_name')) {
+      return false;
+    }
+    if (l$company_name != lOther$company_name) {
       return false;
     }
     final l$contact_groups = contact_groups;
@@ -6443,6 +6508,7 @@ class Input$contacts_insert_input {
 
   @override
   int get hashCode {
+    final l$company_name = company_name;
     final l$contact_groups = contact_groups;
     final l$date_added = date_added;
     final l$desires = desires;
@@ -6457,6 +6523,7 @@ class Input$contacts_insert_input {
     final l$phone_number = phone_number;
     final l$reminders = reminders;
     return Object.hashAll([
+      _$data.containsKey('company_name') ? l$company_name : const {},
       _$data.containsKey('contact_groups') ? l$contact_groups : const {},
       _$data.containsKey('date_added') ? l$date_added : const {},
       _$data.containsKey('desires')
@@ -6492,6 +6559,7 @@ abstract class CopyWith$Input$contacts_insert_input<TRes> {
       _CopyWithStubImpl$Input$contacts_insert_input;
 
   TRes call({
+    String? company_name,
     Input$contact_group_arr_rel_insert_input? contact_groups,
     String? date_added,
     List<dynamic>? desires,
@@ -6525,6 +6593,7 @@ class _CopyWithImpl$Input$contacts_insert_input<TRes>
   static const _undefined = {};
 
   TRes call({
+    Object? company_name = _undefined,
     Object? contact_groups = _undefined,
     Object? date_added = _undefined,
     Object? desires = _undefined,
@@ -6541,6 +6610,8 @@ class _CopyWithImpl$Input$contacts_insert_input<TRes>
   }) =>
       _then(Input$contacts_insert_input._({
         ..._instance._$data,
+        if (company_name != _undefined)
+          'company_name': (company_name as String?),
         if (contact_groups != _undefined)
           'contact_groups':
               (contact_groups as Input$contact_group_arr_rel_insert_input?),
@@ -6594,6 +6665,7 @@ class _CopyWithStubImpl$Input$contacts_insert_input<TRes>
   TRes _res;
 
   call({
+    String? company_name,
     Input$contact_group_arr_rel_insert_input? contact_groups,
     String? date_added,
     List<dynamic>? desires,
@@ -6973,6 +7045,7 @@ class _CopyWithStubImpl$Input$contacts_on_conflict<TRes>
 
 class Input$contacts_order_by {
   factory Input$contacts_order_by({
+    Enum$order_by? company_name,
     Input$contact_group_aggregate_order_by? contact_groups_aggregate,
     Enum$order_by? date_added,
     Enum$order_by? desires,
@@ -6988,6 +7061,7 @@ class Input$contacts_order_by {
     Input$reminders_aggregate_order_by? reminders_aggregate,
   }) =>
       Input$contacts_order_by._({
+        if (company_name != null) r'company_name': company_name,
         if (contact_groups_aggregate != null)
           r'contact_groups_aggregate': contact_groups_aggregate,
         if (date_added != null) r'date_added': date_added,
@@ -7009,6 +7083,12 @@ class Input$contacts_order_by {
 
   factory Input$contacts_order_by.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    if (data.containsKey('company_name')) {
+      final l$company_name = data['company_name'];
+      result$data['company_name'] = l$company_name == null
+          ? null
+          : fromJson$Enum$order_by((l$company_name as String));
+    }
     if (data.containsKey('contact_groups_aggregate')) {
       final l$contact_groups_aggregate = data['contact_groups_aggregate'];
       result$data['contact_groups_aggregate'] =
@@ -7092,6 +7172,8 @@ class Input$contacts_order_by {
 
   Map<String, dynamic> _$data;
 
+  Enum$order_by? get company_name => (_$data['company_name'] as Enum$order_by?);
+
   Input$contact_group_aggregate_order_by? get contact_groups_aggregate =>
       (_$data['contact_groups_aggregate']
           as Input$contact_group_aggregate_order_by?);
@@ -7124,6 +7206,11 @@ class Input$contacts_order_by {
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    if (_$data.containsKey('company_name')) {
+      final l$company_name = company_name;
+      result$data['company_name'] =
+          l$company_name == null ? null : toJson$Enum$order_by(l$company_name);
+    }
     if (_$data.containsKey('contact_groups_aggregate')) {
       final l$contact_groups_aggregate = contact_groups_aggregate;
       result$data['contact_groups_aggregate'] =
@@ -7202,6 +7289,15 @@ class Input$contacts_order_by {
     }
     if (!(other is Input$contacts_order_by) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$company_name = company_name;
+    final lOther$company_name = other.company_name;
+    if (_$data.containsKey('company_name') !=
+        other._$data.containsKey('company_name')) {
+      return false;
+    }
+    if (l$company_name != lOther$company_name) {
       return false;
     }
     final l$contact_groups_aggregate = contact_groups_aggregate;
@@ -7320,6 +7416,7 @@ class Input$contacts_order_by {
 
   @override
   int get hashCode {
+    final l$company_name = company_name;
     final l$contact_groups_aggregate = contact_groups_aggregate;
     final l$date_added = date_added;
     final l$desires = desires;
@@ -7334,6 +7431,7 @@ class Input$contacts_order_by {
     final l$phone_number = phone_number;
     final l$reminders_aggregate = reminders_aggregate;
     return Object.hashAll([
+      _$data.containsKey('company_name') ? l$company_name : const {},
       _$data.containsKey('contact_groups_aggregate')
           ? l$contact_groups_aggregate
           : const {},
@@ -7365,6 +7463,7 @@ abstract class CopyWith$Input$contacts_order_by<TRes> {
       _CopyWithStubImpl$Input$contacts_order_by;
 
   TRes call({
+    Enum$order_by? company_name,
     Input$contact_group_aggregate_order_by? contact_groups_aggregate,
     Enum$order_by? date_added,
     Enum$order_by? desires,
@@ -7399,6 +7498,7 @@ class _CopyWithImpl$Input$contacts_order_by<TRes>
   static const _undefined = {};
 
   TRes call({
+    Object? company_name = _undefined,
     Object? contact_groups_aggregate = _undefined,
     Object? date_added = _undefined,
     Object? desires = _undefined,
@@ -7415,6 +7515,8 @@ class _CopyWithImpl$Input$contacts_order_by<TRes>
   }) =>
       _then(Input$contacts_order_by._({
         ..._instance._$data,
+        if (company_name != _undefined)
+          'company_name': (company_name as Enum$order_by?),
         if (contact_groups_aggregate != _undefined)
           'contact_groups_aggregate': (contact_groups_aggregate
               as Input$contact_group_aggregate_order_by?),
@@ -7472,6 +7574,7 @@ class _CopyWithStubImpl$Input$contacts_order_by<TRes>
   TRes _res;
 
   call({
+    Enum$order_by? company_name,
     Input$contact_group_aggregate_order_by? contact_groups_aggregate,
     Enum$order_by? date_added,
     Enum$order_by? desires,
@@ -7598,6 +7701,7 @@ class _CopyWithStubImpl$Input$contacts_pk_columns_input<TRes>
 
 class Input$contacts_set_input {
   factory Input$contacts_set_input({
+    String? company_name,
     String? date_added,
     List<dynamic>? desires,
     String? email,
@@ -7610,6 +7714,7 @@ class Input$contacts_set_input {
     String? phone_number,
   }) =>
       Input$contacts_set_input._({
+        if (company_name != null) r'company_name': company_name,
         if (date_added != null) r'date_added': date_added,
         if (desires != null) r'desires': desires,
         if (email != null) r'email': email,
@@ -7626,6 +7731,10 @@ class Input$contacts_set_input {
 
   factory Input$contacts_set_input.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    if (data.containsKey('company_name')) {
+      final l$company_name = data['company_name'];
+      result$data['company_name'] = (l$company_name as String?);
+    }
     if (data.containsKey('date_added')) {
       final l$date_added = data['date_added'];
       result$data['date_added'] = (l$date_added as String?);
@@ -7673,6 +7782,8 @@ class Input$contacts_set_input {
 
   Map<String, dynamic> _$data;
 
+  String? get company_name => (_$data['company_name'] as String?);
+
   String? get date_added => (_$data['date_added'] as String?);
 
   List<dynamic>? get desires => (_$data['desires'] as List<dynamic>?);
@@ -7695,6 +7806,10 @@ class Input$contacts_set_input {
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    if (_$data.containsKey('company_name')) {
+      final l$company_name = company_name;
+      result$data['company_name'] = l$company_name;
+    }
     if (_$data.containsKey('date_added')) {
       final l$date_added = date_added;
       result$data['date_added'] = l$date_added;
@@ -7751,6 +7866,15 @@ class Input$contacts_set_input {
     }
     if (!(other is Input$contacts_set_input) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$company_name = company_name;
+    final lOther$company_name = other.company_name;
+    if (_$data.containsKey('company_name') !=
+        other._$data.containsKey('company_name')) {
+      return false;
+    }
+    if (l$company_name != lOther$company_name) {
       return false;
     }
     final l$date_added = date_added;
@@ -7864,6 +7988,7 @@ class Input$contacts_set_input {
 
   @override
   int get hashCode {
+    final l$company_name = company_name;
     final l$date_added = date_added;
     final l$desires = desires;
     final l$email = email;
@@ -7875,6 +8000,7 @@ class Input$contacts_set_input {
     final l$notes = notes;
     final l$phone_number = phone_number;
     return Object.hashAll([
+      _$data.containsKey('company_name') ? l$company_name : const {},
       _$data.containsKey('date_added') ? l$date_added : const {},
       _$data.containsKey('desires')
           ? l$desires == null
@@ -7907,6 +8033,7 @@ abstract class CopyWith$Input$contacts_set_input<TRes> {
       _CopyWithStubImpl$Input$contacts_set_input;
 
   TRes call({
+    String? company_name,
     String? date_added,
     List<dynamic>? desires,
     String? email,
@@ -7934,6 +8061,7 @@ class _CopyWithImpl$Input$contacts_set_input<TRes>
   static const _undefined = {};
 
   TRes call({
+    Object? company_name = _undefined,
     Object? date_added = _undefined,
     Object? desires = _undefined,
     Object? email = _undefined,
@@ -7947,6 +8075,8 @@ class _CopyWithImpl$Input$contacts_set_input<TRes>
   }) =>
       _then(Input$contacts_set_input._({
         ..._instance._$data,
+        if (company_name != _undefined)
+          'company_name': (company_name as String?),
         if (date_added != _undefined) 'date_added': (date_added as String?),
         if (desires != _undefined) 'desires': (desires as List<dynamic>?),
         if (email != _undefined) 'email': (email as String?),
@@ -7968,6 +8098,7 @@ class _CopyWithStubImpl$Input$contacts_set_input<TRes>
   TRes _res;
 
   call({
+    String? company_name,
     String? date_added,
     List<dynamic>? desires,
     String? email,
@@ -8141,6 +8272,7 @@ class _CopyWithStubImpl$Input$contacts_stream_cursor_input<TRes>
 
 class Input$contacts_stream_cursor_value_input {
   factory Input$contacts_stream_cursor_value_input({
+    String? company_name,
     String? date_added,
     List<dynamic>? desires,
     String? email,
@@ -8153,6 +8285,7 @@ class Input$contacts_stream_cursor_value_input {
     String? phone_number,
   }) =>
       Input$contacts_stream_cursor_value_input._({
+        if (company_name != null) r'company_name': company_name,
         if (date_added != null) r'date_added': date_added,
         if (desires != null) r'desires': desires,
         if (email != null) r'email': email,
@@ -8170,6 +8303,10 @@ class Input$contacts_stream_cursor_value_input {
   factory Input$contacts_stream_cursor_value_input.fromJson(
       Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    if (data.containsKey('company_name')) {
+      final l$company_name = data['company_name'];
+      result$data['company_name'] = (l$company_name as String?);
+    }
     if (data.containsKey('date_added')) {
       final l$date_added = data['date_added'];
       result$data['date_added'] = (l$date_added as String?);
@@ -8217,6 +8354,8 @@ class Input$contacts_stream_cursor_value_input {
 
   Map<String, dynamic> _$data;
 
+  String? get company_name => (_$data['company_name'] as String?);
+
   String? get date_added => (_$data['date_added'] as String?);
 
   List<dynamic>? get desires => (_$data['desires'] as List<dynamic>?);
@@ -8239,6 +8378,10 @@ class Input$contacts_stream_cursor_value_input {
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    if (_$data.containsKey('company_name')) {
+      final l$company_name = company_name;
+      result$data['company_name'] = l$company_name;
+    }
     if (_$data.containsKey('date_added')) {
       final l$date_added = date_added;
       result$data['date_added'] = l$date_added;
@@ -8296,6 +8439,15 @@ class Input$contacts_stream_cursor_value_input {
     }
     if (!(other is Input$contacts_stream_cursor_value_input) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$company_name = company_name;
+    final lOther$company_name = other.company_name;
+    if (_$data.containsKey('company_name') !=
+        other._$data.containsKey('company_name')) {
+      return false;
+    }
+    if (l$company_name != lOther$company_name) {
       return false;
     }
     final l$date_added = date_added;
@@ -8409,6 +8561,7 @@ class Input$contacts_stream_cursor_value_input {
 
   @override
   int get hashCode {
+    final l$company_name = company_name;
     final l$date_added = date_added;
     final l$desires = desires;
     final l$email = email;
@@ -8420,6 +8573,7 @@ class Input$contacts_stream_cursor_value_input {
     final l$notes = notes;
     final l$phone_number = phone_number;
     return Object.hashAll([
+      _$data.containsKey('company_name') ? l$company_name : const {},
       _$data.containsKey('date_added') ? l$date_added : const {},
       _$data.containsKey('desires')
           ? l$desires == null
@@ -8452,6 +8606,7 @@ abstract class CopyWith$Input$contacts_stream_cursor_value_input<TRes> {
       _CopyWithStubImpl$Input$contacts_stream_cursor_value_input;
 
   TRes call({
+    String? company_name,
     String? date_added,
     List<dynamic>? desires,
     String? email,
@@ -8479,6 +8634,7 @@ class _CopyWithImpl$Input$contacts_stream_cursor_value_input<TRes>
   static const _undefined = {};
 
   TRes call({
+    Object? company_name = _undefined,
     Object? date_added = _undefined,
     Object? desires = _undefined,
     Object? email = _undefined,
@@ -8492,6 +8648,8 @@ class _CopyWithImpl$Input$contacts_stream_cursor_value_input<TRes>
   }) =>
       _then(Input$contacts_stream_cursor_value_input._({
         ..._instance._$data,
+        if (company_name != _undefined)
+          'company_name': (company_name as String?),
         if (date_added != _undefined) 'date_added': (date_added as String?),
         if (desires != _undefined) 'desires': (desires as List<dynamic>?),
         if (email != _undefined) 'email': (email as String?),
@@ -8513,6 +8671,7 @@ class _CopyWithStubImpl$Input$contacts_stream_cursor_value_input<TRes>
   TRes _res;
 
   call({
+    String? company_name,
     String? date_added,
     List<dynamic>? desires,
     String? email,
@@ -23509,6 +23668,7 @@ Enum$contacts_constraint fromJson$Enum$contacts_constraint(String value) {
 }
 
 enum Enum$contacts_select_column {
+  company_name,
   date_added,
   desires,
   email,
@@ -23524,6 +23684,8 @@ enum Enum$contacts_select_column {
 
 String toJson$Enum$contacts_select_column(Enum$contacts_select_column e) {
   switch (e) {
+    case Enum$contacts_select_column.company_name:
+      return r'company_name';
     case Enum$contacts_select_column.date_added:
       return r'date_added';
     case Enum$contacts_select_column.desires:
@@ -23551,6 +23713,8 @@ String toJson$Enum$contacts_select_column(Enum$contacts_select_column e) {
 
 Enum$contacts_select_column fromJson$Enum$contacts_select_column(String value) {
   switch (value) {
+    case r'company_name':
+      return Enum$contacts_select_column.company_name;
     case r'date_added':
       return Enum$contacts_select_column.date_added;
     case r'desires':
@@ -23577,6 +23741,7 @@ Enum$contacts_select_column fromJson$Enum$contacts_select_column(String value) {
 }
 
 enum Enum$contacts_update_column {
+  company_name,
   date_added,
   desires,
   email,
@@ -23592,6 +23757,8 @@ enum Enum$contacts_update_column {
 
 String toJson$Enum$contacts_update_column(Enum$contacts_update_column e) {
   switch (e) {
+    case Enum$contacts_update_column.company_name:
+      return r'company_name';
     case Enum$contacts_update_column.date_added:
       return r'date_added';
     case Enum$contacts_update_column.desires:
@@ -23619,6 +23786,8 @@ String toJson$Enum$contacts_update_column(Enum$contacts_update_column e) {
 
 Enum$contacts_update_column fromJson$Enum$contacts_update_column(String value) {
   switch (value) {
+    case r'company_name':
+      return Enum$contacts_update_column.company_name;
     case r'date_added':
       return Enum$contacts_update_column.date_added;
     case r'desires':

@@ -5,3 +5,12 @@ query GetGroups {
     frequency
   }
 }
+
+mutation UpdateGroups($id: Int!, $groups_to_add: [contact_group_insert_input!]!, $groups_to_remove: [Int!]!) {
+  insert_contact_group(objects: $groups_to_add) {
+    affected_rows
+  }
+  delete_contact_group(where: {group_id: {_in: $groups_to_remove}, contact_id: {_eq: $id}}) {
+    affected_rows
+  }
+}

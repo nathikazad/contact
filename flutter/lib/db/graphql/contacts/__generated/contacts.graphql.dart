@@ -17,6 +17,7 @@ class Fragment$contactFields {
     this.notes,
     this.phone_number,
     required this.contact_groups,
+    this.company_name,
     required this.$__typename,
   });
 
@@ -32,6 +33,7 @@ class Fragment$contactFields {
     final l$notes = json['notes'];
     final l$phone_number = json['phone_number'];
     final l$contact_groups = json['contact_groups'];
+    final l$company_name = json['company_name'];
     final l$$__typename = json['__typename'];
     return Fragment$contactFields(
       id: (l$id as int),
@@ -49,6 +51,7 @@ class Fragment$contactFields {
           .map((e) => Fragment$contactFields$contact_groups.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
+      company_name: (l$company_name as String?),
       $__typename: ((l$$__typename ?? "none") as String),
     );
   }
@@ -74,6 +77,8 @@ class Fragment$contactFields {
   final String? phone_number;
 
   final List<Fragment$contactFields$contact_groups> contact_groups;
+
+  final String? company_name;
 
   final String $__typename;
 
@@ -102,6 +107,8 @@ class Fragment$contactFields {
     final l$contact_groups = contact_groups;
     _resultData['contact_groups'] =
         l$contact_groups.map((e) => e.toJson()).toList();
+    final l$company_name = company_name;
+    _resultData['company_name'] = l$company_name;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -120,6 +127,7 @@ class Fragment$contactFields {
     final l$notes = notes;
     final l$phone_number = phone_number;
     final l$contact_groups = contact_groups;
+    final l$company_name = company_name;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -133,6 +141,7 @@ class Fragment$contactFields {
       l$notes,
       l$phone_number,
       Object.hashAll(l$contact_groups.map((v) => v)),
+      l$company_name,
       l$$__typename,
     ]);
   }
@@ -230,6 +239,11 @@ class Fragment$contactFields {
         return false;
       }
     }
+    final l$company_name = company_name;
+    final lOther$company_name = other.company_name;
+    if (l$company_name != lOther$company_name) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -268,6 +282,7 @@ abstract class CopyWith$Fragment$contactFields<TRes> {
     String? notes,
     String? phone_number,
     List<Fragment$contactFields$contact_groups>? contact_groups,
+    String? company_name,
     String? $__typename,
   });
   TRes contact_groups(
@@ -303,6 +318,7 @@ class _CopyWithImpl$Fragment$contactFields<TRes>
     Object? notes = _undefined,
     Object? phone_number = _undefined,
     Object? contact_groups = _undefined,
+    Object? company_name = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$contactFields(
@@ -332,6 +348,9 @@ class _CopyWithImpl$Fragment$contactFields<TRes>
         contact_groups: contact_groups == _undefined || contact_groups == null
             ? _instance.contact_groups
             : (contact_groups as List<Fragment$contactFields$contact_groups>),
+        company_name: company_name == _undefined
+            ? _instance.company_name
+            : (company_name as String?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -369,6 +388,7 @@ class _CopyWithStubImpl$Fragment$contactFields<TRes>
     String? notes,
     String? phone_number,
     List<Fragment$contactFields$contact_groups>? contact_groups,
+    String? company_name,
     String? $__typename,
   }) =>
       _res;
@@ -491,6 +511,13 @@ const fragmentDefinitioncontactFields = FragmentDefinitionNode(
           selectionSet: null,
         ),
       ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'company_name'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
     ),
     FieldNode(
       name: NameNode(value: '__typename'),
@@ -2718,11 +2745,11 @@ class _CopyWithStubImpl$Mutation$AddContact$insert_contacts_one<TRes>
 class Variables$Mutation$UpdateContact {
   factory Variables$Mutation$UpdateContact({
     required int id,
-    Input$contacts_set_input? $_set,
+    required Input$contacts_set_input $_set,
   }) =>
       Variables$Mutation$UpdateContact._({
         r'id': id,
-        if ($_set != null) r'_set': $_set,
+        r'_set': $_set,
       });
 
   Variables$Mutation$UpdateContact._(this._$data);
@@ -2731,13 +2758,9 @@ class Variables$Mutation$UpdateContact {
     final result$data = <String, dynamic>{};
     final l$id = data['id'];
     result$data['id'] = (l$id as int);
-    if (data.containsKey('_set')) {
-      final l$$_set = data['_set'];
-      result$data['_set'] = l$$_set == null
-          ? null
-          : Input$contacts_set_input.fromJson(
-              (l$$_set as Map<String, dynamic>));
-    }
+    final l$$_set = data['_set'];
+    result$data['_set'] =
+        Input$contacts_set_input.fromJson((l$$_set as Map<String, dynamic>));
     return Variables$Mutation$UpdateContact._(result$data);
   }
 
@@ -2745,17 +2768,15 @@ class Variables$Mutation$UpdateContact {
 
   int get id => (_$data['id'] as int);
 
-  Input$contacts_set_input? get $_set =>
-      (_$data['_set'] as Input$contacts_set_input?);
+  Input$contacts_set_input get $_set =>
+      (_$data['_set'] as Input$contacts_set_input);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$id = id;
     result$data['id'] = l$id;
-    if (_$data.containsKey('_set')) {
-      final l$$_set = $_set;
-      result$data['_set'] = l$$_set?.toJson();
-    }
+    final l$$_set = $_set;
+    result$data['_set'] = l$$_set.toJson();
     return result$data;
   }
 
@@ -2781,9 +2802,6 @@ class Variables$Mutation$UpdateContact {
     }
     final l$$_set = $_set;
     final lOther$$_set = other.$_set;
-    if (_$data.containsKey('_set') != other._$data.containsKey('_set')) {
-      return false;
-    }
     if (l$$_set != lOther$$_set) {
       return false;
     }
@@ -2796,7 +2814,7 @@ class Variables$Mutation$UpdateContact {
     final l$$_set = $_set;
     return Object.hashAll([
       l$id,
-      _$data.containsKey('_set') ? l$$_set : const {},
+      l$$_set,
     ]);
   }
 }
@@ -2836,7 +2854,8 @@ class _CopyWithImpl$Variables$Mutation$UpdateContact<TRes>
       _then(Variables$Mutation$UpdateContact._({
         ..._instance._$data,
         if (id != _undefined && id != null) 'id': (id as int),
-        if ($_set != _undefined) '_set': ($_set as Input$contacts_set_input?),
+        if ($_set != _undefined && $_set != null)
+          '_set': ($_set as Input$contacts_set_input),
       }));
 }
 
@@ -3015,9 +3034,9 @@ const documentNodeMutationUpdateContact = DocumentNode(definitions: [
         variable: VariableNode(name: NameNode(value: '_set')),
         type: NamedTypeNode(
           name: NameNode(value: 'contacts_set_input'),
-          isNonNull: false,
+          isNonNull: true,
         ),
-        defaultValue: DefaultValueNode(value: ObjectValueNode(fields: [])),
+        defaultValue: DefaultValueNode(value: null),
         directives: [],
       ),
     ],

@@ -33,6 +33,14 @@ class ContactsManager {
     _notifyListeners?.call();
   }
 
+  List<int> getGroupInts(List<String> strings) {
+    return strings
+        .map((s) => groups[s])
+        .where((v) => v != null)
+        .cast<int>()
+        .toList();
+  }
+
   List<String> getGroupsArray() {
     List<String> dropdownList = [
       "None",

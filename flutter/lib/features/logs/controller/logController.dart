@@ -3,7 +3,6 @@ import 'package:start/db/graphql/__generated/schema.graphql.dart';
 import 'package:start/db/HasuraDb.dart';
 import 'package:start/db/graphql/contacts/__generated/contacts.graphql.dart';
 import 'package:start/db/graphql/logs/__generated/logs.graphql.dart';
-import 'package:start/features/contacts/controller/contactsController.dart';
 
 HasuraDb hasura = HasuraDb();
 

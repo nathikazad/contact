@@ -17,6 +17,10 @@ class ContactDetailsComponent extends StatelessWidget {
           Text('Name: ${contact!.name}'),
           const SizedBox(height: 8),
         ],
+        if (contact?.companyName != null) ...[
+          Text('Company: ${contact!.companyName}'),
+          const SizedBox(height: 8),
+        ],
         if (contact?.dateAdded != null) ...[
           Text('Date Added: ${formatTime(contact!.dateAdded!)}'),
           const SizedBox(height: 8),

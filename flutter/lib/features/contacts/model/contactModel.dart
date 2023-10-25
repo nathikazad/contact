@@ -13,6 +13,7 @@ class Contact {
   List<String>? groups;
   bool? needToCall;
   String? notes;
+  String? companyName;
 
   Contact(
       {this.id,
@@ -25,13 +26,15 @@ class Contact {
       this.images,
       this.needToCall,
       this.notes,
-      this.groups});
+      this.groups,
+      this.companyName});
 
   factory Contact.fromFragment(Fragment$contactFields fragment) {
     return Contact(
         id: fragment.id,
         name: fragment.name,
         email: fragment.email,
+        companyName: fragment.company_name,
         phoneNumber: fragment.phone_number,
         dateAdded: fragment.date_added,
         desires: fragment.desires?.map((e) => e.toString()).toList(),
@@ -44,30 +47,30 @@ class Contact {
 
   Input$contacts_insert_input toAddContact() {
     return Input$contacts_insert_input(
-      name: name,
-      email: email,
-      phone_number: phoneNumber,
-      date_added: dateAdded,
-      desires: desires,
-      frequency: frequency,
-      images: images,
-      need_to_call: needToCall,
-      notes: notes,
-    );
+        name: name,
+        email: email,
+        phone_number: phoneNumber,
+        date_added: dateAdded,
+        desires: desires,
+        frequency: frequency,
+        images: images,
+        need_to_call: needToCall,
+        notes: notes,
+        company_name: companyName);
   }
 
   Input$contacts_set_input toUpdateContact() {
     return Input$contacts_set_input(
-      name: name,
-      email: email,
-      phone_number: phoneNumber,
-      date_added: dateAdded,
-      desires: desires,
-      frequency: frequency,
-      images: images,
-      need_to_call: needToCall,
-      notes: notes,
-    );
+        name: name,
+        email: email,
+        phone_number: phoneNumber,
+        date_added: dateAdded,
+        desires: desires,
+        frequency: frequency,
+        images: images,
+        need_to_call: needToCall,
+        notes: notes,
+        company_name: companyName);
   }
 
   @override
