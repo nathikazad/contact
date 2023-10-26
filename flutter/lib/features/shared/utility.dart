@@ -19,7 +19,5 @@ Map<String, Color> colorMap = {
 
 launchWhatsApp(String phoneNumber) async {
   String whatsappUrl = "https://wa.me/$phoneNumber";
-  if (await canLaunch(whatsappUrl)) {
-    await launch(whatsappUrl);
-  }
+  launchUrl(Uri.parse(whatsappUrl), mode: LaunchMode.externalApplication);
 }
