@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:start/db/graphql/__generated/schema.graphql.dart';
 import 'package:start/db/graphql/contacts/__generated/contacts.graphql.dart';
+import 'package:start/features/shared/utility.dart';
 
 class Contact {
   int? id;
@@ -7,6 +9,7 @@ class Contact {
   String? email;
   String? phoneNumber;
   String? dateAdded;
+  String? nextCallDate;
   List<String>? desires;
   dynamic frequency;
   List<String>? images;
@@ -14,6 +17,16 @@ class Contact {
   bool? needToCall;
   String? notes;
   String? companyName;
+  Fragment$contactFields? fragment;
+
+  Map<String, ContactGroup> get contactGroups => _getContactGroups();
+  GroupStates? contactGroup(String groupId) {
+    return contactGroups[groupId]?.groupStates[currentState(groupId)];
+  }
+
+  String? currentState(String groupId) {
+    return contactGroups[groupId]?.currentState;
+  }
 
   Contact(
       {this.id,
@@ -27,10 +40,13 @@ class Contact {
       this.needToCall,
       this.notes,
       this.groups,
-      this.companyName});
+      this.companyName,
+      this.fragment,
+      this.nextCallDate});
 
   factory Contact.fromFragment(Fragment$contactFields fragment) {
     return Contact(
+        fragment: fragment,
         id: fragment.id,
         name: fragment.name,
         email: fragment.email,
@@ -42,7 +58,30 @@ class Contact {
         images: fragment.images?.map((e) => e.toString()).toList(),
         needToCall: fragment.need_to_call,
         notes: fragment.notes,
+        nextCallDate: fragment.next_call_date,
         groups: fragment.contact_groups.map((cg) => cg.group.name).toList());
+  }
+
+  Map<String, ContactGroup> _getContactGroups() {
+    Map<String, ContactGroup> cgs = {};
+    // ignore: avoid_function_literals_in_foreach_calls
+    fragment?.contact_groups.forEach((cg) {
+      Map<String, GroupStates> groups = {};
+      cg.group.sales_states?.forEach((key, value) {
+        GroupStates gs = GroupStates(
+            name: value["name"] ?? key,
+            color: colorMap[value["color"]] ?? Colors.black,
+            level: value["level"],
+            id: key);
+        groups[key] = gs;
+      });
+      cgs[cg.group.name] = ContactGroup(
+          groupName: cg.group.name,
+          groupStates: groups,
+          currentState: cg.sales_state,
+          groupId: cg.group.id);
+    });
+    return cgs;
   }
 
   Input$contacts_insert_input toAddContact() {
@@ -87,4 +126,39 @@ class Contact {
         '  notes: $notes,\n'
         '}';
   }
+}
+
+class GroupStates {
+  String id;
+  String name;
+  Color color;
+  int level;
+  GroupStates(
+      {required this.name,
+      required this.color,
+      required this.level,
+      required this.id});
+}
+
+class ContactGroup {
+  String groupName;
+  String? currentState;
+  int groupId;
+  Map<String, GroupStates> groupStates; //key is state
+
+  List<String> get sortedKeys {
+    var keys = groupStates.keys.toList();
+
+    keys.sort((a, b) {
+      return groupStates[a]!.level.compareTo(groupStates[b]!.level);
+    });
+
+    return keys;
+  }
+
+  ContactGroup(
+      {required this.groupId,
+      required this.groupName,
+      required this.groupStates,
+      required this.currentState});
 }

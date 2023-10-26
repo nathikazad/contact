@@ -1268,3 +1268,614 @@ class _CopyWithStubImpl$Mutation$UpdateGroups$delete_contact_group<TRes>
   }) =>
       _res;
 }
+
+class Variables$Mutation$SetGroupState {
+  factory Variables$Mutation$SetGroupState({
+    required int contact_id,
+    required int group_id,
+    required String sales_state,
+  }) =>
+      Variables$Mutation$SetGroupState._({
+        r'contact_id': contact_id,
+        r'group_id': group_id,
+        r'sales_state': sales_state,
+      });
+
+  Variables$Mutation$SetGroupState._(this._$data);
+
+  factory Variables$Mutation$SetGroupState.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$contact_id = data['contact_id'];
+    result$data['contact_id'] = (l$contact_id as int);
+    final l$group_id = data['group_id'];
+    result$data['group_id'] = (l$group_id as int);
+    final l$sales_state = data['sales_state'];
+    result$data['sales_state'] = (l$sales_state as String);
+    return Variables$Mutation$SetGroupState._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int get contact_id => (_$data['contact_id'] as int);
+
+  int get group_id => (_$data['group_id'] as int);
+
+  String get sales_state => (_$data['sales_state'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$contact_id = contact_id;
+    result$data['contact_id'] = l$contact_id;
+    final l$group_id = group_id;
+    result$data['group_id'] = l$group_id;
+    final l$sales_state = sales_state;
+    result$data['sales_state'] = l$sales_state;
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$SetGroupState<Variables$Mutation$SetGroupState>
+      get copyWith => CopyWith$Variables$Mutation$SetGroupState(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$SetGroupState) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$contact_id = contact_id;
+    final lOther$contact_id = other.contact_id;
+    if (l$contact_id != lOther$contact_id) {
+      return false;
+    }
+    final l$group_id = group_id;
+    final lOther$group_id = other.group_id;
+    if (l$group_id != lOther$group_id) {
+      return false;
+    }
+    final l$sales_state = sales_state;
+    final lOther$sales_state = other.sales_state;
+    if (l$sales_state != lOther$sales_state) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$contact_id = contact_id;
+    final l$group_id = group_id;
+    final l$sales_state = sales_state;
+    return Object.hashAll([
+      l$contact_id,
+      l$group_id,
+      l$sales_state,
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$SetGroupState<TRes> {
+  factory CopyWith$Variables$Mutation$SetGroupState(
+    Variables$Mutation$SetGroupState instance,
+    TRes Function(Variables$Mutation$SetGroupState) then,
+  ) = _CopyWithImpl$Variables$Mutation$SetGroupState;
+
+  factory CopyWith$Variables$Mutation$SetGroupState.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$SetGroupState;
+
+  TRes call({
+    int? contact_id,
+    int? group_id,
+    String? sales_state,
+  });
+}
+
+class _CopyWithImpl$Variables$Mutation$SetGroupState<TRes>
+    implements CopyWith$Variables$Mutation$SetGroupState<TRes> {
+  _CopyWithImpl$Variables$Mutation$SetGroupState(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$SetGroupState _instance;
+
+  final TRes Function(Variables$Mutation$SetGroupState) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? contact_id = _undefined,
+    Object? group_id = _undefined,
+    Object? sales_state = _undefined,
+  }) =>
+      _then(Variables$Mutation$SetGroupState._({
+        ..._instance._$data,
+        if (contact_id != _undefined && contact_id != null)
+          'contact_id': (contact_id as int),
+        if (group_id != _undefined && group_id != null)
+          'group_id': (group_id as int),
+        if (sales_state != _undefined && sales_state != null)
+          'sales_state': (sales_state as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$SetGroupState<TRes>
+    implements CopyWith$Variables$Mutation$SetGroupState<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$SetGroupState(this._res);
+
+  TRes _res;
+
+  call({
+    int? contact_id,
+    int? group_id,
+    String? sales_state,
+  }) =>
+      _res;
+}
+
+class Mutation$SetGroupState {
+  Mutation$SetGroupState({
+    this.update_contact_group_by_pk,
+    required this.$__typename,
+  });
+
+  factory Mutation$SetGroupState.fromJson(Map<String, dynamic> json) {
+    final l$update_contact_group_by_pk = json['update_contact_group_by_pk'];
+    final l$$__typename = json['__typename'];
+    return Mutation$SetGroupState(
+      update_contact_group_by_pk: l$update_contact_group_by_pk == null
+          ? null
+          : Mutation$SetGroupState$update_contact_group_by_pk.fromJson(
+              (l$update_contact_group_by_pk as Map<String, dynamic>)),
+      $__typename: ((l$$__typename ?? "none") as String),
+    );
+  }
+
+  final Mutation$SetGroupState$update_contact_group_by_pk?
+      update_contact_group_by_pk;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$update_contact_group_by_pk = update_contact_group_by_pk;
+    _resultData['update_contact_group_by_pk'] =
+        l$update_contact_group_by_pk?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$update_contact_group_by_pk = update_contact_group_by_pk;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$update_contact_group_by_pk,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$SetGroupState) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$update_contact_group_by_pk = update_contact_group_by_pk;
+    final lOther$update_contact_group_by_pk = other.update_contact_group_by_pk;
+    if (l$update_contact_group_by_pk != lOther$update_contact_group_by_pk) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$SetGroupState on Mutation$SetGroupState {
+  CopyWith$Mutation$SetGroupState<Mutation$SetGroupState> get copyWith =>
+      CopyWith$Mutation$SetGroupState(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$SetGroupState<TRes> {
+  factory CopyWith$Mutation$SetGroupState(
+    Mutation$SetGroupState instance,
+    TRes Function(Mutation$SetGroupState) then,
+  ) = _CopyWithImpl$Mutation$SetGroupState;
+
+  factory CopyWith$Mutation$SetGroupState.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$SetGroupState;
+
+  TRes call({
+    Mutation$SetGroupState$update_contact_group_by_pk?
+        update_contact_group_by_pk,
+    String? $__typename,
+  });
+  CopyWith$Mutation$SetGroupState$update_contact_group_by_pk<TRes>
+      get update_contact_group_by_pk;
+}
+
+class _CopyWithImpl$Mutation$SetGroupState<TRes>
+    implements CopyWith$Mutation$SetGroupState<TRes> {
+  _CopyWithImpl$Mutation$SetGroupState(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$SetGroupState _instance;
+
+  final TRes Function(Mutation$SetGroupState) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? update_contact_group_by_pk = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$SetGroupState(
+        update_contact_group_by_pk: update_contact_group_by_pk == _undefined
+            ? _instance.update_contact_group_by_pk
+            : (update_contact_group_by_pk
+                as Mutation$SetGroupState$update_contact_group_by_pk?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$SetGroupState$update_contact_group_by_pk<TRes>
+      get update_contact_group_by_pk {
+    final local$update_contact_group_by_pk =
+        _instance.update_contact_group_by_pk;
+    return local$update_contact_group_by_pk == null
+        ? CopyWith$Mutation$SetGroupState$update_contact_group_by_pk.stub(
+            _then(_instance))
+        : CopyWith$Mutation$SetGroupState$update_contact_group_by_pk(
+            local$update_contact_group_by_pk,
+            (e) => call(update_contact_group_by_pk: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$SetGroupState<TRes>
+    implements CopyWith$Mutation$SetGroupState<TRes> {
+  _CopyWithStubImpl$Mutation$SetGroupState(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$SetGroupState$update_contact_group_by_pk?
+        update_contact_group_by_pk,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$SetGroupState$update_contact_group_by_pk<TRes>
+      get update_contact_group_by_pk =>
+          CopyWith$Mutation$SetGroupState$update_contact_group_by_pk.stub(_res);
+}
+
+const documentNodeMutationSetGroupState = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'SetGroupState'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'contact_id')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'group_id')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'sales_state')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'String'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'update_contact_group_by_pk'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'pk_columns'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'contact_id'),
+                value: VariableNode(name: NameNode(value: 'contact_id')),
+              ),
+              ObjectFieldNode(
+                name: NameNode(value: 'group_id'),
+                value: VariableNode(name: NameNode(value: 'group_id')),
+              ),
+            ]),
+          ),
+          ArgumentNode(
+            name: NameNode(value: '_set'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'sales_state'),
+                value: VariableNode(name: NameNode(value: 'sales_state')),
+              )
+            ]),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'sales_state'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      
+    ]),
+  ),
+]);
+Mutation$SetGroupState _parserFn$Mutation$SetGroupState(
+        Map<String, dynamic> data) =>
+    Mutation$SetGroupState.fromJson(data);
+typedef OnMutationCompleted$Mutation$SetGroupState = FutureOr<void> Function(
+  dynamic,
+  Mutation$SetGroupState?,
+);
+
+class Options$Mutation$SetGroupState
+    extends graphql.MutationOptions<Mutation$SetGroupState> {
+  Options$Mutation$SetGroupState({
+    String? operationName,
+    required Variables$Mutation$SetGroupState variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$SetGroupState? onCompleted,
+    graphql.OnMutationUpdate<Mutation$SetGroupState>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$SetGroupState(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationSetGroupState,
+          parserFn: _parserFn$Mutation$SetGroupState,
+        );
+
+  final OnMutationCompleted$Mutation$SetGroupState? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$SetGroupState
+    extends graphql.WatchQueryOptions<Mutation$SetGroupState> {
+  WatchOptions$Mutation$SetGroupState({
+    String? operationName,
+    required Variables$Mutation$SetGroupState variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeMutationSetGroupState,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$SetGroupState,
+        );
+}
+
+extension ClientExtension$Mutation$SetGroupState on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$SetGroupState>> mutate$SetGroupState(
+          Options$Mutation$SetGroupState options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$SetGroupState> watchMutation$SetGroupState(
+          WatchOptions$Mutation$SetGroupState options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$SetGroupState$update_contact_group_by_pk {
+  Mutation$SetGroupState$update_contact_group_by_pk({
+    this.sales_state,
+    required this.$__typename,
+  });
+
+  factory Mutation$SetGroupState$update_contact_group_by_pk.fromJson(
+      Map<String, dynamic> json) {
+    final l$sales_state = json['sales_state'];
+    final l$$__typename = json['__typename'];
+    return Mutation$SetGroupState$update_contact_group_by_pk(
+      sales_state: (l$sales_state as String?),
+      $__typename: ((l$$__typename ?? "none") as String),
+    );
+  }
+
+  final String? sales_state;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$sales_state = sales_state;
+    _resultData['sales_state'] = l$sales_state;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$sales_state = sales_state;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$sales_state,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$SetGroupState$update_contact_group_by_pk) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$sales_state = sales_state;
+    final lOther$sales_state = other.sales_state;
+    if (l$sales_state != lOther$sales_state) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$SetGroupState$update_contact_group_by_pk
+    on Mutation$SetGroupState$update_contact_group_by_pk {
+  CopyWith$Mutation$SetGroupState$update_contact_group_by_pk<
+          Mutation$SetGroupState$update_contact_group_by_pk>
+      get copyWith =>
+          CopyWith$Mutation$SetGroupState$update_contact_group_by_pk(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$SetGroupState$update_contact_group_by_pk<
+    TRes> {
+  factory CopyWith$Mutation$SetGroupState$update_contact_group_by_pk(
+    Mutation$SetGroupState$update_contact_group_by_pk instance,
+    TRes Function(Mutation$SetGroupState$update_contact_group_by_pk) then,
+  ) = _CopyWithImpl$Mutation$SetGroupState$update_contact_group_by_pk;
+
+  factory CopyWith$Mutation$SetGroupState$update_contact_group_by_pk.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$SetGroupState$update_contact_group_by_pk;
+
+  TRes call({
+    String? sales_state,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Mutation$SetGroupState$update_contact_group_by_pk<TRes>
+    implements
+        CopyWith$Mutation$SetGroupState$update_contact_group_by_pk<TRes> {
+  _CopyWithImpl$Mutation$SetGroupState$update_contact_group_by_pk(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$SetGroupState$update_contact_group_by_pk _instance;
+
+  final TRes Function(Mutation$SetGroupState$update_contact_group_by_pk) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? sales_state = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$SetGroupState$update_contact_group_by_pk(
+        sales_state: sales_state == _undefined
+            ? _instance.sales_state
+            : (sales_state as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Mutation$SetGroupState$update_contact_group_by_pk<TRes>
+    implements
+        CopyWith$Mutation$SetGroupState$update_contact_group_by_pk<TRes> {
+  _CopyWithStubImpl$Mutation$SetGroupState$update_contact_group_by_pk(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? sales_state,
+    String? $__typename,
+  }) =>
+      _res;
+}

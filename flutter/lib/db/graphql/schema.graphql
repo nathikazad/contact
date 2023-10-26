@@ -39,6 +39,7 @@ type contact_group {
   """An object relationship"""
   group: groups!
   group_id: Int!
+  sales_state: String
 }
 
 """
@@ -129,6 +130,7 @@ input contact_group_bool_exp {
   contact_id: Int_comparison_exp
   group: groups_bool_exp
   group_id: Int_comparison_exp
+  sales_state: String_comparison_exp
 }
 
 """
@@ -157,12 +159,14 @@ input contact_group_insert_input {
   contact_id: Int
   group: groups_obj_rel_insert_input
   group_id: Int
+  sales_state: String
 }
 
 """aggregate max on columns"""
 type contact_group_max_fields {
   contact_id: Int
   group_id: Int
+  sales_state: String
 }
 
 """
@@ -171,12 +175,14 @@ order by max() on columns of table "contact_group"
 input contact_group_max_order_by {
   contact_id: order_by
   group_id: order_by
+  sales_state: order_by
 }
 
 """aggregate min on columns"""
 type contact_group_min_fields {
   contact_id: Int
   group_id: Int
+  sales_state: String
 }
 
 """
@@ -185,6 +191,7 @@ order by min() on columns of table "contact_group"
 input contact_group_min_order_by {
   contact_id: order_by
   group_id: order_by
+  sales_state: order_by
 }
 
 """
@@ -213,6 +220,7 @@ input contact_group_order_by {
   contact_id: order_by
   group: groups_order_by
   group_id: order_by
+  sales_state: order_by
 }
 
 """primary key columns input for table: contact_group"""
@@ -230,6 +238,9 @@ enum contact_group_select_column {
 
   """column name"""
   group_id
+
+  """column name"""
+  sales_state
 }
 
 """
@@ -238,6 +249,7 @@ input type for updating data in table "contact_group"
 input contact_group_set_input {
   contact_id: Int
   group_id: Int
+  sales_state: String
 }
 
 """aggregate stddev on columns"""
@@ -297,6 +309,7 @@ input contact_group_stream_cursor_input {
 input contact_group_stream_cursor_value_input {
   contact_id: Int
   group_id: Int
+  sales_state: String
 }
 
 """aggregate sum on columns"""
@@ -322,6 +335,9 @@ enum contact_group_update_column {
 
   """column name"""
   group_id
+
+  """column name"""
+  sales_state
 }
 
 input contact_group_updates {
@@ -462,6 +478,11 @@ type contacts {
   ): logs_aggregate!
   name: String!
   need_to_call: Boolean
+
+  """
+  A computed field, executes function "next_call_date"
+  """
+  next_call_date: date
   notes: String
   phone_number: String
 
@@ -553,6 +574,7 @@ input contacts_bool_exp {
   logs_aggregate: logs_aggregate_bool_exp
   name: String_comparison_exp
   need_to_call: Boolean_comparison_exp
+  next_call_date: date_comparison_exp
   notes: String_comparison_exp
   phone_number: String_comparison_exp
   reminders: reminders_bool_exp
@@ -607,6 +629,11 @@ type contacts_max_fields {
   id: Int
   images: [jsonb!]
   name: String
+
+  """
+  A computed field, executes function "next_call_date"
+  """
+  next_call_date: date
   notes: String
   phone_number: String
 }
@@ -621,6 +648,11 @@ type contacts_min_fields {
   id: Int
   images: [jsonb!]
   name: String
+
+  """
+  A computed field, executes function "next_call_date"
+  """
+  next_call_date: date
   notes: String
   phone_number: String
 }
@@ -668,6 +700,7 @@ input contacts_order_by {
   logs_aggregate: logs_aggregate_order_by
   name: order_by
   need_to_call: order_by
+  next_call_date: order_by
   notes: order_by
   phone_number: order_by
   reminders_aggregate: reminders_aggregate_order_by
@@ -859,6 +892,23 @@ enum cursor_ordering {
   DESC
 }
 
+scalar date
+
+"""
+Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'.
+"""
+input date_comparison_exp {
+  _eq: date
+  _gt: date
+  _gte: date
+  _in: [date!]
+  _is_null: Boolean
+  _lt: date
+  _lte: date
+  _neq: date
+  _nin: [date!]
+}
+
 """
 columns and relationships of "groups"
 """
@@ -901,6 +951,10 @@ type groups {
   frequency: Int
   id: Int!
   name: String!
+  sales_states(
+    """JSON select path"""
+    path: String
+  ): jsonb
 }
 
 """
@@ -928,6 +982,11 @@ type groups_aggregate_fields {
   variance: groups_variance_fields
 }
 
+"""append existing jsonb value of filtered columns with new jsonb value"""
+input groups_append_input {
+  sales_states: jsonb
+}
+
 """aggregate avg on columns"""
 type groups_avg_fields {
   frequency: Float
@@ -946,6 +1005,7 @@ input groups_bool_exp {
   frequency: Int_comparison_exp
   id: Int_comparison_exp
   name: String_comparison_exp
+  sales_states: jsonb_comparison_exp
 }
 
 """
@@ -956,6 +1016,28 @@ enum groups_constraint {
   unique or primary key constraint on columns "id"
   """
   groups_pkey
+}
+
+"""
+delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+"""
+input groups_delete_at_path_input {
+  sales_states: [String!]
+}
+
+"""
+delete the array element with specified index (negative integers count from the
+end). throws an error if top level container is not an array
+"""
+input groups_delete_elem_input {
+  sales_states: Int
+}
+
+"""
+delete key/value pair or string element. key/value pairs are matched based on their key value
+"""
+input groups_delete_key_input {
+  sales_states: String
 }
 
 """
@@ -974,6 +1056,7 @@ input groups_insert_input {
   frequency: Int
   id: Int
   name: String
+  sales_states: jsonb
 }
 
 """aggregate max on columns"""
@@ -1026,11 +1109,17 @@ input groups_order_by {
   frequency: order_by
   id: order_by
   name: order_by
+  sales_states: order_by
 }
 
 """primary key columns input for table: groups"""
 input groups_pk_columns_input {
   id: Int!
+}
+
+"""prepend existing jsonb value of filtered columns with new jsonb value"""
+input groups_prepend_input {
+  sales_states: jsonb
 }
 
 """
@@ -1045,6 +1134,9 @@ enum groups_select_column {
 
   """column name"""
   name
+
+  """column name"""
+  sales_states
 }
 
 """
@@ -1054,6 +1146,7 @@ input groups_set_input {
   frequency: Int
   id: Int
   name: String
+  sales_states: jsonb
 }
 
 """aggregate stddev on columns"""
@@ -1090,6 +1183,7 @@ input groups_stream_cursor_value_input {
   frequency: Int
   id: Int
   name: String
+  sales_states: jsonb
 }
 
 """aggregate sum on columns"""
@@ -1110,11 +1204,36 @@ enum groups_update_column {
 
   """column name"""
   name
+
+  """column name"""
+  sales_states
 }
 
 input groups_updates {
+  """append existing jsonb value of filtered columns with new jsonb value"""
+  _append: groups_append_input
+
+  """
+  delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+  """
+  _delete_at_path: groups_delete_at_path_input
+
+  """
+  delete the array element with specified index (negative integers count from
+  the end). throws an error if top level container is not an array
+  """
+  _delete_elem: groups_delete_elem_input
+
+  """
+  delete key/value pair or string element. key/value pairs are matched based on their key value
+  """
+  _delete_key: groups_delete_key_input
+
   """increments the numeric columns with given value of the filtered values"""
   _inc: groups_inc_input
+
+  """prepend existing jsonb value of filtered columns with new jsonb value"""
+  _prepend: groups_prepend_input
 
   """sets the columns of the filtered rows to the given values"""
   _set: groups_set_input
@@ -1176,6 +1295,41 @@ input jsonb_array_comparison_exp {
   _lte: [jsonb!]
   _neq: [jsonb!]
   _nin: [[jsonb!]!]
+}
+
+input jsonb_cast_exp {
+  String: String_comparison_exp
+}
+
+"""
+Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'.
+"""
+input jsonb_comparison_exp {
+  _cast: jsonb_cast_exp
+
+  """is the column contained in the given json value"""
+  _contained_in: jsonb
+
+  """does the column contain the given json value at the top level"""
+  _contains: jsonb
+  _eq: jsonb
+  _gt: jsonb
+  _gte: jsonb
+
+  """does the string exist as a top-level key in the column"""
+  _has_key: String
+
+  """do all of these strings exist as top-level keys in the column"""
+  _has_keys_all: [String!]
+
+  """do any of these strings exist as top-level keys in the column"""
+  _has_keys_any: [String!]
+  _in: [jsonb!]
+  _is_null: Boolean
+  _lt: jsonb
+  _lte: jsonb
+  _neq: jsonb
+  _nin: [jsonb!]
 }
 
 """
@@ -1833,8 +1987,30 @@ type mutation_root {
   update data of the table: "groups"
   """
   update_groups(
+    """append existing jsonb value of filtered columns with new jsonb value"""
+    _append: groups_append_input
+
+    """
+    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+    """
+    _delete_at_path: groups_delete_at_path_input
+
+    """
+    delete the array element with specified index (negative integers count from
+    the end). throws an error if top level container is not an array
+    """
+    _delete_elem: groups_delete_elem_input
+
+    """
+    delete key/value pair or string element. key/value pairs are matched based on their key value
+    """
+    _delete_key: groups_delete_key_input
+
     """increments the numeric columns with given value of the filtered values"""
     _inc: groups_inc_input
+
+    """prepend existing jsonb value of filtered columns with new jsonb value"""
+    _prepend: groups_prepend_input
 
     """sets the columns of the filtered rows to the given values"""
     _set: groups_set_input
@@ -1847,8 +2023,30 @@ type mutation_root {
   update single row of the table: "groups"
   """
   update_groups_by_pk(
+    """append existing jsonb value of filtered columns with new jsonb value"""
+    _append: groups_append_input
+
+    """
+    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+    """
+    _delete_at_path: groups_delete_at_path_input
+
+    """
+    delete the array element with specified index (negative integers count from
+    the end). throws an error if top level container is not an array
+    """
+    _delete_elem: groups_delete_elem_input
+
+    """
+    delete key/value pair or string element. key/value pairs are matched based on their key value
+    """
+    _delete_key: groups_delete_key_input
+
     """increments the numeric columns with given value of the filtered values"""
     _inc: groups_inc_input
+
+    """prepend existing jsonb value of filtered columns with new jsonb value"""
+    _prepend: groups_prepend_input
 
     """sets the columns of the filtered rows to the given values"""
     _set: groups_set_input

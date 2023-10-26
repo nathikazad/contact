@@ -22,6 +22,7 @@ export type ValueTypes = {
 	/** An object relationship */
 	group?:ValueTypes["groups"],
 	group_id?:true,
+	sales_state?:true,
 		__typename?: true
 }>;
 	/** aggregated selection of "contact_group" */
@@ -93,7 +94,8 @@ count?: [{	columns?:ValueTypes["contact_group_select_column"][],	distinct?:boole
 	contact?:ValueTypes["contacts_bool_exp"],
 	contact_id?:ValueTypes["Int_comparison_exp"],
 	group?:ValueTypes["groups_bool_exp"],
-	group_id?:ValueTypes["Int_comparison_exp"]
+	group_id?:ValueTypes["Int_comparison_exp"],
+	sales_state?:ValueTypes["String_comparison_exp"]
 };
 	/** unique or primary key constraints on table "contact_group" */
 ["contact_group_constraint"]:contact_group_constraint;
@@ -107,29 +109,34 @@ count?: [{	columns?:ValueTypes["contact_group_select_column"][],	distinct?:boole
 	contact?:ValueTypes["contacts_obj_rel_insert_input"],
 	contact_id?:number,
 	group?:ValueTypes["groups_obj_rel_insert_input"],
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 };
 	/** aggregate max on columns */
 ["contact_group_max_fields"]: AliasType<{
 	contact_id?:true,
 	group_id?:true,
+	sales_state?:true,
 		__typename?: true
 }>;
 	/** order by max() on columns of table "contact_group" */
 ["contact_group_max_order_by"]: {
 	contact_id?:ValueTypes["order_by"],
-	group_id?:ValueTypes["order_by"]
+	group_id?:ValueTypes["order_by"],
+	sales_state?:ValueTypes["order_by"]
 };
 	/** aggregate min on columns */
 ["contact_group_min_fields"]: AliasType<{
 	contact_id?:true,
 	group_id?:true,
+	sales_state?:true,
 		__typename?: true
 }>;
 	/** order by min() on columns of table "contact_group" */
 ["contact_group_min_order_by"]: {
 	contact_id?:ValueTypes["order_by"],
-	group_id?:ValueTypes["order_by"]
+	group_id?:ValueTypes["order_by"],
+	sales_state?:ValueTypes["order_by"]
 };
 	/** response of any mutation on the table "contact_group" */
 ["contact_group_mutation_response"]: AliasType<{
@@ -150,7 +157,8 @@ count?: [{	columns?:ValueTypes["contact_group_select_column"][],	distinct?:boole
 	contact?:ValueTypes["contacts_order_by"],
 	contact_id?:ValueTypes["order_by"],
 	group?:ValueTypes["groups_order_by"],
-	group_id?:ValueTypes["order_by"]
+	group_id?:ValueTypes["order_by"],
+	sales_state?:ValueTypes["order_by"]
 };
 	/** primary key columns input for table: contact_group */
 ["contact_group_pk_columns_input"]: {
@@ -162,7 +170,8 @@ count?: [{	columns?:ValueTypes["contact_group_select_column"][],	distinct?:boole
 	/** input type for updating data in table "contact_group" */
 ["contact_group_set_input"]: {
 	contact_id?:number,
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 };
 	/** aggregate stddev on columns */
 ["contact_group_stddev_fields"]: AliasType<{
@@ -207,7 +216,8 @@ count?: [{	columns?:ValueTypes["contact_group_select_column"][],	distinct?:boole
 	/** Initial value of the column from where the streaming should start */
 ["contact_group_stream_cursor_value_input"]: {
 	contact_id?:number,
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 };
 	/** aggregate sum on columns */
 ["contact_group_sum_fields"]: AliasType<{
@@ -298,6 +308,8 @@ logs_aggregate?: [{	/** distinct select on columns */
 	where?:ValueTypes["logs_bool_exp"]},ValueTypes["logs_aggregate"]],
 	name?:true,
 	need_to_call?:true,
+	/** A computed field, executes function "next_call_date" */
+	next_call_date?:true,
 	notes?:true,
 	phone_number?:true,
 reminders?: [{	/** distinct select on columns */
@@ -359,6 +371,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 	logs_aggregate?:ValueTypes["logs_aggregate_bool_exp"],
 	name?:ValueTypes["String_comparison_exp"],
 	need_to_call?:ValueTypes["Boolean_comparison_exp"],
+	next_call_date?:ValueTypes["date_comparison_exp"],
 	notes?:ValueTypes["String_comparison_exp"],
 	phone_number?:ValueTypes["String_comparison_exp"],
 	reminders?:ValueTypes["reminders_bool_exp"],
@@ -398,6 +411,8 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 	id?:true,
 	images?:true,
 	name?:true,
+	/** A computed field, executes function "next_call_date" */
+	next_call_date?:true,
 	notes?:true,
 	phone_number?:true,
 		__typename?: true
@@ -412,6 +427,8 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 	id?:true,
 	images?:true,
 	name?:true,
+	/** A computed field, executes function "next_call_date" */
+	next_call_date?:true,
 	notes?:true,
 	phone_number?:true,
 		__typename?: true
@@ -449,6 +466,7 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 	logs_aggregate?:ValueTypes["logs_aggregate_order_by"],
 	name?:ValueTypes["order_by"],
 	need_to_call?:ValueTypes["order_by"],
+	next_call_date?:ValueTypes["order_by"],
 	notes?:ValueTypes["order_by"],
 	phone_number?:ValueTypes["order_by"],
 	reminders_aggregate?:ValueTypes["reminders_aggregate_order_by"]
@@ -548,6 +566,19 @@ count?: [{	columns?:ValueTypes["contacts_select_column"][],	distinct?:boolean},t
 }>;
 	/** ordering argument of a cursor */
 ["cursor_ordering"]:cursor_ordering;
+	["date"]:unknown;
+	/** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
+["date_comparison_exp"]: {
+	_eq?:ValueTypes["date"],
+	_gt?:ValueTypes["date"],
+	_gte?:ValueTypes["date"],
+	_in?:ValueTypes["date"][],
+	_is_null?:boolean,
+	_lt?:ValueTypes["date"],
+	_lte?:ValueTypes["date"],
+	_neq?:ValueTypes["date"],
+	_nin?:ValueTypes["date"][]
+};
 	/** columns and relationships of "groups" */
 ["groups"]: AliasType<{
 contact_groups?: [{	/** distinct select on columns */
@@ -565,6 +596,8 @@ contact_groups_aggregate?: [{	/** distinct select on columns */
 	frequency?:true,
 	id?:true,
 	name?:true,
+sales_states?: [{	/** JSON select path */
+	path?:string},true],
 		__typename?: true
 }>;
 	/** aggregated selection of "groups" */
@@ -588,6 +621,10 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 	variance?:ValueTypes["groups_variance_fields"],
 		__typename?: true
 }>;
+	/** append existing jsonb value of filtered columns with new jsonb value */
+["groups_append_input"]: {
+	sales_states?:ValueTypes["jsonb"]
+};
 	/** aggregate avg on columns */
 ["groups_avg_fields"]: AliasType<{
 	frequency?:true,
@@ -603,10 +640,24 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 	contact_groups_aggregate?:ValueTypes["contact_group_aggregate_bool_exp"],
 	frequency?:ValueTypes["Int_comparison_exp"],
 	id?:ValueTypes["Int_comparison_exp"],
-	name?:ValueTypes["String_comparison_exp"]
+	name?:ValueTypes["String_comparison_exp"],
+	sales_states?:ValueTypes["jsonb_comparison_exp"]
 };
 	/** unique or primary key constraints on table "groups" */
 ["groups_constraint"]:groups_constraint;
+	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+["groups_delete_at_path_input"]: {
+	sales_states?:string[]
+};
+	/** delete the array element with specified index (negative integers count from the
+end). throws an error if top level container is not an array */
+["groups_delete_elem_input"]: {
+	sales_states?:number
+};
+	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+["groups_delete_key_input"]: {
+	sales_states?:string
+};
 	/** input type for incrementing numeric columns in table "groups" */
 ["groups_inc_input"]: {
 	frequency?:number,
@@ -617,7 +668,8 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 	contact_groups?:ValueTypes["contact_group_arr_rel_insert_input"],
 	frequency?:number,
 	id?:number,
-	name?:string
+	name?:string,
+	sales_states?:ValueTypes["jsonb"]
 };
 	/** aggregate max on columns */
 ["groups_max_fields"]: AliasType<{
@@ -658,11 +710,16 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 	contact_groups_aggregate?:ValueTypes["contact_group_aggregate_order_by"],
 	frequency?:ValueTypes["order_by"],
 	id?:ValueTypes["order_by"],
-	name?:ValueTypes["order_by"]
+	name?:ValueTypes["order_by"],
+	sales_states?:ValueTypes["order_by"]
 };
 	/** primary key columns input for table: groups */
 ["groups_pk_columns_input"]: {
 	id:number
+};
+	/** prepend existing jsonb value of filtered columns with new jsonb value */
+["groups_prepend_input"]: {
+	sales_states?:ValueTypes["jsonb"]
 };
 	/** select columns of table "groups" */
 ["groups_select_column"]:groups_select_column;
@@ -670,7 +727,8 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 ["groups_set_input"]: {
 	frequency?:number,
 	id?:number,
-	name?:string
+	name?:string,
+	sales_states?:ValueTypes["jsonb"]
 };
 	/** aggregate stddev on columns */
 ["groups_stddev_fields"]: AliasType<{
@@ -701,7 +759,8 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 ["groups_stream_cursor_value_input"]: {
 	frequency?:number,
 	id?:number,
-	name?:string
+	name?:string,
+	sales_states?:ValueTypes["jsonb"]
 };
 	/** aggregate sum on columns */
 ["groups_sum_fields"]: AliasType<{
@@ -712,8 +771,19 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 	/** update columns of table "groups" */
 ["groups_update_column"]:groups_update_column;
 	["groups_updates"]: {
+	/** append existing jsonb value of filtered columns with new jsonb value */
+	_append?:ValueTypes["groups_append_input"],
+	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+	_delete_at_path?:ValueTypes["groups_delete_at_path_input"],
+	/** delete the array element with specified index (negative integers count from
+the end). throws an error if top level container is not an array */
+	_delete_elem?:ValueTypes["groups_delete_elem_input"],
+	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+	_delete_key?:ValueTypes["groups_delete_key_input"],
 	/** increments the numeric columns with given value of the filtered values */
 	_inc?:ValueTypes["groups_inc_input"],
+	/** prepend existing jsonb value of filtered columns with new jsonb value */
+	_prepend?:ValueTypes["groups_prepend_input"],
 	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["groups_set_input"],
 	/** filter the rows which have to be updated */
@@ -765,6 +835,32 @@ count?: [{	columns?:ValueTypes["groups_select_column"][],	distinct?:boolean},tru
 	_lte?:ValueTypes["jsonb"][],
 	_neq?:ValueTypes["jsonb"][],
 	_nin:ValueTypes["jsonb"][]
+};
+	["jsonb_cast_exp"]: {
+	String?:ValueTypes["String_comparison_exp"]
+};
+	/** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
+["jsonb_comparison_exp"]: {
+	_cast?:ValueTypes["jsonb_cast_exp"],
+	/** is the column contained in the given json value */
+	_contained_in?:ValueTypes["jsonb"],
+	/** does the column contain the given json value at the top level */
+	_contains?:ValueTypes["jsonb"],
+	_eq?:ValueTypes["jsonb"],
+	_gt?:ValueTypes["jsonb"],
+	_gte?:ValueTypes["jsonb"],
+	/** does the string exist as a top-level key in the column */
+	_has_key?:string,
+	/** do all of these strings exist as top-level keys in the column */
+	_has_keys_all?:string[],
+	/** do any of these strings exist as top-level keys in the column */
+	_has_keys_any?:string[],
+	_in?:ValueTypes["jsonb"][],
+	_is_null?:boolean,
+	_lt?:ValueTypes["jsonb"],
+	_lte?:ValueTypes["jsonb"],
+	_neq?:ValueTypes["jsonb"],
+	_nin?:ValueTypes["jsonb"][]
 };
 	/** columns and relationships of "logs" */
 ["logs"]: AliasType<{
@@ -1112,12 +1208,24 @@ update_contacts_by_pk?: [{	/** increments the numeric columns with given value o
 	_set?:ValueTypes["contacts_set_input"],	pk_columns:ValueTypes["contacts_pk_columns_input"]},ValueTypes["contacts"]],
 update_contacts_many?: [{	/** updates to execute, in order */
 	updates:ValueTypes["contacts_updates"][]},ValueTypes["contacts_mutation_response"]],
-update_groups?: [{	/** increments the numeric columns with given value of the filtered values */
-	_inc?:ValueTypes["groups_inc_input"],	/** sets the columns of the filtered rows to the given values */
+update_groups?: [{	/** append existing jsonb value of filtered columns with new jsonb value */
+	_append?:ValueTypes["groups_append_input"],	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+	_delete_at_path?:ValueTypes["groups_delete_at_path_input"],	/** delete the array element with specified index (negative integers count from
+the end). throws an error if top level container is not an array */
+	_delete_elem?:ValueTypes["groups_delete_elem_input"],	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+	_delete_key?:ValueTypes["groups_delete_key_input"],	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["groups_inc_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
+	_prepend?:ValueTypes["groups_prepend_input"],	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["groups_set_input"],	/** filter the rows which have to be updated */
 	where:ValueTypes["groups_bool_exp"]},ValueTypes["groups_mutation_response"]],
-update_groups_by_pk?: [{	/** increments the numeric columns with given value of the filtered values */
-	_inc?:ValueTypes["groups_inc_input"],	/** sets the columns of the filtered rows to the given values */
+update_groups_by_pk?: [{	/** append existing jsonb value of filtered columns with new jsonb value */
+	_append?:ValueTypes["groups_append_input"],	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+	_delete_at_path?:ValueTypes["groups_delete_at_path_input"],	/** delete the array element with specified index (negative integers count from
+the end). throws an error if top level container is not an array */
+	_delete_elem?:ValueTypes["groups_delete_elem_input"],	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+	_delete_key?:ValueTypes["groups_delete_key_input"],	/** increments the numeric columns with given value of the filtered values */
+	_inc?:ValueTypes["groups_inc_input"],	/** prepend existing jsonb value of filtered columns with new jsonb value */
+	_prepend?:ValueTypes["groups_prepend_input"],	/** sets the columns of the filtered rows to the given values */
 	_set?:ValueTypes["groups_set_input"],	pk_columns:ValueTypes["groups_pk_columns_input"]},ValueTypes["groups"]],
 update_groups_many?: [{	/** updates to execute, in order */
 	updates:ValueTypes["groups_updates"][]},ValueTypes["groups_mutation_response"]],
@@ -1709,7 +1817,8 @@ export type PartialObjects = {
 			contact_id?:number,
 			/** An object relationship */
 	group?:PartialObjects["groups"],
-			group_id?:number
+			group_id?:number,
+			sales_state?:string
 	},
 	/** aggregated selection of "contact_group" */
 ["contact_group_aggregate"]: {
@@ -1780,7 +1889,8 @@ export type PartialObjects = {
 	contact?:PartialObjects["contacts_bool_exp"],
 	contact_id?:PartialObjects["Int_comparison_exp"],
 	group?:PartialObjects["groups_bool_exp"],
-	group_id?:PartialObjects["Int_comparison_exp"]
+	group_id?:PartialObjects["Int_comparison_exp"],
+	sales_state?:PartialObjects["String_comparison_exp"]
 },
 	/** unique or primary key constraints on table "contact_group" */
 ["contact_group_constraint"]:contact_group_constraint,
@@ -1794,29 +1904,34 @@ export type PartialObjects = {
 	contact?:PartialObjects["contacts_obj_rel_insert_input"],
 	contact_id?:number,
 	group?:PartialObjects["groups_obj_rel_insert_input"],
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 },
 	/** aggregate max on columns */
 ["contact_group_max_fields"]: {
 		__typename?: "contact_group_max_fields";
 			contact_id?:number,
-			group_id?:number
+			group_id?:number,
+			sales_state?:string
 	},
 	/** order by max() on columns of table "contact_group" */
 ["contact_group_max_order_by"]: {
 	contact_id?:PartialObjects["order_by"],
-	group_id?:PartialObjects["order_by"]
+	group_id?:PartialObjects["order_by"],
+	sales_state?:PartialObjects["order_by"]
 },
 	/** aggregate min on columns */
 ["contact_group_min_fields"]: {
 		__typename?: "contact_group_min_fields";
 			contact_id?:number,
-			group_id?:number
+			group_id?:number,
+			sales_state?:string
 	},
 	/** order by min() on columns of table "contact_group" */
 ["contact_group_min_order_by"]: {
 	contact_id?:PartialObjects["order_by"],
-	group_id?:PartialObjects["order_by"]
+	group_id?:PartialObjects["order_by"],
+	sales_state?:PartialObjects["order_by"]
 },
 	/** response of any mutation on the table "contact_group" */
 ["contact_group_mutation_response"]: {
@@ -1837,7 +1952,8 @@ export type PartialObjects = {
 	contact?:PartialObjects["contacts_order_by"],
 	contact_id?:PartialObjects["order_by"],
 	group?:PartialObjects["groups_order_by"],
-	group_id?:PartialObjects["order_by"]
+	group_id?:PartialObjects["order_by"],
+	sales_state?:PartialObjects["order_by"]
 },
 	/** primary key columns input for table: contact_group */
 ["contact_group_pk_columns_input"]: {
@@ -1849,7 +1965,8 @@ export type PartialObjects = {
 	/** input type for updating data in table "contact_group" */
 ["contact_group_set_input"]: {
 	contact_id?:number,
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 },
 	/** aggregate stddev on columns */
 ["contact_group_stddev_fields"]: {
@@ -1894,7 +2011,8 @@ export type PartialObjects = {
 	/** Initial value of the column from where the streaming should start */
 ["contact_group_stream_cursor_value_input"]: {
 	contact_id?:number,
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 },
 	/** aggregate sum on columns */
 ["contact_group_sum_fields"]: {
@@ -1970,6 +2088,8 @@ export type PartialObjects = {
 	logs_aggregate?:PartialObjects["logs_aggregate"],
 			name?:string,
 			need_to_call?:boolean,
+			/** A computed field, executes function "next_call_date" */
+	next_call_date?:PartialObjects["date"],
 			notes?:string,
 			phone_number?:string,
 			/** An array relationship */
@@ -2022,6 +2142,7 @@ export type PartialObjects = {
 	logs_aggregate?:PartialObjects["logs_aggregate_bool_exp"],
 	name?:PartialObjects["String_comparison_exp"],
 	need_to_call?:PartialObjects["Boolean_comparison_exp"],
+	next_call_date?:PartialObjects["date_comparison_exp"],
 	notes?:PartialObjects["String_comparison_exp"],
 	phone_number?:PartialObjects["String_comparison_exp"],
 	reminders?:PartialObjects["reminders_bool_exp"],
@@ -2062,6 +2183,8 @@ export type PartialObjects = {
 			id?:number,
 			images?:PartialObjects["jsonb"][],
 			name?:string,
+			/** A computed field, executes function "next_call_date" */
+	next_call_date?:PartialObjects["date"],
 			notes?:string,
 			phone_number?:string
 	},
@@ -2076,6 +2199,8 @@ export type PartialObjects = {
 			id?:number,
 			images?:PartialObjects["jsonb"][],
 			name?:string,
+			/** A computed field, executes function "next_call_date" */
+	next_call_date?:PartialObjects["date"],
 			notes?:string,
 			phone_number?:string
 	},
@@ -2112,6 +2237,7 @@ export type PartialObjects = {
 	logs_aggregate?:PartialObjects["logs_aggregate_order_by"],
 	name?:PartialObjects["order_by"],
 	need_to_call?:PartialObjects["order_by"],
+	next_call_date?:PartialObjects["order_by"],
 	notes?:PartialObjects["order_by"],
 	phone_number?:PartialObjects["order_by"],
 	reminders_aggregate?:PartialObjects["reminders_aggregate_order_by"]
@@ -2211,6 +2337,19 @@ export type PartialObjects = {
 	},
 	/** ordering argument of a cursor */
 ["cursor_ordering"]:cursor_ordering,
+	["date"]:any,
+	/** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
+["date_comparison_exp"]: {
+	_eq?:PartialObjects["date"],
+	_gt?:PartialObjects["date"],
+	_gte?:PartialObjects["date"],
+	_in?:PartialObjects["date"][],
+	_is_null?:boolean,
+	_lt?:PartialObjects["date"],
+	_lte?:PartialObjects["date"],
+	_neq?:PartialObjects["date"],
+	_nin?:PartialObjects["date"][]
+},
 	/** columns and relationships of "groups" */
 ["groups"]: {
 		__typename?: "groups";
@@ -2220,7 +2359,8 @@ export type PartialObjects = {
 	contact_groups_aggregate?:PartialObjects["contact_group_aggregate"],
 			frequency?:number,
 			id?:number,
-			name?:string
+			name?:string,
+			sales_states?:PartialObjects["jsonb"]
 	},
 	/** aggregated selection of "groups" */
 ["groups_aggregate"]: {
@@ -2243,6 +2383,10 @@ export type PartialObjects = {
 			var_samp?:PartialObjects["groups_var_samp_fields"],
 			variance?:PartialObjects["groups_variance_fields"]
 	},
+	/** append existing jsonb value of filtered columns with new jsonb value */
+["groups_append_input"]: {
+	sales_states?:PartialObjects["jsonb"]
+},
 	/** aggregate avg on columns */
 ["groups_avg_fields"]: {
 		__typename?: "groups_avg_fields";
@@ -2258,10 +2402,24 @@ export type PartialObjects = {
 	contact_groups_aggregate?:PartialObjects["contact_group_aggregate_bool_exp"],
 	frequency?:PartialObjects["Int_comparison_exp"],
 	id?:PartialObjects["Int_comparison_exp"],
-	name?:PartialObjects["String_comparison_exp"]
+	name?:PartialObjects["String_comparison_exp"],
+	sales_states?:PartialObjects["jsonb_comparison_exp"]
 },
 	/** unique or primary key constraints on table "groups" */
 ["groups_constraint"]:groups_constraint,
+	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+["groups_delete_at_path_input"]: {
+	sales_states?:string[]
+},
+	/** delete the array element with specified index (negative integers count from the
+end). throws an error if top level container is not an array */
+["groups_delete_elem_input"]: {
+	sales_states?:number
+},
+	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+["groups_delete_key_input"]: {
+	sales_states?:string
+},
 	/** input type for incrementing numeric columns in table "groups" */
 ["groups_inc_input"]: {
 	frequency?:number,
@@ -2272,7 +2430,8 @@ export type PartialObjects = {
 	contact_groups?:PartialObjects["contact_group_arr_rel_insert_input"],
 	frequency?:number,
 	id?:number,
-	name?:string
+	name?:string,
+	sales_states?:PartialObjects["jsonb"]
 },
 	/** aggregate max on columns */
 ["groups_max_fields"]: {
@@ -2313,11 +2472,16 @@ export type PartialObjects = {
 	contact_groups_aggregate?:PartialObjects["contact_group_aggregate_order_by"],
 	frequency?:PartialObjects["order_by"],
 	id?:PartialObjects["order_by"],
-	name?:PartialObjects["order_by"]
+	name?:PartialObjects["order_by"],
+	sales_states?:PartialObjects["order_by"]
 },
 	/** primary key columns input for table: groups */
 ["groups_pk_columns_input"]: {
 	id:number
+},
+	/** prepend existing jsonb value of filtered columns with new jsonb value */
+["groups_prepend_input"]: {
+	sales_states?:PartialObjects["jsonb"]
 },
 	/** select columns of table "groups" */
 ["groups_select_column"]:groups_select_column,
@@ -2325,7 +2489,8 @@ export type PartialObjects = {
 ["groups_set_input"]: {
 	frequency?:number,
 	id?:number,
-	name?:string
+	name?:string,
+	sales_states?:PartialObjects["jsonb"]
 },
 	/** aggregate stddev on columns */
 ["groups_stddev_fields"]: {
@@ -2356,7 +2521,8 @@ export type PartialObjects = {
 ["groups_stream_cursor_value_input"]: {
 	frequency?:number,
 	id?:number,
-	name?:string
+	name?:string,
+	sales_states?:PartialObjects["jsonb"]
 },
 	/** aggregate sum on columns */
 ["groups_sum_fields"]: {
@@ -2367,8 +2533,19 @@ export type PartialObjects = {
 	/** update columns of table "groups" */
 ["groups_update_column"]:groups_update_column,
 	["groups_updates"]: {
+	/** append existing jsonb value of filtered columns with new jsonb value */
+	_append?:PartialObjects["groups_append_input"],
+	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+	_delete_at_path?:PartialObjects["groups_delete_at_path_input"],
+	/** delete the array element with specified index (negative integers count from
+the end). throws an error if top level container is not an array */
+	_delete_elem?:PartialObjects["groups_delete_elem_input"],
+	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+	_delete_key?:PartialObjects["groups_delete_key_input"],
 	/** increments the numeric columns with given value of the filtered values */
 	_inc?:PartialObjects["groups_inc_input"],
+	/** prepend existing jsonb value of filtered columns with new jsonb value */
+	_prepend?:PartialObjects["groups_prepend_input"],
 	/** sets the columns of the filtered rows to the given values */
 	_set?:PartialObjects["groups_set_input"],
 	/** filter the rows which have to be updated */
@@ -2420,6 +2597,32 @@ export type PartialObjects = {
 	_lte?:PartialObjects["jsonb"][],
 	_neq?:PartialObjects["jsonb"][],
 	_nin:PartialObjects["jsonb"][]
+},
+	["jsonb_cast_exp"]: {
+	String?:PartialObjects["String_comparison_exp"]
+},
+	/** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
+["jsonb_comparison_exp"]: {
+	_cast?:PartialObjects["jsonb_cast_exp"],
+	/** is the column contained in the given json value */
+	_contained_in?:PartialObjects["jsonb"],
+	/** does the column contain the given json value at the top level */
+	_contains?:PartialObjects["jsonb"],
+	_eq?:PartialObjects["jsonb"],
+	_gt?:PartialObjects["jsonb"],
+	_gte?:PartialObjects["jsonb"],
+	/** does the string exist as a top-level key in the column */
+	_has_key?:string,
+	/** do all of these strings exist as top-level keys in the column */
+	_has_keys_all?:string[],
+	/** do any of these strings exist as top-level keys in the column */
+	_has_keys_any?:string[],
+	_in?:PartialObjects["jsonb"][],
+	_is_null?:boolean,
+	_lt?:PartialObjects["jsonb"],
+	_lte?:PartialObjects["jsonb"],
+	_neq?:PartialObjects["jsonb"],
+	_nin?:PartialObjects["jsonb"][]
 },
 	/** columns and relationships of "logs" */
 ["logs"]: {
@@ -3230,7 +3433,8 @@ export type contact_group = {
 	contact_id:number,
 	/** An object relationship */
 	group:groups,
-	group_id:number
+	group_id:number,
+	sales_state?:string
 }
 
 /** aggregated selection of "contact_group" */
@@ -3310,7 +3514,8 @@ export type contact_group_bool_exp = {
 	contact?:contacts_bool_exp,
 	contact_id?:Int_comparison_exp,
 	group?:groups_bool_exp,
-	group_id?:Int_comparison_exp
+	group_id?:Int_comparison_exp,
+	sales_state?:String_comparison_exp
 }
 
 /** unique or primary key constraints on table "contact_group" */
@@ -3329,33 +3534,38 @@ export type contact_group_insert_input = {
 		contact?:contacts_obj_rel_insert_input,
 	contact_id?:number,
 	group?:groups_obj_rel_insert_input,
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 }
 
 /** aggregate max on columns */
 export type contact_group_max_fields = {
 	__typename?: "contact_group_max_fields",
 	contact_id?:number,
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 }
 
 /** order by max() on columns of table "contact_group" */
 export type contact_group_max_order_by = {
 		contact_id?:order_by,
-	group_id?:order_by
+	group_id?:order_by,
+	sales_state?:order_by
 }
 
 /** aggregate min on columns */
 export type contact_group_min_fields = {
 	__typename?: "contact_group_min_fields",
 	contact_id?:number,
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 }
 
 /** order by min() on columns of table "contact_group" */
 export type contact_group_min_order_by = {
 		contact_id?:order_by,
-	group_id?:order_by
+	group_id?:order_by,
+	sales_state?:order_by
 }
 
 /** response of any mutation on the table "contact_group" */
@@ -3379,7 +3589,8 @@ export type contact_group_order_by = {
 		contact?:contacts_order_by,
 	contact_id?:order_by,
 	group?:groups_order_by,
-	group_id?:order_by
+	group_id?:order_by,
+	sales_state?:order_by
 }
 
 /** primary key columns input for table: contact_group */
@@ -3391,13 +3602,15 @@ export type contact_group_pk_columns_input = {
 /** select columns of table "contact_group" */
 export enum contact_group_select_column {
 	contact_id = "contact_id",
-	group_id = "group_id"
+	group_id = "group_id",
+	sales_state = "sales_state"
 }
 
 /** input type for updating data in table "contact_group" */
 export type contact_group_set_input = {
 		contact_id?:number,
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 }
 
 /** aggregate stddev on columns */
@@ -3450,7 +3663,8 @@ export type contact_group_stream_cursor_input = {
 /** Initial value of the column from where the streaming should start */
 export type contact_group_stream_cursor_value_input = {
 		contact_id?:number,
-	group_id?:number
+	group_id?:number,
+	sales_state?:string
 }
 
 /** aggregate sum on columns */
@@ -3469,7 +3683,8 @@ export type contact_group_sum_order_by = {
 /** update columns of table "contact_group" */
 export enum contact_group_update_column {
 	contact_id = "contact_id",
-	group_id = "group_id"
+	group_id = "group_id",
+	sales_state = "sales_state"
 }
 
 export type contact_group_updates = {
@@ -3540,6 +3755,8 @@ export type contacts = {
 	logs_aggregate:logs_aggregate,
 	name:string,
 	need_to_call?:boolean,
+	/** A computed field, executes function "next_call_date" */
+	next_call_date?:date,
 	notes?:string,
 	phone_number?:string,
 	/** An array relationship */
@@ -3596,6 +3813,7 @@ export type contacts_bool_exp = {
 	logs_aggregate?:logs_aggregate_bool_exp,
 	name?:String_comparison_exp,
 	need_to_call?:Boolean_comparison_exp,
+	next_call_date?:date_comparison_exp,
 	notes?:String_comparison_exp,
 	phone_number?:String_comparison_exp,
 	reminders?:reminders_bool_exp,
@@ -3642,6 +3860,8 @@ export type contacts_max_fields = {
 	id?:number,
 	images?:jsonb[],
 	name?:string,
+	/** A computed field, executes function "next_call_date" */
+	next_call_date?:date,
 	notes?:string,
 	phone_number?:string
 }
@@ -3657,6 +3877,8 @@ export type contacts_min_fields = {
 	id?:number,
 	images?:jsonb[],
 	name?:string,
+	/** A computed field, executes function "next_call_date" */
+	next_call_date?:date,
 	notes?:string,
 	phone_number?:string
 }
@@ -3697,6 +3919,7 @@ export type contacts_order_by = {
 	logs_aggregate?:logs_aggregate_order_by,
 	name?:order_by,
 	need_to_call?:order_by,
+	next_call_date?:order_by,
 	notes?:order_by,
 	phone_number?:order_by,
 	reminders_aggregate?:reminders_aggregate_order_by
@@ -3839,6 +4062,21 @@ export enum cursor_ordering {
 	DESC = "DESC"
 }
 
+export type date = any
+
+/** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
+export type date_comparison_exp = {
+		_eq?:date,
+	_gt?:date,
+	_gte?:date,
+	_in?:date[],
+	_is_null?:boolean,
+	_lt?:date,
+	_lte?:date,
+	_neq?:date,
+	_nin?:date[]
+}
+
 /** columns and relationships of "groups" */
 export type groups = {
 	__typename?: "groups",
@@ -3848,7 +4086,8 @@ export type groups = {
 	contact_groups_aggregate:contact_group_aggregate,
 	frequency?:number,
 	id:number,
-	name:string
+	name:string,
+	sales_states?:jsonb
 }
 
 /** aggregated selection of "groups" */
@@ -3874,6 +4113,11 @@ export type groups_aggregate_fields = {
 	variance?:groups_variance_fields
 }
 
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type groups_append_input = {
+		sales_states?:jsonb
+}
+
 /** aggregate avg on columns */
 export type groups_avg_fields = {
 	__typename?: "groups_avg_fields",
@@ -3890,12 +4134,29 @@ export type groups_bool_exp = {
 	contact_groups_aggregate?:contact_group_aggregate_bool_exp,
 	frequency?:Int_comparison_exp,
 	id?:Int_comparison_exp,
-	name?:String_comparison_exp
+	name?:String_comparison_exp,
+	sales_states?:jsonb_comparison_exp
 }
 
 /** unique or primary key constraints on table "groups" */
 export enum groups_constraint {
 	groups_pkey = "groups_pkey"
+}
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type groups_delete_at_path_input = {
+		sales_states?:string[]
+}
+
+/** delete the array element with specified index (negative integers count from the
+end). throws an error if top level container is not an array */
+export type groups_delete_elem_input = {
+		sales_states?:number
+}
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type groups_delete_key_input = {
+		sales_states?:string
 }
 
 /** input type for incrementing numeric columns in table "groups" */
@@ -3909,7 +4170,8 @@ export type groups_insert_input = {
 		contact_groups?:contact_group_arr_rel_insert_input,
 	frequency?:number,
 	id?:number,
-	name?:string
+	name?:string,
+	sales_states?:jsonb
 }
 
 /** aggregate max on columns */
@@ -3956,7 +4218,8 @@ export type groups_order_by = {
 		contact_groups_aggregate?:contact_group_aggregate_order_by,
 	frequency?:order_by,
 	id?:order_by,
-	name?:order_by
+	name?:order_by,
+	sales_states?:order_by
 }
 
 /** primary key columns input for table: groups */
@@ -3964,18 +4227,25 @@ export type groups_pk_columns_input = {
 		id:number
 }
 
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type groups_prepend_input = {
+		sales_states?:jsonb
+}
+
 /** select columns of table "groups" */
 export enum groups_select_column {
 	frequency = "frequency",
 	id = "id",
-	name = "name"
+	name = "name",
+	sales_states = "sales_states"
 }
 
 /** input type for updating data in table "groups" */
 export type groups_set_input = {
 		frequency?:number,
 	id?:number,
-	name?:string
+	name?:string,
+	sales_states?:jsonb
 }
 
 /** aggregate stddev on columns */
@@ -4011,7 +4281,8 @@ export type groups_stream_cursor_input = {
 export type groups_stream_cursor_value_input = {
 		frequency?:number,
 	id?:number,
-	name?:string
+	name?:string,
+	sales_states?:jsonb
 }
 
 /** aggregate sum on columns */
@@ -4025,12 +4296,24 @@ export type groups_sum_fields = {
 export enum groups_update_column {
 	frequency = "frequency",
 	id = "id",
-	name = "name"
+	name = "name",
+	sales_states = "sales_states"
 }
 
 export type groups_updates = {
-		/** increments the numeric columns with given value of the filtered values */
+		/** append existing jsonb value of filtered columns with new jsonb value */
+	_append?:groups_append_input,
+	/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+	_delete_at_path?:groups_delete_at_path_input,
+	/** delete the array element with specified index (negative integers count from
+the end). throws an error if top level container is not an array */
+	_delete_elem?:groups_delete_elem_input,
+	/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+	_delete_key?:groups_delete_key_input,
+	/** increments the numeric columns with given value of the filtered values */
 	_inc?:groups_inc_input,
+	/** prepend existing jsonb value of filtered columns with new jsonb value */
+	_prepend?:groups_prepend_input,
 	/** sets the columns of the filtered rows to the given values */
 	_set?:groups_set_input,
 	/** filter the rows which have to be updated */
@@ -4088,6 +4371,34 @@ export type jsonb_array_comparison_exp = {
 	_lte?:jsonb[],
 	_neq?:jsonb[],
 	_nin:jsonb[]
+}
+
+export type jsonb_cast_exp = {
+		String?:String_comparison_exp
+}
+
+/** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
+export type jsonb_comparison_exp = {
+		_cast?:jsonb_cast_exp,
+	/** is the column contained in the given json value */
+	_contained_in?:jsonb,
+	/** does the column contain the given json value at the top level */
+	_contains?:jsonb,
+	_eq?:jsonb,
+	_gt?:jsonb,
+	_gte?:jsonb,
+	/** does the string exist as a top-level key in the column */
+	_has_key?:string,
+	/** do all of these strings exist as top-level keys in the column */
+	_has_keys_all?:string[],
+	/** do any of these strings exist as top-level keys in the column */
+	_has_keys_any?:string[],
+	_in?:jsonb[],
+	_is_null?:boolean,
+	_lt?:jsonb,
+	_lte?:jsonb,
+	_neq?:jsonb,
+	_nin?:jsonb[]
 }
 
 /** columns and relationships of "logs" */
@@ -5270,6 +5581,12 @@ export const AllTypesProps: Record<string,any> = {
 			array:false,
 			arrayRequired:false,
 			required:false
+		},
+		sales_state:{
+			type:"String_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	contact_group_constraint: "enum",
@@ -5311,6 +5628,12 @@ export const AllTypesProps: Record<string,any> = {
 			array:false,
 			arrayRequired:false,
 			required:false
+		},
+		sales_state:{
+			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	contact_group_max_order_by:{
@@ -5325,6 +5648,12 @@ export const AllTypesProps: Record<string,any> = {
 			array:false,
 			arrayRequired:false,
 			required:false
+		},
+		sales_state:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	contact_group_min_order_by:{
@@ -5335,6 +5664,12 @@ export const AllTypesProps: Record<string,any> = {
 			required:false
 		},
 		group_id:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		sales_state:{
 			type:"order_by",
 			array:false,
 			arrayRequired:false,
@@ -5385,6 +5720,12 @@ export const AllTypesProps: Record<string,any> = {
 			array:false,
 			arrayRequired:false,
 			required:false
+		},
+		sales_state:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	contact_group_pk_columns_input:{
@@ -5411,6 +5752,12 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		group_id:{
 			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		sales_state:{
+			type:"String",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -5481,6 +5828,12 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		group_id:{
 			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		sales_state:{
+			type:"String",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -5870,6 +6223,12 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:false
 		},
+		next_call_date:{
+			type:"date_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		notes:{
 			type:"String_comparison_exp",
 			array:false,
@@ -6097,6 +6456,12 @@ export const AllTypesProps: Record<string,any> = {
 			arrayRequired:false,
 			required:false
 		},
+		next_call_date:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		notes:{
 			type:"order_by",
 			array:false,
@@ -6297,6 +6662,63 @@ export const AllTypesProps: Record<string,any> = {
 		}
 	},
 	cursor_ordering: "enum",
+	date: "String",
+	date_comparison_exp:{
+		_eq:{
+			type:"date",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_gt:{
+			type:"date",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_gte:{
+			type:"date",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_in:{
+			type:"date",
+			array:true,
+			arrayRequired:false,
+			required:true
+		},
+		_is_null:{
+			type:"Boolean",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_lt:{
+			type:"date",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_lte:{
+			type:"date",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_neq:{
+			type:"date",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_nin:{
+			type:"date",
+			array:true,
+			arrayRequired:false,
+			required:true
+		}
+	},
 	groups:{
 		contact_groups:{
 			distinct_on:{
@@ -6361,6 +6783,14 @@ export const AllTypesProps: Record<string,any> = {
 				arrayRequired:false,
 				required:false
 			}
+		},
+		sales_states:{
+			path:{
+				type:"String",
+				array:false,
+				arrayRequired:false,
+				required:false
+			}
 		}
 	},
 	groups_aggregate_fields:{
@@ -6377,6 +6807,14 @@ export const AllTypesProps: Record<string,any> = {
 				arrayRequired:false,
 				required:false
 			}
+		}
+	},
+	groups_append_input:{
+		sales_states:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	groups_bool_exp:{
@@ -6427,9 +6865,39 @@ export const AllTypesProps: Record<string,any> = {
 			array:false,
 			arrayRequired:false,
 			required:false
+		},
+		sales_states:{
+			type:"jsonb_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	groups_constraint: "enum",
+	groups_delete_at_path_input:{
+		sales_states:{
+			type:"String",
+			array:true,
+			arrayRequired:false,
+			required:true
+		}
+	},
+	groups_delete_elem_input:{
+		sales_states:{
+			type:"Int",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	groups_delete_key_input:{
+		sales_states:{
+			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
 	groups_inc_input:{
 		frequency:{
 			type:"Int",
@@ -6465,6 +6933,12 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		name:{
 			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		sales_states:{
+			type:"jsonb",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6528,6 +7002,12 @@ export const AllTypesProps: Record<string,any> = {
 			array:false,
 			arrayRequired:false,
 			required:false
+		},
+		sales_states:{
+			type:"order_by",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	groups_pk_columns_input:{
@@ -6536,6 +7016,14 @@ export const AllTypesProps: Record<string,any> = {
 			array:false,
 			arrayRequired:false,
 			required:true
+		}
+	},
+	groups_prepend_input:{
+		sales_states:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	groups_select_column: "enum",
@@ -6554,6 +7042,12 @@ export const AllTypesProps: Record<string,any> = {
 		},
 		name:{
 			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		sales_states:{
+			type:"jsonb",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6591,12 +7085,48 @@ export const AllTypesProps: Record<string,any> = {
 			array:false,
 			arrayRequired:false,
 			required:false
+		},
+		sales_states:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
 		}
 	},
 	groups_update_column: "enum",
 	groups_updates:{
+		_append:{
+			type:"groups_append_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_delete_at_path:{
+			type:"groups_delete_at_path_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_delete_elem:{
+			type:"groups_delete_elem_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_delete_key:{
+			type:"groups_delete_key_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
 		_inc:{
 			type:"groups_inc_input",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_prepend:{
+			type:"groups_prepend_input",
 			array:false,
 			arrayRequired:false,
 			required:false
@@ -6736,6 +7266,106 @@ export const AllTypesProps: Record<string,any> = {
 			type:"jsonb",
 			array:true,
 			arrayRequired:true,
+			required:true
+		}
+	},
+	jsonb_cast_exp:{
+		String:{
+			type:"String_comparison_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		}
+	},
+	jsonb_comparison_exp:{
+		_cast:{
+			type:"jsonb_cast_exp",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_contained_in:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_contains:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_eq:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_gt:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_gte:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_has_key:{
+			type:"String",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_has_keys_all:{
+			type:"String",
+			array:true,
+			arrayRequired:false,
+			required:true
+		},
+		_has_keys_any:{
+			type:"String",
+			array:true,
+			arrayRequired:false,
+			required:true
+		},
+		_in:{
+			type:"jsonb",
+			array:true,
+			arrayRequired:false,
+			required:true
+		},
+		_is_null:{
+			type:"Boolean",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_lt:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_lte:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_neq:{
+			type:"jsonb",
+			array:false,
+			arrayRequired:false,
+			required:false
+		},
+		_nin:{
+			type:"jsonb",
+			array:true,
+			arrayRequired:false,
 			required:true
 		}
 	},
@@ -7646,8 +8276,38 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		},
 		update_groups:{
+			_append:{
+				type:"groups_append_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_delete_at_path:{
+				type:"groups_delete_at_path_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_delete_elem:{
+				type:"groups_delete_elem_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_delete_key:{
+				type:"groups_delete_key_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
 			_inc:{
 				type:"groups_inc_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_prepend:{
+				type:"groups_prepend_input",
 				array:false,
 				arrayRequired:false,
 				required:false
@@ -7666,8 +8326,38 @@ export const AllTypesProps: Record<string,any> = {
 			}
 		},
 		update_groups_by_pk:{
+			_append:{
+				type:"groups_append_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_delete_at_path:{
+				type:"groups_delete_at_path_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_delete_elem:{
+				type:"groups_delete_elem_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_delete_key:{
+				type:"groups_delete_key_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
 			_inc:{
 				type:"groups_inc_input",
+				array:false,
+				arrayRequired:false,
+				required:false
+			},
+			_prepend:{
+				type:"groups_prepend_input",
 				array:false,
 				arrayRequired:false,
 				required:false
@@ -9732,7 +10422,8 @@ export const ReturnTypes: Record<string,any> = {
 		contact:"contacts",
 		contact_id:"Int",
 		group:"groups",
-		group_id:"Int"
+		group_id:"Int",
+		sales_state:"String"
 	},
 	contact_group_aggregate:{
 		aggregate:"contact_group_aggregate_fields",
@@ -9757,11 +10448,13 @@ export const ReturnTypes: Record<string,any> = {
 	},
 	contact_group_max_fields:{
 		contact_id:"Int",
-		group_id:"Int"
+		group_id:"Int",
+		sales_state:"String"
 	},
 	contact_group_min_fields:{
 		contact_id:"Int",
-		group_id:"Int"
+		group_id:"Int",
+		sales_state:"String"
 	},
 	contact_group_mutation_response:{
 		affected_rows:"Int",
@@ -9809,6 +10502,7 @@ export const ReturnTypes: Record<string,any> = {
 		logs_aggregate:"logs_aggregate",
 		name:"String",
 		need_to_call:"Boolean",
+		next_call_date:"date",
 		notes:"String",
 		phone_number:"String",
 		reminders:"reminders",
@@ -9844,6 +10538,7 @@ export const ReturnTypes: Record<string,any> = {
 		id:"Int",
 		images:"jsonb",
 		name:"String",
+		next_call_date:"date",
 		notes:"String",
 		phone_number:"String"
 	},
@@ -9856,6 +10551,7 @@ export const ReturnTypes: Record<string,any> = {
 		id:"Int",
 		images:"jsonb",
 		name:"String",
+		next_call_date:"date",
 		notes:"String",
 		phone_number:"String"
 	},
@@ -9896,7 +10592,8 @@ export const ReturnTypes: Record<string,any> = {
 		contact_groups_aggregate:"contact_group_aggregate",
 		frequency:"Int",
 		id:"Int",
-		name:"String"
+		name:"String",
+		sales_states:"jsonb"
 	},
 	groups_aggregate:{
 		aggregate:"groups_aggregate_fields",

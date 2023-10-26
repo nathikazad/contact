@@ -68,7 +68,8 @@ class _ListFormWidgetState extends State<ListFormWidget> {
                       ),
                     )
                   : DropdownButton<String>(
-                      value: dropdownValue,
+                      value:
+                          !list.contains(dropdownValue) ? dropdownValue : null,
                       hint: Text('Select ${widget.listTitle}'),
                       onChanged: (String? newValue) {
                         setState(() {

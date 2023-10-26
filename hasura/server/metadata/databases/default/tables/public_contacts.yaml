@@ -23,3 +23,9 @@ array_relationships:
         table:
           name: reminders
           schema: public
+computed_fields:
+  - name: next_call_date
+    definition:
+      function:
+        name: next_call_date
+        schema: public

@@ -11,8 +11,6 @@ Future<List<Query$GetReminders$reminders>?> getReminders(
       .query$GetReminders(Options$Query$GetReminders(
           fetchPolicy: FetchPolicy.noCache,
           variables: Variables$Query$GetReminders(contact_id: contactId)));
-  print(
-      "Reminders in controller: $contactId ${res.parsedData?.reminders.length}");
   return res.parsedData?.reminders;
 }
 

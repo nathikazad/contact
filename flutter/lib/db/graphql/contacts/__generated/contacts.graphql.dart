@@ -18,6 +18,7 @@ class Fragment$contactFields {
     this.phone_number,
     required this.contact_groups,
     this.company_name,
+    this.next_call_date,
     required this.$__typename,
   });
 
@@ -34,6 +35,7 @@ class Fragment$contactFields {
     final l$phone_number = json['phone_number'];
     final l$contact_groups = json['contact_groups'];
     final l$company_name = json['company_name'];
+    final l$next_call_date = json['next_call_date'];
     final l$$__typename = json['__typename'];
     return Fragment$contactFields(
       id: (l$id as int),
@@ -52,6 +54,7 @@ class Fragment$contactFields {
               (e as Map<String, dynamic>)))
           .toList(),
       company_name: (l$company_name as String?),
+      next_call_date: (l$next_call_date as String?),
       $__typename: ((l$$__typename ?? "none") as String),
     );
   }
@@ -79,6 +82,8 @@ class Fragment$contactFields {
   final List<Fragment$contactFields$contact_groups> contact_groups;
 
   final String? company_name;
+
+  final String? next_call_date;
 
   final String $__typename;
 
@@ -109,6 +114,8 @@ class Fragment$contactFields {
         l$contact_groups.map((e) => e.toJson()).toList();
     final l$company_name = company_name;
     _resultData['company_name'] = l$company_name;
+    final l$next_call_date = next_call_date;
+    _resultData['next_call_date'] = l$next_call_date;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -128,6 +135,7 @@ class Fragment$contactFields {
     final l$phone_number = phone_number;
     final l$contact_groups = contact_groups;
     final l$company_name = company_name;
+    final l$next_call_date = next_call_date;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -142,6 +150,7 @@ class Fragment$contactFields {
       l$phone_number,
       Object.hashAll(l$contact_groups.map((v) => v)),
       l$company_name,
+      l$next_call_date,
       l$$__typename,
     ]);
   }
@@ -244,6 +253,11 @@ class Fragment$contactFields {
     if (l$company_name != lOther$company_name) {
       return false;
     }
+    final l$next_call_date = next_call_date;
+    final lOther$next_call_date = other.next_call_date;
+    if (l$next_call_date != lOther$next_call_date) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -283,6 +297,7 @@ abstract class CopyWith$Fragment$contactFields<TRes> {
     String? phone_number,
     List<Fragment$contactFields$contact_groups>? contact_groups,
     String? company_name,
+    String? next_call_date,
     String? $__typename,
   });
   TRes contact_groups(
@@ -319,6 +334,7 @@ class _CopyWithImpl$Fragment$contactFields<TRes>
     Object? phone_number = _undefined,
     Object? contact_groups = _undefined,
     Object? company_name = _undefined,
+    Object? next_call_date = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$contactFields(
@@ -351,6 +367,9 @@ class _CopyWithImpl$Fragment$contactFields<TRes>
         company_name: company_name == _undefined
             ? _instance.company_name
             : (company_name as String?),
+        next_call_date: next_call_date == _undefined
+            ? _instance.next_call_date
+            : (next_call_date as String?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -389,6 +408,7 @@ class _CopyWithStubImpl$Fragment$contactFields<TRes>
     String? phone_number,
     List<Fragment$contactFields$contact_groups>? contact_groups,
     String? company_name,
+    String? next_call_date,
     String? $__typename,
   }) =>
       _res;
@@ -495,6 +515,20 @@ const fragmentDefinitioncontactFields = FragmentDefinitionNode(
               selectionSet: null,
             ),
             FieldNode(
+              name: NameNode(value: 'sales_states'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
               name: NameNode(value: '__typename'),
               alias: null,
               arguments: [],
@@ -502,6 +536,13 @@ const fragmentDefinitioncontactFields = FragmentDefinitionNode(
               selectionSet: null,
             ),
           ]),
+        ),
+        FieldNode(
+          name: NameNode(value: 'sales_state'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
         ),
         FieldNode(
           name: NameNode(value: '__typename'),
@@ -514,6 +555,13 @@ const fragmentDefinitioncontactFields = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'company_name'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'next_call_date'),
       alias: null,
       arguments: [],
       directives: [],
@@ -570,21 +618,26 @@ extension ClientExtension$Fragment$contactFields on graphql.GraphQLClient {
 class Fragment$contactFields$contact_groups {
   Fragment$contactFields$contact_groups({
     required this.group,
+    this.sales_state,
     required this.$__typename,
   });
 
   factory Fragment$contactFields$contact_groups.fromJson(
       Map<String, dynamic> json) {
     final l$group = json['group'];
+    final l$sales_state = json['sales_state'];
     final l$$__typename = json['__typename'];
     return Fragment$contactFields$contact_groups(
       group: Fragment$contactFields$contact_groups$group.fromJson(
           (l$group as Map<String, dynamic>)),
+      sales_state: (l$sales_state as String?),
       $__typename: ((l$$__typename ?? "none") as String),
     );
   }
 
   final Fragment$contactFields$contact_groups$group group;
+
+  final String? sales_state;
 
   final String $__typename;
 
@@ -592,6 +645,8 @@ class Fragment$contactFields$contact_groups {
     final _resultData = <String, dynamic>{};
     final l$group = group;
     _resultData['group'] = l$group.toJson();
+    final l$sales_state = sales_state;
+    _resultData['sales_state'] = l$sales_state;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -600,9 +655,11 @@ class Fragment$contactFields$contact_groups {
   @override
   int get hashCode {
     final l$group = group;
+    final l$sales_state = sales_state;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$group,
+      l$sales_state,
       l$$__typename,
     ]);
   }
@@ -619,6 +676,11 @@ class Fragment$contactFields$contact_groups {
     final l$group = group;
     final lOther$group = other.group;
     if (l$group != lOther$group) {
+      return false;
+    }
+    final l$sales_state = sales_state;
+    final lOther$sales_state = other.sales_state;
+    if (l$sales_state != lOther$sales_state) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -651,6 +713,7 @@ abstract class CopyWith$Fragment$contactFields$contact_groups<TRes> {
 
   TRes call({
     Fragment$contactFields$contact_groups$group? group,
+    String? sales_state,
     String? $__typename,
   });
   CopyWith$Fragment$contactFields$contact_groups$group<TRes> get group;
@@ -671,12 +734,16 @@ class _CopyWithImpl$Fragment$contactFields$contact_groups<TRes>
 
   TRes call({
     Object? group = _undefined,
+    Object? sales_state = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$contactFields$contact_groups(
         group: group == _undefined || group == null
             ? _instance.group
             : (group as Fragment$contactFields$contact_groups$group),
+        sales_state: sales_state == _undefined
+            ? _instance.sales_state
+            : (sales_state as String?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -697,6 +764,7 @@ class _CopyWithStubImpl$Fragment$contactFields$contact_groups<TRes>
 
   call({
     Fragment$contactFields$contact_groups$group? group,
+    String? sales_state,
     String? $__typename,
   }) =>
       _res;
@@ -708,20 +776,30 @@ class _CopyWithStubImpl$Fragment$contactFields$contact_groups<TRes>
 class Fragment$contactFields$contact_groups$group {
   Fragment$contactFields$contact_groups$group({
     required this.name,
+    this.sales_states,
+    required this.id,
     required this.$__typename,
   });
 
   factory Fragment$contactFields$contact_groups$group.fromJson(
       Map<String, dynamic> json) {
     final l$name = json['name'];
+    final l$sales_states = json['sales_states'];
+    final l$id = json['id'];
     final l$$__typename = json['__typename'];
     return Fragment$contactFields$contact_groups$group(
       name: (l$name as String),
+      sales_states: l$sales_states == null ? null : mapFromJson(l$sales_states),
+      id: (l$id as int),
       $__typename: ((l$$__typename ?? "none") as String),
     );
   }
 
   final String name;
+
+  final dynamic? sales_states;
+
+  final int id;
 
   final String $__typename;
 
@@ -729,6 +807,11 @@ class Fragment$contactFields$contact_groups$group {
     final _resultData = <String, dynamic>{};
     final l$name = name;
     _resultData['name'] = l$name;
+    final l$sales_states = sales_states;
+    _resultData['sales_states'] =
+        l$sales_states == null ? null : mapToJson(l$sales_states);
+    final l$id = id;
+    _resultData['id'] = l$id;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -737,9 +820,13 @@ class Fragment$contactFields$contact_groups$group {
   @override
   int get hashCode {
     final l$name = name;
+    final l$sales_states = sales_states;
+    final l$id = id;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$name,
+      l$sales_states,
+      l$id,
       l$$__typename,
     ]);
   }
@@ -756,6 +843,16 @@ class Fragment$contactFields$contact_groups$group {
     final l$name = name;
     final lOther$name = other.name;
     if (l$name != lOther$name) {
+      return false;
+    }
+    final l$sales_states = sales_states;
+    final lOther$sales_states = other.sales_states;
+    if (l$sales_states != lOther$sales_states) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -788,6 +885,8 @@ abstract class CopyWith$Fragment$contactFields$contact_groups$group<TRes> {
 
   TRes call({
     String? name,
+    dynamic? sales_states,
+    int? id,
     String? $__typename,
   });
 }
@@ -807,12 +906,18 @@ class _CopyWithImpl$Fragment$contactFields$contact_groups$group<TRes>
 
   TRes call({
     Object? name = _undefined,
+    Object? sales_states = _undefined,
+    Object? id = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$contactFields$contact_groups$group(
         name: name == _undefined || name == null
             ? _instance.name
             : (name as String),
+        sales_states: sales_states == _undefined
+            ? _instance.sales_states
+            : (sales_states as dynamic?),
+        id: id == _undefined || id == null ? _instance.id : (id as int),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -827,6 +932,8 @@ class _CopyWithStubImpl$Fragment$contactFields$contact_groups$group<TRes>
 
   call({
     String? name,
+    dynamic? sales_states,
+    int? id,
     String? $__typename,
   }) =>
       _res;
@@ -834,60 +941,47 @@ class _CopyWithStubImpl$Fragment$contactFields$contact_groups$group<TRes>
 
 class Variables$Query$GetTodayContacts {
   factory Variables$Query$GetTodayContacts({
-    int? limit,
-    int? offset,
-    Input$contacts_bool_exp? where,
+    required int limit,
+    required int offset,
+    required Input$contacts_bool_exp where,
   }) =>
       Variables$Query$GetTodayContacts._({
-        if (limit != null) r'limit': limit,
-        if (offset != null) r'offset': offset,
-        if (where != null) r'where': where,
+        r'limit': limit,
+        r'offset': offset,
+        r'where': where,
       });
 
   Variables$Query$GetTodayContacts._(this._$data);
 
   factory Variables$Query$GetTodayContacts.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
-    if (data.containsKey('limit')) {
-      final l$limit = data['limit'];
-      result$data['limit'] = (l$limit as int?);
-    }
-    if (data.containsKey('offset')) {
-      final l$offset = data['offset'];
-      result$data['offset'] = (l$offset as int?);
-    }
-    if (data.containsKey('where')) {
-      final l$where = data['where'];
-      result$data['where'] = l$where == null
-          ? null
-          : Input$contacts_bool_exp.fromJson((l$where as Map<String, dynamic>));
-    }
+    final l$limit = data['limit'];
+    result$data['limit'] = (l$limit as int);
+    final l$offset = data['offset'];
+    result$data['offset'] = (l$offset as int);
+    final l$where = data['where'];
+    result$data['where'] =
+        Input$contacts_bool_exp.fromJson((l$where as Map<String, dynamic>));
     return Variables$Query$GetTodayContacts._(result$data);
   }
 
   Map<String, dynamic> _$data;
 
-  int? get limit => (_$data['limit'] as int?);
+  int get limit => (_$data['limit'] as int);
 
-  int? get offset => (_$data['offset'] as int?);
+  int get offset => (_$data['offset'] as int);
 
-  Input$contacts_bool_exp? get where =>
-      (_$data['where'] as Input$contacts_bool_exp?);
+  Input$contacts_bool_exp get where =>
+      (_$data['where'] as Input$contacts_bool_exp);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
-    if (_$data.containsKey('limit')) {
-      final l$limit = limit;
-      result$data['limit'] = l$limit;
-    }
-    if (_$data.containsKey('offset')) {
-      final l$offset = offset;
-      result$data['offset'] = l$offset;
-    }
-    if (_$data.containsKey('where')) {
-      final l$where = where;
-      result$data['where'] = l$where?.toJson();
-    }
+    final l$limit = limit;
+    result$data['limit'] = l$limit;
+    final l$offset = offset;
+    result$data['offset'] = l$offset;
+    final l$where = where;
+    result$data['where'] = l$where.toJson();
     return result$data;
   }
 
@@ -908,25 +1002,16 @@ class Variables$Query$GetTodayContacts {
     }
     final l$limit = limit;
     final lOther$limit = other.limit;
-    if (_$data.containsKey('limit') != other._$data.containsKey('limit')) {
-      return false;
-    }
     if (l$limit != lOther$limit) {
       return false;
     }
     final l$offset = offset;
     final lOther$offset = other.offset;
-    if (_$data.containsKey('offset') != other._$data.containsKey('offset')) {
-      return false;
-    }
     if (l$offset != lOther$offset) {
       return false;
     }
     final l$where = where;
     final lOther$where = other.where;
-    if (_$data.containsKey('where') != other._$data.containsKey('where')) {
-      return false;
-    }
     if (l$where != lOther$where) {
       return false;
     }
@@ -939,9 +1024,9 @@ class Variables$Query$GetTodayContacts {
     final l$offset = offset;
     final l$where = where;
     return Object.hashAll([
-      _$data.containsKey('limit') ? l$limit : const {},
-      _$data.containsKey('offset') ? l$offset : const {},
-      _$data.containsKey('where') ? l$where : const {},
+      l$limit,
+      l$offset,
+      l$where,
     ]);
   }
 }
@@ -982,9 +1067,10 @@ class _CopyWithImpl$Variables$Query$GetTodayContacts<TRes>
   }) =>
       _then(Variables$Query$GetTodayContacts._({
         ..._instance._$data,
-        if (limit != _undefined) 'limit': (limit as int?),
-        if (offset != _undefined) 'offset': (offset as int?),
-        if (where != _undefined) 'where': (where as Input$contacts_bool_exp?),
+        if (limit != _undefined && limit != null) 'limit': (limit as int),
+        if (offset != _undefined && offset != null) 'offset': (offset as int),
+        if (where != _undefined && where != null)
+          'where': (where as Input$contacts_bool_exp),
       }));
 }
 
@@ -1004,32 +1090,30 @@ class _CopyWithStubImpl$Variables$Query$GetTodayContacts<TRes>
 
 class Query$GetTodayContacts {
   Query$GetTodayContacts({
-    required this.get_people_to_contact_today,
+    required this.contacts,
     required this.$__typename,
   });
 
   factory Query$GetTodayContacts.fromJson(Map<String, dynamic> json) {
-    final l$get_people_to_contact_today = json['get_people_to_contact_today'];
+    final l$contacts = json['contacts'];
     final l$$__typename = json['__typename'];
     return Query$GetTodayContacts(
-      get_people_to_contact_today:
-          (l$get_people_to_contact_today as List<dynamic>)
-              .map((e) =>
-                  Fragment$contactFields.fromJson((e as Map<String, dynamic>)))
-              .toList(),
+      contacts: (l$contacts as List<dynamic>)
+          .map((e) =>
+              Fragment$contactFields.fromJson((e as Map<String, dynamic>)))
+          .toList(),
       $__typename: ((l$$__typename ?? "none") as String),
     );
   }
 
-  final List<Fragment$contactFields> get_people_to_contact_today;
+  final List<Fragment$contactFields> contacts;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$get_people_to_contact_today = get_people_to_contact_today;
-    _resultData['get_people_to_contact_today'] =
-        l$get_people_to_contact_today.map((e) => e.toJson()).toList();
+    final l$contacts = contacts;
+    _resultData['contacts'] = l$contacts.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1037,10 +1121,10 @@ class Query$GetTodayContacts {
 
   @override
   int get hashCode {
-    final l$get_people_to_contact_today = get_people_to_contact_today;
+    final l$contacts = contacts;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$get_people_to_contact_today.map((v) => v)),
+      Object.hashAll(l$contacts.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -1054,20 +1138,15 @@ class Query$GetTodayContacts {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$get_people_to_contact_today = get_people_to_contact_today;
-    final lOther$get_people_to_contact_today =
-        other.get_people_to_contact_today;
-    if (l$get_people_to_contact_today.length !=
-        lOther$get_people_to_contact_today.length) {
+    final l$contacts = contacts;
+    final lOther$contacts = other.contacts;
+    if (l$contacts.length != lOther$contacts.length) {
       return false;
     }
-    for (int i = 0; i < l$get_people_to_contact_today.length; i++) {
-      final l$get_people_to_contact_today$entry =
-          l$get_people_to_contact_today[i];
-      final lOther$get_people_to_contact_today$entry =
-          lOther$get_people_to_contact_today[i];
-      if (l$get_people_to_contact_today$entry !=
-          lOther$get_people_to_contact_today$entry) {
+    for (int i = 0; i < l$contacts.length; i++) {
+      final l$contacts$entry = l$contacts[i];
+      final lOther$contacts$entry = lOther$contacts[i];
+      if (l$contacts$entry != lOther$contacts$entry) {
         return false;
       }
     }
@@ -1098,10 +1177,10 @@ abstract class CopyWith$Query$GetTodayContacts<TRes> {
       _CopyWithStubImpl$Query$GetTodayContacts;
 
   TRes call({
-    List<Fragment$contactFields>? get_people_to_contact_today,
+    List<Fragment$contactFields>? contacts,
     String? $__typename,
   });
-  TRes get_people_to_contact_today(
+  TRes contacts(
       Iterable<Fragment$contactFields> Function(
               Iterable<CopyWith$Fragment$contactFields<Fragment$contactFields>>)
           _fn);
@@ -1121,28 +1200,26 @@ class _CopyWithImpl$Query$GetTodayContacts<TRes>
   static const _undefined = {};
 
   TRes call({
-    Object? get_people_to_contact_today = _undefined,
+    Object? contacts = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$GetTodayContacts(
-        get_people_to_contact_today:
-            get_people_to_contact_today == _undefined ||
-                    get_people_to_contact_today == null
-                ? _instance.get_people_to_contact_today
-                : (get_people_to_contact_today as List<Fragment$contactFields>),
+        contacts: contacts == _undefined || contacts == null
+            ? _instance.contacts
+            : (contacts as List<Fragment$contactFields>),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  TRes get_people_to_contact_today(
+  TRes contacts(
           Iterable<Fragment$contactFields> Function(
                   Iterable<
                       CopyWith$Fragment$contactFields<Fragment$contactFields>>)
               _fn) =>
       call(
-          get_people_to_contact_today: _fn(_instance.get_people_to_contact_today
-              .map((e) => CopyWith$Fragment$contactFields(
+          contacts:
+              _fn(_instance.contacts.map((e) => CopyWith$Fragment$contactFields(
                     e,
                     (i) => i,
                   ))).toList());
@@ -1155,12 +1232,12 @@ class _CopyWithStubImpl$Query$GetTodayContacts<TRes>
   TRes _res;
 
   call({
-    List<Fragment$contactFields>? get_people_to_contact_today,
+    List<Fragment$contactFields>? contacts,
     String? $__typename,
   }) =>
       _res;
 
-  get_people_to_contact_today(_fn) => _res;
+  contacts(_fn) => _res;
 }
 
 const documentNodeQueryGetTodayContacts = DocumentNode(definitions: [
@@ -1172,7 +1249,7 @@ const documentNodeQueryGetTodayContacts = DocumentNode(definitions: [
         variable: VariableNode(name: NameNode(value: 'limit')),
         type: NamedTypeNode(
           name: NameNode(value: 'Int'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         defaultValue: DefaultValueNode(value: null),
         directives: [],
@@ -1181,7 +1258,7 @@ const documentNodeQueryGetTodayContacts = DocumentNode(definitions: [
         variable: VariableNode(name: NameNode(value: 'offset')),
         type: NamedTypeNode(
           name: NameNode(value: 'Int'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         defaultValue: DefaultValueNode(value: null),
         directives: [],
@@ -1190,7 +1267,7 @@ const documentNodeQueryGetTodayContacts = DocumentNode(definitions: [
         variable: VariableNode(name: NameNode(value: 'where')),
         type: NamedTypeNode(
           name: NameNode(value: 'contacts_bool_exp'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         defaultValue: DefaultValueNode(value: null),
         directives: [],
@@ -1199,7 +1276,7 @@ const documentNodeQueryGetTodayContacts = DocumentNode(definitions: [
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'get_people_to_contact_today'),
+        name: NameNode(value: 'contacts'),
         alias: null,
         arguments: [
           ArgumentNode(
@@ -1212,7 +1289,46 @@ const documentNodeQueryGetTodayContacts = DocumentNode(definitions: [
           ),
           ArgumentNode(
             name: NameNode(value: 'where'),
-            value: VariableNode(name: NameNode(value: 'where')),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: '_and'),
+                value: ListValueNode(values: [
+                  VariableNode(name: NameNode(value: 'where')),
+                  ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                      name: NameNode(value: '_or'),
+                      value: ListValueNode(values: [
+                        ObjectValueNode(fields: [
+                          ObjectFieldNode(
+                            name: NameNode(value: 'need_to_call'),
+                            value: ObjectValueNode(fields: [
+                              ObjectFieldNode(
+                                name: NameNode(value: '_eq'),
+                                value: BooleanValueNode(value: true),
+                              )
+                            ]),
+                          )
+                        ]),
+                        ObjectValueNode(fields: [
+                          ObjectFieldNode(
+                            name: NameNode(value: 'next_call_date'),
+                            value: ObjectValueNode(fields: [
+                              ObjectFieldNode(
+                                name: NameNode(value: '_lte'),
+                                value: StringValueNode(
+                                  value: 'now()',
+                                  isBlock: false,
+                                ),
+                              )
+                            ]),
+                          )
+                        ]),
+                      ]),
+                    )
+                  ]),
+                ]),
+              )
+            ]),
           ),
         ],
         directives: [],
@@ -1243,7 +1359,7 @@ class Options$Query$GetTodayContacts
     extends graphql.QueryOptions<Query$GetTodayContacts> {
   Options$Query$GetTodayContacts({
     String? operationName,
-    Variables$Query$GetTodayContacts? variables,
+    required Variables$Query$GetTodayContacts variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -1251,7 +1367,7 @@ class Options$Query$GetTodayContacts
     Duration? pollInterval,
     graphql.Context? context,
   }) : super(
-          variables: variables?.toJson() ?? {},
+          variables: variables.toJson(),
           operationName: operationName,
           fetchPolicy: fetchPolicy,
           errorPolicy: errorPolicy,
@@ -1268,7 +1384,7 @@ class WatchOptions$Query$GetTodayContacts
     extends graphql.WatchQueryOptions<Query$GetTodayContacts> {
   WatchOptions$Query$GetTodayContacts({
     String? operationName,
-    Variables$Query$GetTodayContacts? variables,
+    required Variables$Query$GetTodayContacts variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -1279,7 +1395,7 @@ class WatchOptions$Query$GetTodayContacts
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-          variables: variables?.toJson() ?? {},
+          variables: variables.toJson(),
           operationName: operationName,
           fetchPolicy: fetchPolicy,
           errorPolicy: errorPolicy,
@@ -1298,44 +1414,44 @@ class WatchOptions$Query$GetTodayContacts
 class FetchMoreOptions$Query$GetTodayContacts extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$GetTodayContacts({
     required graphql.UpdateQuery updateQuery,
-    Variables$Query$GetTodayContacts? variables,
+    required Variables$Query$GetTodayContacts variables,
   }) : super(
           updateQuery: updateQuery,
-          variables: variables?.toJson() ?? {},
+          variables: variables.toJson(),
           document: documentNodeQueryGetTodayContacts,
         );
 }
 
 extension ClientExtension$Query$GetTodayContacts on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$GetTodayContacts>> query$GetTodayContacts(
-          [Options$Query$GetTodayContacts? options]) async =>
-      await this.query(options ?? Options$Query$GetTodayContacts());
+          Options$Query$GetTodayContacts options) async =>
+      await this.query(options);
   graphql.ObservableQuery<Query$GetTodayContacts> watchQuery$GetTodayContacts(
-          [WatchOptions$Query$GetTodayContacts? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$GetTodayContacts());
+          WatchOptions$Query$GetTodayContacts options) =>
+      this.watchQuery(options);
   void writeQuery$GetTodayContacts({
     required Query$GetTodayContacts data,
-    Variables$Query$GetTodayContacts? variables,
+    required Variables$Query$GetTodayContacts variables,
     bool broadcast = true,
   }) =>
       this.writeQuery(
         graphql.Request(
           operation:
               graphql.Operation(document: documentNodeQueryGetTodayContacts),
-          variables: variables?.toJson() ?? const {},
+          variables: variables.toJson(),
         ),
         data: data.toJson(),
         broadcast: broadcast,
       );
   Query$GetTodayContacts? readQuery$GetTodayContacts({
-    Variables$Query$GetTodayContacts? variables,
+    required Variables$Query$GetTodayContacts variables,
     bool optimistic = true,
   }) {
     final result = this.readQuery(
       graphql.Request(
         operation:
             graphql.Operation(document: documentNodeQueryGetTodayContacts),
-        variables: variables?.toJson() ?? const {},
+        variables: variables.toJson(),
       ),
       optimistic: optimistic,
     );

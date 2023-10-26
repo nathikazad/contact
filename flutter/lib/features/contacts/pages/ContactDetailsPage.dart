@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:start/features/contacts/components/ContactDetailsComponent.dart';
 import 'package:start/features/contacts/components/ContactEditButton.dart';
+import 'package:start/features/contacts/components/ContactGroupDropDown.dart';
 import 'package:start/features/contacts/controller/contactsController.dart';
 import 'package:start/db/graphql/contacts/__generated/contacts.graphql.dart';
 import 'package:start/features/contacts/controller/contactsManager.dart';
 import 'package:start/features/contacts/model/contactModel.dart';
+import 'package:start/features/groups/controller/groupsController.dart';
 import 'package:start/features/logs/components/LogComponent.dart';
 import 'package:start/features/reminders/components/ReminderComponent.dart';
 
@@ -39,6 +41,7 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
     if (_isLoading) {
       return const Scaffold(
@@ -47,9 +50,11 @@ class _DetailScreenState extends State<DetailScreen> {
     }
 
     return Scaffold(
-        appBar: AppBar(title: Text(_contact?.name ?? 'Contact')),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
+      appBar: AppBar(title: Text(_contact?.name ?? 'Contact')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          // <-- Add this
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -66,6 +71,26 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
               ContactDetailsComponent(contact: _contact),
               const SizedBox(height: 8),
+              if (_contact?.contactGroups != null)
+                ..._contact!.contactGroups.keys
+                    .where((groupName) => _contact!
+                        .contactGroups[groupName]!.groupStates.isNotEmpty)
+                    .map((groupName) {
+                  return GroupDropdown(
+                    contactGroup: _contact!.contactGroups[groupName]!,
+                    contactId: _contact!.id!,
+                    updateGroupState: (contactId, newState) {
+                      updateGroupState(
+                              contactId: _contact!.id!,
+                              groupId:
+                                  _contact!.contactGroups[groupName]!.groupId,
+                              currentState: newState)
+                          .then((val) =>
+                              ContactsManager().addContacts(startOver: true));
+                    },
+                  );
+                }).toList(),
+              const SizedBox(height: 8),
               ContactEditButton(
                 contact: _contact,
                 updateCallback: (contact) => setState(() {
@@ -81,6 +106,8 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

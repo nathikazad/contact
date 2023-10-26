@@ -27,3 +27,16 @@ Future<void> updateGroups(
               [])));
   return;
 }
+
+Future<void> updateGroupState(
+    {required int contactId,
+    required int groupId,
+    required String currentState}) async {
+  await hasura.graphQLClient.mutate$SetGroupState(
+      Options$Mutation$SetGroupState(
+          variables: Variables$Mutation$SetGroupState(
+              contact_id: contactId,
+              group_id: groupId,
+              sales_state: currentState)));
+  return;
+}

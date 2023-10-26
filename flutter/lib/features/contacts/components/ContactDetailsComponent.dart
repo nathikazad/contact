@@ -30,11 +30,24 @@ class ContactDetailsComponent extends StatelessWidget {
           const SizedBox(height: 8),
         ],
         if (contact?.frequency != null) ...[
-          Text('Frequency: ${contact!.frequency}'),
+          Text('Call Every: ${contact!.frequency} days'),
+          const SizedBox(height: 8),
+        ],
+        if (contact?.nextCallDate != null) ...[
+          Text('Next Call Date: ${formatTime(contact!.nextCallDate!)}'),
           const SizedBox(height: 8),
         ],
         if (contact?.phoneNumber != null) ...[
-          Text('Phone Number: ${contact!.phoneNumber}'),
+          Row(
+            children: [
+              Text('Phone Number: ${contact!.phoneNumber}'),
+              Spacer(), // This will push the icon to the end of the Row
+              IconButton(
+                icon: Icon(Icons.call), // Assuming you're using material icons
+                onPressed: () => launchWhatsApp(contact!.phoneNumber!),
+              ),
+            ],
+          ),
           const SizedBox(height: 8),
         ],
         if (contact?.notes != null) ...[

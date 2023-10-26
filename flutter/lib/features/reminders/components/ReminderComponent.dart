@@ -29,7 +29,6 @@ class _RemindersComponentState extends State<RemindersComponent> {
 
     List<Query$GetReminders$reminders>? reminders =
         await getReminders(contactId: widget.contactId);
-    print("Reminders: ${reminders?.length}");
     setState(() {
       _reminders = reminders;
       _isLoading = false;

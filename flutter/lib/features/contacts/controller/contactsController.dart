@@ -43,7 +43,7 @@ Future<List<Fragment$contactFields>?> getTodayContacts(
             where: where,
           )));
 
-  return res.parsedData?.get_people_to_contact_today;
+  return res.parsedData?.contacts;
 }
 
 Future<void> updateNeedToCall(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:start/db/graphql/contacts/__generated/contacts.graphql.dart';
 import 'package:start/features/contacts/controller/contactsController.dart';
+import 'package:start/features/contacts/model/contactModel.dart';
 import 'package:start/features/groups/controller/groupsController.dart';
 
 enum FetchContactMode { today, all }
@@ -18,7 +19,7 @@ class ContactsManager {
   factory ContactsManager() => _instance;
   ContactsManager._internal();
 
-  final List<Fragment$contactFields> contacts = [];
+  List<Contact> contacts = [];
 
   VoidCallback? _notifyListeners; // A callback to notify listeners of changes
 
@@ -58,6 +59,7 @@ class ContactsManager {
   }
 
   void addContacts({bool startOver = false, String? name}) async {
+    print("add contacts $startOver");
     if (fetching == true) return;
 
     fetching = true;
@@ -66,7 +68,7 @@ class ContactsManager {
     if (startOver || name != null) {
       hasMore = true;
       offset = 0;
-      contacts.clear();
+      contacts = [];
     }
     List<Fragment$contactFields>? newContacts;
     if (fetchContactMode == FetchContactMode.all) {
@@ -82,11 +84,9 @@ class ContactsManager {
     }
     offset += newContacts?.length ?? 0;
     fetching = false;
-
-    contacts.addAll(newContacts ?? []);
-    // contacts.forEach((element) => print(element.name));
+    contacts.addAll(
+        newContacts?.map<Contact>((e) => Contact.fromFragment(e)).toList() ??
+            []);
     _notifyListeners?.call();
   }
-
-  List<Fragment$contactFields> getContacts() => contacts;
 }

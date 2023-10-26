@@ -33,6 +33,7 @@ class _ContactScreenState extends State<ContactFormPage> {
   void initState() {
     super.initState();
     _contact = (widget.contact != null) ? widget.contact! : Contact();
+    _newGroups = _contact.groups ?? [];
     _dateController.text = _contact.dateAdded ?? '';
   }
 
@@ -133,7 +134,6 @@ class _ContactScreenState extends State<ContactFormPage> {
                   decoration: const InputDecoration(labelText: 'Company Name'),
                   onSaved: (value) =>
                       _contact.companyName = value!.isEmpty ? null : value,
-                  validator: (value) => value!.isEmpty ? 'Company Name' : null,
                 ),
                 TextFormField(
                   initialValue: _contact.email,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:start/db/graphql/contacts/__generated/contacts.graphql.dart';
 import 'package:start/features/contacts/controller/contactsManager.dart';
+import 'package:collection/collection.dart';
 import 'package:start/features/contacts/pages/ContactDetailsPage.dart';
 
 class TabScreen extends StatefulWidget {
   final String title;
-  final Color color;
-  TabScreen(this.title, this.color, {Key? key}) : super(key: key);
+  TabScreen(this.title, {Key? key}) : super(key: key);
 
   @override
   TabScreenState createState() => TabScreenState();
@@ -15,7 +16,7 @@ class TabScreenState extends State<TabScreen> {
   final contactsManager = ContactsManager();
   final TextEditingController _searchController = TextEditingController();
 
-  String? _selectedDropdownValue;
+  String? _selectedGroup;
   @override
   void initState() {
     super.initState();
@@ -44,7 +45,7 @@ class TabScreenState extends State<TabScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final contacts = contactsManager.getContacts();
+    final contacts = contactsManager.contacts;
 
     return CustomScrollView(
       slivers: [
@@ -89,7 +90,7 @@ class TabScreenState extends State<TabScreen> {
                       alignment: Alignment
                           .centerLeft, // Aligning the DropdownButton to the left
                       child: DropdownButton<String>(
-                        value: _selectedDropdownValue,
+                        value: _selectedGroup,
                         isExpanded:
                             true, // This will ensure that the dropdown occupies the entire width
                         hint: const Text('Select a value'),
@@ -97,7 +98,7 @@ class TabScreenState extends State<TabScreen> {
                           contactsManager.saveGroupId(newValue);
                           contactsManager.addContacts(startOver: true);
                           setState(() {
-                            _selectedDropdownValue = newValue!;
+                            _selectedGroup = newValue!;
                           });
                         },
                         items: _getGroups(),
@@ -118,52 +119,37 @@ class TabScreenState extends State<TabScreen> {
                 return const Center(child: CircularProgressIndicator());
               }
               return ListTile(
-                tileColor: widget.color,
                 title: Text(
-                    "${contacts[index].name}${appendCompanyName(contacts[index].company_name)}"),
+                    "${contacts[index].name}${appendCompanyName(contacts[index].companyName)}"),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (ctx) => DetailScreen(contacts[index].id)),
+                        builder: (ctx) => DetailScreen(contacts[index].id!)),
                   );
                 },
+                trailing: _selectedGroup != null
+                    ? Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: contacts[index]
+                              .contactGroup(_selectedGroup!)
+                              ?.color,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                            contacts[index].currentState(_selectedGroup!) ?? '',
+                            style: TextStyle(color: Colors.white)),
+                      )
+                    : null, // don't display anything if condition is false
               );
             },
             childCount:
                 contactsManager.hasMore ? contacts.length + 1 : contacts.length,
           ),
-        ),
+        )
       ],
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   final contacts = contactsManager.getContacts();
-
-  //   return ListView.builder(
-  //     itemCount:
-  //         contactsManager.hasMore ? contacts.length + 1 : contacts.length,
-  //     itemBuilder: (ctx, index) {
-  //       if (index == contacts.length) {
-  //         _fetchContacts();
-
-  //         return Center(child: CircularProgressIndicator());
-  //       }
-
-  //       return ListTile(
-  //         tileColor: widget.color,
-  //         title: Text(contacts[index].name),
-  //         onTap: () {
-  //           Navigator.push(
-  //             context,
-  //             MaterialPageRoute(
-  //                 builder: (ctx) => DetailScreen(contacts[index].id)),
-  //           );
-  //         },
-  //       );
-  //     },
-  //   );
-  // }
 }

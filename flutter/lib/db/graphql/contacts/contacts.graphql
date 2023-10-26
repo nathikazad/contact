@@ -12,13 +12,25 @@ fragment contactFields on contacts {
   contact_groups {
     group {
       name
+      sales_states
+      id
     }
+    sales_state
   }
   company_name
+  next_call_date
 }
 
-query GetTodayContacts($limit: Int, $offset: Int, $where: contacts_bool_exp) {
-  get_people_to_contact_today(limit: $limit, offset: $offset, where: $where) {
+
+query GetTodayContacts($limit: Int!, $offset: Int!, $where: contacts_bool_exp!) {
+  contacts(
+    limit: $limit,
+    offset: $offset,
+    where: {_and: [
+      $where,
+      {_or: [{need_to_call: {_eq: true}}, {next_call_date: {_lte: "now()"}}]}
+    ]}
+  ) {
     ...contactFields
   }
 }

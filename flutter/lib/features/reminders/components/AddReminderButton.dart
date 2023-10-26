@@ -37,9 +37,12 @@ class AddReminderButton extends StatelessWidget {
       builder: (context) {
         return AlertDialog(
           title: const Text('Add Reminder'),
-          content: TextField(
+          content: TextFormField(
             controller: notesController,
             decoration: const InputDecoration(hintText: "Enter notes"),
+            keyboardType: TextInputType.multiline, // allows multiline input
+            maxLines: null, // this makes the TextFormField expandable
+            minLines: 3, // start with at least 3 lines
           ),
           actions: <Widget>[
             TextButton(

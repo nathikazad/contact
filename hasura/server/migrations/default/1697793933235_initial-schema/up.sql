@@ -7,7 +7,7 @@ CREATE TABLE public.contacts (
     images jsonb[],
     notes text,
     desires jsonb[],
-    need_to_call boolean,
+    need_to_call boolean DEFAULT false,
     date_added timestamp with time zone DEFAULT now() NOT NULL,
     frequency integer,
     company_name text
@@ -64,6 +64,59 @@ WHERE
         -- Reminders condition
         r.id IS NOT NULL
     );
+$$;
+CREATE FUNCTION public.next_call_date(user_row public.contacts) RETURNS date
+    LANGUAGE plpgsql STABLE
+    AS $$
+DECLARE
+    next_date DATE;
+BEGIN
+    -- Individual User's Frequency
+    SELECT
+        CASE 
+            WHEN LastInteractions.last_interaction IS NULL THEN current_date
+            ELSE CAST(LastInteractions.last_interaction AS DATE) + c.frequency
+        END INTO next_date
+    FROM
+        contacts c
+        LEFT JOIN (
+            SELECT contact_id, MAX(time) as last_interaction
+            FROM logs
+            WHERE contact_id = user_row.id
+            GROUP BY contact_id
+        ) AS LastInteractions ON c.id = LastInteractions.contact_id
+    WHERE
+        c.id = user_row.id
+        AND c.frequency IS NOT NULL;
+    -- If Individual frequency is not set, fall back to Group Frequency
+    IF next_date IS NULL THEN
+        SELECT
+            CASE 
+                WHEN LastInteractions.last_interaction IS NULL THEN current_date
+                ELSE CAST(LastInteractions.last_interaction AS DATE) + GroupFrequencies.min_frequency
+            END INTO next_date
+        FROM
+            contacts c
+            LEFT JOIN (
+                SELECT contact_id, MIN(g.frequency) as min_frequency
+                FROM contact_group cg
+                JOIN groups g ON cg.group_id = g.id
+                WHERE cg.contact_id = user_row.id
+                GROUP BY cg.contact_id
+            ) AS GroupFrequencies ON c.id = GroupFrequencies.contact_id
+            LEFT JOIN (
+                SELECT contact_id, MAX(time) as last_interaction
+                FROM logs
+                WHERE contact_id = user_row.id
+                GROUP BY contact_id
+            ) AS LastInteractions ON c.id = LastInteractions.contact_id
+        WHERE
+            c.id = user_row.id
+            AND c.frequency IS NULL
+            AND GroupFrequencies.min_frequency IS NOT NULL;
+    END IF;
+    RETURN next_date;
+END;
 $$;
 CREATE FUNCTION public.search_articles(search text) RETURNS SETOF public.contacts
     LANGUAGE sql STABLE

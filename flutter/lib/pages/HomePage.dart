@@ -12,8 +12,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    TabScreen('Tab 1', Colors.teal),
-    TabScreen('Tab 2', Colors.orange),
+    TabScreen('Home'),
+    TabScreen('Contacts'),
   ];
 
   bool hasuraInitialized = false;
@@ -62,7 +62,8 @@ class _HomePageState extends State<HomePage> {
             });
           },
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.hourglass_bottom), label: 'Pending'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.contact_page), label: 'Contacts'),
           ],

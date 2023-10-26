@@ -11,7 +11,6 @@ Future<List<Query$GetLogs$logs>?> getLogs({required int contactId}) async {
       Options$Query$GetLogs(
           fetchPolicy: FetchPolicy.noCache,
           variables: Variables$Query$GetLogs(contact_id: contactId)));
-  print("Logs in controller: $contactId ${res.parsedData?.logs.length}");
   return res.parsedData?.logs;
 }
 

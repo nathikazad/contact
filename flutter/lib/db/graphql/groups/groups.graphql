@@ -14,3 +14,9 @@ mutation UpdateGroups($id: Int!, $groups_to_add: [contact_group_insert_input!]!,
     affected_rows
   }
 }
+
+mutation SetGroupState($contact_id: Int!, $group_id: Int!, $sales_state: String!) {
+  update_contact_group_by_pk(pk_columns: {contact_id: $contact_id, group_id: $group_id}, _set: {sales_state: $sales_state}) {
+    sales_state
+  }
+}
